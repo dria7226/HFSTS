@@ -1,2 +1,4 @@
 - write helper functions
 - come up with a program flow/design
+- platform specific gcc execution (CreateProcess win ...)
+- 
