@@ -1,3 +1,5 @@
+// struct 
+
 void attach_object()
 {
   #ifdef _WIN32
@@ -8,7 +10,7 @@ void attach_object()
 void detach_object()
 {
   #ifdef _WIN32
-    
+
   #endif
 }
 
