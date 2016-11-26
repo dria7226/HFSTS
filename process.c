@@ -1,8 +1,6 @@
 #include "includes.c"
 
-char* cmd_line;
-
-void create_process()
+void create_process(char* cmd_line)
 {
   if(!cmd_line) return;
   
@@ -10,7 +8,7 @@ void create_process()
     CreateProcess( NULL, cmd_line, NULL, NULL, FALSE, 0, NULL, NULL, NULL, NULL );
   #elif __linux__
     fork();
-    execl("gcc/gcc", "gcc", (char*) 0);
+    execl("gcc/gcc", cmd_line, (char*) 0);
   #elif __APPLE__
     
   #endif
