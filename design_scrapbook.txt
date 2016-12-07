@@ -1,0 +1,12 @@
+ - community focused (Reddit / Facebook inspired system)
+ - self programmable
+ - projects created using self contained modules
+ - interprets code files
+ - human readable code files?
+ - The product and the IDE make up a single program (HFSTS) during development. On shipping, the IDE severes itself from the bundle, leaving only the CORE and tagged files
+
+-----------------------------------------------
+
+ - Hephaestus is divided into 2 areas: included and not included in the product.
+
+   CORE is included in the product by default, IDE and PRODUCT files can be included by the user.

@@ -1,1 +1,1 @@
-gcc main.c -o Hephaestus.exe
+gcc main.c -o HFSTS.exe
