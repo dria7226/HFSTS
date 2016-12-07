@@ -1,0 +1,3 @@
+endwin();
+
+return 0;
