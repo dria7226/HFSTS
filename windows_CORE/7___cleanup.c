@@ -1,3 +1,1 @@
-endwin();
-
 return 0;
