@@ -20,17 +20,37 @@ DATA
 
 #define DATA_TYPE unsigned int
 
-enum {PROGRAM,DATA}
-DATA_TYPE** memory[2];
+struct VECTOR{
+  DATA_TYPE* data;
+  DATA_TYPE capacity;
+};
 
-void init_memory()
+#define DEFAULT_SIZE  32
+#define MAX_VALUE     0xFFFFFFFF
+
+struct VECTOR*  program_memory;
+DATA_TYPE       program_capacity;
+
+struct VECTOR*  data_memory;
+DATA_TYPE       data_capacity;
+
+
+void alloc_memory()
 {
-  //initialize to memory[2][256][256]
+  //allocate to memory[2][256][256]
+
+  memory[PROGRAM] = (DATA_TYPE**) VirtualAlloc(NULL, DEFAULT_SIZE * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
+
 
 
 }
 
+void free_memory()
+{
+  VirtualFree(address, size, MEM_RELEASE);
+}
+
 void resize_array()
 {
-  
+
 }
