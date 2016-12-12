@@ -10,7 +10,5 @@ int main (int argc, char* argv)
 {
   #include "5___setup.c"
 
-  #include "6___interpreter_loop.c"
-
   #include "7___cleanup.c"
 }
