@@ -2,9 +2,9 @@ void allocate_memory()
 {
   //allocate to memory[2][256][256]
 
-  program_capacity = 32 * (DEFAULT_SIZE > MAX_VALUE) + DEFAULT_SIZE * (DEFAULT_SIZE <= MAX_VALUE);
+  program_capacity = DEFAULT_SIZE;
 
-  data_capacity = 32 * (DEFAULT_SIZE > MAX_VALUE) + DEFAULT_SIZE * (DEFAULT_SIZE <= MAX_VALUE);
+  data_capacity = DEFAULT_SIZE;
 
   thread_capacity = 1;
 

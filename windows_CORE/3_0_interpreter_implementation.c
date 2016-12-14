@@ -25,6 +25,7 @@ struct VECTOR{
 
 #define DEFAULT_SIZE  32
 #define MAX_VALUE     0xFFFFFFFF
+#define PROGRAM_CHUNK 1024
 
 struct VECTOR*   program;
 DATA_TYPE        program_capacity;
