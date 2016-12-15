@@ -16,31 +16,20 @@
   // memory[DATA][0][*] - is memory for single variables
   // memory[DATA][1-oo] - is array memory
 
-#define DATA_TYPE unsigned int
+#include "3_0_interpreter_definitions.c"
 
-struct VECTOR{
-  DATA_TYPE* data;
-  DATA_TYPE  capacity;
-};
-
-#define DEFAULT_SIZE  32
-#define MAX_VALUE     0xFFFFFFFF
-#define PROGRAM_CHUNK 1024
-
-struct VECTOR*   program;
+DATA_TYPE**      program;
 DATA_TYPE        program_capacity;
 
 struct VECTOR*   data;
 DATA_TYPE        data_capacity;
 
-struct HANDLE*   threads;
+HANDLE*          threads;
 DATA_TYPE        thread_capacity;
 
 #include "3_1_resizes.c"
 
-//void* label_table[NUMBER_OF_OPCODES] = {&&MOV, &&SRC, &&DST, &&ADD, &&SUB, &&MUL, &&DIV};
-
-void interpret()
+DWORD WINAPI interpret(LPVOID lpParam)
 {
   #include "interpreter_loop.c"
 }

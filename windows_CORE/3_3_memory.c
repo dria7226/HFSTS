@@ -9,14 +9,13 @@ void allocate_memory()
   thread_capacity = 1;
 
   //PROGRAM
-  program = (struct VECTOR*) VirtualAlloc(NULL, program_capacity * sizeof(struct VECTOR), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
+  program = (DATA_TYPE**) VirtualAlloc(NULL, program_capacity * sizeof(DATA_TYPE*), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
 
   DATA_TYPE loop = 0;
 
   while(loop < program_capacity)
   {
-     program[loop].capacity = DEFAULT_SIZE;
-     program[loop].data = (DATA_TYPE*) VirtualAlloc(NULL, program[loop].capacity * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
+     program[loop] = (DATA_TYPE*) VirtualAlloc(NULL, PROGRAM_CHUNK * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
 
      loop++;
   }
@@ -46,7 +45,7 @@ void free_memory()
 
   while(loop < program_capacity)
   {
-    VirtualFree(program[loop].data, 0, MEM_RELEASE);
+    VirtualFree(program[loop], 0, MEM_RELEASE);
     loop++;
   }
 

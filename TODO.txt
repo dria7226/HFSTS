@@ -1,1 +1,2 @@
 - write interpreter
+- figure out threads

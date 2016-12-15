@@ -1,2 +1,1 @@
-//                                    enum{ MOV , SRC , DST , ADD , SUB , MUL , DIV , NUMBER_OF_OPCODES};
-// unsigned char* instruction_strings[] = {"MOV","SRC","DST","ADD","SUB","MUL","DIV"};
+enum{ /*MOV , SRC , DST , */ADD , ADD_CONSTANT, /*SUB , MUL , DIV , */EMPTY};
