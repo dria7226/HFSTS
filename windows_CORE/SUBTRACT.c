@@ -1,3 +1,3 @@
-program[1] -= program[2];
+DATA_AT(destination, AT_HEAD_OFFSET(1)) -= DATA_AT(source, AT_HEAD_OFFSET(2));
 
-program[3] = 0; //more work needed - undeflow
+REGISTER_AT(UNDERFLOW) = 0;

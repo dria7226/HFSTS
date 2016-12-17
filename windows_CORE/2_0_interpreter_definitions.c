@@ -30,8 +30,10 @@ struct VECTOR{
 #define REGISTERS 0
 #define THREADS   1
 
-#define OVERFLOW_REGISTER 0
-#define UNDERFLOW_REGISTER 1
+// REGISTERS
+#define OVERFLOW 0
+#define UNDERFLOW 1
+#define REMAINDER 2
 
 #define AT_HEAD_OFFSET(x) program[(head + x)/PROGRAM_CHUNK_SIZE][(head + x)%PROGRAM_CHUNK_SIZE]
 #define PROGRAM_AT(x)     program[x/PROGRAM_CHUNK_SIZE][x%PROGRAM_CHUNK_SIZE]

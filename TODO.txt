@@ -1,2 +1,3 @@
 - write interpreter
 - figure out threads
+- work on core programs overflow and other flags
