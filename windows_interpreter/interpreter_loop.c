@@ -1,4 +1,15 @@
-void* label_table[EMPTY] = {/*&&MOV, &&SRC, &&DST,*/ &&ADD/*, &&SUB, &&MUL, &&DIV*/};
+void* label_table[EMPTY] = {
+&&MOVE, 
+&&MOVE_CONSTANT, 
+&&GO_TO, 
+&&SET_SOURCE, 
+&&SET_DESTINATION,
+//&&ADD, 
+//&&ADD_CONSTANT, 
+//&&SUB, 
+//&&MUL, 
+//&&DIV
+};
 
 DATA_TYPE head = 0;
 DATA_TYPE source_array = 0;
@@ -6,44 +17,52 @@ DATA_TYPE destination_array = 0;
 
 next_instruction:
 
-// if(AT_HEAD < EMPTY)
-//   goto *label_table[AT_HEAD];
-//
-// goto advance_head;
-//
-// MOV:
-//  #include "MOV.c"
-// goto advance_head;
-//
-// SRC:
-//  #include "SRC.c"
-// goto advance_head;
-//
-// DST:
-//  #include "DST.c"
-// goto advance_head;
+if(AT_HEAD_OFFSET(0) < EMPTY)
+  goto *label_table[AT_HEAD_OFFSET(0)];
+
+head++; //???
+goto next_instruction;
+
+MOVE:
+#include "MOVE.c"
+
+MOVE_CONSTANT:
+#include "MOVE_CONSTANT.c"
+
+GO_TO:
+#include "GO_TO.c"
+
+SET_SOURCE:
+#include "SET_SOURCE.c"
+
+SET_DESTINATION:
+#include "SET_DESTINATION.c"
 
 ADD:
- #include "ADD.c"
-goto advance_head;
-//
-// SUB:
-//  #include "SUB.c"
-// goto advance_head;
-//
-// MUL:
-//  #include "MUL.c"
-// goto advance_head;
-//
-// DIV:
-//  #include "DIV.c"
-// goto advance_head;
+#include "ADD.c"
 
-advance_head:
-head++;
+ADD_CONSTANT:
+#include "ADD_CONSTANT.c"
+
+SUBTRACT:
+#include "SUBTRACT.c"
+
+SUBTRACT_CONSTANT:
+#include "SUBTRACT_CONSTANT.c"
+
+MULTIPLY:
+#include "MULTIPLY.c"
+
+MULTIPLY_CONSTANT:
+#include "MULTIPLY_CONSTANT.c"
+
+DIVIDE:
+#include "DIVIDE.c"
+
+DIVIDE_CONSTANT:
+#include "DIVIDE_CONSTANT.c"
 
 goto next_instruction;
 
-// out:
-//
-// return;
+out:
+return;
