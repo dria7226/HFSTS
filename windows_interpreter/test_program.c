@@ -4,7 +4,7 @@ unsigned char test_program[] = {
   1,
   0,
   ADD,
-  MOV,
+  COPY,
   8,
   0,
   4

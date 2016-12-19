@@ -1,3 +1,5 @@
+#include "resizes.c"
+
 void allocate_memory()
 {
   //allocate to memory[2][256][256]

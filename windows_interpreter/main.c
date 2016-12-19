@@ -1,14 +1,14 @@
 #include "1_includes.c"
 
-#include "2_core_functions.c"
+#include "2_0_interpreter_implementation.c"
 
-#include "3_0_interpreter_implementation.c"
-
-#include "4_helpers.c"
+#include "helpers.c"
 
 int main (int argc, char* argv)
 {
-  #include "5___setup.c"
+  #include "3___setup.c"
 
-  #include "7___cleanup.c"
+  #include "4___interpreter_loop.c"
+
+  #include "5___cleanup.c"
 }

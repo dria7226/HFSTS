@@ -2,4 +2,6 @@
 source_array = AT_HEAD_OFFSET(1);
 
 // advance head
-head++;
+head += 2;
+
+goto next_instruction;

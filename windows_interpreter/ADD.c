@@ -4,4 +4,6 @@ DATA_AT(destination_array, AT_HEAD_OFFSET(1)) += DATA_AT(source_array, AT_HEAD_O
 REGISTER_AT(OVERFLOW_REGISTER) = 0; //more work needed - overflow
 
 // advance head
-head += 2;
+head += 3;
+
+goto next_instruction;

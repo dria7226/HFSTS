@@ -1,24 +1,9 @@
-void* label_table[EMPTY] = {
-&&MOVE,
-&&MOVE_CONSTANT,
-&&GO_TO,
-&&SET_SOURCE,
-&&SET_DESTINATION,
-&&ADD,
-&&ADD_CONSTANT,
-&&SUBTRACT,
-&&SUBTRACT_CONSTANT,
-&&MULTIPLY,
-&&MULTIPLY_CONSTANT,
-&&DIVIDE,
-&&DIVIDE_CONSTANT
-};
-
-DATA_TYPE head = 0;
-DATA_TYPE source_array = 0;
-DATA_TYPE destination_array = 0;
+#include "label_table.c"
 
 next_instruction:
+
+// head / head_capacity == head_granularity / MAX_VALUE
+// head = heads[];
 
 if(AT_HEAD_OFFSET(0) < EMPTY)
   goto *label_table[AT_HEAD_OFFSET(0)];
@@ -26,11 +11,17 @@ if(AT_HEAD_OFFSET(0) < EMPTY)
 head++; //???
 goto next_instruction;
 
-MOVE:
+COPY:
 #include "MOVE.c"
 
-MOVE_CONSTANT:
+COPY_CONSTANT:
 #include "MOVE_CONSTANT.c"
+
+COPY_PROGRAM_TO_DATA:
+#include "COPY_PROGRAM_TO_DATA.c"
+
+COPY_DATA_TO_PROGRAM:
+#include "COPY_DATA_TO_PROGRAM.c"
 
 GO_TO:
 #include "GO_TO.c"
@@ -64,8 +55,6 @@ DIVIDE:
 
 DIVIDE_CONSTANT:
 #include "DIVIDE_CONSTANT.c"
-
-goto next_instruction;
 
 out:
 return;

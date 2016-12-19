@@ -10,9 +10,9 @@
 //  - all data is global
 //  - resizable
 
-  // Everything is in units of 32 bits ( unsigned int )
+// Everything is in units of 32 bits ( unsigned int )
 
-#include "3_0_interpreter_definitions.c"
+#include "2_0_interpreter_definitions.c"
 
 DATA_TYPE**      program;
 DATA_TYPE        program_capacity;
@@ -20,16 +20,15 @@ DATA_TYPE        program_capacity;
 struct VECTOR*   data;
 DATA_TYPE        data_capacity;
 
-HANDLE*          threads;
-DATA_TYPE        thread_capacity;
+DATA_TYPE* heads;
+DATA_TYPE  head;
+DATA_TYPE  thread_capacity;
 
-#include "3_1_resizes.c"
+DATA_TYPE source_array = 0;
+DATA_TYPE destination_array = 0;
 
-DWORD WINAPI interpret(LPVOID lpParam)
-{
-  #include "interpreter_loop.c"
-}
+#include "2_1_interpreter_settings.c"
 
-#include "3_2_threads.c"
+#include "2_2_threads.c"
 
-#include "3_3_memory.c"
+#include "2_3_memory.c"
