@@ -18,7 +18,7 @@ void resize_vector(struct VECTOR* vector, DATA_TYPE capacity)
 
 void resize_program(DATA_TYPE capacity)
 {
-  if(capacity > MAX_VALUE/PROGRAM_CHUNK) capacity = (DATA_TYPE) MAX_VALUE / PROGRAM_CHUNK;
+  if(capacity > MAX_VALUE/PROGRAM_CHUNK_SIZE) capacity = (DATA_TYPE) MAX_VALUE / PROGRAM_CHUNK_SIZE;
 
   if(capacity == program_capacity) return;
 

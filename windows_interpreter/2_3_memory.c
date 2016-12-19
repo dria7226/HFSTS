@@ -8,7 +8,7 @@ void allocate_memory()
 
   data_capacity = DEFAULT_SIZE;
 
-  thread_capacity = 1;
+  head_capacity = 1;
 
   //PROGRAM
   program = (DATA_TYPE**) VirtualAlloc(NULL, program_capacity * sizeof(DATA_TYPE*), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
@@ -36,7 +36,7 @@ void allocate_memory()
   }
 
   //THREADS
-  threads = (HANDLE*) VirtualAlloc(NULL, thread_capacity * sizeof(HANDLE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
+  heads = (DATA_TYPE*) VirtualAlloc(NULL, head_capacity * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
 
 }
 
@@ -62,5 +62,5 @@ void free_memory()
 
   VirtualFree(&data, 0, MEM_RELEASE);
 
-  VirtualFree(&threads, 0, MEM_RELEASE);
+  VirtualFree(&heads, 0, MEM_RELEASE);
 }

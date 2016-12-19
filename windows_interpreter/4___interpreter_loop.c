@@ -12,10 +12,10 @@ head++; //???
 goto next_instruction;
 
 COPY:
-#include "MOVE.c"
+#include "COPY.c"
 
 COPY_CONSTANT:
-#include "MOVE_CONSTANT.c"
+#include "COPY_CONSTANT.c"
 
 COPY_PROGRAM_TO_DATA:
 #include "COPY_PROGRAM_TO_DATA.c"

@@ -13,7 +13,7 @@ void create_head(DATA_TYPE address)
   heads = *new_heads;
   head_capacity++;
 
-  heads[head_capacity] = ;
+  heads[head_capacity] = address;
 }
 
 void end_thread(DATA_TYPE target)

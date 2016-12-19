@@ -20,15 +20,15 @@ DATA_TYPE        program_capacity;
 struct VECTOR*   data;
 DATA_TYPE        data_capacity;
 
-DATA_TYPE* heads;
 DATA_TYPE  head;
-DATA_TYPE  thread_capacity;
+DATA_TYPE* heads;
+DATA_TYPE  head_capacity;
 
 DATA_TYPE source_array = 0;
 DATA_TYPE destination_array = 0;
 
 #include "2_1_interpreter_settings.c"
 
-#include "2_2_threads.c"
+#include "2_2_heads.c"
 
 #include "2_3_memory.c"
