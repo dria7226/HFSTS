@@ -20,9 +20,10 @@ DATA_TYPE        program_capacity;
 struct VECTOR*   data;
 DATA_TYPE        data_capacity;
 
-DATA_TYPE  head;
+DATA_TYPE  head_index;
 DATA_TYPE* heads;
 DATA_TYPE  head_capacity;
+DATA_TYPE  granularity_counter;
 
 DATA_TYPE source_array = 0;
 DATA_TYPE destination_array = 0;

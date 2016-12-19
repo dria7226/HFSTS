@@ -2,13 +2,12 @@
 
 next_instruction:
 
-// head / head_capacity == head_granularity / MAX_VALUE
-// head = heads[];
+#include "head_management.c"
 
 if(AT_HEAD_OFFSET(0) < EMPTY)
   goto *label_table[AT_HEAD_OFFSET(0)];
 
-head++; //???
+heads[head_index]++; //???
 goto next_instruction;
 
 COPY:

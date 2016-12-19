@@ -33,15 +33,15 @@ struct VECTOR{
 //SHORTCUTS
 
 #define REGISTERS 0
-#define THREADS   1
+#define HEADS   1
 
 // REGISTERS
 #define OVERFLOW 0
 #define UNDERFLOW 1
 #define REMAINDER 2
 
-#define AT_HEAD_OFFSET(x) program[(head + x)/PROGRAM_CHUNK_SIZE][(head + x)%PROGRAM_CHUNK_SIZE]
+#define AT_HEAD_OFFSET(x) program[(heads[head_index] + x)/PROGRAM_CHUNK_SIZE][(heads[head_index] + x)%PROGRAM_CHUNK_SIZE]
 #define PROGRAM_AT(x)     program[x/PROGRAM_CHUNK_SIZE][x%PROGRAM_CHUNK_SIZE]
 #define DATA_AT(x,y)      data[x].data[y]
-#define THREAD_AT(x)      DATA_AT(THREADS,x)
+#define THREAD_AT(x)      DATA_AT(HEADS,x)
 #define REGISTER_AT(x)    DATA_AT(REGISTERS,x)

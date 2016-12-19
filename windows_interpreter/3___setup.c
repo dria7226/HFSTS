@@ -2,4 +2,4 @@ allocate_memory();
 
 //load program
 
-create_head(0);
+start_head_at(0);

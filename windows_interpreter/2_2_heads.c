@@ -1,4 +1,4 @@
-void create_head(DATA_TYPE address)
+void start_head_at(DATA_TYPE address)
 {
   if(head_capacity == MAX_VALUE) return;
 
@@ -16,7 +16,7 @@ void create_head(DATA_TYPE address)
   heads[head_capacity] = address;
 }
 
-void end_thread(DATA_TYPE target)
+void end_head(DATA_TYPE target)
 {
   if(head_capacity < target || target == 0) return;
 
