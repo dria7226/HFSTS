@@ -9,7 +9,8 @@ void resize_vector(struct VECTOR* vector, DATA_TYPE capacity)
   new->data = (DATA_TYPE*) VirtualAlloc(NULL, capacity * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
   new->capacity = capacity;
 
-  VirtualCopy(new, vector, vector->capacity*(vector->capacity < capacity) + capacity*(vector->capacity > capacity), PAGE_READWRITE);
+  //VirtualCopy(new, vector, vector->capacity*(vector->capacity < capacity) + capacity*(vector->capacity > capacity), PAGE_READWRITE);
+  
 
   VirtualFree(vector, 0, MEM_RELEASE);
 
@@ -26,7 +27,8 @@ void resize_program(DATA_TYPE capacity)
 
   *new = (DATA_TYPE**) VirtualAlloc(NULL, capacity * sizeof(DATA_TYPE*), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
 
-  VirtualCopy(*new, program, program_capacity*(program_capacity < capacity) + capacity*(program_capacity > capacity), PAGE_READWRITE);
+  //VirtualCopy(*new, program, program_capacity*(program_capacity < capacity) + capacity*(program_capacity > capacity), PAGE_READWRITE);
+  
 
   VirtualFree(program, 0, MEM_RELEASE);
 
@@ -54,7 +56,7 @@ void resize_data(DATA_TYPE capacity)
 
   *new = (struct VECTOR*) VirtualAlloc(NULL, capacity * sizeof(struct VECTOR), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
 
-  VirtualCopy(*new, program, data_capacity*(data_capacity < capacity) + capacity*(data_capacity > capacity), PAGE_READWRITE);
+  //VirtualCopy(*new, program, data_capacity*(data_capacity < capacity) + capacity*(data_capacity > capacity), PAGE_READWRITE);
 
   VirtualFree(data, 0, MEM_RELEASE);
 

@@ -35,7 +35,7 @@ void allocate_memory()
      loop++;
   }
 
-  //THREADS
+  //HEADS
   heads = (DATA_TYPE*) VirtualAlloc(NULL, head_capacity * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
 
 }
