@@ -1,5 +1,8 @@
 WINDOWS INTERPRETER
+- solve bug in interpretter_loop.c
+
 - work on core programs overflow and other flags
+- create and finish core programs
 - implement own copy instead of virtual copy
 - work on helpers.c
 - work on test_program

@@ -6,7 +6,9 @@ void start_head_at(DATA_TYPE address)
 
   *new_heads = (DATA_TYPE*) VirtualAlloc(NULL, (head_capacity + 1) * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
 
-  VirtualCopy(*new_heads, heads, head_capacity, PAGE_READWRITE);
+  DATA_TYPE loop = 0;
+  for(;loop < head_capacity; loop++)
+    (*new_heads)[loop] = heads[loop];
 
   VirtualFree(heads, 0, MEM_RELEASE);
 
@@ -24,9 +26,13 @@ void end_head(DATA_TYPE target)
 
   *new_heads = (DATA_TYPE*) VirtualAlloc(NULL, (head_capacity - 1) * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
 
-  VirtualCopy(*new_heads, heads, target - 1, PAGE_READWRITE);
-  VirtualCopy(*new_heads[target], heads[target + 1], head_capacity - target, PAGE_READWRITE);
-
+  DATA_TYPE loop = 0;
+  for(;loop < target-1; loop++)
+    (*new_heads)[loop] = heads[loop];
+  loop++;
+  for(;loop < head_capacity; loop++)
+    *(new_heads)[loop] = heads[loop];
+    
   VirtualFree(heads, 0, MEM_RELEASE);
 
   heads = *new_heads;
