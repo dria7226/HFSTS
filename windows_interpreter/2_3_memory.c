@@ -2,8 +2,6 @@
 
 void allocate_memory()
 {
-  //allocate to memory[2][256][256]
-
   program_capacity = DEFAULT_SIZE;
 
   data_capacity = DEFAULT_SIZE;

@@ -1,7 +1,20 @@
 DATA_TYPE test_program[] = {
-  ADD,0,1
+  SET_SOURCE,0,
+  SET_DESTINATION,0,
+  ADD,0,1,
+  ADD_CONSTANT,0,5,
+  MULTIPLY_CONSTANT,0,2,
+  MULTIPLY,0,1,
+  DIVIDE_CONSTANT,0,2,
+  DIVIDE,0,1,
+  SUBTRACT_CONSTANT,0,5,
+  SUBTRACT,0,1,
+  SET_DESTINATION,1,
+  COPY,0,2,
+  SET_DESTINATION,0,
+  GO_TO,0 //start all over
 };
 
 DATA_TYPE test_data[][3] = {
-  {0,0,0}
+  {0,1,0} , {0,0,0}
 };
