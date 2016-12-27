@@ -27,15 +27,15 @@ void resize_program(DATA_TYPE capacity)
 
   if(capacity == program_capacity) return;
 
-  DATA_TYPE*** new = (DATA_TYPE***) VirtualAlloc(NULL, sizeof(DATA_TYPE**), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
+  // DATA_TYPE*** new = (DATA_TYPE***) VirtualAlloc(NULL, sizeof(DATA_TYPE**), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
 
-  *new = (DATA_TYPE**) VirtualAlloc(NULL, capacity * sizeof(DATA_TYPE*), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
+  DATA_TYPE** new = (DATA_TYPE**) VirtualAlloc(NULL, capacity * sizeof(DATA_TYPE*), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
 
   DATA_TYPE loop = 0;
   DATA_TYPE length = program_capacity*(program_capacity < capacity) + capacity*(program_capacity > capacity);
   for(;loop < length; loop++)
   {
-    *new[loop / PROGRAM_CHUNK_SIZE][loop % PROGRAM_CHUNK_SIZE] = program[loop / PROGRAM_CHUNK_SIZE][loop % PROGRAM_CHUNK_SIZE];
+    new[loop / PROGRAM_CHUNK_SIZE][loop % PROGRAM_CHUNK_SIZE] = program[loop / PROGRAM_CHUNK_SIZE][loop % PROGRAM_CHUNK_SIZE];
   }
 
   VirtualFree(program, 0, MEM_RELEASE);
@@ -46,11 +46,11 @@ void resize_program(DATA_TYPE capacity)
     DATA_TYPE loop;
     for(loop = program_capacity; loop < capacity; loop++)
     {
-      (*new)[loop] = (DATA_TYPE*) VirtualAlloc(NULL, PROGRAM_CHUNK_SIZE * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
+      new[loop] = (DATA_TYPE*) VirtualAlloc(NULL, PROGRAM_CHUNK_SIZE * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
     }
   }
 
-  program = *new;
+  program = new;
   program_capacity = capacity;
 }
 
@@ -70,7 +70,7 @@ void resize_data(DATA_TYPE capacity)
   {
     (*new)[loop] = data[loop];
   }
-  
+
   VirtualFree(data, 0, MEM_RELEASE);
 
   //allocate mem for new pointers if capacity increased

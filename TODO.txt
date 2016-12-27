@@ -1,5 +1,6 @@
 WINDOWS INTERPRETER
-- solve bug in interpretter_loop.c
+- solve bugs in interpretter_loop.c
+- bug in resize_program() - returns a NULL program
 
 - work on core programs overflow and other flags
 - create and finish core programs

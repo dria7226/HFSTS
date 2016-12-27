@@ -1,8 +1,4 @@
 //PROGRAMS
-//  - a program node is a graph composed of user made or core programs
-//  - resizable
-//  - programs are groups of other programs and/or core programs
-
 // program memory has a maximum capacity depending on the DATA_TYPE size (4 GB for 32 bits)
 // program memory is organized in a 2d array, forming a list of program chunks (resizable array of unresizable arrays with the constant size of PROGRAM_CHUNK_SIZE)
 

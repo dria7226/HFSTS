@@ -2,12 +2,14 @@
 
 next_instruction:
 
+printf("head_index: %u head_value: %u\n", head_index, heads[head_index]);
+
 #include "head_management.c"
 
-if(AT_HEAD_OFFSET(0) < EMPTY)
+if(AT_HEAD_OFFSET(0) < NUMBER_OF_PROGRAMS)
   goto *label_table[AT_HEAD_OFFSET(0)];
 
-heads[head_index]++; //???
+heads[head_index]++;
 goto next_instruction;
 
 COPY:
@@ -54,6 +56,12 @@ DIVIDE:
 
 DIVIDE_CONSTANT:
 #include "DIVIDE_CONSTANT.c"
+
+START_HEAD_AT:
+#include "START_HEAD_AT.c"
+
+END_HEAD:
+#include "END_HEAD.c"
 
 out:
 return;

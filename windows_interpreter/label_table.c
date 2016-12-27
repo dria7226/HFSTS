@@ -1,4 +1,4 @@
-void* label_table[EMPTY] = {
+void* label_table[NUMBER_OF_PROGRAMS] = {
 &&COPY,
 &&COPY_CONSTANT,
 &&COPY_PROGRAM_TO_DATA,
@@ -16,6 +16,8 @@ void* label_table[EMPTY] = {
 &&MULTIPLY,
 &&MULTIPLY_CONSTANT,
 &&DIVIDE,
-&&DIVIDE_CONSTANT
+&&DIVIDE_CONSTANT,
 
+&&START_HEAD_AT,
+&&END_HEAD
 };

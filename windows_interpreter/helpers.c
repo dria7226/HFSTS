@@ -2,12 +2,21 @@
 
 void load_test_program()
 {
+  if(!(program && data)) return;
+
   DATA_TYPE loop = 0;
 
   //load program
   resize_program(sizeof(test_program)/PROGRAM_CHUNK_SIZE);
   for(; loop < sizeof(test_program); loop++)
+  {
+    printf("program: %u\n", program);
+    program[loop / PROGRAM_CHUNK_SIZE][loop % PROGRAM_CHUNK_SIZE] = 0;
+
+    printf("%u: ",loop);
     program[loop / PROGRAM_CHUNK_SIZE][loop % PROGRAM_CHUNK_SIZE] = test_program[loop];
+    printf("program[%u][%u] = %u\n",loop / PROGRAM_CHUNK_SIZE, loop % PROGRAM_CHUNK_SIZE, program[loop/PROGRAM_CHUNK_SIZE][loop%PROGRAM_CHUNK_SIZE]);
+  }
 
   // load data
   loop = 0;

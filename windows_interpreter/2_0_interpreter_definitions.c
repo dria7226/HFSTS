@@ -16,7 +16,11 @@ MULTIPLY,
 MULTIPLY_CONSTANT,
 DIVIDE,
 DIVIDE_CONSTANT,
-EMPTY
+
+START_HEAD_AT,
+END_HEAD,
+
+NUMBER_OF_PROGRAMS
 };
 
 #define DATA_TYPE unsigned int
@@ -32,16 +36,15 @@ struct VECTOR{
 
 //SHORTCUTS
 
-#define REGISTERS 0
-#define HEADS   1
+#define FLAGS 0
 
 // REGISTERS
 #define OVERFLOW 0
 #define UNDERFLOW 1
 #define REMAINDER 2
+#define PROGRAM_RESIZE_FAILED 4
 
 #define AT_HEAD_OFFSET(x) program[(heads[head_index] + x)/PROGRAM_CHUNK_SIZE][(heads[head_index] + x)%PROGRAM_CHUNK_SIZE]
 #define PROGRAM_AT(x)     program[x/PROGRAM_CHUNK_SIZE][x%PROGRAM_CHUNK_SIZE]
 #define DATA_AT(x,y)      data[x].data[y]
-#define THREAD_AT(x)      DATA_AT(HEADS,x)
-#define REGISTER_AT(x)    DATA_AT(REGISTERS,x)
+#define FLAG_AT(x)        data[FLAGS].data[x]
