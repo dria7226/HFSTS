@@ -2,7 +2,7 @@
 
 next_instruction:
 
-printf("head_index: %u head_value: %u\n", head_index, heads[head_index]);
+printf("head address: %u head_value: %u\n", heads[head_index], PROGRAM_AT(heads[head_index]));
 
 #include "head_management.c"
 

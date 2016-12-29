@@ -33,7 +33,11 @@ void resize_program(DATA_TYPE capacity)
 
   DATA_TYPE loop = 0;
   DATA_TYPE length = program_capacity*(program_capacity < capacity) + capacity*(program_capacity > capacity);
-  for(;loop < length; loop++)
+
+  for(; loop < length; loop++)
+    new[loop / PROGRAM_CHUNK_SIZE] = (DATA_TYPE*) VirtualAlloc(NULL, PROGRAM_CHUNK_SIZE * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
+
+  for(loop = 0; loop < length*PROGRAM_CHUNK_SIZE; loop++)
   {
     new[loop / PROGRAM_CHUNK_SIZE][loop % PROGRAM_CHUNK_SIZE] = program[loop / PROGRAM_CHUNK_SIZE][loop % PROGRAM_CHUNK_SIZE];
   }

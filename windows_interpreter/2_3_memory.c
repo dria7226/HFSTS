@@ -8,10 +8,8 @@ void allocate_memory()
 
   head_capacity = 1;
 
-  printf("program: %u\n",program);
   //PROGRAM
   program = (DATA_TYPE**) VirtualAlloc(NULL, program_capacity * sizeof(DATA_TYPE*), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
-  printf("program: %u\n", program);
   
   DATA_TYPE loop = 0;
 

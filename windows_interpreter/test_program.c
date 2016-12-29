@@ -1,6 +1,7 @@
 DATA_TYPE test_program[] = {
   SET_SOURCE,0,
   SET_DESTINATION,0,
+  COPY_CONSTANT,1,1,
   ADD,0,1,
   ADD_CONSTANT,0,5,
   MULTIPLY_CONSTANT,0,2,
@@ -13,8 +14,4 @@ DATA_TYPE test_program[] = {
   COPY,0,2,
   SET_DESTINATION,0,
   GO_TO,0 //start all over
-};
-
-DATA_TYPE test_data[][3] = {
-  {0,1,0} , {0,0,0}
 };

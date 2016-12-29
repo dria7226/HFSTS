@@ -1,5 +1,5 @@
 allocate_memory();
-printf("program: %u\n", program);
+
 load_test_program();
 
 #include "test.c"

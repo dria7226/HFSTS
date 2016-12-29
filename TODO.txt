@@ -1,6 +1,6 @@
 WINDOWS INTERPRETER
-- solve bugs in interpretter_loop.c
-- bug in resize_program() - returns a NULL program
+- check if all memory is allocated correctly
+- printf test every CORE_PROGRAM
 
 - work on core programs overflow and other flags
 - create and finish core programs
