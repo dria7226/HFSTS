@@ -27,8 +27,6 @@ void resize_program(DATA_TYPE capacity)
 
   if(capacity == program_capacity) return;
 
-  // DATA_TYPE*** new = (DATA_TYPE***) VirtualAlloc(NULL, sizeof(DATA_TYPE**), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
-
   DATA_TYPE** new = (DATA_TYPE**) VirtualAlloc(NULL, capacity * sizeof(DATA_TYPE*), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
 
   DATA_TYPE loop = 0;
