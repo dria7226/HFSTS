@@ -2,7 +2,11 @@
 
 PROGRAM_AT(AT_HEAD_OFFSET(1)) = DATA_AT(destination_array, AT_HEAD_OFFSET(2));
 
-//advance head
+#ifdef TESTING
+  printf("COPY_PROGRAM_TO_DATA, %u, %u\n", AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2));
+#endif
+
+// advance head
 heads[head_index] += 3;
 
 goto next_instruction;

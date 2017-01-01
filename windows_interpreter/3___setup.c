@@ -1,4 +1,4 @@
-allocate_memory();
+allocate_memory(load_settings());
 
 load_test_program();
 

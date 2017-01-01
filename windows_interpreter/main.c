@@ -1,3 +1,5 @@
+#define TESTING
+
 #include "1_includes.c"
 
 #include "2_0_interpreter_implementation.c"

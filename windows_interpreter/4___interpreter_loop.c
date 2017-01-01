@@ -2,7 +2,9 @@
 
 next_instruction:
 
-printf("head address: %u head_value: %u\n", heads[head_index], PROGRAM_AT(heads[head_index]));
+#ifdef TESTING
+  printf("%u: ", heads[head_index]);
+#endif
 
 #include "head_management.c"
 
@@ -57,11 +59,20 @@ DIVIDE:
 DIVIDE_CONSTANT:
 #include "DIVIDE_CONSTANT.c"
 
+REMAINDER:
+#include "REMAINDER.c"
+
+REMAINDER_CONSTANT:
+#include "REMAINDER_CONSTANT.c"
+
 START_HEAD_AT:
 #include "START_HEAD_AT.c"
 
 END_HEAD:
 #include "END_HEAD.c"
+
+GET_HEAD:
+#include "GET_HEAD.c"
 
 out:
 return;

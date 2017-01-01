@@ -16,9 +16,12 @@ MULTIPLY,
 MULTIPLY_CONSTANT,
 DIVIDE,
 DIVIDE_CONSTANT,
+REMAINDER,
+REMAINDER_CONSTANT,
 
 START_HEAD_AT,
 END_HEAD,
+GET_HEAD,
 
 NUMBER_OF_PROGRAMS
 };
@@ -27,7 +30,6 @@ NUMBER_OF_PROGRAMS
 
 #define DEFAULT_SIZE  32
 #define MAX_VALUE     0xFFFFFFFF
-#define PROGRAM_CHUNK_SIZE 1024
 
 struct VECTOR{
   DATA_TYPE* data;
@@ -36,15 +38,16 @@ struct VECTOR{
 
 //SHORTCUTS
 
-#define FLAGS 0
+#define SETTINGS 0
+#define FLAGS 1
 
 // REGISTERS
 #define OVERFLOW 0
 #define UNDERFLOW 1
-#define REMAINDER 2
-#define PROGRAM_RESIZE_FAILED 4
+#define DIVISION_BY_ZERO 2
+#define PROGRAM_RESIZE_FAILED 3
 
-#define AT_HEAD_OFFSET(x) program[(heads[head_index] + x)/PROGRAM_CHUNK_SIZE][(heads[head_index] + x)%PROGRAM_CHUNK_SIZE]
-#define PROGRAM_AT(x)     program[x/PROGRAM_CHUNK_SIZE][x%PROGRAM_CHUNK_SIZE]
 #define DATA_AT(x,y)      data[x].data[y]
+#define AT_HEAD_OFFSET(x) program[(heads[head_index] + x)/DATA_AT(SETTINGS, PROGRAM_CHUNK_SIZE)][(heads[head_index] + x)%DATA_AT(SETTINGS, PROGRAM_CHUNK_SIZE)]
+#define PROGRAM_AT(x)     program[x/DATA_AT(SETTINGS, PROGRAM_CHUNK_SIZE)][x%DATA_AT(SETTINGS, PROGRAM_CHUNK_SIZE)]
 #define FLAG_AT(x)        data[FLAGS].data[x]
