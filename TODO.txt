@@ -9,6 +9,8 @@ WINDOWS INTERPRETER
 - work on test_program (add head testing)
 - test all code
 
+------- implement write outs for all errors during testing
+
 ---------------------------------
 - create and finish core programs
  - detect platform
