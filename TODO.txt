@@ -9,6 +9,8 @@ WINDOWS INTERPRETER
 - work on test_program (add head testing)
 - test all code
 
+- develop performance tests and write down statistics ( as ratios with respect to the fastest/native way )
+
 ------- implement write outs for all errors during testing
 
 ---------------------------------
