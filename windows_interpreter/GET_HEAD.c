@@ -3,7 +3,7 @@
 DATA_AT(destination_array, AT_HEAD_OFFSET(1)) = head_index;
 
 #ifdef TESTING
-  printf("GET_HEAD, %u = %u\n", AT_HEAD_OFFSET(1), head_index);
+  PRINT("GET_HEAD, %u = %u\n", AT_HEAD_OFFSET(1), head_index,0);
 #endif
 
 // advance head

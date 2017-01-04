@@ -3,7 +3,7 @@
 DATA_AT(destination_array,AT_HEAD_OFFSET(2)) = DATA_AT(source_array, AT_HEAD_OFFSET(1));
 
 #ifdef TESTING
-  printf("COPY, %u, %u\n", AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2));
+  PRINT("COPY, %u, %u\n", AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2),0);
 #endif
 
 // advance head

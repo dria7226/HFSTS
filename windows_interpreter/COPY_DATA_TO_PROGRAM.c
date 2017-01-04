@@ -3,7 +3,7 @@
 DATA_AT(source_array, AT_HEAD_OFFSET(1)) = PROGRAM_AT(AT_HEAD_OFFSET(2));
 
 #ifdef TESTING
-  printf("COPY_DATA_TO_PROGRAM, %u, %u\n", AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2));
+  PRINT("COPY_DATA_TO_PROGRAM, %u, %u\n", AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2),0);
 #endif
 
 // advance head

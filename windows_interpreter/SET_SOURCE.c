@@ -2,7 +2,7 @@
 source_array = AT_HEAD_OFFSET(1);
 
 #ifdef TESTING
-  printf("SET_SOURCE, %u\n", AT_HEAD_OFFSET(1));
+  PRINT("SET_SOURCE, %u\n", AT_HEAD_OFFSET(1),0,0);
 #endif
 
 // advance head

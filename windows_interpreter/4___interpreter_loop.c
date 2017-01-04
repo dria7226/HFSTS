@@ -1,9 +1,14 @@
 #include "label_table.c"
 
+#ifdef TESTING
+  no_of_messages = 0;
+#endif
+
 next_instruction:
 
 #ifdef TESTING
-  printf("%u: ", heads[head_index]);
+  PRINT("%u: ", heads[head_index],0,0);
+  CHECK_FOR_LIMIT
 #endif
 
 #include "head_management.c"

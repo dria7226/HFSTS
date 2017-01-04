@@ -2,7 +2,7 @@
 end_head(AT_HEAD_OFFSET(1));
 
 #ifdef TESTING
-  printf("END_HEAD, %u\n", AT_HEAD_OFFSET(1));
+  PRINT("END_HEAD, %u\n", AT_HEAD_OFFSET(1),0,0);
 #endif
 
 // advance head
