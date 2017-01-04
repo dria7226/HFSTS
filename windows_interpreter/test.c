@@ -38,6 +38,7 @@ for(; loop < data_capacity; loop++)
   DATA_TYPE inner_loop = 0;
   for(; inner_loop < data[loop].capacity; inner_loop++)
   printf("data[%u].data[%u] = %u \n",loop,inner_loop,data[loop].data[inner_loop]);
+  ENTER_TO_CONTINUE
 }
 ENTER_TO_CONTINUE
 

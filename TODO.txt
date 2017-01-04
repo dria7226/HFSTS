@@ -2,7 +2,7 @@ WINDOWS INTERPRETER
 - fix bug in COPY_CONSTANT.c on first line
 
 - check if all memory is allocated correctly
-- decide registers and other default arrays, store interpreter settings in an array
+- decide flags and other default arrays, store interpreter settings in an array
 
 - work on core programs overflow and other flags
 - work on helpers.c
