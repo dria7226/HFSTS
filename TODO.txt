@@ -1,18 +1,18 @@
 WINDOWS INTERPRETER
-- fix bug in COPY_CONSTANT.c on first line
+
+- figure out random numbers bug
 
 - check if all memory is allocated correctly
 - decide flags and other default arrays, store interpreter settings in an array
-- change all settings acceses with settings_at
 
 - work on core programs overflow and other flags
 - work on helpers.c
-- work on test_program (add head testing)
+- work on test_program
 - test all code
+  - test head functions
+  - test memory functions
 
-- develop performance tests and write down statistics ( as ratios with respect to the fastest/native way )
-
-------- implement write outs for all errors during testing
+- develop performance tests and write down statistics ( as ratios with respect to the fastest/native way AND absolute time values )
 
 ---------------------------------
 - create and finish core programs

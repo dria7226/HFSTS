@@ -6,12 +6,12 @@
 
 next_instruction:
 
+#include "head_management.c"
+
 #ifdef TESTING
   PRINT("%u: ", heads[head_index],0,0);
   CHECK_FOR_LIMIT
 #endif
-
-#include "head_management.c"
 
 if(AT_HEAD_OFFSET(0) < NUMBER_OF_PROGRAMS)
   goto *label_table[AT_HEAD_OFFSET(0)];

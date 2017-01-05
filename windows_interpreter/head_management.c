@@ -1,2 +1,7 @@
-head_index += (++granularity_counter == DATA_AT(SETTINGS,HEAD_GRANULARITY));
+head_index += (++granularity_counter == SETTING_AT(HEAD_GRANULARITY));
 head_index *= (head_capacity > head_index);
+granularity_counter *= (SETTING_AT(HEAD_GRANULARITY) > granularity_counter);
+
+#ifdef TESTING
+  if(granularity_counter == 0) PRINT("HEAD: %u\n",head_index,0,0)
+#endif

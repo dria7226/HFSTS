@@ -19,16 +19,16 @@ if( program == NULL )
 }
 ENTER_TO_CONTINUE
 
-for(; loop < program_capacity*DATA_AT(SETTINGS, PROGRAM_CHUNK_SIZE); loop++)
+for(; loop < program_capacity*SETTING_AT(PROGRAM_CHUNK_SIZE); loop++)
 {
-  if( program[loop/DATA_AT(SETTINGS, PROGRAM_CHUNK_SIZE)] == NULL)
+  if( program[loop/SETTING_AT(PROGRAM_CHUNK_SIZE)] == NULL)
   {
     PRINT("ERROR: no memory allocated for 'program[%u]'\n", loop, 0,0);
     CHECK_FOR_LIMIT
   }
   else
   {
-    PRINT("program[%u][%u] = %u \n",loop/DATA_AT(SETTINGS, PROGRAM_CHUNK_SIZE),loop % DATA_AT(SETTINGS, PROGRAM_CHUNK_SIZE),PROGRAM_AT(loop));
+    PRINT("program[%u][%u] = %u \n",loop/SETTING_AT(PROGRAM_CHUNK_SIZE),loop % SETTING_AT(PROGRAM_CHUNK_SIZE),PROGRAM_AT(loop));
     CHECK_FOR_LIMIT
   }
 }

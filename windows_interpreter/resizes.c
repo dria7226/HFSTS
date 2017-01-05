@@ -23,7 +23,7 @@ void resize_vector(struct VECTOR* vector, DATA_TYPE capacity)
 
 void resize_program(DATA_TYPE capacity)
 {
-  if(capacity > MAX_VALUE/DATA_AT(SETTINGS, PROGRAM_CHUNK_SIZE)) capacity = (DATA_TYPE) MAX_VALUE / DATA_AT(SETTINGS, PROGRAM_CHUNK_SIZE);
+  if(capacity > MAX_VALUE/SETTING_AT(PROGRAM_CHUNK_SIZE)) capacity = (DATA_TYPE) MAX_VALUE / SETTING_AT(PROGRAM_CHUNK_SIZE);
 
   if(capacity == program_capacity) return;
 
@@ -33,11 +33,11 @@ void resize_program(DATA_TYPE capacity)
   DATA_TYPE length = program_capacity*(program_capacity < capacity) + capacity*(program_capacity > capacity);
 
   for(; loop < length; loop++)
-    new[loop / DATA_AT(SETTINGS, PROGRAM_CHUNK_SIZE)] = (DATA_TYPE*) VirtualAlloc(NULL, DATA_AT(SETTINGS, PROGRAM_CHUNK_SIZE) * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
+    new[loop / SETTING_AT(PROGRAM_CHUNK_SIZE)] = (DATA_TYPE*) VirtualAlloc(NULL, SETTING_AT(PROGRAM_CHUNK_SIZE) * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
 
-  for(loop = 0; loop < length*DATA_AT(SETTINGS, PROGRAM_CHUNK_SIZE); loop++)
+  for(loop = 0; loop < length*SETTING_AT(PROGRAM_CHUNK_SIZE); loop++)
   {
-    new[loop / DATA_AT(SETTINGS, PROGRAM_CHUNK_SIZE)][loop % DATA_AT(SETTINGS, PROGRAM_CHUNK_SIZE)] = program[loop / DATA_AT(SETTINGS, PROGRAM_CHUNK_SIZE)][loop % DATA_AT(SETTINGS, PROGRAM_CHUNK_SIZE)];
+    new[loop / SETTING_AT(PROGRAM_CHUNK_SIZE)][loop % SETTING_AT(PROGRAM_CHUNK_SIZE)] = program[loop / SETTING_AT(PROGRAM_CHUNK_SIZE)][loop % SETTING_AT(PROGRAM_CHUNK_SIZE)];
   }
 
   VirtualFree(program, 0, MEM_RELEASE);
@@ -48,7 +48,7 @@ void resize_program(DATA_TYPE capacity)
     DATA_TYPE loop;
     for(loop = program_capacity; loop < capacity; loop++)
     {
-      new[loop] = (DATA_TYPE*) VirtualAlloc(NULL, DATA_AT(SETTINGS, PROGRAM_CHUNK_SIZE) * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
+      new[loop] = (DATA_TYPE*) VirtualAlloc(NULL, SETTING_AT(PROGRAM_CHUNK_SIZE) * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
     }
   }
 
