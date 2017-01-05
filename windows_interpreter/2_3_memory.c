@@ -31,7 +31,7 @@ void allocate_memory(DATA_TYPE* settings)
 
   while(loop < program_capacity)
   {
-     program[loop] = (DATA_TYPE*) VirtualAlloc(NULL, DATA_AT(SETTINGS, PROGRAM_CHUNK_SIZE) * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
+     program[loop] = (DATA_TYPE*) VirtualAlloc(NULL, SETTING_AT(PROGRAM_CHUNK_SIZE) * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
 
      loop++;
   }

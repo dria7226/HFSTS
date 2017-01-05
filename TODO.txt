@@ -3,6 +3,7 @@ WINDOWS INTERPRETER
 
 - check if all memory is allocated correctly
 - decide flags and other default arrays, store interpreter settings in an array
+- change all settings acceses with settings_at
 
 - work on core programs overflow and other flags
 - work on helpers.c
