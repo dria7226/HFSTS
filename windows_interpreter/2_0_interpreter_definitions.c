@@ -48,7 +48,7 @@ struct VECTOR{
 #define PROGRAM_RESIZE_FAILED 3
 
 #define DATA_AT(x,y)      data[x].data[y]
-#define FLAG_AT(x)        data[FLAGS].data[x]
-#define SETTING_AT(x) data[SETTINGS].data[x]
+#define FLAG_AT(name)        data[FLAGS].data[name]
+#define SETTING_AT(name) data[SETTINGS].data[name]
 #define AT_HEAD_OFFSET(x) program[(heads[head_index] + x)/SETTING_AT(PROGRAM_CHUNK_SIZE)][(heads[head_index] + x)%SETTING_AT(PROGRAM_CHUNK_SIZE)]
 #define PROGRAM_AT(x)     program[x/SETTING_AT(PROGRAM_CHUNK_SIZE)][x%SETTING_AT(PROGRAM_CHUNK_SIZE)]

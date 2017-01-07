@@ -4,20 +4,22 @@
 DATA_TYPE no_of_messages = 0;
 #define PRINT(x,y,z,w) printf(x,y,z); no_of_messages++;
 #define CHECK_FOR_LIMIT if(no_of_messages > SCREEN_LIMIT) { no_of_messages = 0; ENTER_TO_CONTINUE }
+#define CHECK_FOR_SKIP(message, code) printf("Skip %s?\n", message); if(getchar() == 'n'){code}
 
 DATA_TYPE loop = 0;
 
 ////////////////////////////////////////////////////////
-PRINT("Checking memory allocation\n\n",0,0,0);
+PRINT("Checking memory allocation\n\n");
 
-PRINT("Showing program\n",0,0,0);
+// check program
+CHECK_FOR_SKIP( program memory check, 
 PRINT("program_capacity: %u\n",program_capacity,0,0);
 
 if( program == NULL )
 {
   PRINT("ERROR: no memory allocated for 'program'\n",0,0,0);
+  ENTER_TO_CONTINUE
 }
-ENTER_TO_CONTINUE
 
 for(; loop < program_capacity*SETTING_AT(PROGRAM_CHUNK_SIZE); loop++)
 {
@@ -32,13 +34,18 @@ for(; loop < program_capacity*SETTING_AT(PROGRAM_CHUNK_SIZE); loop++)
     CHECK_FOR_LIMIT
   }
 }
+) // CHECK FOR SKIP
 ENTER_TO_CONTINUE
 
-PRINT("Showing data\n",0,0,0);
+// check data
+CHECK_FOR_SKIP( data memory check, 
 PRINT("data_capacity: %u\n",data_capacity,0,0);
 
-if( data == NULL ) PRINT("ERROR: no memory allocated for 'data'\n",0,0,0);
-ENTER_TO_CONTINUE
+if( data == NULL )
+{ 
+  PRINT("ERROR: no memory allocated for 'data'\n",0,0,0);
+  ENTER_TO_CONTINUE
+}
 
 loop = 0;
 for(; loop < data_capacity; loop++)
@@ -46,7 +53,7 @@ for(; loop < data_capacity; loop++)
 
   if( data[loop].data == NULL )
   {
-    PRINT("ERROR: no memory allocated for 'data[%u]'\n", loop,0,0);
+    PRINT("ERROR: no memory allocated for 'data[%u]'\n", loop,0,0); ENTER_TO_CONTINUE
   }
   else
   {
@@ -60,6 +67,27 @@ for(; loop < data_capacity; loop++)
   ENTER_TO_CONTINUE
   }
 }
+) //CHECK FOR SKIP
+ENTER_TO_CONTINUE
+
+// check heads
+CHECK_FOR_SKIP( head memory check ,
+
+PRINT("head_capacity: %u\n", head_capacity,0,0);
+
+if( heads == NULL )
+{
+  PRINT("ERROR: no memory allocated for 'heads'\n");
+  ENTER_TO_CONTINUE
+}
+
+loop = 0;
+for(; loop < head_capacity; loop++)
+{
+  PRINT("heads[%u] = %u\n",loop, heads[loop], 0);
+}
+
+)
 ENTER_TO_CONTINUE
 
 ////////////////////////////////////////////////////////
@@ -71,6 +99,14 @@ PRINT("DATA_AT(0,0): %u\n\n",DATA_AT(0,0),0,0);
 PRINT("FLAG_AT(OVERFLOW): %u\n",FLAG_AT(OVERFLOW),0,0);
 PRINT("FLAG_AT(UNDERFLOW): %u\n",FLAG_AT(UNDERFLOW),0,0);
 PRINT("FLAG_AT(PROGRAM_RESIZE_FAILED): %u\n",FLAG_AT(PROGRAM_RESIZE_FAILED),0,0);
+ENTER_TO_CONTINUE
+
+// check helper functions
+CHECK_FOR_SKIP( helper functions check,
+
+
+
+)
 ENTER_TO_CONTINUE
 
 //check core programs

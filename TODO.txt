@@ -2,7 +2,6 @@ WINDOWS INTERPRETER
 
 - figure out random numbers bug
 
-- check if all memory is allocated correctly
 - decide flags and other default arrays, store interpreter settings in an array
 
 - work on core programs overflow and other flags
