@@ -1,5 +1,5 @@
 head_index += (++granularity_counter == SETTING_AT(HEAD_GRANULARITY));
-head_index *= (head_capacity > head_index);
+head_index *= (data[HEADS].capacity > head_index);
 granularity_counter *= (SETTING_AT(HEAD_GRANULARITY) > granularity_counter);
 
 #ifdef TESTING

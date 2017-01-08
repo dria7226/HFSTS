@@ -16,7 +16,7 @@ next_instruction:
 if(AT_HEAD_OFFSET(0) < NUMBER_OF_PROGRAMS)
   goto *label_table[AT_HEAD_OFFSET(0)];
 
-heads[head_index]++;
+HEAD_AT(head_index)++;
 goto next_instruction;
 
 COPY:
@@ -87,12 +87,6 @@ REMAINDER:
 
 REMAINDER_CONSTANT:
 #include "REMAINDER_CONSTANT.c"
-
-START_HEAD_AT:
-#include "START_HEAD_AT.c"
-
-END_HEAD:
-#include "END_HEAD.c"
 
 GET_HEAD:
 #include "GET_HEAD.c"

@@ -102,5 +102,5 @@ enum{
 #define HEAD_AT(index)    data[HEADS].data[index]
 #define SETTING_AT(name)  data[SETTINGS].data[name]
 #define FLAG_AT(name)     data[FLAGS].data[name]
-#define AT_HEAD_OFFSET(x) program[(heads[head_index] + x)/SETTING_AT(PROGRAM_CHUNK_SIZE)][(heads[head_index] + x)%SETTING_AT(PROGRAM_CHUNK_SIZE)]
+#define AT_HEAD_OFFSET(x) program[(HEAD_AT(head_index) + x)/SETTING_AT(PROGRAM_CHUNK_SIZE)][(HEAD_AT(head_index) + x)%SETTING_AT(PROGRAM_CHUNK_SIZE)]
 #define PROGRAM_AT(x)     program[x/SETTING_AT(PROGRAM_CHUNK_SIZE)][x%SETTING_AT(PROGRAM_CHUNK_SIZE)]

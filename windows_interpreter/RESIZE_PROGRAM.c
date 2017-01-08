@@ -3,7 +3,7 @@
 resize_program(AT_HEAD_OFFSET(1));
 
 #ifdef TESTING
-  PRINT("RESIZE_PROGRAM, %u\n",AT_HEAD_OFFSET(1));
+  PRINT("RESIZE_PROGRAM, %u\n",AT_HEAD_OFFSET(1),0,0);
 #endif
 
 // advance head

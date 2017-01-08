@@ -73,28 +73,6 @@ else
 ENTER_TO_CONTINUE
 ) //CHECK FOR SKIP
 
-
-// check heads
-CHECK_FOR_SKIP( "head memory check" ,
-
-PRINT("head_capacity: %u\n", head_capacity,0,0)
-
-if( heads == NULL )
-{
-  PRINT("ERROR: no memory allocated for 'heads'\n",0,0,0)
-  ENTER_TO_CONTINUE
-}
-else
-{
-  loop = 0;
-  for(; loop < head_capacity; loop++)
-  {
-    PRINT("heads[%u] = %u\n",loop, heads[loop], 0)
-  }
-}
-ENTER_TO_CONTINUE
-) // CHECK FOR SKIP
-
 ////////////////////////////////////////////////////////
 PRINT("Checking preprocessor definitions\n\n",0,0,0)
 

@@ -1,9 +1,9 @@
-// RESIZE_ARRAY, address1, capacity
+// RESIZE_ARRAY, capacity
 
-resize_array(data[AT_HEAD_OFFSET(1)],AT_HEAD_OFFSET(2));
+resize_array(destination_array, AT_HEAD_OFFSET(1));
 
 #ifdef TESTING
-  PRINT("RESIZE_ARRAY, %u, \n",AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2));
+  PRINT("RESIZE_ARRAY, %u \n",AT_HEAD_OFFSET(1), 0,0);
 #endif
 
 // advance head

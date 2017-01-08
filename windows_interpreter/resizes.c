@@ -1,24 +1,24 @@
-void resize_array(struct ARRAY* array, DATA_TYPE capacity)
+void resize_array(DATA_TYPE target, DATA_TYPE capacity)
 {
   if(capacity > MAX_VALUE) capacity = MAX_VALUE;
 
-  if(capacity == array->capacity) return;
+  if(capacity == data[target].capacity) return;
 
-  struct ARRAY* new = (struct ARRAY*) VirtualAlloc(NULL, sizeof(struct ARRAY), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
+  DATA_TYPE* new;
 
-  new->data = (DATA_TYPE*) VirtualAlloc(NULL, capacity * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
-  new->capacity = capacity;
+  new = (DATA_TYPE*) VirtualAlloc(NULL, capacity * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
 
   DATA_TYPE loop = 0;
-  DATA_TYPE length = array->capacity*(array->capacity < capacity) + capacity*(array->capacity > capacity);
+  DATA_TYPE length = data[target].capacity*(data[target].capacity < capacity) + capacity*(data[target].capacity > capacity);
   for(;loop < length; loop++)
   {
-    new->data[loop] = ARRAY->data[loop];
+    new[loop] = data[target].data[loop];
   }
 
-  VirtualFree(ARRAY, 0, MEM_RELEASE);
+  VirtualFree(data[target].data, 0, MEM_RELEASE);
 
-  array = new;
+  data[target].data = new;
+  data[target].capacity = capacity;
 }
 
 void resize_program(DATA_TYPE capacity)

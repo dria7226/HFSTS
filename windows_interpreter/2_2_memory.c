@@ -6,8 +6,6 @@ void allocate_memory()
 
   data_capacity = DEFAULT_SIZE*(DEFAULT_SIZE > NUMBER_OF_DEFAULT_ARRAYS) + NUMBER_OF_DEFAULT_ARRAYS*(DEFAULT_SIZE < NUMBER_OF_DEFAULT_ARRAYS);
 
-  head_capacity = 1;
-
   //DATA
   data = (struct ARRAY*) VirtualAlloc(NULL, data_capacity * sizeof(struct ARRAY), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
 
@@ -56,9 +54,6 @@ void allocate_memory()
 
      loop++;
   }
-
-  //HEADS
-  heads = (DATA_TYPE*) VirtualAlloc(NULL, head_capacity * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
 }
 
 void free_memory()
@@ -82,6 +77,4 @@ void free_memory()
   }
 
   VirtualFree(&data, 0, MEM_RELEASE);
-
-  VirtualFree(&heads, 0, MEM_RELEASE);
 }

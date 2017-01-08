@@ -4,8 +4,6 @@ WINDOWS INTERPRETER
 
 - out of bounds memory access for every core program
 
-- put heads as a default array
-
 - decide flags and other default arrays
 
 - work on core programs overflow and other flags
