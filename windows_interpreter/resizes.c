@@ -37,7 +37,7 @@ void resize_program(DATA_TYPE capacity)
 
   for(loop = 0; loop < length*SETTING_AT(PROGRAM_CHUNK_SIZE); loop++)
   {
-    new[loop / SETTING_AT(PROGRAM_CHUNK_SIZE)][loop % SETTING_AT(PROGRAM_CHUNK_SIZE)] = program[loop / SETTING_AT(PROGRAM_CHUNK_SIZE)][loop % SETTING_AT(PROGRAM_CHUNK_SIZE)];
+    new[loop / SETTING_AT(PROGRAM_CHUNK_SIZE)][loop % SETTING_AT(PROGRAM_CHUNK_SIZE)] = PROGRAM_AT(loop);
   }
 
   VirtualFree(program, 0, MEM_RELEASE);
@@ -45,7 +45,6 @@ void resize_program(DATA_TYPE capacity)
   //allocate mem for new pointers if capacity increased
   if(capacity > program_capacity)
   {
-    DATA_TYPE loop;
     for(loop = program_capacity; loop < capacity; loop++)
     {
       new[loop] = (DATA_TYPE*) VirtualAlloc(NULL, SETTING_AT(PROGRAM_CHUNK_SIZE) * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
