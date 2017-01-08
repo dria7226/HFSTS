@@ -13,19 +13,15 @@
 DATA_TYPE**      program;
 DATA_TYPE        program_capacity;
 
-struct VECTOR*   data;
+struct ARRAY*   data;
 DATA_TYPE        data_capacity;
 
 DATA_TYPE  head_index;
-DATA_TYPE* heads;
-DATA_TYPE  head_capacity;
 DATA_TYPE  granularity_counter;
 
 DATA_TYPE source_array = 0;
 DATA_TYPE destination_array = 0;
 
-#include "2_1_interpreter_settings.c"
+#include "2_1_interpreter_default_arrays.c"
 
-#include "2_2_heads.c"
-
-#include "2_3_memory.c"
+#include "2_2_memory.c"

@@ -4,6 +4,6 @@
   PRINT("GO_TO, %u\n", AT_HEAD_OFFSET(1),0,0);
 #endif
 
-heads[head_index] = AT_HEAD_OFFSET(1);
+HEAD_AT(head_index) = AT_HEAD_OFFSET(1);
 
 goto next_instruction;

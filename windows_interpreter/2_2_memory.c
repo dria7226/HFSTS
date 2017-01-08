@@ -1,20 +1,41 @@
 #include "resizes.c"
 
-void allocate_memory(DATA_TYPE* settings)
+void allocate_memory()
 {
   program_capacity = DEFAULT_SIZE;
 
-  data_capacity = DEFAULT_SIZE;
+  data_capacity = DEFAULT_SIZE*(DEFAULT_SIZE > NUMBER_OF_DEFAULT_ARRAYS) + NUMBER_OF_DEFAULT_ARRAYS*(DEFAULT_SIZE < NUMBER_OF_DEFAULT_ARRAYS);
 
   head_capacity = 1;
 
   //DATA
-  data = (struct VECTOR*) VirtualAlloc(NULL, data_capacity * sizeof(struct VECTOR), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
+  data = (struct ARRAY*) VirtualAlloc(NULL, data_capacity * sizeof(struct ARRAY), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
 
-  DATA_TYPE loop = 1;
+  //HEADS
+  data[HEADS].capacity = 1;
+  data[HEADS].data = (DATA_TYPE*)VirtualAlloc(NULL, data[HEADS].capacity * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
 
-  data[SETTINGS].data = settings;
-  data[SETTINGS].capacity = NO_OF_SETTINGS;
+  // SETTINGS array
+  data[SETTINGS].capacity = NUMBER_OF_SETTINGS;
+  data[SETTINGS].data = load_settings();
+
+  // FLAGS array
+  data[FLAGS].capacity = NUMBER_OF_FLAGS;
+  data[FLAGS].data = (DATA_TYPE*)VirtualAlloc(NULL, data[FLAGS].capacity * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
+
+  // MACHINE_INFO array
+  data[MACHINE_INFO].capacity = NUMBER_OF_INFO_ELEMENTS;
+  data[MACHINE_INFO].data = load_machine_info();
+
+  load_machine_info();
+
+  // PERFORMANCE_INFO array
+  data[PERFORMANCE_INFO].capacity = NUMBER_OF_PROGRAMS;
+  data[PERFORMANCE_INFO].data = load_performance_info();
+
+  load_performance_info();
+
+  DATA_TYPE loop = NUMBER_OF_DEFAULT_ARRAYS;
 
   while(loop < data_capacity)
   {

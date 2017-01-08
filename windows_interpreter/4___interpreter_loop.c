@@ -10,7 +10,7 @@ next_instruction:
 
 #ifdef TESTING
   CHECK_FOR_LIMIT
-  PRINT("%u: ", heads[head_index],0,0);
+  printf("%u: ", HEAD_AT(head_index));
 #endif
 
 if(AT_HEAD_OFFSET(0) < NUMBER_OF_PROGRAMS)
@@ -33,6 +33,24 @@ COPY_DATA_TO_PROGRAM:
 
 GO_TO:
 #include "GO_TO.c"
+
+RESIZE_DATA:
+#include "RESIZE_DATA.c"
+
+RESIZE_ARRAY:
+#include "RESIZE_ARRAY.c"
+
+RESIZE_PROGRAM:
+#include "RESIZE_PROGRAM.c"
+
+GET_DATA_CAPACITY:
+#include "GET_DATA_CAPACITY.c"
+
+GET_ARRAY_CAPACITY:
+#include "GET_ARRAY_CAPACITY.c"
+
+GET_PROGRAM_CAPACITY:
+#include "GET_PROGRAM_CAPACITY.c"
 
 SET_SOURCE:
 #include "SET_SOURCE.c"

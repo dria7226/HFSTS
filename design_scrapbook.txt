@@ -4,7 +4,7 @@
  - interprets code files
  - human readable code files?
  - The product and the IDE make up a single program (HFSTS) during development. On shipping, the IDE severes itself from the bundle, leaving only the CORE and tagged files
-
+ - interpreter transparency - have interpreter be a representation of it's implementation (same for IDE)
 -----------------------------------------------
 
  - Hephaestus is divided into 2 areas: included and not included in the product.

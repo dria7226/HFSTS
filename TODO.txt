@@ -2,7 +2,11 @@ WINDOWS INTERPRETER
 
 - figure out random numbers bug
 
-- decide flags and other default arrays, store interpreter settings in an array
+- out of bounds memory access for every core program
+
+- put heads as a default array
+
+- decide flags and other default arrays
 
 - work on core programs overflow and other flags
 - work on helpers.c
@@ -13,11 +17,13 @@ WINDOWS INTERPRETER
 
 - develop performance tests and write down statistics ( as ratios with respect to the fastest/native way AND absolute time values )
 
+- implement multi core support ???
+
 ---------------------------------
 - create and finish core programs
- - detect platform
- - create video context
+ - create video context (direct3d)
  - read keyboard
  - read mouse
  - read joystick
  - read taps
+ - reading/writing files (stdio.h)

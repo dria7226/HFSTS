@@ -10,6 +10,6 @@ FLAG_AT(OVERFLOW) = 0; // ???
 #endif
 
 // advance head
-heads[head_index] += 3;
+HEAD_AT(head_index) += 3;
 
 goto next_instruction;

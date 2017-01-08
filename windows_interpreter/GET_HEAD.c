@@ -7,6 +7,6 @@ DATA_AT(destination_array, AT_HEAD_OFFSET(1)) = head_index;
 #endif
 
 // advance head
-heads[head_index] += 2;
+HEAD_AT(head_index) += 2;
 
 goto next_instruction;
