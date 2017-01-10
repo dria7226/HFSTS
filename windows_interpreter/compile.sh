@@ -1,1 +1,1 @@
-gcc main.c -o HFSTS.exe
+gcc 0_main.c -o HFSTS.exe

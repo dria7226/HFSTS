@@ -6,7 +6,7 @@
 
 #include "helpers.c"
 
-int main (int argc, char* argv)
+int main(int argc, char* argv)
 {
   #include "3___setup.c"
 
