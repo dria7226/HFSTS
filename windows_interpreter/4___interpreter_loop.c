@@ -34,6 +34,9 @@ COPY_DATA_TO_PROGRAM:
 GO_TO:
 #include "GO_TO.c"
 
+GO_TO_CONSTANT:
+#include "GO_TO_CONSTANT.c"
+
 RESIZE_DATA:
 #include "RESIZE_DATA.c"
 
