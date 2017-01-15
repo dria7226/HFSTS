@@ -1,8 +1,6 @@
 unsigned int resize_array(DATA_TYPE target, DATA_TYPE capacity)
 {
-  if(capacity > MAX_VALUE) capacity = MAX_VALUE;
-
-  if(capacity == data[target].capacity) return;
+  if(capacity == data[target].capacity || capacity == 0) return 1;
 
   DATA_TYPE* new = (DATA_TYPE*) VirtualAlloc(NULL, capacity * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
 
@@ -28,7 +26,7 @@ unsigned int resize_program(DATA_TYPE capacity)
 {
   if(capacity > MAX_VALUE/PROGRAM_CHUNK_SIZE) capacity = (DATA_TYPE) MAX_VALUE / PROGRAM_CHUNK_SIZE;
 
-  if(capacity == program_capacity) return;
+  if(capacity == program_capacity) return 1;
 
   DATA_TYPE** new = (DATA_TYPE**) VirtualAlloc(NULL, capacity * sizeof(DATA_TYPE*), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
 
@@ -65,9 +63,7 @@ unsigned int resize_program(DATA_TYPE capacity)
 
 unsigned int resize_data(DATA_TYPE capacity)
 {
-  if(capacity > MAX_VALUE) capacity = (DATA_TYPE) MAX_VALUE;
-
-  if(capacity == data_capacity) return;
+  if(capacity == data_capacity || capacity < 2) return 1;
 
   struct ARRAY* new = (struct ARRAY*) VirtualAlloc(NULL, capacity * sizeof(struct ARRAY), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
 

@@ -18,6 +18,8 @@ FLAG_AT(FLAG_SET) = 0;
 if(AT_HEAD_OFFSET(0) < NUMBER_OF_PROGRAMS)
   goto *label_table[AT_HEAD_OFFSET(0)];
 
+printf("Invalid program code\n");
+
 HEAD_AT(head_index)++;
 goto next_instruction;
 
@@ -95,6 +97,9 @@ REMAINDER_CONSTANT:
 
 GET_HEAD:
 #include "GET_HEAD.c"
+
+EXIT:
+#include "EXIT.c"
 
 out:
 return;

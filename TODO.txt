@@ -1,6 +1,8 @@
 WINDOWS INTERPRETER
 
-- fix load_settings() bug
+- ifdef testing every core program error
+
+- fix COPY.c bug
 
 - fix random numbers bug
 

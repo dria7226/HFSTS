@@ -28,5 +28,7 @@ void* label_table[NUMBER_OF_PROGRAMS] = {
 &&REMAINDER,
 &&REMAINDER_CONSTANT,
 
-&&GET_HEAD
+&&GET_HEAD,
+
+&&EXIT,
 };

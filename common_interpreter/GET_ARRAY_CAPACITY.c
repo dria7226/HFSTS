@@ -1,4 +1,4 @@
-// GET_ARRAY_CAPACITY, address1, address2
+// GET_ARRAY_CAPACITY, array, destination_array
 if(AT_HEAD_OFFSET(2) >= data[destination_array].capacity)
 {
   SET_FLAG(DATA_ACCESS_FAILED,2)

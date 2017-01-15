@@ -1,4 +1,4 @@
-// SUBTRACT_CONSTANT , address1 , 0xdeadbeef
+// SUBTRACT_CONSTANT , destination_index , 0xdeadbeef
 if(AT_HEAD_OFFSET(1) >= data[destination_array].capacity)
 {
   SET_FLAG(DATA_ACCESS_FAILED,1)
