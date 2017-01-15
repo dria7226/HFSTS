@@ -4,7 +4,7 @@ unsigned int resize_array(DATA_TYPE target, DATA_TYPE capacity)
 
   if(capacity == data[target].capacity) return;
 
-  DATA_TYPE* new = (DATA_TYPE*) VirtualAlloc(NULL, capacity * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
+  DATA_TYPE* new = (DATA_TYPE*) mmap(NULL, capacity * sizeof(DATA_TYPE), PROT_READ|PROT_WRITE, MAP_ANONYMOUS, -1 ,0);
 
   if(new == NULL)
    return 1;
@@ -16,7 +16,7 @@ unsigned int resize_array(DATA_TYPE target, DATA_TYPE capacity)
     new[loop] = data[target].data[loop];
   }
 
-  VirtualFree(data[target].data, 0, MEM_RELEASE);
+  munmap(data[target].data, data[target].capacity);
 
   data[target].data = new;
   data[target].capacity = capacity;
@@ -30,7 +30,7 @@ unsigned int resize_program(DATA_TYPE capacity)
 
   if(capacity == program_capacity) return;
 
-  DATA_TYPE** new = (DATA_TYPE**) VirtualAlloc(NULL, capacity * sizeof(DATA_TYPE*), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
+  DATA_TYPE** new = (DATA_TYPE**) mmap(NULL, capacity * sizeof(DATA_TYPE*), PROT_READ|PROT_WRITE, MAP_ANONYMOUS, -1 ,0);
 
   if(new == NULL)
    return 1;
@@ -43,14 +43,14 @@ unsigned int resize_program(DATA_TYPE capacity)
     new[loop] = program[loop];
   }
 
-  VirtualFree(program, 0, MEM_RELEASE);
+  munmap(program, program_capacity);
 
   //allocate mem for new pointers if capacity increased
   if(capacity > program_capacity)
   {
     for(loop = program_capacity; loop < capacity; loop++)
     {
-      new[loop] = (DATA_TYPE*) VirtualAlloc(NULL, PROGRAM_CHUNK_SIZE * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
+      new[loop] = (DATA_TYPE*) mmap(NULL, PROGRAM_CHUNK_SIZE * sizeof(DATA_TYPE), PROT_READ|PROT_WRITE, MAP_ANONYMOUS, -1 ,0);
 
       if(new[loop] == NULL)
        return 1;
@@ -69,7 +69,7 @@ unsigned int resize_data(DATA_TYPE capacity)
 
   if(capacity == data_capacity) return;
 
-  struct ARRAY* new = (struct ARRAY*) VirtualAlloc(NULL, capacity * sizeof(struct ARRAY), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
+  struct ARRAY* new = (struct ARRAY*) mmap(NULL, capacity * sizeof(struct ARRAY), PROT_READ|PROT_WRITE, MAP_ANONYMOUS, -1 ,0);
 
   if(new == NULL)
    return 1;
@@ -81,7 +81,7 @@ unsigned int resize_data(DATA_TYPE capacity)
     new[loop] = data[loop];
   }
 
-  VirtualFree(data, 0, MEM_RELEASE);
+  munmap(data,data_capacity);
 
   //allocate mem for new pointers if capacity increased
   if(capacity > data_capacity)
@@ -90,9 +90,9 @@ unsigned int resize_data(DATA_TYPE capacity)
     for(loop = data_capacity; loop < capacity; loop++)
     {
       new[loop].capacity = DEFAULT_SIZE;
-      new[loop].data = (DATA_TYPE*) VirtualAlloc(NULL, new[loop].capacity * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
+      new[loop].data = (DATA_TYPE*) mmap(NULL, new[loop].capacity * sizeof(DATA_TYPE), PROT_READ|PROT_WRITE, MAP_ANONYMOUS, -1 ,0);
 
-      if(new[loop].data == NULL)
+      if(new[loop].data = NULL)
        return 1;
     }
   }

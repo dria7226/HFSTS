@@ -7,11 +7,11 @@ void allocate_memory()
   data_capacity = DEFAULT_SIZE*(DEFAULT_SIZE > NUMBER_OF_DEFAULT_ARRAYS) + NUMBER_OF_DEFAULT_ARRAYS*(DEFAULT_SIZE < NUMBER_OF_DEFAULT_ARRAYS);
 
   //DATA
-  data = (struct ARRAY*) VirtualAlloc(NULL, data_capacity * sizeof(struct ARRAY), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
+  data = (struct ARRAY*) mmap(NULL, data_capacity * sizeof(struct ARRAY), PROT_READ|PROT_WRITE, MAP_ANONYMOUS, -1 ,0);
 
   //HEADS
   data[HEADS].capacity = 1;
-  data[HEADS].data = (DATA_TYPE*)VirtualAlloc(NULL, data[HEADS].capacity * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
+  data[HEADS].data = (DATA_TYPE*)mmap(NULL, data[HEADS].capacity * sizeof(DATA_TYPE), PROT_READ|PROT_WRITE, MAP_ANONYMOUS, -1 ,0);
 
   // SETTINGS array
   data[SETTINGS].capacity = NUMBER_OF_SETTINGS;
@@ -19,7 +19,7 @@ void allocate_memory()
 
   // FLAGS array
   data[FLAGS].capacity = NUMBER_OF_FLAGS;
-  data[FLAGS].data = (DATA_TYPE*)VirtualAlloc(NULL, data[FLAGS].capacity * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
+  data[FLAGS].data = (DATA_TYPE*)mmap(NULL, data[FLAGS].capacity * sizeof(DATA_TYPE), PROT_READ|PROT_WRITE, MAP_ANONYMOUS, -1 ,0);
 
   // MACHINE_INFO array
   data[MACHINE_INFO].capacity = NUMBER_OF_INFO_ELEMENTS;
@@ -38,19 +38,19 @@ void allocate_memory()
   while(loop < data_capacity)
   {
      data[loop].capacity = DEFAULT_SIZE;
-     data[loop].data = (DATA_TYPE*) VirtualAlloc(NULL, data[loop].capacity * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
+     data[loop].data = (DATA_TYPE*) mmap(NULL, data[loop].capacity * sizeof(DATA_TYPE), PROT_READ|PROT_WRITE, MAP_ANONYMOUS, -1 ,0);
 
      loop++;
   }
 
   //PROGRAM
-  program = (DATA_TYPE**) VirtualAlloc(NULL, program_capacity * sizeof(DATA_TYPE*), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
+  program = (DATA_TYPE**) mmap(NULL, program_capacity * sizeof(DATA_TYPE*), PROT_READ|PROT_WRITE, MAP_ANONYMOUS, -1 ,0);
 
   loop = 0;
 
   while(loop < program_capacity)
   {
-     program[loop] = (DATA_TYPE*) VirtualAlloc(NULL, PROGRAM_CHUNK_SIZE * sizeof(DATA_TYPE), MEM_COMMIT|MEM_RESERVE, PAGE_READWRITE);
+     program[loop] = (DATA_TYPE*) mmap(NULL, PROGRAM_CHUNK_SIZE * sizeof(DATA_TYPE), PROT_READ|PROT_WRITE, MAP_ANONYMOUS, -1 ,0);
 
      loop++;
   }
@@ -63,18 +63,18 @@ void free_memory()
 
   while(loop < program_capacity)
   {
-    VirtualFree(program[loop], 0, MEM_RELEASE);
+    munmap(program[loop], PROGRAM_CHUNK_SIZE);
     loop++;
   }
 
-  VirtualFree(program, 0, MEM_RELEASE);
+  munmap(program, data_capacity);
 
   loop = 0;
   while(loop < data_capacity)
   {
-    VirtualFree(data[loop].data, 0, MEM_RELEASE);
+    munmap(data[loop].data, data[loop].capacity);
     loop++;
   }
 
-  VirtualFree(data, 0, MEM_RELEASE);
+  munmap(data, data_capacity);
 }

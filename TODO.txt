@@ -1,12 +1,14 @@
 WINDOWS INTERPRETER
 
-- figure out random numbers bug
+- fix load_settings() bug
 
-- out of bounds memory access for every core program
+- fix random numbers bug
 
 - decide flags and other default arrays
 
-- work on core programs overflow and other flags
+- re-evaluate the purpose of GO_TO considering new head system
+
+- work on core programs overflow
 - work on helpers.c
 - work on test_program
 - test all code
@@ -25,3 +27,5 @@ WINDOWS INTERPRETER
  - read joystick
  - read taps
  - reading/writing files (stdio.h)
+ - read time
+ - read gyroscope

@@ -1,0 +1,34 @@
+FLAG_SET
+ 0 - no flags set after last instruction
+ 1-MAX_VALUE - index of flag set
+
+OVERFLOW
+ 0 - no overflow
+ 1 - overflow
+
+UNDERFLOW
+ 0 - no underflow
+ 1 - underflow
+
+DIVISION_BY_ZERO
+ 0 - no division by zero
+ 1 - division by zero
+
+DATA_RESIZE_FAILED
+ 0 - hasn't failed
+ 1 - failed
+
+PROGRAM_RESIZE_FAILED
+ 0 - hasn't failed
+ 1 - failed
+
+DATA_ACCESS_FAILED
+ 0 - hasn't failed
+ 1 - failed and the invalid address is at head offset 1
+ 2 - failed and the invalid address is at head offset 2
+ 3 - invalid source/destination array
+
+PROGRAM_ACCESS_FAILED
+ 0 - hasn't failed
+ 1 - failed and the invalid address is at head offset 1
+ 2 - failed and the invalid address is at head offset 2
