@@ -5,9 +5,6 @@
 #define CHECK_FOR_LIMIT if(no_of_messages > SCREEN_LIMIT) { ENTER_TO_CONTINUE }
 #define CHECK_FOR_SKIP(message, code) printf("Skip %s?(y/n)\n", message); if(getchar() == 'n' && getchar() == '\n'){code}
 
-DATA_TYPE no_of_messages = 0;
-DATA_TYPE loop = 0;
-
 ////////////////////////////////////////////////////////
 PRINT("Checking memory allocation\n\n",0,0,0)
 
@@ -51,7 +48,6 @@ else
   loop = 0;
   for(; loop < data_capacity; loop++)
   {
-
     if( data[loop].data == NULL )
     {
       PRINT("ERROR: no memory allocated for 'data[%u]'\n", loop,0,0)

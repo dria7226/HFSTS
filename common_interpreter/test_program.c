@@ -3,14 +3,18 @@
 #define DESTINATION_VECTOR 31
 #define DATA_VECTOR 30
 
-#define LOOP_START 16
-#define LOOP_END 40
+
+#define COPY_PROGRAM 2
+#define LOOP_START COPY_PROGRAM+13
+#define LOOP_END COPY_PROGRAM+37
 #define VECTOR_ITER LOOP_START + 11
 
 DATA_TYPE test_program[] = {
 
+  RESIZE_PROGRAM, 2,
+
+//-------------------------------------
   SET_DESTINATION, DATA_VECTOR,
-  COPY_CONSTANT, LOOP_START, 0,
   GET_ARRAY_CAPACITY, 7, 1,
   SUBTRACT_CONSTANT, 1, 1,
 
@@ -32,7 +36,8 @@ DATA_TYPE test_program[] = {
   //decide to loop back or jump out
 
   SET_SOURCE, DATA_VECTOR,
-  GO_TO, 0,
+  GO_IF, LOOP_END, UNDERFLOW,
+  GO_TO, LOOP_START,
 
   EXIT
 };

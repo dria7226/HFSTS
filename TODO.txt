@@ -25,3 +25,4 @@ WINDOWS INTERPRETER
  - reading/writing files (stdio.h)
  - read time
  - read gyroscope
+ - fix test_program (exit == copy)
