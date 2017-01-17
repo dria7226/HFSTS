@@ -1,16 +1,10 @@
 WINDOWS INTERPRETER
 
-- ifdef testing every core program error
-
-- fix COPY.c bug
-
 - fix random numbers bug
 
 - decide flags and other default arrays
 
-- re-evaluate the purpose of GO_TO considering new head system
-
-- work on core programs overflow
+- work on multiplication overflow
 - work on helpers.c
 - work on test_program
 - test all code

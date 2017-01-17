@@ -1,7 +1,12 @@
-// MULTIPLY_CONSTANT , address1 , 0xdeadbeef
+// MULTIPLY_CONSTANT , destination_address , 0xdeadbeef
 if(AT_HEAD_OFFSET(1) >= data[destination_array].capacity)
 {
-  FLAG_AT(DATA_ACCESS_FAILED) = 1;
+  SET_FLAG(DATA_ACCESS_FAILED, 1)
+
+  #ifdef TESTING_CLI
+    PRINT("MULTIPLY_CONSTANT: DATA_ACCESS_FAILED: invalid destination address %u\n",AT_HEAD_OFFSET(1),0,0);
+  #endif
+
   HEAD_AT(head_index) += 2;
   goto next_instruction;
 }

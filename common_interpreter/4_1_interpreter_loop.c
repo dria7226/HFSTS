@@ -1,4 +1,4 @@
-#include "label_table.c"
+#include "4_0_label_table.c"
 
 #ifdef TESTING_CLI
   no_of_messages = 0;
@@ -6,7 +6,7 @@
 
 next_instruction:
 
-#include "head_management.c"
+#include "4_2_head_management.c"
 
 #ifdef TESTING_CLI
   CHECK_FOR_LIMIT
@@ -38,8 +38,8 @@ COPY_DATA_TO_PROGRAM:
 GO_TO:
 #include "GO_TO.c"
 
-GO_TO_CONSTANT:
-#include "GO_TO_CONSTANT.c"
+GO_IF:
+#include "GO_IF.c"
 
 RESIZE_DATA:
 #include "RESIZE_DATA.c"
