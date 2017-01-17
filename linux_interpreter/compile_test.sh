@@ -1,1 +1,1 @@
-gcc 0_main.c -o HFSTS_interpreter.exe -D TESTING_CLI
+gcc 0_main.c -o HFSTS_interpreter -D TESTING_CLI

@@ -102,4 +102,3 @@ EXIT:
 #include "EXIT.c"
 
 out:
-return;
