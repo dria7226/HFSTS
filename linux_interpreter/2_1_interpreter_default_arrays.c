@@ -1,30 +1,14 @@
-//SETTINGS
+//MACHINE INFO
 #define DEFAULT_GRANULARITY 8
 
-DATA_TYPE* load_settings()
-{
-  DATA_TYPE* settings = (DATA_TYPE*) mmap(NULL, NUMBER_OF_SETTINGS * sizeof(DATA_TYPE), PROT_READ|PROT_WRITE, MAP_ANONYMOUS, -1 ,0);
-
-  //open file
-  // FILE f = fopen();
-
-  settings[0] = PROGRAM_CHUNK_SIZE;
-
-  settings[HEAD_GRANULARITY] = DEFAULT_GRANULARITY;
-
-  //close file
-  // fclose(f);
-
-  return settings;
-}
-
-// MACHINE_INFO
 DATA_TYPE* load_machine_info()
 {
   DATA_TYPE* machine_info = (DATA_TYPE*)mmap(NULL, data[MACHINE_INFO].capacity * sizeof(DATA_TYPE), PROT_READ|PROT_WRITE, MAP_ANONYMOUS, -1 ,0);
 
   machine_info[0] = MAX_VALUE;
-  machine_info[PLATFORM] = WINDOWS_PLATFORM;
+  machine_info[1] = DEFAULT_GRANULARITY;
+
+  machine_info[PLATFORM] = LINUX_PLATFORM;
 
   return machine_info;
 }

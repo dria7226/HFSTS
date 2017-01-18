@@ -28,18 +28,6 @@ void allocate_memory()
     #endif
     return 0;
   }
-  
-  // SETTINGS array
-  data[SETTINGS].capacity = NUMBER_OF_SETTINGS;
-  data[SETTINGS].data = load_settings();
-
-  if(data[SETTINGS].data == NULL)
-  {
-    #ifdef TESTING_CLI
-    PRINT("Couldn't allocate memory for 'data[SETTINGS].data\n'",0,0,0)
-    #endif
-    return 0;
-  }
 
   // FLAGS array
   data[FLAGS].capacity = NUMBER_OF_FLAGS;

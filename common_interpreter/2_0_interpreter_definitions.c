@@ -52,20 +52,11 @@ struct ARRAY{
 
 enum{
   HEADS,
-  SETTINGS,
   FLAGS,
   MACHINE_INFO,
   PERFORMANCE_INFO,
 
   NUMBER_OF_DEFAULT_ARRAYS
-};
-
-// SETTINGS
-enum{
-  //PROGRAM_CHUNK_SIZE
-  HEAD_GRANULARITY = 1,
-
-  NUMBER_OF_SETTINGS
 };
 
 // FLAGS
@@ -89,7 +80,9 @@ enum{
 // MACHINE_INFO
 enum{
   //MAX_VALUE,
-  PLATFORM = 1,
+  //PROGRAM_CHUNK_SIZE,
+  HEAD_GRANULARITY = 2,
+  PLATFORM,
 
   NUMBER_OF_INFO_ELEMENTS
 };
@@ -109,8 +102,9 @@ enum{
 
 #define DATA_AT(x,y)      data[x].data[y]
 #define HEAD_AT(index)    data[HEADS].data[index]
-#define SETTING_AT(name)  data[SETTINGS].data[name]
 #define FLAG_AT(name)     data[FLAGS].data[name]
 #define SET_FLAG(name, value) FLAG_AT(name) = value; FLAG_AT(FLAG_SET) = name;
+#define MACHINE_INFO_AT(name)  data[MACHINE_INFO].data[name]
+#define PERFORMANCE_INFO_AT(name)  data[PERFORMANCE_INFO].data[name]
 #define AT_HEAD_OFFSET(x) program[(HEAD_AT(head_index) + x)/PROGRAM_CHUNK_SIZE][(HEAD_AT(head_index) + x)%PROGRAM_CHUNK_SIZE]
 #define PROGRAM_AT(x)     program[x/PROGRAM_CHUNK_SIZE][x%PROGRAM_CHUNK_SIZE]
