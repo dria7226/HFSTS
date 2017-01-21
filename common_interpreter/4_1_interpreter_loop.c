@@ -77,6 +77,8 @@ SUBTRACT:
 SUBTRACT_CONSTANT:
 #include "SUBTRACT_CONSTANT.c"
 
+DATA_TYPE product;
+
 MULTIPLY:
 #include "MULTIPLY.c"
 

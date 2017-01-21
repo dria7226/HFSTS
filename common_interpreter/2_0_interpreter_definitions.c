@@ -103,7 +103,7 @@ enum{
 #define DATA_AT(x,y)      data[x].data[y]
 #define HEAD_AT(index)    data[HEADS].data[index]
 #define FLAG_AT(name)     data[FLAGS].data[name]
-#define SET_FLAG(name, value) FLAG_AT(name) = value; FLAG_AT(FLAG_SET) = name;
+#define SET_FLAG(name, value) FLAG_AT(name) = value; if(value != 0) FLAG_AT(FLAG_SET) = name;
 #define MACHINE_INFO_AT(name)  data[MACHINE_INFO].data[name]
 #define PERFORMANCE_INFO_AT(name)  data[PERFORMANCE_INFO].data[name]
 #define AT_HEAD_OFFSET(x) program[(HEAD_AT(head_index) + x)/PROGRAM_CHUNK_SIZE][(HEAD_AT(head_index) + x)%PROGRAM_CHUNK_SIZE]

@@ -2,7 +2,7 @@ WINDOWS INTERPRETER
 
 - fix random numbers bug
 
-- decide flags and other default arrays
+- test MULTIPLY OVERFLOW
 
 - work on multiplication overflow
 - work on helpers.c
