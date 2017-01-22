@@ -13,14 +13,11 @@
 DATA_TYPE**      program;
 DATA_TYPE        program_capacity;
 
-struct ARRAY*   data;
+struct ARRAY*    data;
 DATA_TYPE        data_capacity;
 
 DATA_TYPE  head_index;
 DATA_TYPE  granularity_counter;
-
-DATA_TYPE source_array = 0;
-DATA_TYPE destination_array = 0;
 
 #include "2_1_interpreter_default_arrays.c"
 

@@ -1,28 +1,3 @@
 WINDOWS INTERPRETER
 
 - fix random numbers bug
-
-- test MULTIPLY OVERFLOW
-
-- work on multiplication overflow
-- work on helpers.c
-- work on test_program
-- test all code
-  - test head functions
-  - test memory functions
-
-- develop performance tests and write down statistics ( as ratios with respect to the fastest/native way AND absolute time values )
-
-- implement multi core support ???
-
----------------------------------
-- create and finish core programs
- - create video context (direct3d)
- - read keyboard
- - read mouse
- - read joystick
- - read taps
- - reading/writing files (stdio.h)
- - read time
- - read gyroscope
- - fix test_program (exit == copy)

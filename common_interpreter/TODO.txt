@@ -1,0 +1,23 @@
+COMMON INTERPRETER
+
+- create and finish core programs
+ - create video context (direct3d)
+ - read keyboard
+ - read mouse
+ - read joystick
+ - read taps
+ - reading/writing files (stdio.h)
+ - read time
+ - read gyroscope
+
+- fix test_program (exit == copy)
+
+- implement multi core support ???
+
+- test MULTIPLY OVERFLOW
+
+- work on helpers.c
+- work on test_program
+- test all code
+  - test head functions
+  - test memory functions

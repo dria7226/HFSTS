@@ -30,6 +30,7 @@ REMAINDER,
 REMAINDER_CONSTANT,
 
 GET_HEAD,
+GET_GRANULARITY_COUNTER,
 
 EXIT,
 
@@ -49,7 +50,6 @@ struct ARRAY{
 };
 
 //SHORTCUTS
-
 enum{
   HEADS,
   FLAGS,
@@ -81,8 +81,7 @@ enum{
 enum{
   //MAX_VALUE,
   //PROGRAM_CHUNK_SIZE,
-  HEAD_GRANULARITY = 2,
-  PLATFORM,
+  PLATFORM = 2,
 
   NUMBER_OF_INFO_ELEMENTS
 };
@@ -100,11 +99,23 @@ enum{
   NUMBER_OF_SUPPORTED_PLATFORMS
 };
 
-#define DATA_AT(x,y)      data[x].data[y]
-#define HEAD_AT(index)    data[HEADS].data[index]
-#define FLAG_AT(name)     data[FLAGS].data[name]
-#define SET_FLAG(name, value) FLAG_AT(name) = value; if(value != 0) FLAG_AT(FLAG_SET) = name;
-#define MACHINE_INFO_AT(name)  data[MACHINE_INFO].data[name]
+#define DATA_AT(x,y)               data[x].data[y]
+#define HEAD_AT(index)             data[HEADS].data[index*4 + 0]
+#define HEAD_GRANULARITY_AT(index) data[HEADS].data[index*4 + 1]
+#define SOURCE_AT(index)           data[HEADS].data[index*4 + 2]
+#define DESTINATION_AT(index)      data[HEADS].data[index*4 + 3]
+#define FLAG_AT(name)              data[FLAGS].data[name]
+#define SET_FLAG(name, value)      FLAG_AT(name) = value; if(value != 0) FLAG_AT(FLAG_SET) = name;
+#define MACHINE_INFO_AT(name)      data[MACHINE_INFO].data[name]
 #define PERFORMANCE_INFO_AT(name)  data[PERFORMANCE_INFO].data[name]
-#define AT_HEAD_OFFSET(x) program[(HEAD_AT(head_index) + x)/PROGRAM_CHUNK_SIZE][(HEAD_AT(head_index) + x)%PROGRAM_CHUNK_SIZE]
-#define PROGRAM_AT(x)     program[x/PROGRAM_CHUNK_SIZE][x%PROGRAM_CHUNK_SIZE]
+#define AT_HEAD_OFFSET(x)          program[(HEAD_AT(head_index) + x)/PROGRAM_CHUNK_SIZE][(HEAD_AT(head_index) + x)%PROGRAM_CHUNK_SIZE]
+#define PROGRAM_AT(x)              program[x/PROGRAM_CHUNK_SIZE][x%PROGRAM_CHUNK_SIZE]
+
+#ifdef TESTING_CLI
+DATA_TYPE no_of_messages = 0;
+#define ENTER_TO_CONTINUE {printf("Press Enter to continue...\n");while(getchar() != '\n'); no_of_messages = 0;}
+#define SCREEN_LIMIT 60
+#define PRINT(x,y,z,w) {printf(x,y,z,w); no_of_messages++;}
+#define CHECK_FOR_LIMIT if(no_of_messages > SCREEN_LIMIT) { ENTER_TO_CONTINUE }
+#define CHECK_FOR_SKIP(message, code) printf("Skip %s?(y/n)\n", message); if(getchar() == 'n' && getchar() == '\n'){code}
+#endif

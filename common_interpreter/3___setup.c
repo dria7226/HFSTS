@@ -1,4 +1,4 @@
-allocate_memory();
+if(! allocate_memory()) { free_memory(); return 0; }
 
 #ifdef TESTING_CLI
 load_test_program();
@@ -6,8 +6,4 @@ load_test_program();
 load_program_at_address(argc, argv)
 #endif
 
-#ifdef TESTING_CLI
-DATA_TYPE no_of_messages = 0;
-DATA_TYPE loop = 0;
-#endif
 #include "test.c"
