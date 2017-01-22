@@ -1,1 +1,3 @@
 LINUX INTERPRETER
+
+- fix poor memory allocation in 2_2_memory.c ('data' pointer is allocated, but the struct components are inaccessible)

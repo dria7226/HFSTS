@@ -1,10 +1,10 @@
 #include "resizes.c"
 
-void allocate_memory()
+DATA_TYPE allocate_memory()
 {
   program_capacity = DEFAULT_SIZE;
 
-  data_capacity = DEFAULT_SIZE*(DEFAULT_SIZE > NUMBER_OF_DEFAULT_ARRAYS) + NUMBER_OF_DEFAULT_ARRAYS*(DEFAULT_SIZE < NUMBER_OF_DEFAULT_ARRAYS);
+  data_capacity = DEFAULT_SIZE*(DEFAULT_SIZE >= NUMBER_OF_DEFAULT_ARRAYS) + NUMBER_OF_DEFAULT_ARRAYS*(DEFAULT_SIZE < NUMBER_OF_DEFAULT_ARRAYS);
 
   //DATA
   data = (struct ARRAY*) mmap(NULL, data_capacity * sizeof(struct ARRAY), PROT_READ|PROT_WRITE, MAP_ANONYMOUS, -1 ,0);
@@ -16,10 +16,10 @@ void allocate_memory()
     #endif
     return 0;
   }
-
+  
   //HEADS
   data[HEADS].capacity = 4;
-  data[HEADS].data = (DATA_TYPE*)mmap(NULL, data[HEADS].capacity * sizeof(DATA_TYPE), PROT_READ|PROT_WRITE, MAP_ANONYMOUS, -1 ,0);
+  data[HEADS].data = (DATA_TYPE*) mmap(NULL, data[HEADS].capacity * sizeof(DATA_TYPE), PROT_READ|PROT_WRITE, MAP_ANONYMOUS, -1 ,0);
 
   if(data[HEADS].data == NULL)
   {
@@ -28,12 +28,12 @@ void allocate_memory()
     #endif
     return 0;
   }
-
+  
   HEAD_GRANULARITY_AT(0) = MAX_VALUE;
-
+  
   // FLAGS array
   data[FLAGS].capacity = NUMBER_OF_FLAGS;
-  data[FLAGS].data = (DATA_TYPE*)mmap(NULL, data[FLAGS].capacity * sizeof(DATA_TYPE), PROT_READ|PROT_WRITE, MAP_ANONYMOUS, -1 ,0);
+  data[FLAGS].data = (DATA_TYPE*) mmap(NULL, data[FLAGS].capacity * sizeof(DATA_TYPE), PROT_READ|PROT_WRITE, MAP_ANONYMOUS, -1 ,0);
 
   if(data[FLAGS].data == NULL)
   {
@@ -95,7 +95,7 @@ void allocate_memory()
     #endif
     return 0;
   }
-
+  
   loop = 0;
 
   while(loop < program_capacity)
@@ -109,7 +109,7 @@ void allocate_memory()
        #endif
        return 0;
      }
-
+     
      loop++;
   }
 }
