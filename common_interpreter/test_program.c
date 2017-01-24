@@ -3,7 +3,7 @@
 #define DESTINATION_VECTOR 31
 #define DATA_VECTOR 30
 
-#define RESIZE_TEST 14
+#define RESIZE_TEST 0
 #define COPY_TEST RESIZE_TEST + 4
 #define LOOP_START COPY_TEST + 13
 #define LOOP_END COPY_TEST + 37
@@ -11,17 +11,17 @@
 
 DATA_TYPE test_program[] = {
 
-  RESIZE_ARRAY, 8,
-  COPY_CONSTANT, COPY_TEST, 0,
-  COPY_CONSTANT, 6, 1,
-  COPY_CONSTANT, RESIZE_TEST, 4,
-  COPY_CONSTANT, 2, 4 + 1,
+  // RESIZE_ARRAY, 8,
+  // COPY_CONSTANT, COPY_TEST, 0,
+  // COPY_CONSTANT, 6, 1,
+  // COPY_CONSTANT, RESIZE_TEST, 4,
+  // COPY_CONSTANT, 2, 4 + 1,
 
 //-------------------------------------
 
   RESIZE_PROGRAM, 2,
 
-  RESIZE_ARRAY, 2,
+  RESIZE_ARRAY, 4,
 
 //-------------------------------------
   SET_DESTINATION, DATA_VECTOR,
@@ -41,7 +41,7 @@ DATA_TYPE test_program[] = {
   COPY, 0, 0,
 
   SET_DESTINATION, DATA_VECTOR,
-  SUBTRACT_CONSTANT, 2, 1,
+  SUBTRACT_CONSTANT, 2, 5,
 
   //decide to loop back or jump out
 

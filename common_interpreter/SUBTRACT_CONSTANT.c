@@ -13,7 +13,7 @@ if(AT_HEAD_OFFSET(1) >= data[DESTINATION_AT(head_index)].capacity)
 
 SET_FLAG(UNDERFLOW, ( DATA_AT(DESTINATION_AT(head_index), AT_HEAD_OFFSET(1)) )
                       <
-                     ( DATA_AT(DESTINATION_AT(head_index), AT_HEAD_OFFSET(1)) -= AT_HEAD_OFFSET(2) ))
+                     ( DATA_AT(DESTINATION_AT(head_index), AT_HEAD_OFFSET(1)) -= AT_HEAD_OFFSET(2) ) )
 
 #ifdef TESTING_CLI
   PRINT("SUBTRACT_CONSTANT, %u, %u = %u\n", AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2), DATA_AT(DESTINATION_AT(head_index), AT_HEAD_OFFSET(1)) )
