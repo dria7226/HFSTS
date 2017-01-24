@@ -3,9 +3,9 @@ unsigned int resize_array(DATA_TYPE target, DATA_TYPE capacity)
   if(capacity == data[target].capacity) return 0;
   if(capacity == 0) return 1;
 
-  DATA_TYPE* new = (DATA_TYPE*) mmap(NULL, capacity * sizeof(DATA_TYPE), PROT_READ|PROT_WRITE, MAP_ANONYMOUS, -1 ,0);
+  DATA_TYPE* new = (DATA_TYPE*) mmap(NULL, capacity * sizeof(DATA_TYPE), PROT_READ|PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1 ,0);
 
-  if(new == NULL)
+  if(new == MAP_FAILED)
    return 1;
 
   DATA_TYPE loop = 0;
@@ -29,9 +29,9 @@ unsigned int resize_program(DATA_TYPE capacity)
 
   if(capacity > MAX_VALUE/PROGRAM_CHUNK_SIZE) capacity = (DATA_TYPE) MAX_VALUE / PROGRAM_CHUNK_SIZE;
 
-  DATA_TYPE** new = (DATA_TYPE**) mmap(NULL, capacity * sizeof(DATA_TYPE*), PROT_READ|PROT_WRITE, MAP_ANONYMOUS, -1 ,0);
+  DATA_TYPE** new = (DATA_TYPE**) mmap(NULL, capacity * sizeof(DATA_TYPE*), PROT_READ|PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1 ,0);
 
-  if(new == NULL)
+  if(new == MAP_FAILED)
    return 2;
 
   DATA_TYPE loop = 0;
@@ -67,9 +67,9 @@ unsigned int resize_data(DATA_TYPE capacity)
   if(capacity == data_capacity ) return 0;
   if(capacity < 2) return 1;
 
-  struct ARRAY* new = (struct ARRAY*) mmap(NULL, capacity * sizeof(struct ARRAY), PROT_READ|PROT_WRITE, MAP_ANONYMOUS, -1 ,0);
+  struct ARRAY* new = (struct ARRAY*) mmap(NULL, capacity * sizeof(struct ARRAY), PROT_READ|PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1 ,0);
 
-  if(new == NULL)
+  if(new == MAP_FAILED)
    return 2;
 
   DATA_TYPE loop = 0;
@@ -88,9 +88,9 @@ unsigned int resize_data(DATA_TYPE capacity)
     for(loop = data_capacity; loop < capacity; loop++)
     {
       new[loop].capacity = DEFAULT_SIZE;
-      new[loop].data = (DATA_TYPE*) mmap(NULL, new[loop].capacity * sizeof(DATA_TYPE), PROT_READ|PROT_WRITE, MAP_ANONYMOUS, -1 ,0);
+      new[loop].data = (DATA_TYPE*) mmap(NULL, new[loop].capacity * sizeof(DATA_TYPE), PROT_READ|PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1 ,0);
 
-      if(new[loop].data = NULL)
+      if(new[loop].data = MAP_FAILED)
        return 2;
     }
   }

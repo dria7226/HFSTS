@@ -6,10 +6,10 @@ void load_test_program()
 
   #define PROGRAM_LENGTH sizeof(test_program)/sizeof(DATA_TYPE)
   #define DATA_LENGTH sizeof(test_data)/sizeof(DATA_TYPE*)
-
+  
   //load program
   resize_program(PROGRAM_LENGTH/PROGRAM_CHUNK_SIZE + 1);
-
+  
   DATA_TYPE loop = 0;
 
   for(; loop < PROGRAM_LENGTH; loop++)
