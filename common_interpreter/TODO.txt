@@ -1,5 +1,7 @@
 COMMON INTERPRETER
 
+- add left and right hand operation system to select between data and program
+
 - create and finish core programs
  - create video context (direct3d)
  - read keyboard

@@ -10,7 +10,7 @@ next_instruction:
 
 #ifdef TESTING_CLI
   CHECK_FOR_LIMIT
-  printf("%u: ", HEAD_AT(head_index));
+  PRINT("%u: ", HEAD_AT(head_index),0,0);
 #endif
 
 FLAG_AT(FLAG_SET) = 0;
@@ -18,8 +18,9 @@ FLAG_AT(FLAG_SET) = 0;
 if(AT_HEAD_OFFSET(0) < NUMBER_OF_PROGRAMS)
   goto *label_table[AT_HEAD_OFFSET(0)];
 
-printf("Invalid program code\n");
+PRINT("Invalid program code\n",0,0,0);
 
+EMPTY:
 HEAD_AT(head_index)++;
 goto next_instruction;
 

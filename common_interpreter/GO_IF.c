@@ -29,8 +29,8 @@ if(AT_HEAD_OFFSET(2) >= NUMBER_OF_FLAGS)
 
 if(FLAG_AT(AT_HEAD_OFFSET(2)))
   HEAD_AT(head_index) = AT_HEAD_OFFSET(1);
+else
+  HEAD_AT(head_index) += 3;
 
-//advance head
-HEAD_AT(head_index) += 3;
 
 goto next_instruction;
