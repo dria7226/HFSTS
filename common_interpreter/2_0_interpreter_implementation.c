@@ -8,12 +8,11 @@
 
 // Everything is in units of 32 bits ( unsigned int )
 
-#include "../common_interpreter/2_0_interpreter_definitions.c"
+#include "2_0_interpreter_definitions.c"
 
-DATA_TYPE**      program;
+struct ARRAY**   memory;
+
 DATA_TYPE        program_capacity;
-
-struct ARRAY*    data;
 DATA_TYPE        data_capacity;
 
 DATA_TYPE  head_index;

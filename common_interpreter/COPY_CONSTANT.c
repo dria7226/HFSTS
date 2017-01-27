@@ -1,5 +1,5 @@
 // COPY_CONSTANT , 0xdeadbeef , destination_address
-if(AT_HEAD_OFFSET(2) >= data[DESTINATION_AT(head_index)].capacity)
+if(AT_HEAD_OFFSET(2) >= CAPACITY_AT([DESTINATION_AT(head_index)]))
 {
   SET_FLAG(DATA_ACCESS_FAILED,2)
 

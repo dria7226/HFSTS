@@ -1,5 +1,5 @@
 // ADD , destination_address , source_address
-if(AT_HEAD_OFFSET(1) >= data[DESTINATION_AT(head_index)].capacity)
+if(AT_HEAD_OFFSET(1) >= CAPACITY_AT([DESTINATION_AT(head_index)]))
 {
   SET_FLAG(DATA_ACCESS_FAILED,1)
 
@@ -11,7 +11,7 @@ if(AT_HEAD_OFFSET(1) >= data[DESTINATION_AT(head_index)].capacity)
   goto next_instruction;
 }
 
-if(AT_HEAD_OFFSET(2) >= data[SOURCE_AT(head_index)].capacity)
+if(AT_HEAD_OFFSET(2) >= CAPACITY_AT([SOURCE_AT(head_index)]))
 {
   SET_FLAG(DATA_ACCESS_FAILED,2)
 

@@ -1,6 +1,8 @@
 #include "1_includes.c"
 
-#include "2_0_interpreter_implementation.c"
+#include "1_platform_specific_wrappers.c"
+
+#include "../common_interpreter/2_0_interpreter_implementation.c"
 
 #include "../common_interpreter/helpers.c"
 

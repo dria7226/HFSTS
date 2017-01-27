@@ -2,7 +2,7 @@
 
 void load_test_program()
 {
-  if(!(program && data)) return;
+  if(memory == MEMORY_ALLOCATION_FAILED) return;
 
   #define PROGRAM_LENGTH sizeof(test_program)/sizeof(DATA_TYPE)
   #define DATA_LENGTH sizeof(test_data)/sizeof(DATA_TYPE*)

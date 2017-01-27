@@ -2,11 +2,11 @@ enum{
 EMPTY,
 COPY,
 COPY_CONSTANT,
-COPY_PROGRAM_TO_DATA,
-COPY_DATA_TO_PROGRAM,
 
 GO_TO,
 GO_IF,
+SKIP,
+SKIP_IF,
 
 RESIZE_DATA,
 RESIZE_ARRAY,
@@ -43,7 +43,7 @@ NUMBER_OF_PROGRAMS
 #define DEFAULT_SIZE  32
 #define MAX_VALUE     0xFFFFFFFF
 
-#define PROGRAM_CHUNK_SIZE 1024
+#define PROGRAM_CHUNK_SIZE 128
 
 struct ARRAY{
   DATA_TYPE* data;
@@ -52,12 +52,27 @@ struct ARRAY{
 
 //SHORTCUTS
 enum{
+  PROGRAM,
+  DATA
+};
+
+enum{
   HEADS,
   FLAGS,
   MACHINE_INFO,
-  PERFORMANCE_INFO,
 
   NUMBER_OF_DEFAULT_ARRAYS
+};
+
+//HEAD STRUCTURE
+enum{
+  ADDRESS,
+  GRANULARITY,
+  SOURCE_ARRAY,
+  DESTINATION_ARRAY,
+  TRANSFER_TYPE,
+
+  NUMBER_OF_HEAD_COMPONENTS
 };
 
 // FLAGS
@@ -100,17 +115,19 @@ enum{
   NUMBER_OF_SUPPORTED_PLATFORMS
 };
 
-#define DATA_AT(x,y)               data[x].data[y]
-#define HEAD_AT(index)             data[HEADS].data[index*4 + 0]
-#define HEAD_GRANULARITY_AT(index) data[HEADS].data[index*4 + 1]
-#define SOURCE_AT(index)           data[HEADS].data[index*4 + 2]
-#define DESTINATION_AT(index)      data[HEADS].data[index*4 + 3]
-#define FLAG_AT(name)              data[FLAGS].data[name]
+#define MEMORY_AT(x,y,z)           memory[x][y].data[z]
+#define DATA_AT(x,y)               MEMORY_AT(DATA,x,y)
+#define CAPACITY_AT(x)             memory[DATA][x].capacity
+#define HEAD_AT(index)             MEMORY_AT(DATA, HEADS, index*NUMBER_OF_HEAD_COMPONENTS + ADDRESS)
+#define HEAD_GRANULARITY_AT(index) MEMORY_AT(DATA, HEADS, index*NUMBER_OF_HEAD_COMPONENTS + GRANULARITY)
+#define SOURCE_AT(index)           MEMORY_AT(DATA, HEADS, index*NUMBER_OF_HEAD_COMPONENTS + SOURCE_ARRAY)
+#define DESTINATION_AT(index)      MEMORY_AT(DATA, HEADS, index*NUMBER_OF_HEAD_COMPONENTS + DESTINATION_ARRAY)
+#define TRANSFER_TYPE_AT(index)    MEMORY_AT(DATA< HEADS, index*NUMBER_OF_HEAD_COMPONENTS + TRANSFER_TYPE)
+#define FLAG_AT(name)              MEMORY_AT(DATA, FLAGS, name)
 #define SET_FLAG(name, value)      FLAG_AT(name) = value; if(value != 0) FLAG_AT(FLAG_SET) = name;
-#define MACHINE_INFO_AT(name)      data[MACHINE_INFO].data[name]
-#define PERFORMANCE_INFO_AT(name)  data[PERFORMANCE_INFO].data[name]
-#define AT_HEAD_OFFSET(x)          program[(HEAD_AT(head_index) + x)/PROGRAM_CHUNK_SIZE][(HEAD_AT(head_index) + x)%PROGRAM_CHUNK_SIZE]
-#define PROGRAM_AT(x)              program[x/PROGRAM_CHUNK_SIZE][x%PROGRAM_CHUNK_SIZE]
+#define MACHINE_INFO_AT(name)      MEMORY_AT(DATA, MACHINE_INFO, name)
+#define AT_HEAD_OFFSET(x)          MEMORY_AT(PROGRAM, (HEAD_AT(head_index) + x)/PROGRAM_CHUNK_SIZE, (HEAD_AT(head_index) + x)%PROGRAM_CHUNK_SIZE )
+#define PROGRAM_AT(x)              MEMORY_AT(PROGRAM, x/PROGRAM_CHUNK_SIZE, x%PROGRAM_CHUNK_SIZE)
 
 #ifdef TESTING_CLI
 DATA_TYPE no_of_messages = 0;

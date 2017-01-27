@@ -10,7 +10,7 @@ PRINT("program_capacity: %u\n",program_capacity,0,0)
 
 for(; loop < program_capacity*PROGRAM_CHUNK_SIZE; loop++)
 {
-  if( program[loop/PROGRAM_CHUNK_SIZE] == NULL)
+  if( memory[PROGRAM][loop/PROGRAM_CHUNK_SIZE].data == MEMORY_ALLOCATION_FAILED)
   {
     PRINT("ERROR: no memory allocated for 'program[%u]'\n", loop, 0,0)
     CHECK_FOR_LIMIT
@@ -31,7 +31,7 @@ PRINT("data_capacity: %u\n",data_capacity,0,0)
 
 for(loop = 0; loop < data_capacity; loop++)
 {
-  if( data[loop].data == NULL )
+  if( memory[DATA][loop].data == MEMORY_ALLOCATION_FAILED )
   {
     PRINT("ERROR: no memory allocated for 'data[%u]'\n", loop,0,0)
     ENTER_TO_CONTINUE
@@ -40,11 +40,11 @@ for(loop = 0; loop < data_capacity; loop++)
   {
   DATA_TYPE inner_loop = 0;
 
-  PRINT("data[%u].capacity = %u\n", loop, data[loop].capacity,0)
+  PRINT("data[%u].capacity = %u\n", loop, memory[DATA][loop].capacity,0)
   CHECK_FOR_LIMIT
 
-  for(; inner_loop < data[loop].capacity; inner_loop++)
-    PRINT("data[%u].data[%u] = %u \n",loop,inner_loop,data[loop].data[inner_loop])
+  for(; inner_loop < memory[DATA][loop].capacity; inner_loop++)
+    PRINT("data[%u].data[%u] = %u \n",loop,inner_loop, memory[DATA][loop].data[inner_loop])
   ENTER_TO_CONTINUE
   }
 }
@@ -63,11 +63,11 @@ for(loop = 0; loop < data_capacity; loop++)
 // ENTER_TO_CONTINUE
 
 // check helper functions
-CHECK_FOR_SKIP( "helper functions check",
+//CHECK_FOR_SKIP( "helper functions check",
 
 
-ENTER_TO_CONTINUE
-) // CHECK FOR SKIP
+//ENTER_TO_CONTINUE
+//) // CHECK FOR SKIP
 
 //check core programs
 //

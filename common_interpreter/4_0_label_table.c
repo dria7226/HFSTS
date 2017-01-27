@@ -2,8 +2,6 @@ void* label_table[NUMBER_OF_PROGRAMS] = {
 &&EMPTY,
 &&COPY,
 &&COPY_CONSTANT,
-&&COPY_PROGRAM_TO_DATA,
-&&COPY_DATA_TO_PROGRAM,
 
 &&GO_TO,
 &&GO_IF,
