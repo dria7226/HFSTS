@@ -1,5 +1,5 @@
 // REMAINDER, destination_address, source_address
-if(AT_HEAD_OFFSET(1) >= CAPACITY_AT([DESTINATION_AT(head_index)]))
+if(AT_HEAD_OFFSET(1) >= CAPACITY_AT(DESTINATION_AT(head_index)))
 {
   SET_FLAG(DATA_ACCESS_FAILED,1)
 
@@ -11,7 +11,7 @@ if(AT_HEAD_OFFSET(1) >= CAPACITY_AT([DESTINATION_AT(head_index)]))
   goto next_instruction;
 }
 
-if(AT_HEAD_OFFSET(2) >= CAPACITY_AT([SOURCE_AT(head_index)]))
+if(AT_HEAD_OFFSET(2) >= CAPACITY_AT(SOURCE_AT(head_index)))
 {
   SET_FLAG(DATA_ACCESS_FAILED,2)
 

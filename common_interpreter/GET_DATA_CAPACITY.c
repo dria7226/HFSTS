@@ -1,5 +1,5 @@
 // GET_DATA_CAPACITY, destination_address
-if(AT_HEAD_OFFSET(1) >= CAPACITY_AT([DESTINATION_AT(head_index)]))
+if(AT_HEAD_OFFSET(1) >= CAPACITY_AT(DESTINATION_AT(head_index)))
 {
   SET_FLAG(DATA_ACCESS_FAILED,1)
 

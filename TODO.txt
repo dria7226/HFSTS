@@ -1,4 +1,0 @@
-COMMON INTERPRETER
-
-- fix header bug detected in test_program.c
-- fix double SUBTRACT_CONSTANT.c execution

@@ -1,5 +1,9 @@
 COMMON INTERPRETER
 
+- implement READ_FROM and WRITE_TO (rewrite all CORE programs as well)
+- fix header bug detected in test_program.c
+- fix double SUBTRACT_CONSTANT.c execution
+
 - add left and right hand operation system to select between data and program
 
 - create and finish core programs

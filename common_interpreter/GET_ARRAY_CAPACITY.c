@@ -1,5 +1,5 @@
 // GET_ARRAY_CAPACITY, array, destination_address
-if(AT_HEAD_OFFSET(2) >= CAPACITY_AT([DESTINATION_AT(head_index)]))
+if(AT_HEAD_OFFSET(2) >= CAPACITY_AT(DESTINATION_AT(head_index)))
 {
   SET_FLAG(DATA_ACCESS_FAILED,2)
 
@@ -24,7 +24,7 @@ if(AT_HEAD_OFFSET(1) >= data_capacity)
 }
 
 
-DATA_AT(DESTINATION_AT(head_index), AT_HEAD_OFFSET(2)) = data[AT_HEAD_OFFSET(1)].capacity;
+DATA_AT(DESTINATION_AT(head_index), AT_HEAD_OFFSET(2)) = CAPACITY_AT(AT_HEAD_OFFSET(1));
 
 #ifdef TESTING_CLI
   PRINT("GET_ARRAY_CAPACITY, %u, %u\n",AT_HEAD_OFFSET(1),AT_HEAD_OFFSET(2),0)

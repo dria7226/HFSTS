@@ -5,9 +5,9 @@ DATA_TYPE* load_machine_info()
 
   if(machine_info == MEMORY_ALLOCATION_FAILED)
   {
-    return MAP_FAILED;
+    return MEMORY_ALLOCATION_FAILED;
   }
-  
+
   machine_info[0] = MAX_VALUE;
   machine_info[1] = PROGRAM_CHUNK_SIZE;
 
