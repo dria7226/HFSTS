@@ -36,6 +36,12 @@ GO_TO:
 GO_IF:
 #include "GO_IF.c"
 
+SKIP:
+#include "SKIP.c"
+
+SKIP_IF:
+#include "SKIP_IF.c"
+
 RESIZE_DATA:
 #include "RESIZE_DATA.c"
 
@@ -53,6 +59,12 @@ GET_ARRAY_CAPACITY:
 
 GET_PROGRAM_CAPACITY:
 #include "GET_PROGRAM_CAPACITY.c"
+
+READ_FROM:
+#include "READ_FROM.c"
+
+WRITE_TO:
+#include "WRITE_TO.c"
 
 SET_SOURCE:
 #include "SET_SOURCE.c"

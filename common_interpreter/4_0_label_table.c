@@ -5,6 +5,8 @@ void* label_table[NUMBER_OF_PROGRAMS] = {
 
 &&GO_TO,
 &&GO_IF,
+&&SKIP,
+&&SKIP_IF,
 
 &&RESIZE_DATA,
 &&RESIZE_ARRAY,
@@ -14,6 +16,8 @@ void* label_table[NUMBER_OF_PROGRAMS] = {
 &&GET_ARRAY_CAPACITY,
 &&GET_PROGRAM_CAPACITY,
 
+&&READ_FROM,
+&&WRITE_TO,
 &&SET_SOURCE,
 &&SET_DESTINATION,
 

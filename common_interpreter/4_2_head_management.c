@@ -3,5 +3,5 @@
 #endif
 
 head_index += (++granularity_counter == HEAD_GRANULARITY_AT(head_index));
-head_index *= ((memory[DATA][HEADS].capacity / 2) > head_index);
+head_index *= ((CAPACITY_AT(HEADS) / NUMBER_OF_HEAD_COMPONENTS) > head_index);
 granularity_counter *= (HEAD_GRANULARITY_AT(head_index) > granularity_counter);
