@@ -27,7 +27,7 @@ if(AT_HEAD_OFFSET(2) >= NUMBER_OF_FLAGS)
 PRINT("SKIP_IF, %u, %u\n", AT_HEAD_OFFSET(1),AT_HEAD_OFFSET(2),0)
 #endif
 
-if(FLAG_AT(AT_HEAD_OFFSET(2))
+if( FLAG_AT(AT_HEAD_OFFSET(2)) )
   HEAD_AT(head_index) += AT_HEAD_OFFSET(1);
 else
   HEAD_AT(head_index) += 3;
