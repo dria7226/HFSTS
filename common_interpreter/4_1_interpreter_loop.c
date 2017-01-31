@@ -1,4 +1,4 @@
-#include "4_0_label_table.c"
+#include "4_0_instruction_table.c"
 
 #ifdef TESTING_CLI
   no_of_messages = 0;
@@ -16,7 +16,7 @@ next_instruction:
 FLAG_AT(FLAG_SET) = 0;
 
 if(AT_HEAD_OFFSET(0) < NUMBER_OF_PROGRAMS)
-  goto *label_table[AT_HEAD_OFFSET(0)];
+  goto *instruction_table[AT_HEAD_OFFSET(0)];
 
 PRINT("Invalid program code\n",0,0,0);
 
