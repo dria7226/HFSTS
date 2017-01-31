@@ -1,4 +1,4 @@
-void* label_table[NUMBER_OF_PROGRAMS] = {
+void* instruction_table[NUMBER_OF_PROGRAMS] = {
 &&EMPTY,
 &&COPY,
 &&COPY_CONSTANT,

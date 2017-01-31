@@ -1,7 +1,9 @@
 // ADD , destination_address , source_address
+#define SHORT_ADD(x,y) SET_FLAG(OVERFLOW, x > (x += y)) goto ADD_advance_head;
+
 if(WRITE_TO_VALUE_AT(head_index))
 {
-  if( AT_HEAD_OFFSET(1) >= program_capacity*PROGRAM_CHUNK_SIZE )
+  if( AT_HEAD_OFFSET(1) >= program_capacity * PROGRAM_CHUNK_SIZE )
   {
     SET_FLAG(PROGRAM_ACCESS_FAILED,1)
 
@@ -12,10 +14,12 @@ if(WRITE_TO_VALUE_AT(head_index))
     HEAD_AT(head_index) += 3;
     goto next_instruction;
   }
+
+  a = PROGRAM_AT(AT_HEAD_OFFSET(1));
 }
 else
 {
-  if(AT_HEAD_OFFSET(1) >= CAPACITY_AT(DESTINATION_AT(head_index)) )
+  if( AT_HEAD_OFFSET(1) >= CAPACITY_AT(DESTINATION_AT(head_index)) )
   {
     SET_FLAG(DATA_ACCESS_FAILED,1)
 
@@ -26,11 +30,13 @@ else
     HEAD_AT(head_index) += 3;
     goto next_instruction;
   }
+
+  a = DATA_AT(DESTINATION_AT(head_index), AT_HEAD_OFFSET(1));
 }
 
 if(READ_FROM_VALUE_AT(head_index))
 {
-  if( AT_HEAD_OFFSET(2) >= program_capacity*PROGRAM_CHUNK_SIZE )
+  if( AT_HEAD_OFFSET(2) >= program_capacity * PROGRAM_CHUNK_SIZE )
   {
     SET_FLAG(PROGRAM_ACCESS_FAILED,2)
 
@@ -41,6 +47,8 @@ if(READ_FROM_VALUE_AT(head_index))
     HEAD_AT(head_index) += 3;
     goto next_instruction;
   }
+
+  b = PROGRAM_AT(AT_HEAD_OFFSET(2));
 }
 else
 {
@@ -55,46 +63,18 @@ else
     HEAD_AT(head_index) += 3;
     goto next_instruction;
   }
+
+  b = DATA_AT(SOURCE_AT(head_index), AT_HEAD_OFFSET(2));
 }
 
-#define SHORT_ADD(x,y) SET_FLAG(OVERFLOW, x > (x + y)) goto ADD_advance_head;
-
-void* ADD_table[2][2] = {
-  {
-   &&ADD_DATA_DATA,
-   &&ADD_DATA_PROGRAM
-  },
-  {
-   &&ADD_PROGRAM_DATA,
-   &&ADD_PROGRAM_PROGRAM
-  }
-};
-
-goto ADD_table[WRITE_TO_VALUE_AT(head_index)][READ_FROM_VALUE_AT(head_index)];
-
-ADD_DATA_DATA:
-SHORT_ADD(DATA_AT(DESTINATION_AT(head_index), AT_HEAD_OFFSET(1)),
-          DATA_AT(SOURCE_AT(head_index), AT_HEAD_OFFSET(2))
-
-ADD_DATA_PROGRAM:
-SHORT_ADD(DATA_AT(DESTINATION_AT(head_index), AT_HEAD_OFFSET(1)),
-          PROGRAM_AT(AT_HEAD_OFFSET(2)))
-
-ADD_PROGRAM_DATA:
-SHORT_ADD(PROGRAM_AT(AT_HEAD_OFFSET(1)),
-          DATA_AT(SOURCE_AT(head_index), AT_HEAD_OFFSET(2)))
-
-ADD_PROGRAM_PROGRAM:
-SHORT_ADD(PROGRAM_AT(AT_HEAD_OFFSET(1)),
-          PROGRAM_AT(AT_HEAD_OFFSET(2)))
+SET_FLAG(OVERFLOW, a > (a += b))
 
 #ifdef TESTING_CLI
-  PRINT("ADD, %u, %u = %u\n", AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2), 0)
+	  PRINT("ADD, %u, %u = %u\n", AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2), a)
   if( FLAG_AT(OVERFLOW) ) PRINT("The addition overflowed.\n",0,0,0)
 #endif
 
 // advance head
-ADD_advance_head:
 HEAD_AT(head_index) += 3;
 
 goto next_instruction;
