@@ -1,6 +1,4 @@
 // ADD , destination_address , source_address
-#define SHORT_ADD(x,y) SET_FLAG(OVERFLOW, x > (x += y)) goto ADD_advance_head;
-
 if(WRITE_TO_VALUE_AT(head_index))
 {
   if( AT_HEAD_OFFSET(1) >= program_capacity * PROGRAM_CHUNK_SIZE )
