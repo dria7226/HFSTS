@@ -1,4 +1,4 @@
-// SUBTRACT_CONSTANT , destination_index , 0xdeadbeef
+// SUBTRACT_CONSTANT , write_to_address , 0xdeadbeef
 if(AT_HEAD_OFFSET(1) >= CAPACITY_AT(DESTINATION_AT(head_index)))
 {
   SET_FLAG(DATA_ACCESS_FAILED,1)

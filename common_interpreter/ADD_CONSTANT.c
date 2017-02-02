@@ -1,4 +1,4 @@
-// ADD_CONSTANT , destination_address , 0xdeadbeef
+// ADD_CONSTANT , write_to_address, 0xdeadbeef
 if(WRITE_TO_VALUE_AT(head_index))
 {
   if( AT_HEAD_OFFSET(1) >= program_capacity * PROGRAM_CHUNK_SIZE )
@@ -13,7 +13,7 @@ if(WRITE_TO_VALUE_AT(head_index))
     goto next_instruction;
   }
 
-  a = PROGRAM_AT( AT_HEAD_OFFSET(1) );
+  a = &(PROGRAM_AT( AT_HEAD_OFFSET(1)));
 }
 else
 {
@@ -29,13 +29,13 @@ else
     goto next_instruction;
   }
 
-  a = DATA_AT(DESTINATION_AT(head_index), AT_HEAD_OFFSET(1));
+  a = &(DATA_AT(DESTINATION_AT(head_index), AT_HEAD_OFFSET(1)));
 }
 
-SET_FLAG(OVERFLOW, a > (a += AT_HEAD_OFFSET(2)))
+SET_FLAG(OVERFLOW, *a > (*a += AT_HEAD_OFFSET(2)))
 
 #ifdef TESTING_CLI
-PRINT("ADD_CONSTANT, %u, %u = %u\n", AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2), a)
+PRINT("ADD_CONSTANT, %u, %u = %u\n", AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2), *a)
 if( FLAG_AT(OVERFLOW) ) PRINT("The addition overflowed.\n",0,0,0)
 #endif
 

@@ -1,4 +1,4 @@
-// REMAINDER, destination_address, source_address
+// REMAINDER, write_to_address, read_from_address
 if(AT_HEAD_OFFSET(1) >= CAPACITY_AT(DESTINATION_AT(head_index)))
 {
   SET_FLAG(DATA_ACCESS_FAILED,1)
