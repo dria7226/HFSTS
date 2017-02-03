@@ -1,20 +1,41 @@
 // GET_HEAD, write_to_address
-if(AT_HEAD_OFFSET(1) >= CAPACITY_AT(DESTINATION_AT(head_index)))
+if(WRITE_TO_VALUE_AT(head_index))
 {
-  SET_FLAG(DATA_ACCESS_FAILED,1)
+  if(AT_HEAD_OFFSET(1) >= program_capacity * PROGRAM_CHUNK_SIZE)
+  {
+    SET_FLAG(PROGRAM_ACCESS_FAILED,1)
 
-  #ifdef TESTING_CLI
-    PRINT("GET_HEAD: DATA_ACCESS_FAILED: invalid destination address %u\n",AT_HEAD_OFFSET(1),0,0)
-  #endif
+    #ifdef TESTING_CLI
+    PRINT("GET_HEAD: PROGRAM_ACCESS_FAILED: Invalid address: %u\n", AT_HEAD_OFFSET(1),0,0)
+    #endif
 
-  HEAD_AT(head_index) += 2;
-  goto next_instruction;
+    HEAD_AT(head_index) += 2;
+    goto next_instruction;
+  }
+
+  a = &(PROGRAM_AT(AT_HEAD_OFFSET(1));
+}
+else
+{
+  if(AT_HEAD_OFFSET(1) >= CAPACITY_AT(DESTINATION_AT(head_index)))
+  {
+    SET_FLAG(DATA_ACCESS_FAILED,1)
+
+    #ifdef TESTING_CLI
+    PRINT("GET_HEAD: DATA_ACCESS_FAILED: Invalid destination address: %u\n",AT_HEAD_OFFSET(1),0,0)
+    #endif
+
+    HEAD_AT(head_index) += 2;
+    goto next_instruction;
+  }
+
+  a = &(DATA_AT(DESTINATION_AT(head_index), AT_HEAD_OFFSET(1)));
 }
 
-DATA_AT(DESTINATION_AT(head_index), AT_HEAD_OFFSET(1)) = head_index;
+*a = head_index;
 
 #ifdef TESTING_CLI
-  PRINT("GET_HEAD, %u = %u\n", AT_HEAD_OFFSET(1), head_index,0)
+PRINT("GET_HEAD, %u\n",AT_HEAD_OFFSET(1),0,0)
 #endif
 
 // advance head
