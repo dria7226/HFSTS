@@ -22,14 +22,14 @@ else
     SET_FLAG(DATA_ACCESS_FAILED,1)
 
     #ifdef TESTING_CLI
-    PRINT("COPY_CONSTANT: DATA_ACCESS_FAILED: Invalid destination address: %u\n",AT_HEAD_OFFSET12),0,0)
+    PRINT("COPY_CONSTANT: DATA_ACCESS_FAILED: Invalid destination address: %u\n",AT_HEAD_OFFSET(2),0,0)
     #endif
 
     HEAD_AT(head_index) += 3;
     goto next_instruction;
   }
 
-  a = &(DATA_AT(DESTINATION_AT(head_index)), AT_HEAD_OFFSET(1)));
+  a = &(DATA_AT(DESTINATION_AT(head_index), AT_HEAD_OFFSET(1)));
 }
 
 *a = AT_HEAD_OFFSET(2);

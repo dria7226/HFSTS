@@ -13,7 +13,7 @@ if(WRITE_TO_VALUE_AT(head_index))
     goto next_instruction;
   }
 
-  a = &(PROGRAM_AT(AT_HEAD_OFFSET(1));
+  a = &(PROGRAM_AT(AT_HEAD_OFFSET(1)));
 }
 else
 {

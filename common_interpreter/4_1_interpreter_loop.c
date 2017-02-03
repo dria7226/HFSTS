@@ -1,6 +1,7 @@
 #include "4_0_instruction_table.c"
 
-DATA_TYPE* a, b;
+DATA_TYPE* a;
+DATA_TYPE* b;
 
 #ifdef TESTING_CLI
   no_of_messages = 0;

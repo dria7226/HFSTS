@@ -16,8 +16,8 @@ DATA_TYPE allocate_memory()
     #endif
     return 0;
   }
-  
-  //DATA  
+
+  //DATA
   memory[DATA] = (struct ARRAY*) ALLOCATE_MEMORY( data_capacity * sizeof(struct ARRAY) )
 
   if(memory[DATA] == MEMORY_ALLOCATION_FAILED)
@@ -27,9 +27,9 @@ DATA_TYPE allocate_memory()
     #endif
     return 0;
   }
-   
+
   //HEADS
-  memory[DATA][HEADS].capacity = 4;
+  memory[DATA][HEADS].capacity = NUMBER_OF_HEAD_COMPONENTS;
   memory[DATA][HEADS].data = (DATA_TYPE*) ALLOCATE_MEMORY( memory[DATA][HEADS].capacity * sizeof(DATA_TYPE) )
 
   if(memory[DATA][HEADS].data == MEMORY_ALLOCATION_FAILED)
@@ -39,9 +39,9 @@ DATA_TYPE allocate_memory()
     #endif
     return 0;
   }
-  
+
   HEAD_GRANULARITY_AT(0) = MAX_VALUE;
-  
+
   // FLAGS array
   memory[DATA][FLAGS].capacity = NUMBER_OF_FLAGS;
   memory[DATA][FLAGS].data = (DATA_TYPE*) ALLOCATE_MEMORY( memory[DATA][FLAGS].capacity * sizeof(DATA_TYPE) )
@@ -53,7 +53,7 @@ DATA_TYPE allocate_memory()
     #endif
     return 0;
   }
-  
+
   // MACHINE_INFO array
   memory[DATA][MACHINE_INFO].capacity = NUMBER_OF_INFO_ELEMENTS;
   memory[DATA][MACHINE_INFO].data = load_machine_info();
@@ -65,7 +65,7 @@ DATA_TYPE allocate_memory()
     #endif
     return 0;
   }
-  
+
   DATA_TYPE loop = NUMBER_OF_DEFAULT_ARRAYS;
 
   while(loop < data_capacity)
@@ -83,7 +83,7 @@ DATA_TYPE allocate_memory()
 
      loop++;
   }
-  
+
   //PROGRAM
   memory[PROGRAM] = (struct ARRAY*) ALLOCATE_MEMORY( program_capacity * sizeof(struct ARRAY) )
 
@@ -94,9 +94,9 @@ DATA_TYPE allocate_memory()
     #endif
     return 0;
   }
-  
+
   loop = 0;
-  
+
   while(loop < program_capacity)
   {
      memory[PROGRAM][loop].capacity = PROGRAM_CHUNK_SIZE;
@@ -109,7 +109,7 @@ DATA_TYPE allocate_memory()
        #endif
        return 0;
      }
-     
+
      loop++;
   }
 
@@ -132,7 +132,7 @@ void free_memory()
   }
 
   loop = 0;
-  
+
   if(memory[DATA] != MEMORY_ALLOCATION_FAILED)
   {
     while(loop < data_capacity)

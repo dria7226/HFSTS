@@ -46,7 +46,7 @@ if(READ_FROM_VALUE_AT(head_index))
     goto next_instruction;
   }
 
-  b = &(PROGRAM_AT(AT_HEAD_OFFEET(2)));
+  b = &(PROGRAM_AT(AT_HEAD_OFFSET(2)));
 }
 else
 {
@@ -62,7 +62,7 @@ else
     goto next_instruction;
   }
 
-  b = &(DATA_AT(SOURCE_ARRAY_AT(head_index), AT_HEAD_OFFSET(2)));
+  b = &(DATA_AT(SOURCE_AT(head_index), AT_HEAD_OFFSET(2)));
 }
 
 *a = *b;
