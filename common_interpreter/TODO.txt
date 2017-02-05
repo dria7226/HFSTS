@@ -1,10 +1,13 @@
 COMMON INTERPRETER
 
-- rewrite CORE programs with WRITE_TO / READ_FROM in mind. Test them.
+- correct all core programs with FAILSAFEs in mind
+
 - fix header bug detected in test_program.c
-- fix double SUBTRACT_CONSTANT.c execution
 
 - create and finish core programs
+ - INSERT_ARRAY
+ - SET_MEMORY_FAILSAFE
+ - SET_MATH_FAILSAFE
  - create video context
  - read keyboard
  - read mouse

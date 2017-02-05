@@ -13,7 +13,7 @@ if(AT_HEAD_OFFSET(2) == 0)
 
 if(WRITE_TO_VALUE_AT(head_index))
 {
-  if(AT_HEAD_OFFSET(1) >= program_capacity * PROGRAM_CHUNK_SIZE)
+  if(AT_HEAD_OFFSET(1) > program_capacity * PROGRAM_CHUNK_SIZE)
   {
     SET_FLAG(PROGRAM_ACCESS_FAILED,1)
 
@@ -29,7 +29,7 @@ if(WRITE_TO_VALUE_AT(head_index))
 }
 else
 {
-  if(AT_HEAD_OFFSET(1) >= CAPACITY_AT(DESTINATION_AT(head_index)))
+  if(AT_HEAD_OFFSET(1) > CAPACITY_AT(DESTINATION_AT(head_index)))
   {
     SET_FLAG(DATA_ACCESS_FAILED,1)
 
@@ -47,7 +47,7 @@ else
 *a /= AT_HEAD_OFFSET(2);
 
 #ifdef TESTING_CLI
-  PRINT("DIVIDE_CONSTANT, %u, %u = %u\n", AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2), *a)
+PRINT("DIVIDE_CONSTANT, %u, %u = %u\n", AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2), *a)
 #endif
 
 // advance head

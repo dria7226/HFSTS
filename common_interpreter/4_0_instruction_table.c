@@ -2,6 +2,7 @@ void* instruction_table[NUMBER_OF_PROGRAMS] = {
 &&EMPTY,
 &&COPY,
 &&COPY_CONSTANT,
+&&INSERT_ARRAY,
 
 &&GO_TO,
 &&GO_IF,
@@ -20,6 +21,9 @@ void* instruction_table[NUMBER_OF_PROGRAMS] = {
 &&WRITE_TO,
 &&SET_SOURCE,
 &&SET_DESTINATION,
+
+&&SET_MEMORY_FAILSAFE,
+&&SET_MATH_FAILSAFE,
 
 &&ADD,
 &&ADD_CONSTANT,

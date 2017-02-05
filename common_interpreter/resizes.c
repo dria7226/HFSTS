@@ -6,7 +6,7 @@ unsigned int resize_array(DATA_TYPE target, DATA_TYPE capacity)
   DATA_TYPE* new = (DATA_TYPE*) ALLOCATE_MEMORY( capacity * sizeof(DATA_TYPE) )
 
   if(new == MEMORY_ALLOCATION_FAILED)
-   return 1;
+   return 2;
 
   DATA_TYPE loop = 0;
   DATA_TYPE length = memory[DATA][target].capacity*(memory[DATA][target].capacity < capacity) + capacity*(memory[DATA][target].capacity > capacity);

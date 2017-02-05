@@ -1,7 +1,7 @@
 // COPY_CONSTANT , write_to_address, 0xdeadbeef
 if(WRITE_TO_VALUE_AT(head_index))
 {
-  if(AT_HEAD_OFFSET(1) >= program_capacity * PROGRAM_CHUNK_SIZE)
+  if(AT_HEAD_OFFSET(1) > program_capacity * PROGRAM_CHUNK_SIZE)
   {
     SET_FLAG(PROGRAM_ACCESS_FAILED, 1)
 
@@ -17,7 +17,7 @@ if(WRITE_TO_VALUE_AT(head_index))
 }
 else
 {
-  if(AT_HEAD_OFFSET(1) >= CAPACITY_AT(DESTINATION_AT(head_index)))
+  if(AT_HEAD_OFFSET(1) > CAPACITY_AT(DESTINATION_AT(head_index)))
   {
     SET_FLAG(DATA_ACCESS_FAILED,1)
 

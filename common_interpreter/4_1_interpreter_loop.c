@@ -33,6 +33,9 @@ COPY:
 COPY_CONSTANT:
 #include "COPY_CONSTANT.c"
 
+INSERT_ARRAY:
+#include "INSERT_ARRAY.c"
+
 GO_TO:
 #include "GO_TO.c"
 
@@ -74,6 +77,12 @@ SET_SOURCE:
 
 SET_DESTINATION:
 #include "SET_DESTINATION.c"
+
+SET_MEMORY_FAILSAFE:
+#include "SET_MEMORY_FAILSAFE.c"
+
+SET_MATH_FAILSAFE:
+#include "SET_MATH_FAILSAFE.c"
 
 ADD:
 #include "ADD.c"
