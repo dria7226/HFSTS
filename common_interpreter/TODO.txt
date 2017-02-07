@@ -6,8 +6,7 @@ COMMON INTERPRETER
 
 - create and finish core programs
  - INSERT_ARRAY
- - SET_MEMORY_FAILSAFE
- - SET_MATH_FAILSAFE
+ - logical or, and, not, shift, xor
  - create video context
  - read keyboard
  - read mouse
@@ -17,11 +16,7 @@ COMMON INTERPRETER
  - read time
  - read gyroscope
 
-- fix test_program (exit == copy)
-
 - implement multi core support ???
-
-- test MULTIPLY OVERFLOW
 
 - work on helpers.c
 - work on test_program

@@ -18,6 +18,9 @@ next_instruction:
 
 FLAG_AT(FLAG_SET) = 0;
 
+if(HEAD_AT(head_index) >= program_capacity * PROGRAM_CHUNK_SIZE - 2)
+  goto out;
+
 if(AT_HEAD_OFFSET(0) < NUMBER_OF_PROGRAMS)
   goto *instruction_table[AT_HEAD_OFFSET(0)];
 
@@ -66,11 +69,11 @@ GET_ARRAY_CAPACITY:
 GET_PROGRAM_CAPACITY:
 #include "GET_PROGRAM_CAPACITY.c"
 
-READ_FROM:
-#include "READ_FROM.c"
+GET_HEAD:
+#include "GET_HEAD.c"
 
-WRITE_TO:
-#include "WRITE_TO.c"
+GET_GRANULARITY_COUNTER:
+#include "GET_GRANULARITY_COUNTER.c"
 
 SET_SOURCE:
 #include "SET_SOURCE.c"
@@ -78,11 +81,11 @@ SET_SOURCE:
 SET_DESTINATION:
 #include "SET_DESTINATION.c"
 
-SET_MEMORY_FAILSAFE:
-#include "SET_MEMORY_FAILSAFE.c"
+SET_TRANSFER_TYPE:
+#include "SET_TRANSFER_TYPE.c"
 
-SET_MATH_FAILSAFE:
-#include "SET_MATH_FAILSAFE.c"
+SET_FAILSAFE_TYPE:
+#include "SET_FAILSAFE_TYPE.c"
 
 ADD:
 #include "ADD.c"
@@ -115,12 +118,6 @@ REMAINDER:
 
 REMAINDER_CONSTANT:
 #include "REMAINDER_CONSTANT.c"
-
-GET_HEAD:
-#include "GET_HEAD.c"
-
-GET_GRANULARITY_COUNTER:
-#include "GET_GRANULARITY_COUNTER.c"
 
 EXIT:
 #include "EXIT.c"

@@ -15,3 +15,16 @@ DATA_TYPE* load_machine_info()
 
   return machine_info;
 }
+
+DATA_TYPE* load_performance_info()
+{
+  DATA_TYPE* performance_info = (DATA_TYPE*) ALLOCATE_MEMORY( memory[DATA][PERFORMANCE_INFO].capacity * sizeof(DATA_TYPE) )
+
+  if(performance_info == MEMORY_ALLOCATION_FAILED)
+  {
+    return MEMORY_ALLOCATION_FAILED;
+  }
+
+  return machine_info;
+}
+
