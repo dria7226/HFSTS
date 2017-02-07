@@ -1,5 +1,7 @@
 COMMON INTERPRETER
 
+- make all capacities highest indices
+
 - correct all core programs with FAILSAFEs in mind
 
 - fix header bug detected in test_program.c

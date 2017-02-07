@@ -66,6 +66,18 @@ DATA_TYPE allocate_memory()
     return 0;
   }
 
+  // PERFORMANCE_INFO array
+  memory[DATA][PERFORMANCE_INFO].capacity = NUMBER_OF_PROGRAMS;
+  memory[DATA][PERFORMANCE_INFO].data = load_performance_info();
+
+  if(memory[DATA][PERFORMANCE_INFO].data == MEMORY_ALLOCATION_FAILED)
+  {
+    #ifdef TESTING_CLI
+    PRINT("Couldn't allocate memory for 'memory[DATA][PERFORMANCE_INFO].data.\n'",0,0,0)
+    #endif
+    return 0;
+  }
+  
   DATA_TYPE loop = NUMBER_OF_DEFAULT_ARRAYS;
 
   while(loop < data_capacity)

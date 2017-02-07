@@ -11,7 +11,7 @@ DATA_TYPE* load_machine_info()
   machine_info[0] = MAX_VALUE;
   machine_info[1] = PROGRAM_CHUNK_SIZE;
 
-  machine_info[PLATFORM] = LINUX_PLATFORM;
+  machine_info[PLATFORM] = CURRENT_PLATFORM;
 
   return machine_info;
 }
@@ -25,6 +25,9 @@ DATA_TYPE* load_performance_info()
     return MEMORY_ALLOCATION_FAILED;
   }
 
-  return machine_info;
+  performance_info[0] = 0;
+  performance_info[NUMBER_OF_PROGRAMS-1] = 0;
+  
+  return performace_info;
 }
 
