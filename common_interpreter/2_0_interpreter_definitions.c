@@ -40,19 +40,18 @@ EXIT,
 NUMBER_OF_PROGRAMS
 };
 
-#define DATA_TYPE unsigned int
+#define DATA_TYPE unsigned long
 
-#define DEFAULT_SIZE  32
+#define DEFAULT_SIZE  31
 #define MAX_VALUE     0xFFFFFFFF
 
-#define PROGRAM_CHUNK_SIZE 128
+#define PROGRAM_CHUNK_SIZE 127
 
 struct ARRAY{
   DATA_TYPE* data;
   DATA_TYPE  capacity;
 };
 
-//SHORTCUTS
 enum{
   DATA,
   PROGRAM

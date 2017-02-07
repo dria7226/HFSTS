@@ -1,7 +1,7 @@
 #define MEMORY_AT(x,y,z)           memory[x][y].data[z]
 
 #define DATA_AT(x,y)               MEMORY_AT(DATA,x,y)
-#define CAPACITY_AT(x)             memory[DATA][x].capacity - 1
+#define CAPACITY_AT(x)             memory[DATA][x].capacity
 
 #define HEAD_AT(index)             MEMORY_AT(DATA, HEADS, index*NUMBER_OF_HEAD_COMPONENTS + ADDRESS)
 #define HEAD_GRANULARITY_AT(index) MEMORY_AT(DATA, HEADS, index*NUMBER_OF_HEAD_COMPONENTS + GRANULARITY)

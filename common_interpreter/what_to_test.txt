@@ -1,0 +1,8 @@
+- every function (all combinations)
+
+- capacity ( should always use highest index)
+- resize programs
+- memory allcoation programs
+- head management
+- program reaching end of program array
+- 

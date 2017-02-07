@@ -2,12 +2,12 @@
 
 DATA_TYPE allocate_memory()
 {
-  program_capacity = DEFAULT_SIZE;
+  program_capacity = 0;
 
-  data_capacity = DEFAULT_SIZE*(DEFAULT_SIZE >= NUMBER_OF_DEFAULT_ARRAYS) + NUMBER_OF_DEFAULT_ARRAYS*(DEFAULT_SIZE < NUMBER_OF_DEFAULT_ARRAYS);
+  data_capacity = DEFAULT_SIZE*(DEFAULT_SIZE >= (NUMBER_OF_DEFAULT_ARRAYS - 1)) + (NUMBER_OF_DEFAULT_ARRAYS-1)*(DEFAULT_SIZE < (NUMBER_OF_DEFAULT_ARRAYS-1));
 
   //MEMORY
-  memory = (struct ARRAY**) ALLOCATE_MEMORY( 2 * sizeof(struct ARRAY*) )
+  memory = (struct ARRAY**) ALLOCATE_MEMORY( 1 * sizeof(struct ARRAY*) )
 
   if(memory == MEMORY_ALLOCATION_FAILED)
   {
@@ -29,7 +29,7 @@ DATA_TYPE allocate_memory()
   }
 
   //HEADS
-  memory[DATA][HEADS].capacity = NUMBER_OF_HEAD_COMPONENTS;
+  memory[DATA][HEADS].capacity = NUMBER_OF_HEAD_COMPONENTS - 1;
   memory[DATA][HEADS].data = (DATA_TYPE*) ALLOCATE_MEMORY( memory[DATA][HEADS].capacity * sizeof(DATA_TYPE) )
 
   if(memory[DATA][HEADS].data == MEMORY_ALLOCATION_FAILED)
@@ -43,7 +43,7 @@ DATA_TYPE allocate_memory()
   HEAD_GRANULARITY_AT(0) = MAX_VALUE;
 
   // FLAGS array
-  memory[DATA][FLAGS].capacity = NUMBER_OF_FLAGS;
+  memory[DATA][FLAGS].capacity = NUMBER_OF_FLAGS - 1;
   memory[DATA][FLAGS].data = (DATA_TYPE*) ALLOCATE_MEMORY( memory[DATA][FLAGS].capacity * sizeof(DATA_TYPE) )
 
   if(memory[DATA][FLAGS].data == MEMORY_ALLOCATION_FAILED)
@@ -55,7 +55,7 @@ DATA_TYPE allocate_memory()
   }
 
   // MACHINE_INFO array
-  memory[DATA][MACHINE_INFO].capacity = NUMBER_OF_INFO_ELEMENTS;
+  memory[DATA][MACHINE_INFO].capacity = NUMBER_OF_INFO_ELEMENTS - 1;
   memory[DATA][MACHINE_INFO].data = load_machine_info();
 
   if(memory[DATA][MACHINE_INFO].data == MEMORY_ALLOCATION_FAILED)
@@ -67,7 +67,7 @@ DATA_TYPE allocate_memory()
   }
 
   // PERFORMANCE_INFO array
-  memory[DATA][PERFORMANCE_INFO].capacity = NUMBER_OF_PROGRAMS;
+  memory[DATA][PERFORMANCE_INFO].capacity = NUMBER_OF_PROGRAMS - 1;
   memory[DATA][PERFORMANCE_INFO].data = load_performance_info();
 
   if(memory[DATA][PERFORMANCE_INFO].data == MEMORY_ALLOCATION_FAILED)
@@ -80,7 +80,7 @@ DATA_TYPE allocate_memory()
   
   DATA_TYPE loop = NUMBER_OF_DEFAULT_ARRAYS;
 
-  while(loop < data_capacity)
+  while(loop <= data_capacity)
   {
      memory[DATA][loop].capacity = DEFAULT_SIZE;
      memory[DATA][loop].data = (DATA_TYPE*) ALLOCATE_MEMORY( memory[DATA][loop].capacity * sizeof(DATA_TYPE) )
@@ -109,7 +109,7 @@ DATA_TYPE allocate_memory()
 
   loop = 0;
 
-  while(loop < program_capacity)
+  while(loop <= program_capacity)
   {
      memory[PROGRAM][loop].capacity = PROGRAM_CHUNK_SIZE;
      memory[PROGRAM][loop].data = (DATA_TYPE*) ALLOCATE_MEMORY( memory[PROGRAM][loop].capacity * sizeof(DATA_TYPE) )
@@ -134,7 +134,7 @@ void free_memory()
 
   if(memory[PROGRAM] != MEMORY_ALLOCATION_FAILED)
   {
-    while(loop < program_capacity)
+    while(loop <= program_capacity)
     {
       if(memory[PROGRAM][loop].data != MEMORY_ALLOCATION_FAILED) DEALLOCATE_MEMORY(memory[PROGRAM][loop].data, PROGRAM_CHUNK_SIZE);
       loop++;
@@ -147,7 +147,7 @@ void free_memory()
 
   if(memory[DATA] != MEMORY_ALLOCATION_FAILED)
   {
-    while(loop < data_capacity)
+    while(loop <= data_capacity)
     {
       if(memory[DATA][loop].data != MEMORY_ALLOCATION_FAILED) DEALLOCATE_MEMORY(memory[DATA][loop].data, memory[DATA][loop].capacity);
       loop++;

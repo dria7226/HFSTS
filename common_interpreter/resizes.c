@@ -1,7 +1,6 @@
 unsigned int resize_array(DATA_TYPE target, DATA_TYPE capacity)
 {
   if(capacity == memory[DATA][target].capacity) return 0;
-  if(capacity == 0) return 1;
 
   DATA_TYPE* new = (DATA_TYPE*) ALLOCATE_MEMORY( capacity * sizeof(DATA_TYPE) )
 
@@ -10,7 +9,7 @@ unsigned int resize_array(DATA_TYPE target, DATA_TYPE capacity)
 
   DATA_TYPE loop = 0;
   DATA_TYPE length = memory[DATA][target].capacity*(memory[DATA][target].capacity < capacity) + capacity*(memory[DATA][target].capacity > capacity);
-  for(;loop < length; loop++)
+  for(;loop <= length; loop++)
   {
     new[loop] = memory[DATA][target].data[loop];
   }
@@ -66,7 +65,7 @@ unsigned int resize_program(DATA_TYPE capacity)
 unsigned int resize_data(DATA_TYPE capacity)
 {
   if(capacity == data_capacity ) return 0;
-  if(capacity < 2) return 1;
+  if(capacity < 1) return 1;
 
   struct ARRAY* new = (struct ARRAY*) ALLOCATE_MEMORY( capacity * sizeof(struct ARRAY) )
 

@@ -1,4 +1,5 @@
-#define ALLOCATE_MEMORY(length) VirtualAlloc(NULL, length, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
+#define ALLOCATE_MEMORY(length) VirtualAlloc(NULL, (unsigned long long)length + 1, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
+#define ALLOCATE_RANDOM_MEMORY(length) RANDOM MEMORY ALLOCATION NOT IMPLEMENTED
 #define DEALLOCATE_MEMORY(address,length) VirtualFree(address, 0, MEM_RELEASE);
 
 #define MEMORY_ALLOCATION_FAILED NULL
