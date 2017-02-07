@@ -28,6 +28,6 @@ DATA_TYPE* load_performance_info()
   performance_info[0] = 0;
   performance_info[NUMBER_OF_PROGRAMS-1] = 0;
   
-  return performace_info;
+  return performance_info;
 }
 

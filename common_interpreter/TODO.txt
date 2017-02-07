@@ -1,5 +1,7 @@
 COMMON INTERPRETER
 
+- fix bug in allocate_memory()
+
 - correct all core programs with FAILSAFEs in mind
 
 - fix header bug detected in test_program.c
