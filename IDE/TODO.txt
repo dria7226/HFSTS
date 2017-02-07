@@ -1,1 +1,7 @@
  - system for managing fast vs safe code
+ - bug detection and fixing system
+ - social/commenting system
+ - code storage system ( group privacy w/ general group acting as public)
+ - performance detection and fixing system
+ - automatic work time tracker
+ - 
