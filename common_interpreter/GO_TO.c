@@ -4,7 +4,7 @@ if(MEMORY_FAILSAFE_AT(head_index) && (AT_HEAD_OFFSET(1) > program_capacity * PRO
   SET_FLAG(PROGRAM_ACCESS_FAILED,1)
 
   #ifdef TESTING_CLI
-  PRINT("GO_TO: PROGRAM_ACCESS_FAILED: invalid program address %u\n",AT_HEAD_OFFSET(1),0,0)
+  PRINT("GO_TO: %s: %s: %u\n",error_titles[PROGRAM_ACCESS_FAILED-3],error_messages[5],AT_HEAD_OFFSET(1))
   #endif
 
   HEAD_AT(head_index) += 2;

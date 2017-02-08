@@ -11,24 +11,8 @@ if(MEMORY_FAILSAFE_AT(head_index))
     PRINT("RESIZE_DATA, %u\n",AT_HEAD_OFFSET(1),0,0)
   }
   else
-  {
-    if(FLAG_AT(DATA_RESIZE_FAILED) == 1)
-    {
-      PRINT("RESIZE_DATA: DATA_RESIZE_FAILED: Invalid capacity: %u\n",AT_HEAD_OFFSET(1),0,0)
-
-      HEAD_AT(head_index) += 2;
-      goto next_instruction;
-    }
-    else
-    //if(FLAG_AT(DATA_RESIZE_FAILED) == 2)
-    {
-      PRINT("RESIZE_DATA: DATA_RESIZE_FAILED: Can't allocate memory\n",0,0,0)
-
-      HEAD_AT(head_index) += 2;
-      goto next_instruction;
-    }
-}
-#endif
+  PRINT("RESIZE_DATA, %s: %s\n",error_titles[DATA_RESIZE_FAILED-3],error_messages[FLAG_AT(DATA_RESIZE_FAILED)-1],0)
+  #endif
 }
 
 // advance head

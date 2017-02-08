@@ -10,6 +10,10 @@
 
 #include "2_0_interpreter_definitions.c"
 
+#ifdef TESTING_CLI
+#include "testing_messages.c"
+#endif
+
 struct ARRAY**   memory;
 
 DATA_TYPE        program_capacity;

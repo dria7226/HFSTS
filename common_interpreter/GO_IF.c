@@ -4,7 +4,7 @@ if(MEMORY_FAILSAFE_AT(head_index) && (AT_HEAD_OFFSET(1) > program_capacity * PRO
   SET_FLAG(PROGRAM_ACCESS_FAILED, 1)
 
   #ifdef TESTING_CLI
-  PRINT("GO_IF: PROGRAM_ACCESS_FAILED: Invalid address: %u\n",AT_HEAD_OFFSET(1),0,0)
+  PRINT("GO_IF: %s: %s: %u\n",error_titles[PROGRAM_ACCESS_FAILED-3],error_messages[5],AT_HEAD_OFFSET(1))
   #endif
 
   HEAD_AT(head_index) += 3;
@@ -18,7 +18,7 @@ if(READ_FROM_VALUE_AT(head_index))
     SET_FLAG(PROGRAM_ACCESS_FAILED, 2)
 
     #ifdef TESTING_CLI
-    PRINT("GO_IF: PROGRAM_ACCESS_FAILED: Invalid address: %u\n",AT_HEAD_OFFSET(2),0,0)
+    PRINT("GO_IF: %s: %s: %u\n",error_titles[PROGRAM_ACCESS_FAILED-3],error_messages[5],AT_HEAD_OFFSET(2))
     #endif
 
     HEAD_AT(head_index) += 3;
@@ -34,7 +34,7 @@ else
     SET_FLAG(DATA_ACCESS_FAILED, 2)
 
     #ifdef TESTING_CLI
-    PRINT("GO_IF: DATA_ACCESS_FAILED: Invalid source address: %u\n",AT_HEAD_OFFSET(2),0,0)
+    PRINT("GO_IF: %s: %s: %u\n",error_titles[DATA_ACCESS_FAILED-3],error_messages[1+FLAG_AT(DATA_ACCESS_FAILED)],AT_HEAD_OFFSET(2))
     #endif
 
     HEAD_AT(head_index) += 3;

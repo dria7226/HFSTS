@@ -6,7 +6,7 @@ if(WRITE_TO_VALUE_AT(head_index))
     SET_FLAG(PROGRAM_ACCESS_FAILED,1)
 
     #ifdef TESTING_CLI
-    PRINT("GET_PROGRAM_CAPACITY: PROGRAM_ACCESS_FAILED: Invalid address: %u\n", AT_HEAD_OFFSET(1),0,0)
+    PRINT("GET_PROGRAM_CAPACITY: %s: %s: %u\n",error_titles[PROGRAM_ACCESS_FAILED-3],error_messages[5],AT_HEAD_OFFSET(1))
     #endif
 
     HEAD_AT(head_index) += 2;
@@ -22,7 +22,7 @@ else
     SET_FLAG(DATA_ACCESS_FAILED,1)
 
     #ifdef TESTING_CLI
-    PRINT("GET_PROGRAM_CAPACITY: DATA_ACCESS_FAILED: Invalid destination address: %u\n",AT_HEAD_OFFSET(1),0,0)
+    PRINT("GET_PROGRAM_CAPACITY: %s: %s: %u\n",error_titles[DATA_ACCESS_FAILED-3],error_messages[1+FLAG_AT(DATA_ACCESS_FAILED)]AT_HEAD_OFFSET(1))
     #endif
 
     HEAD_AT(head_index) += 2;
