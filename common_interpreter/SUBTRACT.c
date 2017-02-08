@@ -76,5 +76,4 @@ if( FLAG_AT(UNDERFLOW) ) PRINT("The subtraction underflowed.\n",0,0,0)
 
 // advance head
 HEAD_AT(head_index) +=3;
-
 goto next_instruction;

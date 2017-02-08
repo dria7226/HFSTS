@@ -1,4 +1,4 @@
-unsigned int resize_array(DATA_TYPE target, DATA_TYPE capacity)
+DATA_TYPE resize_array(DATA_TYPE target, DATA_TYPE capacity)
 {
   if(capacity == memory[DATA][target].capacity) return 0;
 
@@ -22,7 +22,7 @@ unsigned int resize_array(DATA_TYPE target, DATA_TYPE capacity)
   return 0;
 }
 
-unsigned int resize_program(DATA_TYPE capacity)
+DATA_TYPE resize_program(DATA_TYPE capacity)
 {
   if(capacity == program_capacity) return 0;
 
@@ -62,7 +62,7 @@ unsigned int resize_program(DATA_TYPE capacity)
   return 0;
 }
 
-unsigned int resize_data(DATA_TYPE capacity)
+DATA_TYPE resize_data(DATA_TYPE capacity)
 {
   if(capacity == data_capacity ) return 0;
   if(capacity < 1) return 1;

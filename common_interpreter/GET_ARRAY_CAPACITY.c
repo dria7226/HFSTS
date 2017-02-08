@@ -1,5 +1,5 @@
 // GET_ARRAY_CAPACITY, array, write_to_address
-if(AT_HEAD_OFFSET(1) > data_capacity)
+if(MEMORY_FAILSAFE_AT(head_index) && (AT_HEAD_OFFSET(1) > data_capacity))
 {
   SET_FLAG(DATA_ACCESS_FAILED,3)
 
@@ -13,7 +13,7 @@ if(AT_HEAD_OFFSET(1) > data_capacity)
 
 if(WRITE_TO_VALUE_AT(head_index))
 {
-  if(AT_HEAD_OFFSET(2) > program_capacity * PROGRAM_CHUNK_SIZE)
+  if(MEMORY_FAILSAFE_AT(head_index) && (AT_HEAD_OFFSET(2) > program_capacity * PROGRAM_CHUNK_SIZE))
   {
     SET_FLAG(PROGRAM_ACCESS_FAILED,2)
 
@@ -29,7 +29,7 @@ if(WRITE_TO_VALUE_AT(head_index))
 }
 else
 {
-  if(AT_HEAD_OFFSET(2) > CAPACITY_AT(DESTINATION_AT(head_index)))
+  if(MEMORY_FAILSAFE_AT(head_index) && (AT_HEAD_OFFSET(2) > CAPACITY_AT(DESTINATION_AT(head_index))))
   {
     SET_FLAG(DATA_ACCESS_FAILED,2)
 
@@ -52,5 +52,4 @@ PRINT("GET_ARRAY_CAPACITY, %u, %u\n",AT_HEAD_OFFSET(1),AT_HEAD_OFFSET(2),0)
 
 // advance head
 HEAD_AT(head_index) += 3;
-
 goto next_instruction;

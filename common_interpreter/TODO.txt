@@ -1,5 +1,7 @@
 COMMON INTERPRETER
 
+- error string table
+
 - fix bug in allocate_memory()
 
 - correct all core programs with FAILSAFEs in mind

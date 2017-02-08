@@ -1,5 +1,5 @@
 // DIVIDE_CONSTANT , write_to_address , 0xdeadbeef
-if(AT_HEAD_OFFSET(2) == 0)
+if(MATH_FAILSAFE_AT(head_index) && (AT_HEAD_OFFSET(2) == 0))
 {
   SET_FLAG(DIVISION_BY_ZERO,1)
 
@@ -13,7 +13,7 @@ if(AT_HEAD_OFFSET(2) == 0)
 
 if(WRITE_TO_VALUE_AT(head_index))
 {
-  if(AT_HEAD_OFFSET(1) > program_capacity * PROGRAM_CHUNK_SIZE)
+  if(MATH_FAILSAFE_AT(head_index) && (AT_HEAD_OFFSET(1) > program_capacity * PROGRAM_CHUNK_SIZE))
   {
     SET_FLAG(PROGRAM_ACCESS_FAILED,1)
 
@@ -29,7 +29,7 @@ if(WRITE_TO_VALUE_AT(head_index))
 }
 else
 {
-  if(AT_HEAD_OFFSET(1) > CAPACITY_AT(DESTINATION_AT(head_index)))
+  if(MATH_FAILSAFE_AT(head_index) && (AT_HEAD_OFFSET(1) > CAPACITY_AT(DESTINATION_AT(head_index))))
   {
     SET_FLAG(DATA_ACCESS_FAILED,1)
 
@@ -52,5 +52,4 @@ PRINT("DIVIDE_CONSTANT, %u, %u = %u\n", AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2), *a
 
 // advance head
 HEAD_AT(head_index) += 3;
-
 goto next_instruction;

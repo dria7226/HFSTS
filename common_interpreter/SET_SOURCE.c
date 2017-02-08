@@ -1,5 +1,5 @@
 // SET_SOURCE , address
-if(AT_HEAD_OFFSET(1) >= data_capacity)
+if(AT_HEAD_OFFSET(1) > data_capacity)
 {
   SET_FLAG(DATA_ACCESS_FAILED,3)
 
@@ -19,5 +19,4 @@ PRINT("SET_SOURCE, %u\n", AT_HEAD_OFFSET(1),0,0)
 
 // advance head
 HEAD_AT(head_index) += 2;
-
 goto next_instruction;

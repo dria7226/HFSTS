@@ -1,5 +1,5 @@
 // SKIP, 0xdeadbeef
-if(HEAD_AT(head_index) + AT_HEAD_OFFSET(1) >= program_capacity * PROGRAM_CHUNK_SIZE)
+if(HEAD_AT(head_index) + AT_HEAD_OFFSET(1) > program_capacity * PROGRAM_CHUNK_SIZE)
 {
   SET_FLAG(PROGRAM_ACCESS_FAILED,1)
 

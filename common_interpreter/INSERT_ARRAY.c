@@ -24,5 +24,4 @@ PRINT("INSERT_ARRAY, %u, %u\n",AT_HEAD_OFFSET(1),AT_HEAD_OFFSET(2),0)
 
 // advance head
 HEAD_AT(head_index) += 3;
-
 goto next_instruction;
