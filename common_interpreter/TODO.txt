@@ -1,12 +1,6 @@
 COMMON INTERPRETER
 
-- error string table
-
 - fix bug in allocate_memory()
-
-- correct all core programs with FAILSAFEs in mind
-
-- fix header bug detected in test_program.c
 
 - create and finish core programs
  - INSERT_ARRAY
