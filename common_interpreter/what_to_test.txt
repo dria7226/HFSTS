@@ -1,4 +1,10 @@
-- every function (all combinations)
+for every program
+ for every transfer type combination
+   for every failsafe combination
+     for every head index
+     for every program_capacity
+
+- every program (all combinations)
 
 - capacity ( should always use highest index)
 - resize programs
