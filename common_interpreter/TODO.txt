@@ -1,5 +1,14 @@
 COMMON INTERPRETER
 
+- add keyboard state default array
+- add mouse state default array
+- add joystick state default array
+- add windows default array
+
+- make the constant a third transfer type
+     0-1 - write to , 00-10 - read from
+ :(((
+
 - create and finish core programs
  - INSERT_ARRAY
  - read time
