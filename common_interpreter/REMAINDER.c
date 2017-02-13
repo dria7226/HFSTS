@@ -22,7 +22,7 @@ else
     SET_FLAG(DATA_ACCESS_FAILED,1)
 
     #ifdef TESTING_CLI
-    PRINT("REMAINDER: %s: %s: %u\n",error_titles[DATA_ACCESS_FAILED-3],error_messages[1+FLAT_AT(DATA_ACCESS_FAILED)],AT_HEAD_OFFSET(1))
+    PRINT("REMAINDER: %s: %s: %u\n",error_titles[DATA_ACCESS_FAILED-3],error_messages[1+FLAG_AT(DATA_ACCESS_FAILED)],AT_HEAD_OFFSET(1))
     #endif
 
     HEAD_AT(head_index) += 3;

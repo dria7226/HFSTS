@@ -2,7 +2,7 @@ DATA_TYPE resize_array(DATA_TYPE target, DATA_TYPE capacity)
 {
   if(capacity == memory[DATA][target].capacity) return 0;
 
-  DATA_TYPE* new = (DATA_TYPE*) ALLOCATE_MEMORY( capacity * sizeof(DATA_TYPE) )
+  DATA_TYPE* new = ALLOCATE_MEMORY( capacity, DATA_TYPE )
 
   if(new == MEMORY_ALLOCATION_FAILED)
    return 2;
@@ -26,9 +26,9 @@ DATA_TYPE resize_program(DATA_TYPE capacity)
 {
   if(capacity == program_capacity) return 0;
 
-  if(capacity > MAX_VALUE/PROGRAM_CHUNK_SIZE) capacity = (DATA_TYPE) MAX_VALUE / PROGRAM_CHUNK_SIZE;
+  if(capacity > MAX_VALUE/(PROGRAM_CHUNK_SIZE+1)) capacity = (DATA_TYPE) MAX_VALUE /(PROGRAM_CHUNK_SIZE+1);
 
-  struct ARRAY* new = (struct ARRAY*) ALLOCATE_MEMORY( capacity * sizeof(struct ARRAY) )
+  struct ARRAY* new = ALLOCATE_MEMORY( capacity, struct ARRAY )
 
   if(new == MEMORY_ALLOCATION_FAILED)
    return 2;
@@ -49,7 +49,7 @@ DATA_TYPE resize_program(DATA_TYPE capacity)
     for(loop = program_capacity; loop < capacity; loop++)
     {
       new[loop].capacity = PROGRAM_CHUNK_SIZE;
-      new[loop].data = (DATA_TYPE*) ALLOCATE_MEMORY( new[loop].capacity * sizeof(DATA_TYPE) )
+      new[loop].data = ALLOCATE_MEMORY( new[loop].capacity, DATA_TYPE )
 
       if(new[loop].data == MEMORY_ALLOCATION_FAILED)
        return 2;
@@ -65,9 +65,9 @@ DATA_TYPE resize_program(DATA_TYPE capacity)
 DATA_TYPE resize_data(DATA_TYPE capacity)
 {
   if(capacity == data_capacity ) return 0;
-  if(capacity < 1) return 1;
+  if(capacity < NUMBER_OF_DEFAULT_ARRAYS) return 1;
 
-  struct ARRAY* new = (struct ARRAY*) ALLOCATE_MEMORY( capacity * sizeof(struct ARRAY) )
+  struct ARRAY* new = ALLOCATE_MEMORY( capacity, struct ARRAY )
 
   if(new == MEMORY_ALLOCATION_FAILED)
    return 2;
@@ -88,7 +88,7 @@ DATA_TYPE resize_data(DATA_TYPE capacity)
     for(loop = data_capacity; loop < capacity; loop++)
     {
       new[loop].capacity = DEFAULT_SIZE;
-      new[loop].data = (DATA_TYPE*) ALLOCATE_MEMORY( new[loop].capacity * sizeof(DATA_TYPE) )
+      new[loop].data = ALLOCATE_MEMORY( new[loop].capacity, DATA_TYPE )
 
       if(new[loop].data = MEMORY_ALLOCATION_FAILED)
        return 2;

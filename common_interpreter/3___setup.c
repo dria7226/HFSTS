@@ -1,4 +1,4 @@
-if(! allocate_memory()) { free_memory(); return 0; }
+if(allocate_memory()) { free_memory(); return 0; }
 
 #ifdef TESTING_CLI
 load_test_program();

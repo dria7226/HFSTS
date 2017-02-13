@@ -62,7 +62,7 @@ else
     goto next_instruction;
   }
 
-  b = &(DATA_AT(SOURCE_AT(head_index), AT_HEAD_OFFSET(2));
+  b = &(DATA_AT(SOURCE_AT(head_index), AT_HEAD_OFFSET(2)));
 }
 
 product = *a * *b;

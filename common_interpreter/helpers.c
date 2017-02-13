@@ -8,7 +8,7 @@ void load_test_program()
   #define DATA_LENGTH sizeof(test_data)/sizeof(DATA_TYPE*)
   
   //load program
-  resize_program(PROGRAM_LENGTH/PROGRAM_CHUNK_SIZE + 1);
+  resize_program(PROGRAM_LENGTH/PROGRAM_CHUNK_SIZE);
   
   DATA_TYPE loop = 0;
 

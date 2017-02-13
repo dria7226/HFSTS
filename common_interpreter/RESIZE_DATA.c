@@ -1,5 +1,5 @@
 // RESIZE_DATA, capacity
-a = &(resize_data(AT_HEAD_OFFSET(1)));
+*a = resize_data(AT_HEAD_OFFSET(1));
 
 if(MEMORY_FAILSAFE_AT(head_index))
 {

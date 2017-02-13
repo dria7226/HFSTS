@@ -11,7 +11,7 @@ if(MEMORY_FAILSAFE_AT(head_index) && (AT_HEAD_OFFSET(1) > data_capacity))
   goto next_instruction;
 }
 
-a = &(resize_array(AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2));
+*a = resize_array(AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2));
 
 if(MEMORY_FAILSAFE_AT(head_index))
 {

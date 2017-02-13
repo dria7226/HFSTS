@@ -1,7 +1,7 @@
 #include "4_0_instruction_table.c"
 
-DATA_TYPE* a;
-DATA_TYPE* b;
+DATA_TYPE* a = &(MEMORY_AT(DATA, FLAGS, 1));
+DATA_TYPE* b = &(MEMORY_AT(DATA, FLAGS, 2));
 
 #ifdef TESTING_CLI
   no_of_messages = 0;
