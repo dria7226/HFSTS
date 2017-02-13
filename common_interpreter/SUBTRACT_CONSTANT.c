@@ -1,7 +1,7 @@
 // SUBTRACT_CONSTANT , write_to_address , 0xdeadbeef
 if(WRITE_TO_VALUE_AT(head_index))
 {
-  if(MEMORY_FAILSAFE_AT(head_index) && (AT_HEAD_OFFSET(1) > program_capacity * PROGRAM_CHUNK_SIZE))
+  if(MEMORY_FAILSAFE_AT(head_index) && AT_HEAD_OFFSET(1) > HIGHEST_PROGRAM_INDEX)
   {
     SET_FLAG(PROGRAM_ACCESS_FAILED,1)
 

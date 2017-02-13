@@ -1,7 +1,7 @@
 // COPY , write_to_address , read_from_address
 if(WRITE_TO_VALUE_AT(head_index) )
 {
-  if(MEMORY_FAILSAFE_AT(head_index) && (AT_HEAD_OFFSET(1) > program_capacity * PROGRAM_CHUNK_SIZE))
+  if(MEMORY_FAILSAFE_AT(head_index) && AT_HEAD_OFFSET(1) > HIGHEST_PROGRAM_INDEX)
   {
     SET_FLAG(PROGRAM_ACCESS_FAILED, 1)
 
@@ -32,9 +32,9 @@ else
   a = &(DATA_AT(DESTINATION_AT(head_index), AT_HEAD_OFFSET(1)));
 }
 
-if(MEMORY_FAILSAFE_AT(head_index) && (READ_FROM_VALUE_AT(head_index)))
+if(READ_FROM_VALUE_AT(head_index))
 {
-  if(AT_HEAD_OFFSET(2) > program_capacity * PROGRAM_CHUNK_SIZE)
+  if(MEMORY_FAILSAFE_AT(head_index) && program_capacity > HIGHEST_PROGRAM_INDEX)
   {
     SET_FLAG(PROGRAM_ACCESS_FAILED, 2)
 

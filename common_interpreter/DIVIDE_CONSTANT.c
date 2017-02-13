@@ -13,7 +13,7 @@ if(MATH_FAILSAFE_AT(head_index) && (AT_HEAD_OFFSET(2) == 0))
 
 if(WRITE_TO_VALUE_AT(head_index))
 {
-  if(MATH_FAILSAFE_AT(head_index) && (AT_HEAD_OFFSET(1) > program_capacity * PROGRAM_CHUNK_SIZE))
+  if(MEMORY_FAILSAFE_AT(head_index) && AT_HEAD_OFFSET(1) > HIGHEST_PROGRAM_INDEX)
   {
     SET_FLAG(PROGRAM_ACCESS_FAILED,1)
 
@@ -29,7 +29,7 @@ if(WRITE_TO_VALUE_AT(head_index))
 }
 else
 {
-  if(MATH_FAILSAFE_AT(head_index) && (AT_HEAD_OFFSET(1) > CAPACITY_AT(DESTINATION_AT(head_index))))
+  if(MEMORY_FAILSAFE_AT(head_index) && (AT_HEAD_OFFSET(1) > CAPACITY_AT(DESTINATION_AT(head_index))))
   {
     SET_FLAG(DATA_ACCESS_FAILED,1)
 

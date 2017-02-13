@@ -1,19 +1,19 @@
 COMMON INTERPRETER
 
-- replace all program_capacity/PROGRAM_CHUNK_SIZE with HIGHEST_PROGRAM_INDEX
-
-- fix bug in allocate_memory()
-
 - create and finish core programs
  - INSERT_ARRAY
+ - read time
  - logical or, and, not, shift, xor
- - create video context
+ - create window
+ - create texture
+ - compile shader
  - read keyboard
  - read mouse
+
  - read joystick
+
  - read taps
  - reading/writing files (stdio.h)
- - read time
  - read gyroscope
 
 - implement multi core support ???
