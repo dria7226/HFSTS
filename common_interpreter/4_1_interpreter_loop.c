@@ -24,7 +24,9 @@ if(HEAD_AT(head_index) >= program_capacity * PROGRAM_CHUNK_SIZE - 2)
 if(AT_HEAD_OFFSET(0) < NUMBER_OF_PROGRAMS)
   goto *instruction_table[AT_HEAD_OFFSET(0)];
 
+#ifdef TESTING_CLI
 PRINT("Invalid program code\n",0,0,0);
+#endif
 
 EMPTY:
 HEAD_AT(head_index)++;

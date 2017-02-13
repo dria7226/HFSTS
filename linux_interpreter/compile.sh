@@ -1,1 +1,1 @@
-gcc 0_main.c -o HFSTS_interpreter.exe -mwindows
+gcc 0_main.c -o HFSTS_interpreter
