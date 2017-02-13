@@ -1,5 +1,7 @@
 COMMON INTERPRETER
 
+- replace all program_capacity/PROGRAM_CHUNK_SIZE with HIGHEST_PROGRAM_INDEX
+
 - fix bug in allocate_memory()
 
 - create and finish core programs

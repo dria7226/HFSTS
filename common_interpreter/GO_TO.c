@@ -1,5 +1,5 @@
 // GO_TO, address
-if(MEMORY_FAILSAFE_AT(head_index) && (AT_HEAD_OFFSET(1) > program_capacity * PROGRAM_CHUNK_SIZE))
+if(MEMORY_FAILSAFE_AT(head_index) && (AT_HEAD_OFFSET(1) > (program_capacity+1) * PROGRAM_CHUNK_SIZE))
 {
   SET_FLAG(PROGRAM_ACCESS_FAILED,1)
 
