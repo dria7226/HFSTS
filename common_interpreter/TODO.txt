@@ -1,5 +1,7 @@
 COMMON INTERPRETER
 
+- make unified way of doing failsafes
+
 - add windows default array
 
 - make the constant a third transfer type

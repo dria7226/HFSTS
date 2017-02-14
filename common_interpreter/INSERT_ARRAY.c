@@ -1,4 +1,7 @@
 // INSERT_ARRAY, write_to_address, read_from_address
+
+// check for constant to constant
+
 if(MEMORY_FAILSAFE_AT(head_index))
 {
   if(WRITE_TO_VALUE_AT(head_index))
