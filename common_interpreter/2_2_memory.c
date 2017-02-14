@@ -84,7 +84,44 @@ DATA_TYPE allocate_memory()
     #endif
     return 1;
   }
-  
+
+  // KEYBOARD_STATE
+  memory[DATA][KEYBOARD_STATE].capacity = NUMBER_OF_KEYBOARD_STATES - 1;
+  memory[DATA][KEYBOARD_STATE].data = ALLOCATE_MEMORY( memory[DATA][KEYBOARD_STATE].capacity, DATA_TYPE );
+
+  if(memory[DATA][KEYBOARD_STATE].data == MEMORY_ALLOCATION_FAILED)
+  {
+    #ifdef TESTING_CLI
+    PRINT("Couldn't allocate memory for 'memory[DATA][KEYBOARD_STATE].data.\n'",0,0,0)
+    #endif
+    return 1;
+  }
+
+  // MOUSE_STATE
+  memory[DATA][MOUSE_STATE].capacity = NUMBER_OF_MOUSE_STATES - 1;
+  memory[DATA][MOUSE_STATE].data = ALLOCATE_MEMORY( memory[DATA][MOUSE_STATE].capacity, DATA_TYPE );
+
+  if(memory[DATA][MOUSE_STATE].data == MEMORY_ALLOCATION_FAILED)
+  {
+    #ifdef TESTING_CLI
+    PRINT("Couldn't allocate memory for 'memory[DATA][MOUSE_STATE].data.\n'",0,0,0)
+    #endif
+    return 1;
+  }
+
+  // JOYSTICK_STATE
+  memory[DATA][JOYSTICK_STATE].capacity = NUMBER_OF_JOYSTICK_STATES - 1;
+  memory[DATA][JOYSTICK_STATE].data = ALLOCATE_MEMORY( memory[DATA][JOYSTICK_STATE].capacity, DATA_TYPE );
+
+  if(memory[DATA][JOYSTICK_STATE].data == MEMORY_ALLOCATION_FAILED)
+  {
+    #ifdef TESTING_CLI
+    PRINT("Couldn't allocate memory for 'memory[DATA][JOYSTICK_STATE].data.\n'",0,0,0)
+    #endif
+    return 1;
+  }
+
+  // the rest of data
   DATA_TYPE loop = NUMBER_OF_DEFAULT_ARRAYS;
 
   while(loop <= data_capacity)

@@ -1,13 +1,11 @@
 COMMON INTERPRETER
 
-- add keyboard state default array
-- add mouse state default array
-- add joystick state default array
 - add windows default array
 
 - make the constant a third transfer type
      0-1 - write to , 00-10 - read from
  :(((
+- reading/writing files (stdio.h)
 
 - create and finish core programs
  - INSERT_ARRAY
@@ -22,7 +20,6 @@ COMMON INTERPRETER
  - read joystick
 
  - read taps
- - reading/writing files (stdio.h)
  - read gyroscope
 
 - implement multi core support ???
