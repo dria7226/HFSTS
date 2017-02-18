@@ -35,9 +35,6 @@ goto next_instruction;
 COPY:
 #include "COPY.c"
 
-COPY_CONSTANT:
-#include "COPY_CONSTANT.c"
-
 INSERT_ARRAY:
 #include "INSERT_ARRAY.c"
 
@@ -92,34 +89,19 @@ SET_FAILSAFE_TYPE:
 ADD:
 #include "ADD.c"
 
-ADD_CONSTANT:
-#include "ADD_CONSTANT.c"
-
 SUBTRACT:
 #include "SUBTRACT.c"
-
-SUBTRACT_CONSTANT:
-#include "SUBTRACT_CONSTANT.c"
 
 DATA_TYPE product;
 
 MULTIPLY:
 #include "MULTIPLY.c"
 
-MULTIPLY_CONSTANT:
-#include "MULTIPLY_CONSTANT.c"
-
 DIVIDE:
 #include "DIVIDE.c"
 
-DIVIDE_CONSTANT:
-#include "DIVIDE_CONSTANT.c"
-
 REMAINDER:
 #include "REMAINDER.c"
-
-REMAINDER_CONSTANT:
-#include "REMAINDER_CONSTANT.c"
 
 EXIT:
 #include "EXIT.c"

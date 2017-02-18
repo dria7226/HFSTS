@@ -2,6 +2,27 @@
 
 DATA_TYPE insert_array(DATA_TYPE write_to_address, DATA_TYPE read_from_address)
 {
+  struct ARRAY* new;
+
+  if(READ_FROM_VALUE_AT(head_index) == CONSTANT || WRITE_TO_VALUE_AT(head_index) == CONSTANT) return 3;
+
+  
+  
+  // get length
+  if(READ_FROM_VALUE_AT(head_index) == DATA)
+  {
+    
+  }
+  
+  //resize write to memory
+  new = ALLOCATE_MEMORY( data_capacity++, struct ARRAY*)
+  
+  new = ALLOCATE_MEMORY( program_capacity += , struct ARRAY*)
+  
+  //insert array
+  
+
+  //resize read from memory
   
   
   return 0;

@@ -1,6 +1,21 @@
 COMMON INTERPRETER
 
-- make unified way of doing failsafes
+- implement binary tree traversal
+ Recalculate when:
+  - resizing the program memory
+  - resizing program array
+  - inserting arrays
+  - setup
+ Save current node and recalculate it when:
+  - tree is recalculated
+  - a head switch happens
+  - moving to a different node
+  
+ - convert 1d coordinate to 2d
+
+- convert code to fit new capacity array
+
+- make unified way of doing failsafes and transfers
 
 - add windows default array
 
@@ -23,8 +38,6 @@ COMMON INTERPRETER
 
  - read taps
  - read gyroscope
-
-- implement multi core support ???
 
 - work on helpers.c
 - work on test_program
