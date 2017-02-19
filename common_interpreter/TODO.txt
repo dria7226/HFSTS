@@ -1,6 +1,6 @@
 COMMON INTERPRETER
 
-- implement binary tree traversal
+- implement binary tree traversal? (maybe just a couple variables)
  Recalculate when:
   - resizing the program memory
   - resizing program array
