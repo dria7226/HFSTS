@@ -36,7 +36,7 @@ NUMBER_OF_PROGRAMS
 
 #define DATA_TYPE unsigned long
 
-#define DEFAULT_SIZE  31
+#define DEFAULT_CAPACITY  31
 #define MAX_VALUE     0xFFFFFFFF
 
 struct ARRAY{

@@ -22,7 +22,7 @@ DATA_TYPE resize_array(DATA_TYPE type, DATA_TYPE target, DATA_TYPE capacity)
   return 0;
 }
 
-DATA_TYPE resize_memory(DATA_TYPE capacity)
+DATA_TYPE resize_memory(DATA_TYPE type,  DATA_TYPE capacity)
 {
   if(capacity == program_capacity) return 0;
 
