@@ -25,6 +25,7 @@ COMMON INTERPRETER
 - reading/writing files (stdio.h)
 
 - create and finish core programs
+ - GO_TO_ARRAY?
  - INSERT_ARRAY
  - read time
  - logical or, and, not, shift, xor
