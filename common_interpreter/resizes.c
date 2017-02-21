@@ -26,8 +26,6 @@ DATA_TYPE resize_memory(DATA_TYPE type,  DATA_TYPE capacity)
 {
   if(capacity == program_capacity) return 0;
 
-  if(capacity > MAX_VALUE/(PROGRAM_CHUNK_SIZE+1)) capacity = (DATA_TYPE) MAX_VALUE /(PROGRAM_CHUNK_SIZE+1);
-
   //account for default arrays in DATA
   
   struct ARRAY* new = ALLOCATE_MEMORY( capacity, struct ARRAY )
@@ -36,19 +34,19 @@ DATA_TYPE resize_memory(DATA_TYPE type,  DATA_TYPE capacity)
    return 2;
 
   DATA_TYPE loop = 0;
-  DATA_TYPE length = program_capacity*(program_capacity < capacity) + capacity*(program_capacity > capacity);
+  DATA_TYPE length = program_capacity*(capacity[PROGRAM] < capacity) + capacity*(capacity[PROGRAM] > capacity);
 
   for(loop = 0; loop < length; loop++)
   {
     new[loop] = memory[PROGRAM][loop];
   }
 
-  DEALLOCATE_MEMORY(memory[PROGRAM], program_capacity);
+  DEALLOCATE_MEMORY(memory[PROGRAM], capacity[PROGRAM]);
 
   //allocate memory for new pointers if capacity increased
-  if(capacity > program_capacity)
+  if(capacity > capacity[PROGRAM])
   {
-    for(loop = program_capacity; loop < capacity; loop++)
+    for(loop = capacity[PROGRAM]; loop < capacity; loop++)
     {
       new[loop].capacity = PROGRAM_CHUNK_SIZE;
       new[loop].data = ALLOCATE_MEMORY( new[loop].capacity, DATA_TYPE )
@@ -59,10 +57,7 @@ DATA_TYPE resize_memory(DATA_TYPE type,  DATA_TYPE capacity)
   }
 
   memory[PROGRAM] = new;
-  program_capacity = capacity;
-
-  //recalculate traversal tree for PROGRAM
-  
+  capacity[PROGRAM] = capacity;
   
   return 0;
 }

@@ -1,3 +1,4 @@
+
 //MACHINE INFO
 DATA_TYPE* load_machine_info()
 {
@@ -9,7 +10,6 @@ DATA_TYPE* load_machine_info()
   }
 
   machine_info[0] = MAX_VALUE;
-  machine_info[1] = PROGRAM_CHUNK_SIZE;
 
   machine_info[PLATFORM] = CURRENT_PLATFORM;
 

@@ -21,9 +21,6 @@ DATA_TYPE  capacity[2];
 DATA_TYPE  head_index;
 DATA_TYPE  granularity_counter;
 
-struct BINARY_TREE_NODE* traversal_aid;
-struct BINARY_TREE_NODE* current_node;
-
 #include "2_1_interpreter_default_arrays.c"
 
 #include "2_2_memory.c"

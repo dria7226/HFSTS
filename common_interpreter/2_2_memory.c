@@ -15,9 +15,9 @@ DATA_TYPE insert_array(DATA_TYPE write_to_address, DATA_TYPE read_from_address)
   }
   
   //resize write to memory
-  new = ALLOCATE_MEMORY( data_capacity++, struct ARRAY*)
+  new = ALLOCATE_MEMORY( capacity[DATA]++, struct ARRAY*)
   
-  new = ALLOCATE_MEMORY( program_capacity += , struct ARRAY*)
+  new = ALLOCATE_MEMORY( capacity[DATA] += 1, struct ARRAY*)
   
   //insert array
   
@@ -30,9 +30,9 @@ DATA_TYPE insert_array(DATA_TYPE write_to_address, DATA_TYPE read_from_address)
 
 DATA_TYPE allocate_memory()
 {
-  program_capacity = 0;
+  capacity[PROGRAM] = 0;
   
-  data_capacity = DEFAULT_SIZE*(DEFAULT_SIZE >= (NUMBER_OF_DEFAULT_ARRAYS - 1)) + (NUMBER_OF_DEFAULT_ARRAYS-1)*(DEFAULT_SIZE < (NUMBER_OF_DEFAULT_ARRAYS-1));
+  capacity[DATA] = DEFAULT_SIZE*(DEFAULT_SIZE >= (NUMBER_OF_DEFAULT_ARRAYS - 1)) + (NUMBER_OF_DEFAULT_ARRAYS-1)*(DEFAULT_SIZE < (NUMBER_OF_DEFAULT_ARRAYS-1));
 
   //MEMORY
   memory = ALLOCATE_MEMORY( 1, struct ARRAY* )
@@ -46,7 +46,7 @@ DATA_TYPE allocate_memory()
   }
 
   //DATA
-  memory[DATA] = ALLOCATE_MEMORY( data_capacity, struct ARRAY )
+  memory[DATA] = ALLOCATE_MEMORY( capacity[DATA], struct ARRAY )
 
   if(memory[DATA] == MEMORY_ALLOCATION_FAILED)
   {
@@ -162,7 +162,7 @@ DATA_TYPE allocate_memory()
   }
   
   //PROGRAM
-  memory[PROGRAM] = ALLOCATE_MEMORY( program_capacity, struct ARRAY )
+  memory[PROGRAM] = ALLOCATE_MEMORY( capacity[PROGRAM], struct ARRAY )
 
   if(memory[PROGRAM] == MEMORY_ALLOCATION_FAILED)
   {
@@ -176,7 +176,7 @@ DATA_TYPE allocate_memory()
 
   while(loop <= program_capacity)
   {
-     memory[PROGRAM][loop].capacity = PROGRAM_CHUNK_SIZE;
+     memory[PROGRAM][loop].capacity = DEFAULT_SIZE;
      memory[PROGRAM][loop].data = ALLOCATE_MEMORY( memory[PROGRAM][loop].capacity, DATA_TYPE )
 
      if(memory[PROGRAM][loop].data == MEMORY_ALLOCATION_FAILED)
@@ -200,25 +200,25 @@ void free_memory()
 
   if(memory[PROGRAM] != MEMORY_ALLOCATION_FAILED)
   {
-    while(loop <= program_capacity)
+    while(loop <= capacity[PROGRAM])
     {
-      if(memory[PROGRAM][loop].data != MEMORY_ALLOCATION_FAILED) DEALLOCATE_MEMORY(memory[PROGRAM][loop].data, PROGRAM_CHUNK_SIZE);
+      if(memory[PROGRAM][loop].data != MEMORY_ALLOCATION_FAILED) DEALLOCATE_MEMORY(memory[PROGRAM][loop].data, memory[PROGRAM][loop].capacity);
       loop++;
     }
 
-    DEALLOCATE_MEMORY(memory[PROGRAM], data_capacity);
+    DEALLOCATE_MEMORY(memory[PROGRAM], capacity[PROGRAM]);
   }
 
   loop = 0;
 
   if(memory[DATA] != MEMORY_ALLOCATION_FAILED)
   {
-    while(loop <= data_capacity)
+    while(loop <= capacity[DATA])
     {
       if(memory[DATA][loop].data != MEMORY_ALLOCATION_FAILED) DEALLOCATE_MEMORY(memory[DATA][loop].data, memory[DATA][loop].capacity);
       loop++;
     }
 
-    DEALLOCATE_MEMORY(memory[DATA], data_capacity);
+    DEALLOCATE_MEMORY(memory[DATA], capacity[PROGRAM]);
   }
 }
