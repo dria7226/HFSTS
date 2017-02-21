@@ -1,17 +1,6 @@
 COMMON INTERPRETER
 
-- implement binary tree traversal? (maybe just a couple variables)
- Recalculate when:
-  - resizing the program memory
-  - resizing program array
-  - inserting arrays
-  - setup
- Save current node and recalculate it when:
-  - tree is recalculated
-  - a head switch happens
-  - moving to a different node
-  
- - convert 1d coordinate to 2d
+- develop resize_memory
 
 - convert code to fit new capacity array
 

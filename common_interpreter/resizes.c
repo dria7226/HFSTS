@@ -1,6 +1,6 @@
 DATA_TYPE resize_array(DATA_TYPE type, DATA_TYPE target, DATA_TYPE capacity)
 {
-  if(capacity == memory[DATA][target].capacity) return 0;
+  if(capacity == memory[type][target].capacity) return 0;
 
   DATA_TYPE* new = ALLOCATE_MEMORY( capacity, DATA_TYPE )
 
@@ -8,16 +8,16 @@ DATA_TYPE resize_array(DATA_TYPE type, DATA_TYPE target, DATA_TYPE capacity)
    return 2;
 
   DATA_TYPE loop = 0;
-  DATA_TYPE length = memory[DATA][target].capacity*(memory[DATA][target].capacity < capacity) + capacity*(memory[DATA][target].capacity > capacity);
+  DATA_TYPE length = memory[type][target].capacity * (memory[type][target].capacity < capacity) + capacity * (memory[type][target].capacity > capacity);
   for(;loop <= length; loop++)
   {
-    new[loop] = memory[DATA][target].data[loop];
+    new[loop] = memory[type][target].data[loop];
   }
 
-  DEALLOCATE_MEMORY( memory[DATA][target].data, memory[DATA][target].capacity);
+  DEALLOCATE_MEMORY( memory[type][target].data, memory[type][target].capacity);
 
-  memory[DATA][target].data = new;
-  memory[DATA][target].capacity = capacity;
+  memory[type][target].data = new;
+  memory[type][target].capacity = capacity;
 
   return 0;
 }

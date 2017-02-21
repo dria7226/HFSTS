@@ -2,30 +2,7 @@
 
 DATA_TYPE insert_array(DATA_TYPE write_to_address, DATA_TYPE read_from_address)
 {
-  struct ARRAY* new;
-
-  if(READ_FROM_VALUE_AT(head_index) == CONSTANT || WRITE_TO_VALUE_AT(head_index) == CONSTANT) return 3;
-
   
-  
-  // get length
-  if(READ_FROM_VALUE_AT(head_index) == DATA)
-  {
-    
-  }
-  
-  //resize write to memory
-  new = ALLOCATE_MEMORY( capacity[DATA]++, struct ARRAY*)
-  
-  new = ALLOCATE_MEMORY( capacity[DATA] += 1, struct ARRAY*)
-  
-  //insert array
-  
-
-  //resize read from memory
-  
-  
-  return 0;
 }
 
 DATA_TYPE allocate_memory()
@@ -174,7 +151,7 @@ DATA_TYPE allocate_memory()
   
   loop = 0;
 
-  while(loop <= program_capacity)
+  while(loop <= capacity[PROGRAM])
   {
      memory[PROGRAM][loop].capacity = DEFAULT_SIZE;
      memory[PROGRAM][loop].data = ALLOCATE_MEMORY( memory[PROGRAM][loop].capacity, DATA_TYPE )
