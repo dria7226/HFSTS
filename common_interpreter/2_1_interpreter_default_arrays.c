@@ -1,4 +1,3 @@
-
 //MACHINE INFO
 DATA_TYPE* load_machine_info()
 {
@@ -16,15 +15,20 @@ DATA_TYPE* load_machine_info()
   return machine_info;
 }
 
-DATA_TYPE* load_performance_info()
+//CORE_PROGRAMS INFO
+DATA_TYPE* load_core_programs_info()
 {
-  DATA_TYPE* performance_info = ALLOCATE_MEMORY( memory[DATA][PERFORMANCE_INFO].capacity, DATA_TYPE )
+  DATA_TYPE* core_programs_info = ALLOCATE_MEMORY( memory[DATA][CORE_PROGRAMS_INFO].capacity, DATA_TYPE )
 
-  if(performance_info == MEMORY_ALLOCATION_FAILED)
+  if(core_programs_info == MEMORY_ALLOCATION_FAILED)
   {
     return MEMORY_ALLOCATION_FAILED;
   }
 
-  return performance_info;
+  #define ARGUMENTS_MODE
+  
+  #undef ARGUMENTS_MODE
+  
+  return core_programs_info;
 }
 

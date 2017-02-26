@@ -1,2 +1,2 @@
-// IF, condition_index, address
+// IF, source_index, address
 

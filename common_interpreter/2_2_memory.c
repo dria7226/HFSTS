@@ -2,14 +2,83 @@
 
 DATA_TYPE insert_array(DATA_TYPE write_to_address, DATA_TYPE read_from_address)
 {
+  DATA_TYPE write_to = WRITE_TO_VALUE_AT(head_index);
+  DATA_TYPE read_from = READ_FROM_VALUE_AT(head_index);
+
+  if(write_to == CONSTANT || read_from == CONSTANT) return 1;
   
+  DATA_TYPE loop;
+  
+  if(write_to != read_from)
+  {
+    capacity[write_to]++;
+    capacity[read_from]--;
+
+    struct ARRAY* new_write_to = ALLOCATE_MEMORY(capacity[write_to], struct ARRAY)
+    if(new_write_to == MEMORY_ALLOCATION_FAILED)
+    {
+      #ifdef TESTING_CLI
+      PRINT("Couldn't allocate memory to 'new_write_to'.\n",0,0,0)
+      #endif
+      return 2;
+    }
+
+    struct ARRAY* new_read_from = ALLOCATE_MEMORY(capacity[read_from], struct ARRAY)
+    if(new_read_from == MEMORY_ALLOCATION_FAILED)
+    {
+      #ifdef TESTING_CLI
+      PRINT("Couldn't allocate memory to 'new_read_from'.\n",0,0,0)
+      #endif
+      return 2;
+    }
+
+    //the insertion
+    new_write_to[insert_to_address] = memory[read_from][insert_from_address];
+
+    //--------------------------------------------
+    for(loop = 0; loop < write_to_address; loop++)
+      new_write_to[loop] = memory[write_to][loop];
+
+    for(loop++; loop < capacity[write_to]; loop++)
+      new_write_to[loop] = memory[write_to][loop-1];
+
+    DEALLOCATE_MEMORY(memory[write_to], capacity[write_to])
+
+    memory[write_to] = new_write_to;
+
+    //---------------------------------------------
+    for(loop = 0; loop < read_from_address; loop++)
+      new_read_from[loop] = memory[read_from][loop];
+
+    for(; loop < capacity[read_from]; loop++)
+      new_read_from[loop] = memory[read_from][loop+1];
+
+    DEALLOCATE_MEMORY(memory[read_from], capacity[read_from])
+
+    memory[read_from] = new_read_from;
+  }
+  else
+  {
+    if(insert_to_address = insert_from_address) return 0;
+
+    struct ARRAY* target_array = memory[read_from][insert_from_address];
+    
+    DATA_TYPE step = 1*(insert_to_address > insert_from_address) + -1*(insert_from_address > insert_to_address);
+    
+    for(loop = insert_from_address; loop != insert_to_address; loop += step )
+      memory[write_to][loop + step] = memory[read_from][loop];
+
+    memory[write_to][insert_to_address] = target_array;
+  }  
+
+  return 0;
 }
 
 DATA_TYPE allocate_memory()
 {
   capacity[PROGRAM] = 0;
   
-  capacity[DATA] = DEFAULT_SIZE*(DEFAULT_SIZE >= (NUMBER_OF_DEFAULT_ARRAYS - 1)) + (NUMBER_OF_DEFAULT_ARRAYS-1)*(DEFAULT_SIZE < (NUMBER_OF_DEFAULT_ARRAYS-1));
+  capacity[DATA] = DEFAULT_CAPACITY*(DEFAULT_CAPACITY >= (NUMBER_OF_DEFAULT_ARRAYS - 1)) + (NUMBER_OF_DEFAULT_ARRAYS-1)*(DEFAULT_CAPACITY < (NUMBER_OF_DEFAULT_ARRAYS-1));
 
   //MEMORY
   memory = ALLOCATE_MEMORY( 1, struct ARRAY* )
@@ -34,7 +103,7 @@ DATA_TYPE allocate_memory()
   }
 
   //HEADS
-  memory[DATA][HEADS].capacity = NUMBER_OF_HEAD_COMPONENTS - 1;
+  memory[DATA][HEADS].capacity = NUMBER_OF_HEAD_ELEMENTS - 1;
   memory[DATA][HEADS].data = ALLOCATE_MEMORY( memory[DATA][HEADS].capacity, DATA_TYPE )
 
   if(memory[DATA][HEADS].data == MEMORY_ALLOCATION_FAILED)
@@ -60,7 +129,7 @@ DATA_TYPE allocate_memory()
   }
 
   // MACHINE_INFO array
-  memory[DATA][MACHINE_INFO].capacity = NUMBER_OF_INFO_ELEMENTS - 1;
+  memory[DATA][MACHINE_INFO].capacity = NUMBER_OF_MACHINE_INFO_ELEMENTS - 1;
   memory[DATA][MACHINE_INFO].data = load_machine_info();
 
   if(memory[DATA][MACHINE_INFO].data == MEMORY_ALLOCATION_FAILED)
@@ -70,15 +139,15 @@ DATA_TYPE allocate_memory()
     #endif
     return 1;
   }
+  
+  // CORE_PROGRAMS_INFO array
+  memory[DATA][CORE_PROGRAMS_INFO].capacity = (NUMBER_OF_PROGRAMS - 1) * NUMBER_OF_PROGRAM_INFO_ELEMENTS;
+  memory[DATA][CORE_PROGRAMS_INFO].data = load_core_programs_info();
 
-  // PERFORMANCE_INFO array
-  memory[DATA][PERFORMANCE_INFO].capacity = NUMBER_OF_PROGRAMS - 1;
-  memory[DATA][PERFORMANCE_INFO].data = load_performance_info();
-
-  if(memory[DATA][PERFORMANCE_INFO].data == MEMORY_ALLOCATION_FAILED)
+  if(memory[DATA][CORE_PROGRAMS_INFO].data == MEMORY_ALLOCATION_FAILED)
   {
     #ifdef TESTING_CLI
-    PRINT("Couldn't allocate memory for 'memory[DATA][PERFORMANCE_INFO].data.\n'",0,0,0)
+    PRINT("Couldn't allocate memory for 'memory[DATA][CORE_PROGRAMS_INFO].data.\n'",0,0,0)
     #endif
     return 1;
   }

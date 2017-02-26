@@ -3,7 +3,8 @@
 #define DATA_AT(x,y)               MEMORY_AT(DATA,x,y)
 #define CAPACITY_AT(x)             memory[DATA][x].capacity
 
-#define HEAD_AT(index)             MEMORY_AT(DATA, HEADS, index*NUMBER_OF_HEAD_COMPONENTS + ADDRESS)
+#define ARRAY_AT(index)            MEMORY_AT(DATA, HEADS, index*NUMBER_OF_HEAD_COMPONENTS + ARRAY)
+#define INDEX_AT(index)            MEMORY_AT(DATA, HEADS, index*NUMBER_OF_HEAD_COMPONENTS + INDEX)
 #define HEAD_GRANULARITY_AT(index) MEMORY_AT(DATA, HEADS, index*NUMBER_OF_HEAD_COMPONENTS + GRANULARITY)
 #define SOURCE_AT(index)           MEMORY_AT(DATA, HEADS, index*NUMBER_OF_HEAD_COMPONENTS + SOURCE_ARRAY)
 #define DESTINATION_AT(index)      MEMORY_AT(DATA, HEADS, index*NUMBER_OF_HEAD_COMPONENTS + DESTINATION_ARRAY)
@@ -23,7 +24,5 @@
 
 #define PERFORMANCE_INFO_AT(name)  MEMORY_AT(DATA, PERFORMANCE_INFO, name)
 
-#define AT_HEAD_OFFSET(x)          MEMORY_AT(PROGRAM, (HEAD_AT(head_index) + x)/PROGRAM_CHUNK_SIZE, (HEAD_AT(head_index) + x)%PROGRAM_CHUNK_SIZE )
-#define PROGRAM_AT(x)              MEMORY_AT(PROGRAM, x/PROGRAM_CHUNK_SIZE, x%PROGRAM_CHUNK_SIZE)
-
-#define HIGHEST_PROGRAM_INDEX      ((program_capacity+1)/(PROGRAM_CHUNK_SIZE+1)-1)
+#define AT_HEAD_OFFSET(x)          MEMORY_AT(PROGRAM, ARRAY_AT(head_index), INDEX_AT(head_index) + x)
+#define PROGRAM_AT(x,y)            MEMORY_AT(PROGRAM, x, y)
