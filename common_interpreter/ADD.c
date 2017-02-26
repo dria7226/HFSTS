@@ -1,4 +1,6 @@
 // ADD , write_to__address , read_from_address
+#ifdef INTERPRETER_MODE
+ADD:
 if(WRITE_TO_VALUE_AT(head_index))
 {
   if(MEMORY_FAILSAFE_AT(head_index) && AT_HEAD_OFFSET(1) > HIGHEST_PROGRAM_INDEX)
@@ -80,3 +82,20 @@ if( FLAG_AT(OVERFLOW) ) PRINT("The addition overflowed.\n",0,0,0)
 // advance head
 HEAD_AT(head_index) += 3;
 goto next_instruction;
+#endif
+
+#ifdef NAME_MODE
+ADD
+#endif
+
+#ifdef LABEL_MODE
+&&ADD
+#endof
+
+#ifdef ARGUMENTS_MODE
+2
+#endif
+
+#ifdef ENUMERATE
+,
+#endif

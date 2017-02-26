@@ -8,7 +8,7 @@ DATA_TYPE* a = &(MEMORY_AT(DATA, FLAGS, 1));
 DATA_TYPE* b = &(MEMORY_AT(DATA, FLAGS, 2));
 
 #ifdef TESTING_CLI
-  no_of_messages = 0;
+no_of_messages = 0;
 #endif
 
 next_instruction:
