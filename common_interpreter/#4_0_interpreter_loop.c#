@@ -5,7 +5,7 @@ void* instruction_table[NUMBER_OF_PROGRAMS] = {
 };
 
 //working variables
-DATA_TYPE* temp[2];
+DATA_TYPE** temp[2];
 DATA_TYPE  argument_index;
 
 #ifdef TESTING_CLI
@@ -18,7 +18,7 @@ next_instruction:
 
 #ifdef TESTING_CLI
 CHECK_FOR_LIMIT
-PRINT("%u:%u: ", ARRAY_AT(head_index), INDEX_AT(head_index),0);
+PRINT("%u: ", HEAD_AT(head_index),0,0);
 #endif
 
 FLAG_AT(FLAG_SET) = 0;

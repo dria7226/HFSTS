@@ -2,6 +2,8 @@ DATA_TYPE resize_array(DATA_TYPE type, DATA_TYPE target, DATA_TYPE new_capacity)
 {
   if(new_capacity == memory[type][target].capacity) return 0;
 
+  if(type == DATA && target < NUMBER_OF_DEFAULT_ARRAYS) return 1;
+  
   DATA_TYPE* new = ALLOCATE_MEMORY( capacity, DATA_TYPE )
 
   if(new == MEMORY_ALLOCATION_FAILED)

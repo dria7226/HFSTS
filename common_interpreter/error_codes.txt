@@ -19,21 +19,13 @@ ARRAY_RESIZE_FAILED
  1 - failed and capacity is invalid
  2 - failed and was unable to allocate memory
 
-DATA_RESIZE_FAILED
+MEMORY_RESIZE_FAILED
  0 - hasn't failed
  1 - failed
 
-PROGRAM_RESIZE_FAILED
- 0 - hasn't failed
- 1 - failed
-
-DATA_ACCESS_FAILED
+MEMORY_ACCESS_FAILED
  0 - hasn't failed
  1 - failed and the invalid address is at head offset 1
  2 - failed and the invalid address is at head offset 2
  3 - invalid source/destination array
-
-PROGRAM_ACCESS_FAILED
- 0 - hasn't failed
- 1 - failed and the invalid address is at head offset 1
- 2 - failed and the invalid address is at head offset 2
+ 4 - 
