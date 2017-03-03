@@ -1,51 +1,27 @@
-# 1 "new_ADD.c"
-# 1 "<built-in>"
-# 1 "<command-line>"
-# 1 "/usr/include/stdc-predef.h" 1 3 4
-# 1 "<command-line>" 2
-# 1 "new_ADD.c"
+#define MEMORY_AT(x,y,z)           memory[x][y].data[z]
+#define CAPACITY_AT(x,y)           memory[x][y].capacity
 
+#define DATA_AT(x,y)               memory[DATA][x].data[y]
 
-ADD:
+#define HEAD_ELEMENT_AT(index, offset) DATA_AT(HEADS, index*NUMBER_OF_HEAD_ELEMENTS + offset)
+#define ARRAY_AT(index)            HEAD_ELEMENT_AT(index, ARRAY)
+#define INDEX_AT(index)            HEAD_ELEMENT_AT(index, INDEX)
+#define HEAD_GRANULARITY_AT(index) HEAD_ELEMENT_AT(index, GRANULARITY)
+#define SOURCE_AT(index)           HEAD_ELEMENT_AT(index, SOURCE_ARRAY)
+#define DESTINATION_AT(index)      HEAD_ELEMENT_AT(index, DESTINATION_ARRAY)
+#define TRANSFER_TYPE_AT(index,side) (DATA_AT(HEADS, index*NUMBER_OF_HEAD_ELEMENTS + TRANSFER_TYPE) >> (2*side) ) & 0x3
 
+#define FAILSAFE_AT(index)         DATA_AT(HEADS, index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE)
+#define MEMORY_FAILSAFE_AT(index)  FAILSAFE_AT(index) & 0x1
+#define MATH_FAILSAFE_AT(index)    FAILSAFE_AT(index) & 0x2
 
+#define FLAG_AT(name)              DATA_AT(FLAGS, name)
+#define SET_FLAG(name, value)      if((FLAG_AT(name) = value) != 0) FLAG_AT(FLAG_SET) = name;
 
+#define MACHINE_INFO_AT(name)      DATA_AT(MACHINE_INFO, name)
 
+#define CORE_PROGRAMS_INFO_AT(name)DATA_AT(CORE_PROGRAMS_INFO, name)
 
-# 1 "check_arguments.c" 1
-# 14 "check_arguments.c"
-argument_index = 0;
-
-
-while(argument_index < DATA_AT(CORE_PROGRAMS_INFO, AT_HEAD_OFFSET(0)*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS) )
-{
-
-
-if(MEMORY_FAILSAFE_AT(head_index))
-{
-# 49 "check_arguments.c"
-}
-
-
-
-  temp[argument_index] = &(MEMORY_AT(TRANSFER_TYPE_AT(head_index, argument_index), HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(argument_index));
-
-  argument_index++;
-}
-# 10 "new_ADD.c" 2
-
-if(MATH_FAILSAFE_AT(head_index))
-{
-  SET_FLAG(OVERFLOW, *a > (*a + *b))
-}
-
-*a += *b;
-
-
-
-
-
-
-
-HEAD_AT(head_index) += 3;
-goto next_instruction;
+#define PROGRAM_AT(x,y)            MEMORY_AT(PROGRAM, x, y)
+#define AT_HEAD_OFFSET(x)          PROGRAM_AT(ARRAY_AT(head_index), INDEX_AT(head_index) + x)
+#define ADVANCE_HEAD               INDEX_AT(head_index) += CORE_PROGRAMS_INFO_AT(AT_HEAD_OFFSET(0)*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS); goto next_instruction;
