@@ -1,8 +1,7 @@
 //EMPTY
 #ifdef INTERPRETER_MODE
 EMPTY:
-HEAD_AT(head_index)++;
-goto next_instruction;
+ADVANCE_HEAD
 #endif
 
 #ifdef NAME_MODE
