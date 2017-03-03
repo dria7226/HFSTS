@@ -3,11 +3,12 @@
 
 #define DATA_AT(x,y)               memory[DATA][x].data[y]
 
-#define ARRAY_AT(index)            DATA_AT(HEADS, index*NUMBER_OF_HEAD_COMPONENTS + ARRAY)
-#define INDEX_AT(index)            DATA_AT(HEADS, index*NUMBER_OF_HEAD_COMPONENTS + INDEX)
-#define HEAD_GRANULARITY_AT(index) DATA_AT(HEADS, index*NUMBER_OF_HEAD_COMPONENTS + GRANULARITY)
-#define SOURCE_AT(index)           DATA_AT(HEADS, index*NUMBER_OF_HEAD_COMPONENTS + SOURCE_ARRAY)
-#define DESTINATION_AT(index)      DATA_AT(HEADS, index*NUMBER_OF_HEAD_COMPONENTS + DESTINATION_ARRAY)
+#define HEAD_COMPONENT_AT(index, offset) DATA_AT(HEADS, index*NUMBER_OF_HEAD_COMPONENTS + offset)
+#define ARRAY_AT(index)            HEAD_COMPONENT_AT(index, ARRAY)
+#define INDEX_AT(index)            HEAD_COMPONENT_AT(index, INDEX)
+#define HEAD_GRANULARITY_AT(index) HEAD_COMPONENT_AT(index, GRANULARITY)
+#define SOURCE_AT(index)           HEAD_COMPONENT_AT(index, SOURCE_ARRAY)
+#define DESTINATION_AT(index)      HEAD_COMPONENT_AT(index, DESTINATION_ARRAY)
 #define TRANSFER_TYPE_AT(index,side) (DATA_AT(HEADS, index*NUMBER_OF_HEAD_COMPONENTS + TRANSFER_TYPE) >> (2*side) ) & 0x3
 
 #define FAILSAFE_AT(index)         DATA_AT(HEADS, index*NUMBER_OF_HEAD_COMPONENTS + FAILSAFE_TYPE)
