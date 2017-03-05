@@ -47,12 +47,14 @@ if(MEMORY_FAILSAFE_AT(head_index))
 }
 
 //set temporary variable
+#ifdef SET_VARIABLES
 #ifndef EXCLUDE_CONSTANTS
 if(TRANSFER_TYPE_AT(head_index, argument_index) == CONSTANT)
   temp[argument_index] = &(MEMORY_AT(PROGRAM, ARRAY_AT(head_index), INDEX_AT(head_index) + 1 + argument_index));
 else
 #endif
   temp[argument_index] = &(MEMORY_AT(TRANSFER_TYPE_AT(head_index, argument_index), HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index));
+#endif
 
 #ifdef CHECK_ALL_ARGUMENTS
 argument_index++;

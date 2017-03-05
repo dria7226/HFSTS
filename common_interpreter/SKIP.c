@@ -1,20 +1,32 @@
-// SKIP, 0xdeadbeef
-if(MEMORY_FAILSAFE_AT(head_index) && (HEAD_AT(head_index) + AT_HEAD_OFFSET(1)) > HIGHEST_PROGRAM_INDEX)
-{
-  SET_FLAG(PROGRAM_ACCESS_FAILED,1)
-
-  #ifdef TESTING_CLI
-  PRINT("SKIP: %s: %s: %u\n",error_titles[PROGRAM_ACCESS_FAILED-3],error_messages[5],AT_HEAD_OFFSET(1))
-  #endif
-
-  HEAD_AT(head_index) += 2;
-  goto next_instruction;
-}
+// SKIP, read_from_address
+#ifdef INTERPRETER_MODE
+SKIP:
+#define CHECK_ARRAY
+#define CHECK_INDEX
+#define SET_VARIABLES
+#include "check_arguments.c"
 
 #ifdef TESTING_CLI
 PRINT("SKIP, %u\n", AT_HEAD_OFFSET(1),0,0)
 #endif
 
-HEAD_AT(head_index) += AT_HEAD_OFFSET(1);
+HEAD_AT(head_index) += *temp[0];
 
 goto next_instruction;
+#endif
+
+#ifdef NAME_MODE
+SKIP
+#endif
+
+#ifdef LABEL_MODE
+&&SKIP
+#endif
+
+#ifdef ARGUMENTS_MODE
+1
+#endif
+
+#ifdef ENUMERATE
+,
+#endif

@@ -1,16 +1,14 @@
 COMMON INTERPRETER
 
+- finish work on check_arguments.c
+  - reconsider temporary variable setting in check_arguments.c so that it works with array manipulation
+  - implement error messages
+  - change code to take CONSTANT transfer types into consideration
+  
 - develop resize_memory
-
-- convert code to fit new capacity array
-
-- make unified way of doing failsafes and transfers
 
 - add windows default array
 
-- make the constant a third transfer type
-     0-1 - write to , 00-10 - read from
- :(((
 - reading/writing files (stdio.h)
 
 - create and finish core programs

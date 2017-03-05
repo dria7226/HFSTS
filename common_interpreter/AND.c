@@ -9,11 +9,10 @@ AND:
 *temp[1] &= *temp[0];
 
 #ifdef TESTING_CLI
-PRINT("AND, %u, %u\n",AT_HEAD_OFFSET(0),AT_HEAD_OFFSET(1),0)
+PRINT("AND, %u, %u = %u\n",AT_HEAD_OFFSET(0),AT_HEAD_OFFSET(1),*temp[1])
 #endif
 
 ADVANCE_HEAD
-
 #endif
 
 #ifdef NAME_MODE
