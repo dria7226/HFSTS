@@ -6,7 +6,7 @@ INSER_ARRAY:
 #define CHECK_ARRAY
 #include "check_arguments.c"
 
-
+insert_array(*temp[0], *temp[1]);
 
 #ifdef TESTING_CLI
 PRINT("INSERT_ARRAY, %u, %u\n",AT_HEAD_OFFSET(1),AT_HEAD_OFFSET(2),0)
