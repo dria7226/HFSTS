@@ -26,8 +26,20 @@ DATA_TYPE* load_core_programs_info()
   }
 
   #define ARGUMENTS_MODE
-  
-  #undef ARGUMENTS_MODE
+  #define ENUMERATE
+
+  DATA_TYPE core_programs_arguments[] = {
+    #include "core_programs.c"
+  };
+
+  DATA_TYPE loop = 0;
+
+  while(loop < NUMBER_OF_CORE_PROGRAMS)
+  {
+    core_programs_info[loop*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS+NUMBER_OF_ARGUMENTS] = core_programs_arguments[loop];
+
+    loop++;
+  }
   
   return core_programs_info;
 }

@@ -1,9 +1,9 @@
 #include "resizes.c"
 
-DATA_TYPE insert_array(DATA_TYPE write_to_address, DATA_TYPE read_from_address)
+DATA_TYPE insert_array(DATA_TYPE insert_to_address, DATA_TYPE insert_from_address)
 {
-  DATA_TYPE write_to = WRITE_TO_VALUE_AT(head_index);
-  DATA_TYPE read_from = READ_FROM_VALUE_AT(head_index);
+  DATA_TYPE write_to = TRANSFER_TYPE_AT(head_index, WRITE_TO);
+  DATA_TYPE read_from = TRANSFER_TYPE_AT(head_index, READ_FROM);
 
   if(write_to == CONSTANT || read_from == CONSTANT) return 1;
   
@@ -36,7 +36,7 @@ DATA_TYPE insert_array(DATA_TYPE write_to_address, DATA_TYPE read_from_address)
     new_write_to[insert_to_address] = memory[read_from][insert_from_address];
 
     //--------------------------------------------
-    for(loop = 0; loop < write_to_address; loop++)
+    for(loop = 0; loop < insert_to_address; loop++)
       new_write_to[loop] = memory[write_to][loop];
 
     for(loop++; loop < capacity[write_to]; loop++)
@@ -47,7 +47,7 @@ DATA_TYPE insert_array(DATA_TYPE write_to_address, DATA_TYPE read_from_address)
     memory[write_to] = new_write_to;
 
     //---------------------------------------------
-    for(loop = 0; loop < read_from_address; loop++)
+    for(loop = 0; loop < insert_from_address; loop++)
       new_read_from[loop] = memory[read_from][loop];
 
     for(; loop < capacity[read_from]; loop++)
@@ -141,7 +141,7 @@ DATA_TYPE allocate_memory()
   }
   
   // CORE_PROGRAMS_INFO array
-  memory[DATA][CORE_PROGRAMS_INFO].capacity = (NUMBER_OF_PROGRAMS - 1) * NUMBER_OF_PROGRAM_INFO_ELEMENTS;
+  memory[DATA][CORE_PROGRAMS_INFO].capacity = (NUMBER_OF_CORE_PROGRAMS - 1) * NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS;
   memory[DATA][CORE_PROGRAMS_INFO].data = load_core_programs_info();
 
   if(memory[DATA][CORE_PROGRAMS_INFO].data == MEMORY_ALLOCATION_FAILED)
@@ -191,9 +191,9 @@ DATA_TYPE allocate_memory()
   // the rest of data
   DATA_TYPE loop = NUMBER_OF_DEFAULT_ARRAYS;
 
-  while(loop <= data_capacity)
+  while(loop <= capacity[DATA])
   {
-     memory[DATA][loop].capacity = DEFAULT_SIZE;
+     memory[DATA][loop].capacity = DEFAULT_CAPACITY;
      memory[DATA][loop].data = ALLOCATE_MEMORY( memory[DATA][loop].capacity, DATA_TYPE )
 
      if(memory[DATA][loop].data == MEMORY_ALLOCATION_FAILED)
@@ -222,7 +222,7 @@ DATA_TYPE allocate_memory()
 
   while(loop <= capacity[PROGRAM])
   {
-     memory[PROGRAM][loop].capacity = DEFAULT_SIZE;
+     memory[PROGRAM][loop].capacity = DEFAULT_CAPACITY;
      memory[PROGRAM][loop].data = ALLOCATE_MEMORY( memory[PROGRAM][loop].capacity, DATA_TYPE )
 
      if(memory[PROGRAM][loop].data == MEMORY_ALLOCATION_FAILED)

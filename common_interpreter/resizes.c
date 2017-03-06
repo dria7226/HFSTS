@@ -13,7 +13,7 @@ DATA_TYPE resize_array(DATA_TYPE type, DATA_TYPE target, DATA_TYPE new_capacity)
   DATA_TYPE length = memory[type][target].capacity * (memory[type][target].capacity < new_capacity) + new_capacity * (memory[type][target].capacity > new_capacity);
   for(;loop <= length; loop++)
   {
-    new[loop] = memory[type][target].data[loop];
+    new[loop] = MEMORY_AT(type, target, loop);
   }
 
   DEALLOCATE_MEMORY( memory[type][target].data, memory[type][target].capacity);
@@ -28,8 +28,7 @@ DATA_TYPE resize_memory(DATA_TYPE type,  DATA_TYPE new_capacity)
 {
   if(new_capacity == capacity[type]) return 0;
 
-  //account for default arrays in DATA
-  if(type == DATA && capacity <= NUMBER_OF_DEFAULT_ARRAYS) return 1;
+  if(type == DATA && capacity[DATA] <= NUMBER_OF_DEFAULT_ARRAYS) return 1;
   
   struct ARRAY* new = ALLOCATE_MEMORY( new_capacity, struct ARRAY )
 
@@ -51,7 +50,7 @@ DATA_TYPE resize_memory(DATA_TYPE type,  DATA_TYPE new_capacity)
   {
     for(loop = capacity[type]; loop < new_capacity; loop++)
     {
-      new[loop].capacity = DEFAULT_SIZE;
+      new[loop].capacity = DEFAULT_CAPACITY;
       new[loop].data = ALLOCATE_MEMORY( new[loop].capacity, DATA_TYPE )
 
       if(new[loop].data == MEMORY_ALLOCATION_FAILED)

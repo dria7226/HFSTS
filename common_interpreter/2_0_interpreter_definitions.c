@@ -3,7 +3,7 @@ enum{
 #define ENUMERATE
 #include "core_programs.c"
   
-NUMBER_OF_PROGRAMS
+NUMBER_OF_CORE_PROGRAMS
 };
 
 #define DATA_TYPE unsigned long

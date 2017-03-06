@@ -1,15 +1,9 @@
-// SET_DESTINATION , array_index
-if(MEMORY_FAILSAFE_AT(head_index) && (AT_HEAD_OFFSET(1) > data_capacity))
-{
-  SET_FLAG(DATA_ACCESS_FAILED,3)
-
-  #ifdef TESTING_CLI
-  PRINT("SET_DESTINATION: %s: %s: %u\n",error_titles[DATA_ACCESS_FAILED-3],error_messages[1+FLAG_AT(DATA_ACCESS_FAILED)],AT_HEAD_OFFSET(1))
-  #endif
-
-  HEAD_AT(head_index) += 2;
-  goto next_instruction;
-}
+// SET_DESTINATION , array
+#ifdef INTERPRETER_MODE
+SET_DESTINATION:
+#define CHECK_ARRAY
+#define CHECK_INDEX
+#include "check_arguments.c"
 
 DESTINATION_AT(head_index) = AT_HEAD_OFFSET(1);
 
@@ -17,6 +11,21 @@ DESTINATION_AT(head_index) = AT_HEAD_OFFSET(1);
 PRINT("SET_DESTINATION, %u\n", AT_HEAD_OFFSET(1),0,0)
 #endif
 
-// advance head
-HEAD_AT(head_index) += 2;
-goto next_instruction;
+ADVANCE_HEAD
+#endif
+
+#ifdef NAME_MODE
+SET_DESTINATION
+#endif
+
+#ifdef LABEL_MODE
+&&SET_DESTINATION
+#endif
+
+#ifdef ARGUMENTS_MODE
+1
+#endif
+
+#ifdef ENUMERATE
+,
+#endif
