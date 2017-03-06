@@ -1,43 +1,31 @@
 // GET_GRANULARITY_COUNTER, write_to_address
-if(WRITE_TO_VALUE_AT(head_index))
-{
-  if(MEMORY_FAILSAFE_AT(head_index) && AT_HEAD_OFFSET(1) > HIGHEST_PROGRAM_INDEX)
-  {
-    SET_FLAG(PROGRAM_ACCESS_FAILED,1)
+#ifdef INTERPRETER_MODE
+GET_GRANULARITY_COUNTER:
+#define CHECK_ARRAY
+#define CHECK_INDEX
+#include "check_arguments.c"
 
-    #ifdef TESTING_CLI
-    PRINT("GET_GRANULARITY_COUNTER: %s: %s: %u\n",error_titles[PROGRAM_ACCESS_FAILED-3],error_messages[5],AT_HEAD_OFFSET(1))
-    #endif
-
-    HEAD_AT(head_index) += 2;
-    goto next_instruction;
-  }
-
-  a = &(PROGRAM_AT(AT_HEAD_OFFSET(1)));
-}
-else
-{
-  if(MEMORY_FAILSAFE_AT(head_index) && (AT_HEAD_OFFSET(1) > CAPACITY_AT(DESTINATION_AT(head_index))))
-  {
-    SET_FLAG(DATA_ACCESS_FAILED,1)
-
-    #ifdef TESTING_CLI
-    PRINT("GET_GRANULARITY_COUNTER: %s: %s: %u\n",error_titles[DATA_ACCESS_FAILED-3],error_messages[1 + FLAG_AT(DATA_ACCESS_FAILED)],AT_HEAD_OFFSET(1))
-    #endif
-
-    HEAD_AT(head_index) += 2;
-    goto next_instruction;
-  }
-
-  a = &(DATA_AT(DESTINATION_AT(head_index), AT_HEAD_OFFSET(1)));
-}
-
-*a = granularity_counter;
+*temp[0] = granularity_counter;
 
 #ifdef TESTING_CLI
 PRINT("GET_GRANULARITY_COUNTER, %u\n",AT_HEAD_OFFSET(1),0,0)
 #endif
 
-// advance head
-HEAD_AT(head_index) += 2;
-goto next_instruction;
+ADVANCE_HEAD
+#endif
+
+#ifdef NAME_MODE
+GET_GRANULARITY_COUNTER
+#endif
+
+#ifdef LABEL_MODE
+&&GET_GRANULARITY_COUNTER
+#endif
+
+#ifdef ARGUMENTS_MODE
+1
+#endif
+
+#ifdef ENUMERATE
+,
+#endif

@@ -1,4 +1,6 @@
 // GET_ARRAY_CAPACITY, array, write_to_address
+#ifdef INTERPRETER_MODE
+GET_ARRAY_CAPACITY:
 if(MEMORY_FAILSAFE_AT(head_index) && (AT_HEAD_OFFSET(1) > data_capacity))
 {
   SET_FLAG(DATA_ACCESS_FAILED,3)
@@ -11,45 +13,32 @@ if(MEMORY_FAILSAFE_AT(head_index) && (AT_HEAD_OFFSET(1) > data_capacity))
   goto next_instruction;
 }
 
-if(WRITE_TO_VALUE_AT(head_index))
-{
-  if(MEMORY_FAILSAFE_AT(head_index) && AT_HEAD_OFFSET(2) > HIGHEST_PROGRAM_INDEX)
-  {
-    SET_FLAG(PROGRAM_ACCESS_FAILED,2)
+argument_index = 1;
+#define CHECK_ARRAY
+#define CHECK_INDEX
+#include "check_arguments.c"
 
-    #ifdef TESTING_CLI
-    PRINT("GET_ARRAY_CAPACITY: %s: %s: %u\n",error_titles[PROGRAM_ACCESS_FAILED-3],error_messages[5],AT_HEAD_OFFSET(2))
-    #endif
-
-    HEAD_AT(head_index) += 3;
-    goto next_instruction;
-  }
-
-  a = &(PROGRAM_AT(AT_HEAD_OFFSET(2)));
-}
-else
-{
-  if(MEMORY_FAILSAFE_AT(head_index) && (AT_HEAD_OFFSET(2) > CAPACITY_AT(DESTINATION_AT(head_index))))
-  {
-    SET_FLAG(DATA_ACCESS_FAILED,2)
-
-    #ifdef TESTING_CLI
-    PRINT("GET_ARRAY_CAPACITY: %s: %s: %u\n",error_titles[DATA_ACCESS_FAILED-3],error_messages[1+FLAG_AT(DATA_ACCESS_FAILED)],AT_HEAD_OFFSET(2))
-    #endif
-
-    HEAD_AT(head_index) += 3;
-    goto next_instruction;
-  }
-
-  a = &(DATA_AT(DESTINATION_AT(head_index), AT_HEAD_OFFSET(2)));
-}
-
-*a = CAPACITY_AT(AT_HEAD_OFFSET(1));
+*temp[1] = CAPACITY_AT(AT_HEAD_OFFSET(1));
 
 #ifdef TESTING_CLI
 PRINT("GET_ARRAY_CAPACITY, %u, %u\n",AT_HEAD_OFFSET(1),AT_HEAD_OFFSET(2),0)
 #endif
 
-// advance head
-HEAD_AT(head_index) += 3;
-goto next_instruction;
+ADVANCE_HEAD
+#endif
+
+#ifdef NAME_MODE
+GET_ARRAY_CAPACITY
+#endif
+
+#ifdef LABEL_MODE
+&&GET_ARRAY_CAPACITY
+#endif
+
+#ifdef ARGUMENTS_MODE
+2
+#endif
+
+#ifdef ENUMERATE
+,
+#endif

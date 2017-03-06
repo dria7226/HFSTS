@@ -1,5 +1,7 @@
 COMMON INTERPRETER
 
+- properly load core programs info (with # of arguments)
+
 - finish work on check_arguments.c
   - reconsider temporary variable setting in check_arguments.c so that it works with array manipulation
   - implement error messages
