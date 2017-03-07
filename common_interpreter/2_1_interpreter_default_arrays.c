@@ -25,13 +25,6 @@ DATA_TYPE* load_core_programs_info()
     return MEMORY_ALLOCATION_FAILED;
   }
 
-  #define ARGUMENTS_MODE
-  #define ENUMERATE
-
-  DATA_TYPE core_programs_arguments[] = {
-    #include "core_programs.c"
-  };
-
   DATA_TYPE loop = 0;
 
   while(loop < NUMBER_OF_CORE_PROGRAMS)

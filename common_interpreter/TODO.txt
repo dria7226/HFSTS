@@ -1,13 +1,11 @@
 COMMON INTERPRETER
 
-- properly load core programs info (with # of arguments)
+- go over all core programs again and fix any mistakes
 
 - finish work on check_arguments.c
   - reconsider temporary variable setting in check_arguments.c so that it works with array manipulation
   - implement error messages
   - change code to take CONSTANT transfer types into consideration
-  
-- develop resize_memory
 
 - add windows default array
 

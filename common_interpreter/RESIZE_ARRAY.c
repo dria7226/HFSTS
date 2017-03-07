@@ -1,21 +1,14 @@
 // RESIZE_ARRAY, array_index, capacity
-if(MEMORY_FAILSAFE_AT(head_index) && (AT_HEAD_OFFSET(1) > data_capacity))
-{
-  SET_FLAG(DATA_ACCESS_FAILED, 3)
+#ifdef INTERPRETER_MODE
+RESIZE_ARRAY:
+#define CHECK_ARRAY
+#include "check_arguments.c"
 
-  #ifdef TESTING_CLI
-  PRINT("RESIZE_ARRAY: %s: %s: %u\n",error_titles[DATA_ACCESS_FAILED-3],error_messages[1+FLAG_AT(DATA_ACCESS_FAILED)],AT_HEAD_OFFSET(1))
-  #endif
-
-  HEAD_AT(head_index) += 3;
-  goto next_instruction;
-}
-
-*a = resize_array(AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2));
+*temp[0] = resize_array(*temp[0], AT_HEAD_OFFSET(2));
 
 if(MEMORY_FAILSAFE_AT(head_index))
 {
-  SET_FLAG(ARRAY_RESIZE_FAILED, *a)
+  SET_FLAG(ARRAY_RESIZE_FAILED, *temp[0])
 
   #ifdef TESTING_CLI
   if(FLAG_AT(ARRAY_RESIZE_FAILED) == 0)
@@ -27,6 +20,21 @@ if(MEMORY_FAILSAFE_AT(head_index))
   #endif
 }
 
-// advance head
-HEAD_AT(head_index) += 3;
-goto next_instruction;
+ADVANCE_HEAD
+#endif
+
+#ifdef NAME_MODE
+RESIZE_ARRAY
+#endif
+
+#ifdef LABEL_MODE
+&&RESIZE_ARRAY
+#endif
+
+#ifdef ARGUMENTS_MODE
+2
+#endif
+
+#ifdef ENUMERATE
+,
+#endif

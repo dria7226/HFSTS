@@ -1,9 +1,11 @@
-// RESIZE_DATA, capacity
-*a = resize_data(AT_HEAD_OFFSET(1));
+// RESIZE_MEMORY, type, capacity
+#ifdef INTERPRETER_MODE
+RESIZE_MEMORY:
+*temp[0] = resize_memory(AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2));
 
 if(MEMORY_FAILSAFE_AT(head_index))
 {
-  SET_FLAG(DATA_RESIZE_FAILED, *a)
+  SET_FLAG(DATA_RESIZE_FAILED, *temp[0])
 
   #ifdef TESTING_CLI
   if(FLAG_AT(DATA_RESIZE_FAILED) == 0)
@@ -15,6 +17,22 @@ if(MEMORY_FAILSAFE_AT(head_index))
   #endif
 }
 
-// advance head
-HEAD_AT(head_index) += 2;
-goto next_instruction;
+ADVANCE_HEAD
+#endif
+
+#ifdef NAME_MODE
+RESIZE_MEMORY
+#endif
+
+#ifdef LABEL_MODE
+&&RESIZE_MEMORY
+#endif
+
+#ifdef ARGUMENTS_MODE
+2
+#endif
+
+#ifdef ENUMERATE
+,
+#endif
+

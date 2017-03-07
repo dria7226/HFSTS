@@ -1,6 +1,23 @@
 // RUN_PERFORMANCE_TEST
-if(data_capacity < )
+#ifdef INTERPRETER_MODE
+RUN_PERFORMANCE_TEST:
 
+// exclude EMPTY EXIT RUN_PERFORMANE_TEST 
 
-HEAD_AT(head_index) ++;
-goto next_instruction;
+#endif
+
+#ifdef NAME_MODE
+RUN_PERFORMANCE_TEST
+#endif
+
+#ifdef LABEL_MODE
+&&RUN_PERFORMANCE_TEST
+#endif
+
+#ifdef ARGUMENTS_MODE
+0
+#endif
+
+#ifdef ENUMERATE
+,
+#endif

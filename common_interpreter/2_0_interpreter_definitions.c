@@ -6,6 +6,12 @@ enum{
 NUMBER_OF_CORE_PROGRAMS
 };
 
+DATA_TYPE core_programs_arguments[] = {
+  #define ARGUMENTS_MODE
+  #define ENUMERATE
+  #include "core_programs.c"
+};
+
 #define DATA_TYPE unsigned long
 
 #define DEFAULT_CAPACITY  31
