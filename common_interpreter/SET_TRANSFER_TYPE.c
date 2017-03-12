@@ -3,7 +3,8 @@
 SET_TRANSFER_TYPE:
 #define CHECK_ARRAY
 #define CHECK_INDEX
-#include "check_arguments"
+#define SET_VARIABLES
+#include "check_arguments.c"
 
 HEAD_ELEMENT_AT(head_index, TRANSFER_TYPE) = *temp[0];
 

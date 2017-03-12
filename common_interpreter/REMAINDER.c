@@ -20,7 +20,7 @@ if(MATH_FAILSAFE_AT(head_index) && (DATA_AT(SOURCE_AT(head_index), AT_HEAD_OFFSE
 *temp[1] %= *temp[0];
 
 #ifdef TESTING_CLI
-PRINT("REMAINDER, %u, %u = %u\n", AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2), *a )
+PRINT("REMAINDER, %u, %u = %u\n", AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2), *temp[1])
 #endif
 
 ADVANCE_HEAD

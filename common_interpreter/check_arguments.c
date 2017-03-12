@@ -11,8 +11,6 @@ if(TRANSFER_TYPE_AT(head_index, WRITE_TO) == CONSTANT || TRANSFER_TYPE_AT(head_i
 }
 #endif
 
-argument_index = 0;
-
 #ifdef CHECK_ALL_ARGUMENTS
 while(argument_index < DATA_AT(CORE_PROGRAMS_INFO, AT_HEAD_OFFSET(0)*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS) ){
 #endif
@@ -53,7 +51,7 @@ if(TRANSFER_TYPE_AT(head_index, argument_index) == CONSTANT)
   temp[argument_index] = &(MEMORY_AT(PROGRAM, ARRAY_AT(head_index), INDEX_AT(head_index) + 1 + argument_index));
 else
 #endif
-  temp[argument_index] = &(MEMORY_AT(TRANSFER_TYPE_AT(head_index, argument_index), HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index));
+  temp[argument_index] = &(MEMORY_AT(TRANSFER_TYPE_AT(head_index, argument_index), HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
 #endif
 
 #ifdef CHECK_ALL_ARGUMENTS

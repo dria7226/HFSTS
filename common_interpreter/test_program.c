@@ -9,9 +9,9 @@ DATA_TYPE test_program[] = {
 
   SET_TRANSFER_TYPE, 2,
   
-  ADD_CONSTANT, 6, 1,
+  ADD, 6, 1,
 
-  GO_TO, 6, 
+  GO_TO_INDEX, 6, 
   
   EXIT
 };

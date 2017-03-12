@@ -4,6 +4,7 @@ ADD:
 #define CHECK_ALL_ARGUMENTS
 #define CHECK_ARRAY
 #define CHECK_INDEX
+#define SET_ARGUMENTS
 #include "check_arguments.c"
 
 if(MATH_FAILSAFE_AT(head_index))
@@ -14,7 +15,7 @@ if(MATH_FAILSAFE_AT(head_index))
 *temp[1] += *temp[0];
 
 #ifdef TESTING_CLI
-PRINT("ADD, %u, %u = %u\n", AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2), *a)
+PRINT("ADD, %u, %u = %u\n", AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2), *temp[1])
 if( FLAG_AT(OVERFLOW) ) PRINT("The addition overflowed.\n",0,0,0)
 #endif
 

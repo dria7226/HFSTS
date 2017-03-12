@@ -6,9 +6,9 @@ PRINT("Checking memory allocation\n\n",0,0,0)
 
 // check program
 CHECK_FOR_SKIP( "program memory check",
-PRINT("program_capacity: %u\n",program_capacity,0,0)
+PRINT("capacity[PROGRAM]: %u\n",capacity[PROGRAM],0,0)
 
-for(; loop <= program_capacity; loop++)
+for(; loop <= capacity[PROGRAM]; loop++)
 {
   if( memory[PROGRAM][loop].data == MEMORY_ALLOCATION_FAILED)
   {
@@ -36,9 +36,9 @@ ENTER_TO_CONTINUE
 
 // check data
 CHECK_FOR_SKIP( "data memory check",
-PRINT("data_capacity: %u\n",data_capacity,0,0)
+PRINT("capacity[DATA]: %u\n",capacity[DATA],0,0)
 
-for(loop = 0; loop <= data_capacity; loop++)
+for(loop = 0; loop <= capacity[DATA]; loop++)
 {
   if( memory[DATA][loop].data == MEMORY_ALLOCATION_FAILED )
   {

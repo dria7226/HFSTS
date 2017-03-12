@@ -61,7 +61,7 @@ DATA_TYPE insert_array(DATA_TYPE insert_to_address, DATA_TYPE insert_from_addres
   {
     if(insert_to_address = insert_from_address) return 0;
 
-    struct ARRAY* target_array = memory[read_from][insert_from_address];
+    struct ARRAY* target_array = &(memory[read_from][insert_from_address]);
     
     DATA_TYPE step = 1*(insert_to_address > insert_from_address) + -1*(insert_from_address > insert_to_address);
     

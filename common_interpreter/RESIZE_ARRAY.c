@@ -1,14 +1,15 @@
-// RESIZE_ARRAY, array_index, capacity
+// RESIZE_ARRAY, type, array_index, capacity
 #ifdef INTERPRETER_MODE
 RESIZE_ARRAY:
 #define CHECK_ARRAY
+#define SET_VARIABLES
 #include "check_arguments.c"
 
-*temp[0] = resize_array(*temp[0], AT_HEAD_OFFSET(2));
+*temp[3] = resize_array(*temp[0], *temp[1], *temp[2]);
 
 if(MEMORY_FAILSAFE_AT(head_index))
 {
-  SET_FLAG(ARRAY_RESIZE_FAILED, *temp[0])
+  SET_FLAG(ARRAY_RESIZE_FAILED, *temp[3])
 
   #ifdef TESTING_CLI
   if(FLAG_AT(ARRAY_RESIZE_FAILED) == 0)
@@ -32,7 +33,7 @@ RESIZE_ARRAY
 #endif
 
 #ifdef ARGUMENTS_MODE
-2
+3
 #endif
 
 #ifdef ENUMERATE

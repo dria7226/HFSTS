@@ -4,6 +4,7 @@ SUBTRACT:
 #define CHECK_ALL_ARGUMENTS
 #define CHECK_ARRAY
 #define CHECK_INDEX
+#define SET_ARGUMENTS
 #include "check_arguments.c"
 
 if(MATH_FAILSAFE_AT(head_index))

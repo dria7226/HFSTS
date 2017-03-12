@@ -1,6 +1,6 @@
 FLAG_SET
  0 - no flags set after last instruction
- 1-MAX_VALUE - index of flag set
+ x - index of flag set
 
 OVERFLOW
  0 - no overflow
@@ -21,11 +21,13 @@ ARRAY_RESIZE_FAILED
 
 MEMORY_RESIZE_FAILED
  0 - hasn't failed
- 1 - failed
+ 1 - failed and capacity is invalid
+ 2 - failed and was unable to allocate memory
 
-MEMORY_ACCESS_FAILED
+ARRAY_ACCESS_FAILED
  0 - hasn't failed
- 1 - failed and the invalid address is at head offset 1
- 2 - failed and the invalid address is at head offset 2
- 3 - invalid source/destination array
- 4 - 
+ x - failed and the invalid address is at head offset x
+
+INDEX_ACCESS_FAILED
+ 0 - hasn't failed
+ x - failed and the invalid address is at head offset x

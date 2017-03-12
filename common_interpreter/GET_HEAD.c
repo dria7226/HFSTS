@@ -3,6 +3,7 @@
 GET_HEAD:
 #define ARRAY_CHECK
 #define INDEX_CHECK
+#define SET_VARIABLES
 #include "check_arguments.c"
 
 *temp[0] = head_index;

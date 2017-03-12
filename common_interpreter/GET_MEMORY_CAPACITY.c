@@ -3,9 +3,10 @@
 GET_MEMORY_CAPACITY:
 #define CHECK_ARRAY
 #define CHECK_INDEX
+#define SET_VARIABLES
 #include "check_arguments.c"
 
-*temp[0] = capacity[TRANSFER_TYPE_AT(head_index, READ_FROM)];
+*temp[0] = capacity[TRANSFER_TYPE_AT(head_index, READ_FROM) > 0];
 
 #ifdef TESTING_CLI
 PRINT("GET_MEMORY_CAPACITY, %u\n",AT_HEAD_OFFSET(1),0,0)

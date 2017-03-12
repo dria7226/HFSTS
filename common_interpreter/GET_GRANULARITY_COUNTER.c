@@ -3,6 +3,7 @@
 GET_GRANULARITY_COUNTER:
 #define CHECK_ARRAY
 #define CHECK_INDEX
+#define SET_VARIABLES
 #include "check_arguments.c"
 
 *temp[0] = granularity_counter;

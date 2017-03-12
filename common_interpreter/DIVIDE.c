@@ -4,6 +4,7 @@ DIVIDE:
 #define CHECK_ALL_ARGUMENTS
 #define CHECK_ARRAY
 #define CHECK_INDEX
+#define SET_ARGUMENTS
 #include "check_arguments.c"
 
 *temp[1] /= *temp[0];

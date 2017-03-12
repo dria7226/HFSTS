@@ -4,16 +4,17 @@ MULTIPLY:
 #define CHECK_ALL_ARGUMENTS
 #define CHECK_ARRAY
 #define CHECK_INDEX
+#define SET_ARGUMENTS
 #include "check_arguments.c"
 
-product = *temp[0] * *temp[1];
+*temp[2] = *temp[0] * *temp[1];
 
 if(MATH_FAILSAFE_AT(head_index))
 {
-  SET_FLAG(OVERFLOW, ( *temp[1] != 0 && product / *temp[1] != *temp[0] ))
+  SET_FLAG(OVERFLOW, ( *temp[1] != 0 && *temp[2] / *temp[1] != *temp[0] ))
 }
 
-*temp[1] = product;
+*temp[1] = *temp[2];
 
 #ifdef TESTING_CLI
 PRINT("MULTIPLY, %u, %u = %u\n", AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2), *temp[1])

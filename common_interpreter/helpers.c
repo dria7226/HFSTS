@@ -8,19 +8,19 @@ void load_test_program()
   #define DATA_LENGTH sizeof(test_data)/sizeof(DATA_TYPE*)
   
   //load program
-  resize_program(PROGRAM_LENGTH/PROGRAM_CHUNK_SIZE);
+  resize_array(PROGRAM, 0, PROGRAM_LENGTH);
   
   DATA_TYPE loop = 0;
 
   for(; loop < PROGRAM_LENGTH; loop++)
   {
-    PROGRAM_AT(loop) = test_program[loop];
+    PROGRAM_AT(0, loop) = test_program[loop];
   }
 }
 
 void load_program_at_address(int argc, char* argv)
 {
-  // check argv for vailidity
+  // check argv for validity
 }
 
 // void write_test_program_to_storage()
