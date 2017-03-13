@@ -18,7 +18,7 @@ GO_TO_ARRAY
 &&GO_TO_ARRAY
 #endif
 
-#ifdef ARGUMENT_MODE
+#ifdef ARGUMENTS_MODE
 1
 #endif
 

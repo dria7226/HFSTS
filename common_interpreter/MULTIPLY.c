@@ -31,7 +31,7 @@ MULTIPLY
 &&MULTIPLY
 #endif
 
-#ifdef ARGUMENT_MODE
+#ifdef ARGUMENTS_MODE
 2
 #endif
 

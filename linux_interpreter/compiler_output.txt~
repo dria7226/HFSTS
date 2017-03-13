@@ -1,0 +1,42 @@
+In file included from 0_main.c:3:0:
+../common_interpreter/resizes.c: In function 'resize_array':
+1_platform_specific_wrappers.c:1:59: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define ALLOCATE_MEMORY(length, type) (type *) mmap(NULL, (unsigned long long)(length + 1) * sizeof(type), PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS,-1,0);
+                                                           ^
+../common_interpreter/resizes.c:7:20: note: in expansion of macro 'ALLOCATE_MEMORY'
+   DATA_TYPE* new = ALLOCATE_MEMORY( capacity, DATA_TYPE )
+                    ^~~~~~~~~~~~~~~
+In file included from ../common_interpreter/2_0_interpreter_implementation.c:26:0,
+                 from 0_main.c:5:
+../common_interpreter/2_2_memory.c: In function 'insert_array':
+../common_interpreter/2_2_memory.c:71:41: error: incompatible types when assigning to type 'struct ARRAY' from type 'struct ARRAY *'
+     memory[write_to][insert_to_address] = target_array;
+                                         ^
+In file included from ../common_interpreter/2_0_interpreter_definitions.c:117:0,
+                 from ../common_interpreter/2_0_interpreter_implementation.c:11,
+                 from 0_main.c:5:
+../common_interpreter/check_arguments.c: In function 'main':
+../common_interpreter/check_arguments.c:4:12: error: 'CONSTANT_TRANFSER_TYPE_NOT_APPLICABLE' undeclared (first use in this function)
+   SET_FLAG(CONSTANT_TRANFSER_TYPE_NOT_APPLICABLE, 1)
+            ^
+../common_interpreter/2_0_shortcuts.c:18:36: note: in expansion of macro 'DATA_AT'
+ #define FLAG_AT(name)              DATA_AT(FLAGS, name)
+                                    ^~~~~~~
+../common_interpreter/2_0_shortcuts.c:19:40: note: in expansion of macro 'FLAG_AT'
+ #define SET_FLAG(name, value)      if((FLAG_AT(name) = value) != 0) FLAG_AT(FLAG_SET) = name;
+                                        ^~~~~~~
+../common_interpreter/check_arguments.c:4:3: note: in expansion of macro 'SET_FLAG'
+   SET_FLAG(CONSTANT_TRANFSER_TYPE_NOT_APPLICABLE, 1)
+   ^~~~~~~~
+../common_interpreter/check_arguments.c:4:12: note: each undeclared identifier is reported only once for each function it appears in
+   SET_FLAG(CONSTANT_TRANFSER_TYPE_NOT_APPLICABLE, 1)
+            ^
+../common_interpreter/2_0_shortcuts.c:18:36: note: in expansion of macro 'DATA_AT'
+ #define FLAG_AT(name)              DATA_AT(FLAGS, name)
+                                    ^~~~~~~
+../common_interpreter/2_0_shortcuts.c:19:40: note: in expansion of macro 'FLAG_AT'
+ #define SET_FLAG(name, value)      if((FLAG_AT(name) = value) != 0) FLAG_AT(FLAG_SET) = name;
+                                        ^~~~~~~
+../common_interpreter/check_arguments.c:4:3: note: in expansion of macro 'SET_FLAG'
+   SET_FLAG(CONSTANT_TRANFSER_TYPE_NOT_APPLICABLE, 1)
+   ^~~~~~~~

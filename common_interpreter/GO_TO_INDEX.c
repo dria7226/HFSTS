@@ -17,7 +17,7 @@ GO_TO_INDEX
 &&GO_TO_INDEX
 #endif
 
-#ifdef ARGUMENT_MODE
+#ifdef ARGUMENTS_MODE
 1
 #endif
 

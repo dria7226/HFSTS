@@ -63,3 +63,4 @@ argument_index++;
 #undef CHECK_ARRAY
 #undef CHECK_INDEX
 #undef CHECK_ALL_ARGUMENTS
+#undef SET_VARIABLES

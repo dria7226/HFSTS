@@ -1,4 +1,4 @@
-void* instruction_table[NUMBER_OF_PROGRAMS] = {
+void* instruction_table[] = {
 #define LABEL_MODE
 #define ENUMERATE
 #include "core_programs.c" 
@@ -29,7 +29,7 @@ FLAG_AT(FLAG_SET) = 0;
 //if(INDEX_AT(head_index) > )
 //  goto out;
 
-if(AT_HEAD_OFFSET(0) < NUMBER_OF_PROGRAMS)
+if(AT_HEAD_OFFSET(0) < NUMBER_OF_CORE_PROGRAMS)
   goto *instruction_table[AT_HEAD_OFFSET(0)];
 
 #ifdef TESTING_CLI

@@ -7,9 +7,9 @@ COMMON INTERPRETER
   - implement error messages
   - change code to take CONSTANT transfer types into consideration
 
-- add windows default array
-
 - reading/writing files (stdio.h)
+
+- add windows default array
 
 - create and finish core programs
  - GO_TO_ARRAY?

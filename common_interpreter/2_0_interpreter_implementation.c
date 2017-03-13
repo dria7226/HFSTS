@@ -14,7 +14,7 @@
 #include "testing_messages.c"
 #endif
 
-struct ARRAY**   memory;
+struct ARRAY** memory;
 
 DATA_TYPE  capacity[2];
 
