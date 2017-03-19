@@ -6,7 +6,7 @@ GET_MEMORY_CAPACITY:
 #define SET_VARIABLES
 #include "check_arguments.c"
 
-*temp[0] = capacity[TRANSFER_TYPE_AT(head_index, READ_FROM) > 0];
+*temp[0] = capacity;
 
 #ifdef TESTING_CLI
 PRINT("GET_MEMORY_CAPACITY, %u\n",AT_HEAD_OFFSET(1),0,0)

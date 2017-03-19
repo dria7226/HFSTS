@@ -4,9 +4,10 @@ REMAINDER:
 #define CHECK_ALL_ARGUMENTS
 #define CHECK_ARRAY
 #define CHECK_INDEX
+#define SET_VARIABLES
 #include "check_arguments.c"
 
-if(MATH_FAILSAFE_AT(head_index) && (DATA_AT(SOURCE_AT(head_index), AT_HEAD_OFFSET(2)) == 0))
+if(MATH_FAILSAFE_AT(head_index) && (*temp[0] == 0))
 {
   SET_FLAG(DIVISION_BY_ZERO,1)
 

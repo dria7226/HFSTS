@@ -1,7 +1,7 @@
 //MACHINE INFO
 DATA_TYPE* load_machine_info()
 {
-  DATA_TYPE* machine_info = ALLOCATE_MEMORY( memory[DATA][MACHINE_INFO].capacity, DATA_TYPE )
+  DATA_TYPE* machine_info = ALLOCATE_MEMORY( memory[MACHINE_INFO].capacity, DATA_TYPE )
 
   if(machine_info == MEMORY_ALLOCATION_FAILED)
   {
@@ -18,7 +18,7 @@ DATA_TYPE* load_machine_info()
 //CORE_PROGRAMS INFO
 DATA_TYPE* load_core_programs_info()
 {
-  DATA_TYPE* core_programs_info = ALLOCATE_MEMORY( memory[DATA][CORE_PROGRAMS_INFO].capacity, DATA_TYPE )
+  DATA_TYPE* core_programs_info = ALLOCATE_MEMORY( memory[CORE_PROGRAMS_INFO].capacity, DATA_TYPE )
 
   if(core_programs_info == MEMORY_ALLOCATION_FAILED)
   {

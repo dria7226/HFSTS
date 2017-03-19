@@ -14,9 +14,9 @@
 #include "testing_messages.c"
 #endif
 
-struct ARRAY** memory;
+struct ARRAY* memory;
 
-DATA_TYPE  capacity[2];
+DATA_TYPE  capacity;
 
 DATA_TYPE  head_index;
 DATA_TYPE  granularity_counter;

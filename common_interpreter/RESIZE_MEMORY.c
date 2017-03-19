@@ -1,7 +1,7 @@
-// RESIZE_MEMORY, type, capacity
+// RESIZE_MEMORY, capacity
 #ifdef INTERPRETER_MODE
 RESIZE_MEMORY:
-*temp[0] = resize_memory(AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2));
+*temp[0] = resize_memory(AT_HEAD_OFFSET(1));
 
 if(MEMORY_FAILSAFE_AT(head_index))
 {
@@ -10,10 +10,10 @@ if(MEMORY_FAILSAFE_AT(head_index))
   #ifdef TESTING_CLI
   if(FLAG_AT(MEMORY_RESIZE_FAILED) == 0)
   {
-    PRINT("RESIZE_DATA, %u\n",AT_HEAD_OFFSET(1),0,0)
+    PRINT("RESIZE_MEMORY, %u\n",AT_HEAD_OFFSET(1),0,0)
   }
   else
-  PRINT("RESIZE_DATA, %s: %s\n",error_titles[MEMORY_RESIZE_FAILED-3],error_messages[FLAG_AT(MEMORY_RESIZE_FAILED)-1],0)
+  PRINT("RESIZE_MEMORY, %s: %s\n",error_titles[MEMORY_RESIZE_FAILED-3],error_messages[FLAG_AT(MEMORY_RESIZE_FAILED)-1],0)
   #endif
 }
 
@@ -29,7 +29,7 @@ RESIZE_MEMORY
 #endif
 
 #ifdef ARGUMENTS_MODE
-2
+1
 #endif
 
 #ifdef ENUMERATE

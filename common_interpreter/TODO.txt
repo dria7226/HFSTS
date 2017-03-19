@@ -1,5 +1,9 @@
 COMMON INTERPRETER
 
+- look for segmentation fault in check_arguments.c or RESIZE_ARRAY.c
+
+- figure out issues in resizes.c
+
 - go over all core programs again and fix any mistakes
 
 - finish work on check_arguments.c

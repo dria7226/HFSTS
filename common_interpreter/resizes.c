@@ -1,54 +1,56 @@
-DATA_TYPE resize_array(DATA_TYPE type, DATA_TYPE target, DATA_TYPE new_capacity)
+DATA_TYPE resize_array(DATA_TYPE target, DATA_TYPE new_capacity)
 {
-  if(new_capacity == memory[type][target].capacity) return 0;
+  if(new_capacity == memory[target].capacity) return 0;
 
-  if(type == DATA && target < NUMBER_OF_DEFAULT_ARRAYS) return 1;
+  // what happens when the array downsizes itself past the current index?
+  
+  if(target < NUMBER_OF_DEFAULT_ARRAYS) return 1;
   
   DATA_TYPE* new = ALLOCATE_MEMORY( new_capacity, DATA_TYPE )
 
-  if(new == MEMORY_ALLOCATION_FAILED)
-   return 2;
+  if(new == MEMORY_ALLOCATION_FAILED) return 2;
 
   DATA_TYPE loop = 0;
-  DATA_TYPE length = memory[type][target].capacity * (memory[type][target].capacity < new_capacity) + new_capacity * (memory[type][target].capacity > new_capacity);
+  DATA_TYPE length = memory[target].capacity * (memory[target].capacity < new_capacity) + new_capacity * (memory[target].capacity > new_capacity);
   for(;loop <= length; loop++)
   {
-    new[loop] = MEMORY_AT(type, target, loop);
+    new[loop] = MEMORY_AT(target, loop);
   }
 
-  DEALLOCATE_MEMORY( memory[type][target].data, memory[type][target].capacity);
+  DEALLOCATE_MEMORY( memory[target].data, memory[target].capacity);
 
-  memory[type][target].data = new;
-  memory[type][target].capacity = new_capacity;
+  memory[target].data = new;
+  memory[target].capacity = new_capacity;
 
   return 0;
 }
 
-DATA_TYPE resize_memory(DATA_TYPE type,  DATA_TYPE new_capacity)
+DATA_TYPE resize_memory(DATA_TYPE new_capacity)
 {
-  if(new_capacity == capacity[type]) return 0;
+  if(new_capacity == capacity) return 0;
 
-  if(type == DATA && capacity[DATA] <= NUMBER_OF_DEFAULT_ARRAYS) return 1;
+  // what happens when the array downsizes the memory past itself?
+  
+  if(capacity <= NUMBER_OF_DEFAULT_ARRAYS) return 1;
   
   struct ARRAY* new = ALLOCATE_MEMORY( new_capacity, struct ARRAY )
 
-  if(new == MEMORY_ALLOCATION_FAILED)
-   return 2;
+  if(new == MEMORY_ALLOCATION_FAILED) return 2;
 
   DATA_TYPE loop = 0;
-  DATA_TYPE length = capacity[type] * (capacity[type] < new_capacity) + new_capacity * (capacity[type] > new_capacity);
+  DATA_TYPE length = capacity * (capacity < new_capacity) + new_capacity * (capacity > new_capacity);
 
   for(loop = 0; loop < length; loop++)
   {
-    new[loop] = memory[type][loop];
+    new[loop] = memory[loop];
   }
 
-  DEALLOCATE_MEMORY(memory[type], capacity[type]);
+  DEALLOCATE_MEMORY(memory, capacity);
 
   //allocate memory for new pointers if capacity increased
-  if(new_capacity > capacity[type])
+  if(new_capacity > capacity)
   {
-    for(loop = capacity[type]; loop < new_capacity; loop++)
+    for(loop = capacity; loop < new_capacity; loop++)
     {
       new[loop].capacity = DEFAULT_CAPACITY;
       new[loop].data = ALLOCATE_MEMORY( new[loop].capacity, DATA_TYPE )
@@ -58,8 +60,8 @@ DATA_TYPE resize_memory(DATA_TYPE type,  DATA_TYPE new_capacity)
     }
   }
 
-  memory[type] = new;
-  capacity[type] = new_capacity;
+  memory = new;
+  capacity = new_capacity;
   
   return 0;
 }

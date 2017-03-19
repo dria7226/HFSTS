@@ -1,1 +1,0 @@
-cpp $1 -D $2 $3 $4 $5 > cpp_output.txt
