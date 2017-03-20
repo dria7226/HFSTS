@@ -1,6 +1,6 @@
 COMMON INTERPRETER
 
-- look for segmentation fault in check_arguments.c or RESIZE_ARRAY.c
+- crashes at RESIZE_ARRAY.c at *temp[2] assignment
 
 - figure out issues in resizes.c
 
