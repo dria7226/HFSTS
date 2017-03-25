@@ -2,9 +2,8 @@
 #ifdef INTERPRETER_MODE
 ADD:
 #define CHECK_ALL_ARGUMENTS
-#define CHECK_ARRAY
 #define CHECK_INDEX
-#define SET_ARGUMENTS
+#define SET_VARIABLES
 #include "check_arguments.c"
 
 if(MATH_FAILSAFE_AT(head_index))

@@ -2,7 +2,6 @@
 #ifdef INTERPRETER_MODE
 SET_SOURCE:
 #define CHECK_ARRAY
-#define CHECK_INDEX
 #include "check_arguments.c"
 
 SOURCE_AT(head_index) = AT_HEAD_OFFSET(1);

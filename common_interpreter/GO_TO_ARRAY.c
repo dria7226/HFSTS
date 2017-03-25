@@ -1,8 +1,7 @@
-//GO_TO_ARRAY, read_from_address
+//GO_TO_ARRAY, array
 #ifdef INTERPRETER_MODE
-GO_TO_ARRAY: 
+GO_TO_ARRAY:
 #define CHECK_ARRAY
-#define CHECK_INDEX
 #define SET_VARIABLES
 #include "check_arguments.c"
 

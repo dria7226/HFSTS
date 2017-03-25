@@ -1,7 +1,6 @@
 // SKIP, read_from_address
 #ifdef INTERPRETER_MODE
 SKIP:
-#define CHECK_ARRAY
 #define CHECK_INDEX
 #define SET_VARIABLES
 #include "check_arguments.c"

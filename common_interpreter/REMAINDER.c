@@ -2,7 +2,6 @@
 #ifdef INTERPRETER_MODE
 REMAINDER:
 #define CHECK_ALL_ARGUMENTS
-#define CHECK_ARRAY
 #define CHECK_INDEX
 #define SET_VARIABLES
 #include "check_arguments.c"

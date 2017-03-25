@@ -1,7 +1,6 @@
 //GO_TO_INDEX, read_from_address
 #ifdef INTERPRETER_MODE
-GO_TO_INDEX: 
-#define CHECK_ARRAY
+GO_TO_INDEX:
 #define CHECK_INDEX
 #define SET_VARIABLES
 #include "check_arguments.c"

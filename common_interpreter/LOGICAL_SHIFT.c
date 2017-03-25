@@ -1,17 +1,14 @@
 //LOGICAL_SHIFT, write_to_address, amount, direction
 #ifdef INTERPRETER_MODE
 LOGICAL_SHIFT:
-
-argument_index = 0;
-
-#define CHECK_ARRAY
 #define CHECK_INDEX
+#define SET_VARIABLES
 #include "check_arguments.c"
 
-if(AT_HEAD_OFFSET(2))
-  *temp[0] <<= *temp[1];
+if(AT_HEAD_OFFSET(3))
+  *temp[0] <<= AT_HEAD_OFFSET(2);
 else
-  *temp[0] >>= *temp[1];
+  *temp[0] >>= AT_HEAD_OFFSET(2);
 
 ADVANCE_HEAD
 #endif

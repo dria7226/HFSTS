@@ -1,6 +1,6 @@
 COMMON INTERPRETER
 
-- crashes at RESIZE_ARRAY.c at *temp[2] assignment
+- fix crash in ADD.c
 
 - figure out issues in resizes.c
 

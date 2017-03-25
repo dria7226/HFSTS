@@ -2,9 +2,8 @@
 #ifdef INTERPRETER_MODE
 COPY:
 #define CHECK_ALL_ARGUMENTS
-#define CHECK_ARRAY
 #define CHECK_INDEX
-#define SET_ARGUMENTS
+#define SET_VARIABLES
 #include "check_arguments.c"
 
 *temp[1] = *temp[0];

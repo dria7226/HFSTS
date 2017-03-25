@@ -1,8 +1,7 @@
 // GET_HEAD, write_to_address
 #ifdef INTERPRETER_MODE
 GET_HEAD:
-#define ARRAY_CHECK
-#define INDEX_CHECK
+#define CHECK_INDEX
 #define SET_VARIABLES
 #include "check_arguments.c"
 

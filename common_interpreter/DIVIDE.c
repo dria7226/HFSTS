@@ -2,10 +2,20 @@
 #ifdef INTERPRETER_MODE
 DIVIDE:
 #define CHECK_ALL_ARGUMENTS
-#define CHECK_ARRAY
 #define CHECK_INDEX
-#define SET_ARGUMENTS
+#define SET_VARIABLES
 #include "check_arguments.c"
+
+if(MATH_FAILSAFE_AT(head_index) && (*temp[0] == 0))
+{
+  SET_FLAG(DIVISION_BY_ZERO,1)
+
+  #ifdef TESTING_CLI
+  PRINT("REMAINDER: %s \n",error_titles[DIVISION_BY_ZERO-3],0,0)
+  #endif
+
+  ADVANCE_HEAD
+}
 
 *temp[1] /= *temp[0];
 

@@ -1,7 +1,6 @@
 // IF, source_index
 #ifdef INTERPRETER_MODE
 IF:
-#define CHECK_ARRAY
 #define CHECK_INDEX
 #define SET_VARIABLES
 #include "check_arguments.c"

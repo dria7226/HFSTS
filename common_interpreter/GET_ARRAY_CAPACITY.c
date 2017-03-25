@@ -1,8 +1,11 @@
 // GET_ARRAY_CAPACITY, array, write_to_address
 #ifdef INTERPRETER_MODE
 GET_ARRAY_CAPACITY:
-#define CHECK_ALL_VARIABLES
 #define CHECK_ARRAY
+#define SET_VARIABLES
+#include "check_arguments.c"
+
+argument_index++;
 #define CHECK_INDEX
 #define SET_VARIABLES
 #include "check_arguments.c"

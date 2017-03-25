@@ -1,7 +1,6 @@
-// INSERT_ARRAY, write_to_address, read_from_address
+// INSERT_ARRAY, read_from_array, write_to_array
 #ifdef INTERPRETER_MODE
 INSERT_ARRAY:
-#define EXCLUDE_CONSTANTS
 #define CHECK_ALL_ARGUMENTS
 #define CHECK_ARRAY
 #define SET_VARIABLES
