@@ -27,7 +27,16 @@
 #include "AND.c"
 #include "OR.c"
 #include "XOR.c"
+#include "NOT.c"
 #include "LOGICAL_SHIFT.c"
+
+#include "RUN_PERFORMANCE_TEST.c"
+
+#include "READ_TIME.c"
+#include "READ_DATE.c"
+
+#include "READ_ARRAY.c"
+#include "WRITE_ARRAY.c"
 
 #include "EXIT.c"
 

@@ -1,7 +1,5 @@
 COMMON INTERPRETER
 
-- fix crash in ADD.c
-
 - figure out issues in resizes.c
 
 - go over all core programs again and fix any mistakes
@@ -11,15 +9,11 @@ COMMON INTERPRETER
   - implement error messages
   - change code to take CONSTANT transfer types into consideration
 
-- reading/writing files (stdio.h)
-
 - add windows default array
 
 - create and finish core programs
- - GO_TO_ARRAY?
- - INSERT_ARRAY
  - read time
- - logical or, and, not, shift, xor
+ - reading/writing files (stdio.h)
  - create window
  - create texture
  - compile shader
@@ -29,10 +23,11 @@ COMMON INTERPRETER
  - read joystick
 
  - read taps
+
  - read gyroscope
 
 - work on helpers.c
-- work on test_program
+
 - test all code
   - test head functions
   - test memory functions

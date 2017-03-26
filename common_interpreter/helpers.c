@@ -1,5 +1,9 @@
 #include "test_program.c"
 
+#include "time.c"
+
+#include "input_output.c"
+
 void load_test_program()
 {
   if(memory == MEMORY_ALLOCATION_FAILED) return;
