@@ -8,7 +8,7 @@ if(MEMORY_FAILSAFE_AT(head_index))
   {
     SET_FLAG(ARRAY_ACCESS_FAILED, 1 + argument_index)
 
-    #ifdef TESTING_CLI
+    #ifdef CLIT
     PRINT("ARRAY_ACCESS_FAILED.\n",0,0,0)
     #endif
     
@@ -21,7 +21,7 @@ if(MEMORY_FAILSAFE_AT(head_index))
   {
     SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
 
-    #ifdef TESTING_CLI
+    #ifdef CLIT
     PRINT("INDEX_ACCESS_FAILED.\n",0,0,0)
     #endif
 

@@ -1,4 +1,4 @@
-#ifdef TESTING_CLI
+#ifdef CLIT
 if(granularity_counter == 0) PRINT("HEAD: %u\n",head_index,0,0)
 #endif
 

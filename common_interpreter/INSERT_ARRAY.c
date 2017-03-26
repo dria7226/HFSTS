@@ -8,7 +8,7 @@ INSERT_ARRAY:
 
 insert_array(*temp[0], *temp[1]);
 
-#ifdef TESTING_CLI
+#ifdef CLIT
 PRINT("INSERT_ARRAY, %u, %u\n",AT_HEAD_OFFSET(1),AT_HEAD_OFFSET(2),0)
 #endif
 

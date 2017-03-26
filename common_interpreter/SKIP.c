@@ -5,7 +5,7 @@ SKIP:
 #define SET_VARIABLES
 #include "check_arguments.c"
 
-#ifdef TESTING_CLI
+#ifdef CLIT
 PRINT("SKIP, %u\n", AT_HEAD_OFFSET(1),0,0)
 #endif
 

@@ -8,7 +8,7 @@ AND:
 
 *temp[1] &= *temp[0];
 
-#ifdef TESTING_CLI
+#ifdef CLIT
 PRINT("AND, %u, %u = %u\n",AT_HEAD_OFFSET(0),AT_HEAD_OFFSET(1),*temp[1])
 #endif
 

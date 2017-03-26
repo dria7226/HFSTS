@@ -8,7 +8,7 @@ COPY:
 
 *temp[1] = *temp[0];
 
-#ifdef TESTING_CLI
+#ifdef CLIT
 PRINT("COPY, %u, %u\n", AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2),0)
 #endif
 

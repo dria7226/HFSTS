@@ -10,7 +10,7 @@ if(MATH_FAILSAFE_AT(head_index) && (*temp[0] == 0))
 {
   SET_FLAG(DIVISION_BY_ZERO,1)
 
-  #ifdef TESTING_CLI
+  #ifdef CLIT
   PRINT("REMAINDER: %s \n",error_titles[DIVISION_BY_ZERO-3],0,0)
   #endif
 
@@ -19,7 +19,7 @@ if(MATH_FAILSAFE_AT(head_index) && (*temp[0] == 0))
 
 *temp[1] /= *temp[0];
 
-#ifdef TESTING_CLI
+#ifdef CLIT
 PRINT("DIVIDE, %u, %u = %u\n", AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2), *temp[1])
 #endif
 

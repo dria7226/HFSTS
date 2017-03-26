@@ -7,7 +7,7 @@ GET_HEAD:
 
 *temp[0] = head_index;
 
-#ifdef TESTING_CLI
+#ifdef CLIT
 PRINT("GET_HEAD, %u\n",AT_HEAD_OFFSET(1),0,0)
 #endif
 

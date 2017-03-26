@@ -1,4 +1,4 @@
-#ifdef TESTING_CLI
+#ifdef CLIT
   #include <stdio.h>
 #endif
 #include <windows.h>

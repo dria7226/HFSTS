@@ -7,7 +7,7 @@ GET_GRANULARITY_COUNTER:
 
 *temp[0] = granularity_counter;
 
-#ifdef TESTING_CLI
+#ifdef CLIT
 PRINT("GET_GRANULARITY_COUNTER, %u\n",AT_HEAD_OFFSET(1),0,0)
 #endif
 

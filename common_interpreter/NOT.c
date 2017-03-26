@@ -7,7 +7,7 @@ NOT:
 
 ~*temp[0];
 
-#ifdef TESTING_CLI
+#ifdef CLIT
 PRINT("NOT, %u,\n",AT_HEAD_OFFSET(1),0,0)
 #endif
 

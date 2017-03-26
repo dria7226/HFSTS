@@ -12,7 +12,7 @@ argument_index++;
 
 *temp[1] = CAPACITY_AT(*temp[0]);
 
-#ifdef TESTING_CLI
+#ifdef CLIT
 PRINT("GET_ARRAY_CAPACITY, %u, %u\n",AT_HEAD_OFFSET(1),AT_HEAD_OFFSET(2),0)
 #endif
 

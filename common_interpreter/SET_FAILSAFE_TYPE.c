@@ -7,7 +7,7 @@ SET_FAILSAFE_TYPE:
 
 FAILSAFE_AT(head_index) = *temp[0];
 
-#ifdef TESTING_CLI
+#ifdef CLIT
 PRINT("SET_FAILSAFE_TYPE, %u\n",AT_HEAD_OFFSET(1),0,0)
 #endif
 

@@ -28,7 +28,7 @@ DATA_TYPE allocate_memory()
 
   if(memory == MEMORY_ALLOCATION_FAILED)
   {
-    #ifdef TESTING_CLI
+    #ifdef CLIT
     PRINT("Couldn't allocate memory to 'memory'.\n",0,0,0)
     #endif
     return 1;
@@ -40,7 +40,7 @@ DATA_TYPE allocate_memory()
 
   if(memory[HEADS].data == MEMORY_ALLOCATION_FAILED)
   {
-    #ifdef TESTING_CLI
+    #ifdef CLIT
     PRINT("Couldn't allocate memory for 'memory[HEADS].data'.\n",0,0,0)
     #endif
     return 1;
@@ -55,7 +55,7 @@ DATA_TYPE allocate_memory()
 
   if(memory[FLAGS].data == MEMORY_ALLOCATION_FAILED)
   {
-    #ifdef TESTING_CLI
+    #ifdef CLIT
     PRINT("Couldn't allocate memory for 'memory[FLAGS].data'.\n",0,0,0)
     #endif
     return 1;
@@ -67,7 +67,7 @@ DATA_TYPE allocate_memory()
 
   if(memory[MACHINE_INFO].data == MEMORY_ALLOCATION_FAILED)
   {
-    #ifdef TESTING_CLI
+    #ifdef CLIT
     PRINT("Couldn't allocate memory for 'memory[MACHINE_INFO].data'.\n",0,0,0)
     #endif
     return 1;
@@ -79,7 +79,7 @@ DATA_TYPE allocate_memory()
 
   if(memory[CORE_PROGRAMS_INFO].data == MEMORY_ALLOCATION_FAILED)
   {
-    #ifdef TESTING_CLI
+    #ifdef CLIT
     PRINT("Couldn't allocate memory for 'memory[CORE_PROGRAMS_INFO].data.\n'",0,0,0)
     #endif
     return 1;
@@ -91,7 +91,7 @@ DATA_TYPE allocate_memory()
 
   if(memory[KEYBOARD_STATE].data == MEMORY_ALLOCATION_FAILED)
   {
-    #ifdef TESTING_CLI
+    #ifdef CLIT
     PRINT("Couldn't allocate memory for 'memory[KEYBOARD_STATE].data.\n'",0,0,0)
     #endif
     return 1;
@@ -103,7 +103,7 @@ DATA_TYPE allocate_memory()
 
   if(memory[MOUSE_STATE].data == MEMORY_ALLOCATION_FAILED)
   {
-    #ifdef TESTING_CLI
+    #ifdef CLIT
     PRINT("Couldn't allocate memory for 'memory[MOUSE_STATE].data.\n'",0,0,0)
     #endif
     return 1;
@@ -115,7 +115,7 @@ DATA_TYPE allocate_memory()
 
   if(memory[JOYSTICK_STATE].data == MEMORY_ALLOCATION_FAILED)
   {
-    #ifdef TESTING_CLI
+    #ifdef CLIT
     PRINT("Couldn't allocate memory for 'memory[JOYSTICK_STATE].data.\n'",0,0,0)
     #endif
     return 1;
@@ -131,7 +131,7 @@ DATA_TYPE allocate_memory()
 
      if(memory[loop].data == MEMORY_ALLOCATION_FAILED)
      {
-        #ifdef TESTING_CLI
+        #ifdef CLIT
         PRINT("Couldn't allocate memory for 'memory[%u].data'.\n",loop,0,0)
         #endif
         return 1;

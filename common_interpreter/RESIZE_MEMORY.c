@@ -7,7 +7,7 @@ if(MEMORY_FAILSAFE_AT(head_index))
 {
   SET_FLAG(MEMORY_RESIZE_FAILED, *temp[0])
 
-  #ifdef TESTING_CLI
+  #ifdef CLIT
   if(FLAG_AT(MEMORY_RESIZE_FAILED))
   {
     PRINT("RESIZE_MEMORY, %s: %s\n",error_titles[MEMORY_RESIZE_FAILED-3],error_messages[FLAG_AT(MEMORY_RESIZE_FAILED)-1],0)
@@ -17,7 +17,7 @@ if(MEMORY_FAILSAFE_AT(head_index))
   ADVANCE_HEAD
 }
 
-#ifdef TESTING_CLI
+#ifdef CLIT
 PRINT("RESIZE_MEMORY, %u\n",AT_HEAD_OFFSET(1),0,0)
 #endif
 

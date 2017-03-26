@@ -7,7 +7,7 @@ GET_MEMORY_CAPACITY:
 
 *temp[0] = capacity;
 
-#ifdef TESTING_CLI
+#ifdef CLIT
 PRINT("GET_MEMORY_CAPACITY, %u\n",AT_HEAD_OFFSET(1),0,0)
 #endif
 

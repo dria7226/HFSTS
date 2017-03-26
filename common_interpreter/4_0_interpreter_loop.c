@@ -8,7 +8,7 @@ void* instruction_table[] = {
 DATA_TYPE* temp[4];
 DATA_TYPE  argument_index;
 
-#ifdef TESTING_CLI
+#ifdef CLIT
 no_of_messages = 0;
 #endif
 
@@ -20,7 +20,7 @@ next_instruction:
 //if(INDEX_AT(head_index) > )
 //  goto out;
 
-#ifdef TESTING_CLI
+#ifdef CLIT
 CHECK_FOR_LIMIT
 PRINT("%u:%u: ", ARRAY_AT(head_index), INDEX_AT(head_index),0);
 #endif
@@ -32,7 +32,7 @@ FLAG_AT(FLAG_SET) = 0;
 if(AT_HEAD_OFFSET(0) < NUMBER_OF_CORE_PROGRAMS)
   goto *instruction_table[AT_HEAD_OFFSET(0)];
 
-#ifdef TESTING_CLI
+#ifdef CLIT
 PRINT("Invalid program code.\n",0,0,0);
 #endif
 

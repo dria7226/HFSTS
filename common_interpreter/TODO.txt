@@ -12,8 +12,8 @@ COMMON INTERPRETER
 - add windows default array
 
 - create and finish core programs
- - read time
- - reading/writing files (stdio.h)
+ - read time (time.c)
+ - reading/writing files (stdio.h) (input_output.c)
  - create window
  - create texture
  - compile shader

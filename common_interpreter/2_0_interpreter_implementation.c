@@ -10,7 +10,7 @@
 
 #include "2_0_interpreter_definitions.c"
 
-#ifdef TESTING_CLI
+#ifdef CLIT
 #include "testing_messages.c"
 #endif
 

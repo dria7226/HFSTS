@@ -15,7 +15,7 @@ if(MATH_FAILSAFE_AT(head_index))
 
 *temp[1] = *temp[2];
 
-#ifdef TESTING_CLI
+#ifdef CLIT
 PRINT("MULTIPLY, %u, %u = %u\n", AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2), *temp[1])
 #endif
 

@@ -1,4 +1,4 @@
-#ifdef TESTING_CLI
+#ifdef CLIT
 
 DATA_TYPE loop = 0;
 

@@ -6,7 +6,7 @@ SET_SOURCE:
 
 SOURCE_AT(head_index) = AT_HEAD_OFFSET(1);
 
-#ifdef TESTING_CLI
+#ifdef CLIT
 PRINT("SET_SOURCE, %u\n",AT_HEAD_OFFSET(1),0,0)
 #endif
 
