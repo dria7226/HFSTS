@@ -1,4 +1,4 @@
-//WRITE_ARRAY, array, address_buffer_index
+//WRITE_ARRAY, array, address_buffer_index, amount
 #ifdef INTERPRETER_MODE
 WRITE_ARRAY:
 #define CHECK_ARRAY
@@ -10,7 +10,7 @@ argument_index++;
 #define SET_VARIABLES
 #include "check_arguments.c"
 
-*temp[2] = write_array(*temp[0], *temp[1]);
+*temp[2] = WRITE_ARRAY(*temp[0], *temp[1]);
 
 ADVANCE_HEAD
 #endif

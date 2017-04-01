@@ -41,7 +41,7 @@
 #include "EXIT.c"
 
 #undef ENUMERATE
-#undef LABEL_MODE
-#undef NAME_MODE
 #undef INTERPRETER_MODE
+#undef NAME_MODE
+#undef LABEL_MODE
 #undef ARGUMENTS_MODE
