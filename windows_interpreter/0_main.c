@@ -6,7 +6,7 @@
 
 #include "../common_interpreter/helpers.c"
 
-int main(int argc, char* argv)
+int main(int argc, char** argv)
 {
   #include "../common_interpreter/3___setup.c"
 

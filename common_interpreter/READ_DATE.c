@@ -5,7 +5,7 @@ READ_DATE:
 #define SET_VARIABLES
 #include "check_arguments.c"
 
-*temp[0] = read_date();
+READ_DATE(*temp[0])
 
 ADVANCE_HEAD
 #endif

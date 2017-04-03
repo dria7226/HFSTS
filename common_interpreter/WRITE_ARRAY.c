@@ -1,7 +1,7 @@
-//WRITE_ARRAY, array, address_buffer_index, amount
+//WRITE_ARRAY, index, amount
 #ifdef INTERPRETER_MODE
 WRITE_ARRAY:
-#define CHECK_ARRAY
+#define CHECK_INDEX
 #define SET_VARIABLES
 #include "check_arguments.c"
 
@@ -10,7 +10,9 @@ argument_index++;
 #define SET_VARIABLES
 #include "check_arguments.c"
 
-*temp[2] = WRITE_ARRAY(*temp[0], *temp[1]);
+file = fopen((char*)(memory[DESTINATION_AT(head_index)].data + *temp[0]),"wb");
+WRITE_ARRAY(*temp[1], AT_HEAD_OFFSET(3));
+fclose(file);
 
 ADVANCE_HEAD
 #endif
@@ -24,7 +26,7 @@ WRITE_ARRAY
 #endif
 
 #ifdef ARGUMENTS_MODE
-2
+3
 #endif
 
 #ifdef ENUMERATE

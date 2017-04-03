@@ -7,6 +7,7 @@ void* instruction_table[] = {
 //working variables
 DATA_TYPE* temp[4];
 DATA_TYPE  argument_index;
+IO_TYPE* file;
 
 #ifdef CLIT
 no_of_messages = 0;

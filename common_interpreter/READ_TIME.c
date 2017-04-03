@@ -5,7 +5,7 @@ READ_TIME:
 #define SET_VARIABLES
 #include "check_arguments.c"
 
-*temp[0] = read_time();
+READ_TIME(*temp[0])
 
 ADVANCE_HEAD
 #endif

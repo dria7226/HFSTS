@@ -37,6 +37,7 @@
 
 #include "READ_ARRAY.c"
 #include "WRITE_ARRAY.c"
+#include "GET_FILE_SIZE.c"
 
 #include "EXIT.c"
 
