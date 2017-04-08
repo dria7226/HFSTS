@@ -17,9 +17,8 @@ next_instruction:
 
 #include "4_1_head_management.c"
 
-//what do?
-//if(INDEX_AT(head_index) > )
-//  goto out;
+if(INDEX_AT(head_index) > CAPACITY_AT(ARRAY_AT(head_index)))
+  goto out;
 
 #ifdef CLIT
 CHECK_FOR_LIMIT
