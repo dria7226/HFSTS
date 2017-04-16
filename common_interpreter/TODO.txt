@@ -1,5 +1,7 @@
 COMMON INTERPRETER
 
+- fix crash that happens on loading test program in resizes in the for loop
+
 - figure out issues in resizes.c
 
 - go over all core programs again and fix any mistakes

@@ -2,14 +2,14 @@ DATA_TYPE resize_array(DATA_TYPE target, DATA_TYPE new_capacity)
 {
   if(new_capacity == memory[target].capacity) return 0;
 
-  // what happens when the array downsizes itself past the current index?
+  // what happens when the array downsizes itself past the current index? Answer: it goes with the standard procedure for overflown indices in the interpreter loop
   
   if(target < NUMBER_OF_DEFAULT_ARRAYS) return 1;
   
   DATA_TYPE* new = ALLOCATE_MEMORY( new_capacity, DATA_TYPE )
 
   if(new == MEMORY_ALLOCATION_FAILED) return 2;
-
+  
   DATA_TYPE loop = 0;
   DATA_TYPE length = memory[target].capacity * (memory[target].capacity < new_capacity) + new_capacity * (memory[target].capacity > new_capacity);
   for(;loop <= length; loop++)
@@ -21,7 +21,7 @@ DATA_TYPE resize_array(DATA_TYPE target, DATA_TYPE new_capacity)
 
   memory[target].data = new;
   memory[target].capacity = new_capacity;
-
+  
   return 0;
 }
 
@@ -29,7 +29,7 @@ DATA_TYPE resize_memory(DATA_TYPE new_capacity)
 {
   if(new_capacity == capacity) return 0;
 
-  // what happens when the array downsizes the memory past itself?
+  // what happens when the array downsizes the memory past itself? Answer: it is handled in the interpreter loop
   
   if(capacity <= NUMBER_OF_DEFAULT_ARRAYS) return 1;
   

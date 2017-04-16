@@ -10,9 +10,9 @@ argument_index++;
 #define SET_VARIABLES
 #include "check_arguments.c"
 
-file = fopen((char*)(memory[SOURCE_AT(head_index)].data + *temp[0]),"rb");
-READ_ARRAY(*temp[1], AT_HEAD_OFFSET(3))
-fclose(file);
+file = OPEN((char*)(memory[SOURCE_AT(head_index)].data + *temp[0]), "rb")
+READ_ARRAY(*temp[1], DESTINATION_AT(head_index), AT_HEAD_OFFSET(3))
+CLOSE(file)
 
 ADVANCE_HEAD
 #endif

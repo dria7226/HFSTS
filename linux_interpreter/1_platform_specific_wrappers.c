@@ -7,9 +7,11 @@
 
 //IO
 #define IO_TYPE FILE
-#define READ_ARRAY(index, amount) fsetpos(file, (fpos_t *)index); fread(memory[DESTINATION_AT(head_index)].data + index, sizeof(DATA_TYPE), amount , file);
-#define WRITE_ARRAY(index, amount) fsetpos(file, (fpos_t *)index); fwrite(memory[DESTINATION_AT(head_index)].data + index , sizeof(DATA_TYPE), amount, file);
+#define OPEN(index, type) fopen(index, type);
+#define READ_ARRAY(index, array, amount) fsetpos(file, (fpos_t *)index); fread(memory[array].data + index, sizeof(DATA_TYPE), amount , file);
+#define WRITE_ARRAY(index, array, amount) fsetpos(file, (fpos_t *)index); fwrite(memory[array].data + index, sizeof(DATA_TYPE), amount, file);
 #define GET_FILE_SIZE(destination_index) fseek(file, 0, SEEK_END); MEMORY_AT(DESTINATION_AT(head_index), destination_index) = ftell(file);
+#define CLOSE(f) fclose(f);
 
 //TIME
 #include <time.h>

@@ -1,0 +1,8 @@
+DATA_TYPE test_program[] = {
+  SET_SOURCE, NUMBER_OF_DEFAULT_ARRAYS,
+  SET_DESTINATION, NUMBER_OF_DEFAULT_ARRAYS,
+
+  #include "ADD_test.c"
+    
+  EXIT
+};

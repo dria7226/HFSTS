@@ -1,4 +1,7 @@
 #include "EMPTY.c"
+#include "EXIT.c"
+#include "RUN_PERFORMANCE_TEST.c"
+
 #include "COPY.c"
 #include "INSERT_ARRAY.c"
 
@@ -30,16 +33,12 @@
 #include "NOT.c"
 #include "LOGICAL_SHIFT.c"
 
-#include "RUN_PERFORMANCE_TEST.c"
+//#include "READ_TIME.c"
+//#include "READ_DATE.c"
 
-#include "READ_TIME.c"
-#include "READ_DATE.c"
-
-#include "READ_ARRAY.c"
-#include "WRITE_ARRAY.c"
-#include "GET_FILE_SIZE.c"
-
-#include "EXIT.c"
+//#include "READ_ARRAY.c"
+//#include "WRITE_ARRAY.c"
+//#include "GET_FILE_SIZE.c"
 
 #undef ENUMERATE
 #undef INTERPRETER_MODE

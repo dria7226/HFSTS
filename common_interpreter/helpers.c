@@ -1,15 +1,15 @@
-#include "test_program.c"
+#include "tests/test_program.c"
 
-void load_test_program()
+void read_test_program()
 {
   if(memory == MEMORY_ALLOCATION_FAILED) return;
 
   #define PROGRAM_LENGTH sizeof(test_program)/sizeof(DATA_TYPE)
-  #define DATA_LENGTH sizeof(test_data)/sizeof(DATA_TYPE*)
 
   //load program
+  resize_memory(NUMBER_OF_DEFAULT_ARRAYS);
   resize_array(NUMBER_OF_DEFAULT_ARRAYS, PROGRAM_LENGTH);
-
+  
   DATA_TYPE loop = 0;
 
   for(; loop < PROGRAM_LENGTH; loop++)
@@ -18,7 +18,15 @@ void load_test_program()
   }
 }
 
-DATA_TYPE load_program_at_address(int argc, char** argv)
+void write_program()
+{
+  FILE* file;
+  file = OPEN("main_array", "wb")
+  WRITE_ARRAY(0, NUMBER_OF_DEFAULT_ARRAYS, CAPACITY_AT(NUMBER_OF_DEFAULT_ARRAYS))
+  CLOSE(file)
+}
+
+DATA_TYPE read_program_at_address(int argc, char** argv)
 {
   // check if there are any arguments
   if(argc <= 1) return 1;

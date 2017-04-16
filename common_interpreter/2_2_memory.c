@@ -22,7 +22,7 @@ DATA_TYPE insert_array(DATA_TYPE insert_to_address, DATA_TYPE insert_from_addres
 DATA_TYPE allocate_memory()
 {  
   capacity = DEFAULT_CAPACITY*(DEFAULT_CAPACITY >= NUMBER_OF_DEFAULT_ARRAYS) + NUMBER_OF_DEFAULT_ARRAYS*(DEFAULT_CAPACITY < NUMBER_OF_DEFAULT_ARRAYS);
-
+  
   //MEMORY
   memory = ALLOCATE_MEMORY( capacity, struct ARRAY )
 
@@ -139,7 +139,7 @@ DATA_TYPE allocate_memory()
 
      loop++;
   }
-  
+
   return 0;
 }
 
