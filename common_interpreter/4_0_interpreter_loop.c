@@ -17,19 +17,6 @@ next_instruction:
 
 #include "4_1_head_management.c"
 
-DATA_TYPE number_of_consecutive_head_failures;
-if(number_of_consecutive_failures == CAPACITY_AT(HEADS)/NUMBER_OF_HEAD_ELEMENTS) goto out;
-if(ARRAY_AT(head_index) > capacity
-   ||
-   INDEX_AT(head_index) > CAPACITY_AT(ARRAY_AT(head_index)))
-{
-  number_of_consecutive_failures++;
-  head_index *= ++head_index < (CAPACITY_AT(HEADS)/NUMBER_OF_HEAD_ELEMENTS);
-  goto next_instruction;
-}
-
-number_of_consecutive_failures = 0;
-
 #ifdef CLIT
 CHECK_FOR_LIMIT
 PRINT("%u:%u: ", ARRAY_AT(head_index), INDEX_AT(head_index),0);
