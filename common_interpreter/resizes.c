@@ -27,11 +27,7 @@ DATA_TYPE resize_array(DATA_TYPE target, DATA_TYPE new_capacity)
 }
 
 DATA_TYPE resize_memory(DATA_TYPE new_capacity)
-{
-  #ifdef CLIT
-  PRINT("RESIZE_MEMORY, %u,\ncapacity: %u\n",new_capacity, capacity, 0)
-  #endif
-  
+{  
   if(new_capacity == capacity) return 0;
 
   // what happens when the array downsizes the memory past itself? Answer: it is handled in the interpreter loop

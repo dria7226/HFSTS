@@ -6,4 +6,4 @@
 #include <errno.h>
 #include <string.h>
 
-#define CURRENT_PLATFORM 2
+#define CURRENT_PLATFORM 3

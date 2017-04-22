@@ -48,7 +48,8 @@ DATA_TYPE allocate_memory()
 
   ARRAY_AT(0) = NUMBER_OF_DEFAULT_ARRAYS;
   HEAD_GRANULARITY_AT(0) = MAX_VALUE;
-
+  FAILSAFE_AT(0) = MAX_VALUE;
+  
   // FLAGS array
   memory[FLAGS].capacity = NUMBER_OF_FLAGS - 1;
   memory[FLAGS].data = ALLOCATE_MEMORY( memory[FLAGS].capacity, DATA_TYPE )

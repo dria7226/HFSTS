@@ -1,6 +1,11 @@
 //EXIT
 #ifdef INTERPRETER_MODE
 EXIT:
+
+#ifdef CLIT
+PRINT("EXIT\n",0,0,0)
+#endif
+
 goto out;
 #endif
 

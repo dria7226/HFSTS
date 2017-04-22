@@ -3,7 +3,7 @@
 EMPTY:
 
 #ifdef CLIT
-PRINT("\n",0,0,0)
+PRINT("EMPTY\n",0,0,0)
 #endif
 
 ADVANCE_HEAD

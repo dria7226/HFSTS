@@ -30,7 +30,6 @@ for(; test_loop <= capacity; test_loop++)
   }
 }
 
-ENTER_TO_CONTINUE
 ) // CHECK FOR SKIP
 
 #endif

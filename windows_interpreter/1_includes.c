@@ -3,4 +3,4 @@
 #endif
 #include <windows.h>
 
-#define CURRENT_PLATFORM 0
+#define CURRENT_PLATFORM 1
