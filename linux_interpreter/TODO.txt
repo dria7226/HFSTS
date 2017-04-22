@@ -1,5 +1,3 @@
 LINUX INTERPRETER
 
-- fix interpreter crash
-
 - figure out how to compile for specific CPUs

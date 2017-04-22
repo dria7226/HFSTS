@@ -1,5 +1,0 @@
-DATA_TYPE test_program[] = {
-  #include "ADD_test.c"
-  
-  EXIT
-};

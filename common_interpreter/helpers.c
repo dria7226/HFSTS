@@ -6,9 +6,17 @@ void read_test_program()
 
   #define PROGRAM_LENGTH sizeof(test_program)/sizeof(DATA_TYPE)
 
-  //load program
-  resize_memory(NUMBER_OF_DEFAULT_ARRAYS);
-  resize_array(NUMBER_OF_DEFAULT_ARRAYS, PROGRAM_LENGTH);
+  DATA_TYPE result;
+  
+  if(result = resize_memory(NUMBER_OF_DEFAULT_ARRAYS))
+  {
+    PRINT("Resizing memory failed: %u\n",result,0,0)
+  }
+  
+  if(result = resize_array(NUMBER_OF_DEFAULT_ARRAYS, PROGRAM_LENGTH))
+  {
+    PRINT("Resizing array failed: %u\n",result,0,0)
+  }
   
   DATA_TYPE loop = 0;
 

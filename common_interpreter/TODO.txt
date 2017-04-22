@@ -1,9 +1,5 @@
 COMMON INTERPRETER
 
-- fix crash that happens on loading test program in resizes in the for loop
-
-- figure out issues in resizes.c
-
 - go over all core programs again and fix any mistakes
 
 - finish work on check_arguments.c
@@ -16,11 +12,11 @@ COMMON INTERPRETER
 - create and finish core programs
  - read time (time.c)
  - reading/writing files (stdio.h) (input_output.c)
+ - read keyboard
+ - read mouse
  - create window
  - create texture
  - compile shader
- - read keyboard
- - read mouse
 
  - read joystick
 

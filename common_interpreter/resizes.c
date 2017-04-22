@@ -12,9 +12,10 @@ DATA_TYPE resize_array(DATA_TYPE target, DATA_TYPE new_capacity)
   
   DATA_TYPE loop = 0;
   DATA_TYPE length = memory[target].capacity * (memory[target].capacity < new_capacity) + new_capacity * (memory[target].capacity > new_capacity);
+    
   for(;loop <= length; loop++)
   {
-    new[loop] = MEMORY_AT(target, loop);
+    new[loop] = MEMORY_AT(target, loop); //crashes here
   }
 
   DEALLOCATE_MEMORY( memory[target].data, memory[target].capacity);
@@ -27,11 +28,15 @@ DATA_TYPE resize_array(DATA_TYPE target, DATA_TYPE new_capacity)
 
 DATA_TYPE resize_memory(DATA_TYPE new_capacity)
 {
+  #ifdef CLIT
+  PRINT("RESIZE_MEMORY, %u,\ncapacity: %u\n",new_capacity, capacity, 0)
+  #endif
+  
   if(new_capacity == capacity) return 0;
 
   // what happens when the array downsizes the memory past itself? Answer: it is handled in the interpreter loop
   
-  if(capacity <= NUMBER_OF_DEFAULT_ARRAYS) return 1;
+  if(new_capacity < NUMBER_OF_DEFAULT_ARRAYS) return 1;
   
   struct ARRAY* new = ALLOCATE_MEMORY( new_capacity, struct ARRAY )
 
@@ -40,9 +45,10 @@ DATA_TYPE resize_memory(DATA_TYPE new_capacity)
   DATA_TYPE loop = 0;
   DATA_TYPE length = capacity * (capacity < new_capacity) + new_capacity * (capacity > new_capacity);
 
-  for(loop = 0; loop < length; loop++)
+  for(loop = 0; loop <= length; loop++)
   {
-    new[loop] = memory[loop];
+    new[loop].data = memory[loop].data;
+    new[loop].capacity = memory[loop].capacity;
   }
 
   DEALLOCATE_MEMORY(memory, capacity);
@@ -50,12 +56,12 @@ DATA_TYPE resize_memory(DATA_TYPE new_capacity)
   //allocate memory for new pointers if capacity increased
   if(new_capacity > capacity)
   {
-    for(loop = capacity; loop < new_capacity; loop++)
+    for(loop = capacity; loop <= new_capacity; loop++)
     {
-      new[loop].capacity = DEFAULT_CAPACITY;
-      new[loop].data = ALLOCATE_MEMORY( new[loop].capacity, DATA_TYPE )
+       new[loop].capacity = DEFAULT_CAPACITY;
+       new[loop].data = ALLOCATE_MEMORY( new[loop].capacity, DATA_TYPE )
 
-      if(new[loop].data == MEMORY_ALLOCATION_FAILED)
+       if(new[loop].data == MEMORY_ALLOCATION_FAILED)
        return 2;
     }
   }
