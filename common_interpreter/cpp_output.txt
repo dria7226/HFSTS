@@ -1,41 +1,221 @@
-
-
-ADD:
+EMPTY:
+ADVANCE_HEAD
+EXIT:
+goto out;
+RUN_PERFORMANCE_TEST:
+ADVANCE_HEAD
+COPY:
+while(argument_index < MEMORY_AT(CORE_PROGRAMS_INFO, AT_HEAD_OFFSET(0)*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS) ){
+if(MEMORY_FAILSAFE_AT(head_index))
+{
+  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
+  {
+    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
+    ADVANCE_HEAD
+  }
+}
+temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
+argument_index++;
+}
+*temp[1] = *temp[0];
+ADVANCE_HEAD
+INSERT_ARRAY:
 while(argument_index < MEMORY_AT(CORE_PROGRAMS_INFO, AT_HEAD_OFFSET(0)*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS) ){
 if(MEMORY_FAILSAFE_AT(head_index))
 {
   if(AT_HEAD_OFFSET(1+argument_index) > capacity)
   {
     SET_FLAG(ARRAY_ACCESS_FAILED, 1 + argument_index)
-
-
-
-
-
     ADVANCE_HEAD
   }
-
-
-
+}
+temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
+argument_index++;
+}
+insert_array(*temp[0], *temp[1]);
+ADVANCE_HEAD
+IF:
+if(MEMORY_FAILSAFE_AT(head_index))
+{
   if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
   {
     SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
-
-
-
-
-
     ADVANCE_HEAD
   }
-
 }
-
-
-
-
-
-
-
+temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
+if(*temp[0])
+{
+  ADVANCE_HEAD
+}
+else
+{
+  INDEX_AT(head_index) += 2;
+  ADVANCE_HEAD
+}
+GO_TO_ARRAY:
+if(MEMORY_FAILSAFE_AT(head_index))
+{
+  if(AT_HEAD_OFFSET(1+argument_index) > capacity)
+  {
+    SET_FLAG(ARRAY_ACCESS_FAILED, 1 + argument_index)
+    ADVANCE_HEAD
+  }
+}
+temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
+ARRAY_AT(head_index) = *temp[0];
+INDEX_AT(head_index) = *temp[1];
+GO_TO_INDEX:
+if(MEMORY_FAILSAFE_AT(head_index))
+{
+  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
+  {
+    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
+    ADVANCE_HEAD
+  }
+}
+temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
+INDEX_AT(head_index) = *temp[0];
+SKIP:
+if(MEMORY_FAILSAFE_AT(head_index))
+{
+  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
+  {
+    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
+    ADVANCE_HEAD
+  }
+}
+temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
+INDEX_AT(head_index) += *temp[0];
+goto next_instruction;
+RESIZE_MEMORY:
+*temp[0] = resize_memory(AT_HEAD_OFFSET(1));
+if(MEMORY_FAILSAFE_AT(head_index))
+{
+  SET_FLAG(MEMORY_RESIZE_FAILED, *temp[0])
+  ADVANCE_HEAD
+}
+ADVANCE_HEAD
+RESIZE_ARRAY:
+if(MEMORY_FAILSAFE_AT(head_index))
+{
+  if(AT_HEAD_OFFSET(1+argument_index) > capacity)
+  {
+    SET_FLAG(ARRAY_ACCESS_FAILED, 1 + argument_index)
+    ADVANCE_HEAD
+  }
+}
+temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
+*temp[2] = resize_array(*temp[0], AT_HEAD_OFFSET(2));
+if(MEMORY_FAILSAFE_AT(head_index))
+{
+  SET_FLAG(ARRAY_RESIZE_FAILED, *temp[2])
+  ADVANCE_HEAD
+}
+ADVANCE_HEAD
+GET_MEMORY_CAPACITY:
+if(MEMORY_FAILSAFE_AT(head_index))
+{
+  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
+  {
+    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
+    ADVANCE_HEAD
+  }
+}
+temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
+*temp[0] = capacity;
+ADVANCE_HEAD
+GET_ARRAY_CAPACITY:
+if(MEMORY_FAILSAFE_AT(head_index))
+{
+  if(AT_HEAD_OFFSET(1+argument_index) > capacity)
+  {
+    SET_FLAG(ARRAY_ACCESS_FAILED, 1 + argument_index)
+    ADVANCE_HEAD
+  }
+}
+temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
+argument_index++;
+if(MEMORY_FAILSAFE_AT(head_index))
+{
+  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
+  {
+    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
+    ADVANCE_HEAD
+  }
+}
+temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
+*temp[1] = CAPACITY_AT(*temp[0]);
+ADVANCE_HEAD
+GET_HEAD:
+if(MEMORY_FAILSAFE_AT(head_index))
+{
+  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
+  {
+    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
+    ADVANCE_HEAD
+  }
+}
+temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
+*temp[0] = head_index;
+ADVANCE_HEAD
+GET_GRANULARITY_COUNTER:
+if(MEMORY_FAILSAFE_AT(head_index))
+{
+  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
+  {
+    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
+    ADVANCE_HEAD
+  }
+}
+temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
+*temp[0] = granularity_counter;
+ADVANCE_HEAD
+SET_SOURCE:
+if(MEMORY_FAILSAFE_AT(head_index))
+{
+  if(AT_HEAD_OFFSET(1+argument_index) > capacity)
+  {
+    SET_FLAG(ARRAY_ACCESS_FAILED, 1 + argument_index)
+    ADVANCE_HEAD
+  }
+}
+SOURCE_AT(head_index) = AT_HEAD_OFFSET(1);
+ADVANCE_HEAD
+SET_DESTINATION:
+if(MEMORY_FAILSAFE_AT(head_index))
+{
+  if(AT_HEAD_OFFSET(1+argument_index) > capacity)
+  {
+    SET_FLAG(ARRAY_ACCESS_FAILED, 1 + argument_index)
+    ADVANCE_HEAD
+  }
+}
+DESTINATION_AT(head_index) = AT_HEAD_OFFSET(1);
+ADVANCE_HEAD
+SET_FAILSAFE_TYPE:
+if(MEMORY_FAILSAFE_AT(head_index))
+{
+  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
+  {
+    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
+    ADVANCE_HEAD
+  }
+}
+temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
+FAILSAFE_AT(head_index) = *temp[0];
+ADVANCE_HEAD
+ADD:
+while(argument_index < MEMORY_AT(CORE_PROGRAMS_INFO, AT_HEAD_OFFSET(0)*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS) ){
+if(MEMORY_FAILSAFE_AT(head_index))
+{
+  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
+  {
+    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
+    ADVANCE_HEAD
+  }
+}
+temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
 argument_index++;
 }
 if(MATH_FAILSAFE_AT(head_index))
@@ -43,4 +223,155 @@ if(MATH_FAILSAFE_AT(head_index))
   SET_FLAG(OVERFLOW, *temp[1] > (*temp[1] + *temp[0]))
 }
 *temp[1] += *temp[0];
+ADVANCE_HEAD
+SUBTRACT:
+while(argument_index < MEMORY_AT(CORE_PROGRAMS_INFO, AT_HEAD_OFFSET(0)*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS) ){
+if(MEMORY_FAILSAFE_AT(head_index))
+{
+  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
+  {
+    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
+    ADVANCE_HEAD
+  }
+}
+temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
+argument_index++;
+}
+if(MATH_FAILSAFE_AT(head_index))
+{
+  SET_FLAG(UNDERFLOW, (*temp[1] < (*temp[1] - *temp[0])) )
+}
+*temp[1] -= *temp[0];
+ADVANCE_HEAD
+MULTIPLY:
+while(argument_index < MEMORY_AT(CORE_PROGRAMS_INFO, AT_HEAD_OFFSET(0)*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS) ){
+if(MEMORY_FAILSAFE_AT(head_index))
+{
+  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
+  {
+    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
+    ADVANCE_HEAD
+  }
+}
+temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
+argument_index++;
+}
+*temp[2] = *temp[0] * *temp[1];
+if(MATH_FAILSAFE_AT(head_index))
+{
+  SET_FLAG(OVERFLOW, ( *temp[1] != 0 && *temp[2] / *temp[1] != *temp[0] ))
+}
+*temp[1] = *temp[2];
+ADVANCE_HEAD
+DIVIDE:
+while(argument_index < MEMORY_AT(CORE_PROGRAMS_INFO, AT_HEAD_OFFSET(0)*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS) ){
+if(MEMORY_FAILSAFE_AT(head_index))
+{
+  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
+  {
+    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
+    ADVANCE_HEAD
+  }
+}
+temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
+argument_index++;
+}
+if(MATH_FAILSAFE_AT(head_index) && (*temp[0] == 0))
+{
+  SET_FLAG(DIVISION_BY_ZERO,1)
+  ADVANCE_HEAD
+}
+*temp[1] /= *temp[0];
+ADVANCE_HEAD
+REMAINDER:
+while(argument_index < MEMORY_AT(CORE_PROGRAMS_INFO, AT_HEAD_OFFSET(0)*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS) ){
+if(MEMORY_FAILSAFE_AT(head_index))
+{
+  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
+  {
+    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
+    ADVANCE_HEAD
+  }
+}
+temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
+argument_index++;
+}
+if(MATH_FAILSAFE_AT(head_index) && (*temp[0] == 0))
+{
+  SET_FLAG(DIVISION_BY_ZERO,1)
+  ADVANCE_HEAD
+}
+*temp[1] %= *temp[0];
+ADVANCE_HEAD
+AND:
+while(argument_index < MEMORY_AT(CORE_PROGRAMS_INFO, AT_HEAD_OFFSET(0)*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS) ){
+if(MEMORY_FAILSAFE_AT(head_index))
+{
+  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
+  {
+    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
+    ADVANCE_HEAD
+  }
+}
+temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
+argument_index++;
+}
+*temp[1] &= *temp[0];
+ADVANCE_HEAD
+OR:
+while(argument_index < MEMORY_AT(CORE_PROGRAMS_INFO, AT_HEAD_OFFSET(0)*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS) ){
+if(MEMORY_FAILSAFE_AT(head_index))
+{
+  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
+  {
+    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
+    ADVANCE_HEAD
+  }
+}
+temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
+argument_index++;
+}
+*temp[1] |= *temp[0];
+ADVANCE_HEAD
+XOR:
+while(argument_index < MEMORY_AT(CORE_PROGRAMS_INFO, AT_HEAD_OFFSET(0)*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS) ){
+if(MEMORY_FAILSAFE_AT(head_index))
+{
+  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
+  {
+    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
+    ADVANCE_HEAD
+  }
+}
+temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
+argument_index++;
+}
+*temp[1] ^= *temp[0];
+ADVANCE_HEAD
+NOT:
+if(MEMORY_FAILSAFE_AT(head_index))
+{
+  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
+  {
+    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
+    ADVANCE_HEAD
+  }
+}
+temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
+~*temp[0];
+ADVANCE_HEAD
+LOGICAL_SHIFT:
+if(MEMORY_FAILSAFE_AT(head_index))
+{
+  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
+  {
+    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
+    ADVANCE_HEAD
+  }
+}
+temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
+if(AT_HEAD_OFFSET(3))
+  *temp[0] <<= AT_HEAD_OFFSET(2);
+else
+  *temp[0] >>= AT_HEAD_OFFSET(2);
 ADVANCE_HEAD

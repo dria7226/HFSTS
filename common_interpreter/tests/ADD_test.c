@@ -1,1 +1,7 @@
-ADD,0,1,
+GO_TO_INDEX,9,
+0,
+1,
+MAX_VALUE,
+ADD,1,2,
+ADD,1,3,
+
