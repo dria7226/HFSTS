@@ -10,6 +10,10 @@ GO_TO_ARRAY:
 ARRAY_AT(head_index) = AT_HEAD_OFFSET(1);
 INDEX_AT(head_index) = AT_HEAD_OFFSET(2);
 
+#ifdef CLIT
+PRINT("GO_TO_ARRAY, %u, %u\n",ARRAY_AT(head_index),INDEX_AT(head_index),0)
+#endif
+
 goto next_instruction;
 #endif
 

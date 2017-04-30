@@ -1,6 +1,9 @@
 // COPY , read_from_address , write_to_address
 #ifdef INTERPRETER_MODE
 COPY:
+#ifdef CLIT
+PRINT("COPY, %u, %u ",AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2),0)
+#endif
 #define CHECK_ALL_ARGUMENTS
 #define CHECK_INDEX
 #define SET_VARIABLES
@@ -9,7 +12,7 @@ COPY:
 *temp[1] = *temp[0];
 
 #ifdef CLIT
-PRINT("COPY, %u, %u\n", AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2),0)
+PRINT("\n",0,0,0)
 #endif
 
 ADVANCE_HEAD

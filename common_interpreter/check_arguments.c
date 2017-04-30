@@ -9,7 +9,7 @@ if(MEMORY_FAILSAFE_AT(head_index))
       SET_FLAG(ARRAY_ACCESS_FAILED, 1 + argument_index)
     
       #ifdef CLIT
-      PRINT("ARRAY_ACCESS_FAILED.\n",0,0,0)
+      PRINT("ARRAY_ACCESS_FAILED : %u\n",FLAG_AT(ARRAY_ACCESS_FAILED),0,0)
       #endif
       
       ADVANCE_HEAD
@@ -22,7 +22,7 @@ if(MEMORY_FAILSAFE_AT(head_index))
       SET_FLAG(ARRAY_ACCESS_FAILED, 1 + argument_index)
 
       #ifdef CLIT
-      PRINT("ARRAY_ACCESS_FAILED",0,0,0)
+      PRINT("ARRAY_ACCESS_FAILED : %u\n",FLAG_AT(ARRAY_ACCESS_FAILED),0,0)
       #endif
 
       ADVANCE_HEAD
@@ -33,7 +33,7 @@ if(MEMORY_FAILSAFE_AT(head_index))
       SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
       
       #ifdef CLIT
-      PRINT("INDEX_ACCESS_FAILED.\n",0,0,0)
+      PRINT("INDEX_ACCESS_FAILED : %u\n",FLAG_AT(INDEX_ACCESS_FAILED),0,0)
       #endif
       
       ADVANCE_HEAD
@@ -48,10 +48,8 @@ if(MEMORY_FAILSAFE_AT(head_index))
     #endif
     
     #ifdef CHECK_ALL_ARGUMENTS
-    #ifdef CHECK_INDEX
     argument_index++;
     }
-    #endif
     #endif
 }
 

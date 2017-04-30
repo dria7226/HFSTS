@@ -6,6 +6,10 @@ GO_TO_INDEX:
 
 INDEX_AT(head_index) = AT_HEAD_OFFSET(1);
 
+#ifdef CLIT
+PRINT("GO_TO_INDEX, %u\n",INDEX_AT(head_index),0,0)
+#endif
+
 goto next_instruction;
 #endif
 
