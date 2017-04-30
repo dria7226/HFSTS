@@ -11,7 +11,7 @@ if(*temp[0])
 }
 else
 {
-  INDEX_AT(head_index) += 2; //ADVANCE_HEAD once, but don't execute
+  INDEX_AT(head_index) += 1 + core_programs_arguments[AT_HEAD_OFFSET(0)]; //ADVANCE_HEAD once, but don't execute
   ADVANCE_HEAD
 }
 #endif

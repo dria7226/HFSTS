@@ -2,11 +2,15 @@
 #ifdef INTERPRETER_MODE
 GO_TO_ARRAY:
 #define CHECK_ARRAY
-#define SET_VARIABLES
 #include "check_arguments.c"
 
-ARRAY_AT(head_index) = *temp[0];
-INDEX_AT(head_index) = *temp[1];
+#define CHECK_INDEX
+#include "check_arguments.c"
+
+ARRAY_AT(head_index) = AT_HEAD_OFFSET(1);
+INDEX_AT(head_index) = AT_HEAD_OFFSET(2);
+
+goto next_instruction;
 #endif
 
 #ifdef NAME_MODE

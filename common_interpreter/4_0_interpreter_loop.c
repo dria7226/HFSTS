@@ -24,8 +24,6 @@ PRINT("%u:%u: ", ARRAY_AT(head_index), INDEX_AT(head_index),0);
 
 argument_index = 0;
 
-FLAG_AT(FLAG_SET) = 0;
-
 if(AT_HEAD_OFFSET(0) < NUMBER_OF_CORE_PROGRAMS)
   goto *instruction_table[AT_HEAD_OFFSET(0)];
 

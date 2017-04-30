@@ -1,15 +1,11 @@
-// SKIP, read_from_address
+// SKIP, amount
 #ifdef INTERPRETER_MODE
 SKIP:
-#define CHECK_INDEX
-#define SET_VARIABLES
-#include "check_arguments.c"
-
 #ifdef CLIT
 PRINT("SKIP, %u\n", AT_HEAD_OFFSET(1),0,0)
 #endif
 
-INDEX_AT(head_index) += *temp[0];
+INDEX_AT(head_index) += AT_HEAD_OFFSET(1);
 
 goto next_instruction;
 #endif

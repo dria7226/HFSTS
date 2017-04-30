@@ -2,9 +2,11 @@ DATA_TYPE resize_array(DATA_TYPE target, DATA_TYPE new_capacity)
 {
   if(new_capacity == memory[target].capacity) return 0;
 
-  // what happens when the array downsizes itself past the current index? Answer: it goes with the standard procedure for overflown indices in the interpreter loop
+  // Question: What happens when the array downsizes itself past the current index?
+  // Answer: It goes with the standard procedure for overflown indices in the interpreter loop.
   
-  if(target < NUMBER_OF_DEFAULT_ARRAYS) return 1;
+  if(target < NUMBER_OF_DEFAULT_ARRAYS && target != HEADS) return 1;
+  if(target == HEADS && new_capacity < NUMBER_OF_HEAD_ELEMENTS - 1) return 3;
   
   DATA_TYPE* new = ALLOCATE_MEMORY( new_capacity, DATA_TYPE )
 
@@ -15,7 +17,7 @@ DATA_TYPE resize_array(DATA_TYPE target, DATA_TYPE new_capacity)
     
   for(;loop <= length; loop++)
   {
-    new[loop] = MEMORY_AT(target, loop); //crashes here
+    new[loop] = MEMORY_AT(target, loop);
   }
 
   DEALLOCATE_MEMORY( memory[target].data, memory[target].capacity);
@@ -30,7 +32,8 @@ DATA_TYPE resize_memory(DATA_TYPE new_capacity)
 {  
   if(new_capacity == capacity) return 0;
 
-  // what happens when the array downsizes the memory past itself? Answer: it is handled in the interpreter loop
+  // Question: What happens when the array downsizes the memory past itself?
+  // Answer: It goes wit the standard procedure for overflown array indices in the interpreter loop.
   
   if(new_capacity < NUMBER_OF_DEFAULT_ARRAYS) return 1;
   

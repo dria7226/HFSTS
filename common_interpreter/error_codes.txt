@@ -16,8 +16,9 @@ DIVISION_BY_ZERO
 
 ARRAY_RESIZE_FAILED
  0 - hasn't failed
- 1 - failed and capacity is invalid
+ 1 - failed and the target array is one of the invalid DEFAULT_ARRAYS
  2 - failed and was unable to allocate memory
+ 3 - failed and HEAD array couldn't be downsized below it's minimum capacity of NUMBER_OF_HEAD_ELEMENTS - 1
 
 MEMORY_RESIZE_FAILED
  0 - hasn't failed
@@ -31,3 +32,7 @@ ARRAY_ACCESS_FAILED
 INDEX_ACCESS_FAILED
  0 - hasn't failed
  x - failed and the invalid address is at head offset x
+
+SET_HEAD_FAILED
+ 0 - hasn't failed
+ 1 - failed and provided index is too big

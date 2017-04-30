@@ -3,10 +3,9 @@
 INSERT_ARRAY:
 #define CHECK_ALL_ARGUMENTS
 #define CHECK_ARRAY
-#define SET_VARIABLES
 #include "check_arguments.c"
 
-insert_array(*temp[0], *temp[1]);
+insert_array(AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2));
 
 #ifdef CLIT
 PRINT("INSERT_ARRAY, %u, %u\n",AT_HEAD_OFFSET(1),AT_HEAD_OFFSET(2),0)

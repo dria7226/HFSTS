@@ -1,377 +1,1256 @@
+typedef unsigned char __u_char;
+typedef unsigned short int __u_short;
+typedef unsigned int __u_int;
+typedef unsigned long int __u_long;
+typedef signed char __int8_t;
+typedef unsigned char __uint8_t;
+typedef signed short int __int16_t;
+typedef unsigned short int __uint16_t;
+typedef signed int __int32_t;
+typedef unsigned int __uint32_t;
+__extension__ typedef signed long long int __int64_t;
+__extension__ typedef unsigned long long int __uint64_t;
+__extension__ typedef long long int __quad_t;
+__extension__ typedef unsigned long long int __u_quad_t;
+__extension__ typedef long long int __intmax_t;
+__extension__ typedef unsigned long long int __uintmax_t;
+__extension__ typedef __u_quad_t __dev_t;
+__extension__ typedef unsigned int __uid_t;
+__extension__ typedef unsigned int __gid_t;
+__extension__ typedef unsigned long int __ino_t;
+__extension__ typedef __u_quad_t __ino64_t;
+__extension__ typedef unsigned int __mode_t;
+__extension__ typedef unsigned int __nlink_t;
+__extension__ typedef long int __off_t;
+__extension__ typedef __quad_t __off64_t;
+__extension__ typedef int __pid_t;
+__extension__ typedef struct { int __val[2]; } __fsid_t;
+__extension__ typedef long int __clock_t;
+__extension__ typedef unsigned long int __rlim_t;
+__extension__ typedef __u_quad_t __rlim64_t;
+__extension__ typedef unsigned int __id_t;
+__extension__ typedef long int __time_t;
+__extension__ typedef unsigned int __useconds_t;
+__extension__ typedef long int __suseconds_t;
+__extension__ typedef int __daddr_t;
+__extension__ typedef int __key_t;
+__extension__ typedef int __clockid_t;
+__extension__ typedef void * __timer_t;
+__extension__ typedef long int __blksize_t;
+__extension__ typedef long int __blkcnt_t;
+__extension__ typedef __quad_t __blkcnt64_t;
+__extension__ typedef unsigned long int __fsblkcnt_t;
+__extension__ typedef __u_quad_t __fsblkcnt64_t;
+__extension__ typedef unsigned long int __fsfilcnt_t;
+__extension__ typedef __u_quad_t __fsfilcnt64_t;
+__extension__ typedef int __fsword_t;
+__extension__ typedef int __ssize_t;
+__extension__ typedef long int __syscall_slong_t;
+__extension__ typedef unsigned long int __syscall_ulong_t;
+typedef __off64_t __loff_t;
+typedef __quad_t *__qaddr_t;
+typedef char *__caddr_t;
+__extension__ typedef int __intptr_t;
+__extension__ typedef unsigned int __socklen_t;
+typedef unsigned int size_t;
+typedef __off_t off_t;
+typedef __mode_t mode_t;
+
+extern void *mmap (void *__addr, size_t __len, int __prot,
+     int __flags, int __fd, __off_t __offset) __attribute__ ((__nothrow__ , __leaf__));
+extern int munmap (void *__addr, size_t __len) __attribute__ ((__nothrow__ , __leaf__));
+extern int mprotect (void *__addr, size_t __len, int __prot) __attribute__ ((__nothrow__ , __leaf__));
+extern int msync (void *__addr, size_t __len, int __flags);
+extern int madvise (void *__addr, size_t __len, int __advice) __attribute__ ((__nothrow__ , __leaf__));
+extern int posix_madvise (void *__addr, size_t __len, int __advice) __attribute__ ((__nothrow__ , __leaf__));
+extern int mlock (const void *__addr, size_t __len) __attribute__ ((__nothrow__ , __leaf__));
+extern int munlock (const void *__addr, size_t __len) __attribute__ ((__nothrow__ , __leaf__));
+extern int mlockall (int __flags) __attribute__ ((__nothrow__ , __leaf__));
+extern int munlockall (void) __attribute__ ((__nothrow__ , __leaf__));
+extern int mincore (void *__start, size_t __len, unsigned char *__vec)
+     __attribute__ ((__nothrow__ , __leaf__));
+extern int shm_open (const char *__name, int __oflag, mode_t __mode);
+extern int shm_unlink (const char *__name);
+
+
+extern int *__errno_location (void) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
+
+
+
+extern void *memcpy (void *__restrict __dest, const void *__restrict __src,
+       size_t __n) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
+extern void *memmove (void *__dest, const void *__src, size_t __n)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
+
+extern void *memccpy (void *__restrict __dest, const void *__restrict __src,
+        int __c, size_t __n)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
+
+extern void *memset (void *__s, int __c, size_t __n) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
+extern int memcmp (const void *__s1, const void *__s2, size_t __n)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+extern void *memchr (const void *__s, int __c, size_t __n)
+      __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+
+
+extern char *strcpy (char *__restrict __dest, const char *__restrict __src)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
+extern char *strncpy (char *__restrict __dest,
+        const char *__restrict __src, size_t __n)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
+extern char *strcat (char *__restrict __dest, const char *__restrict __src)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
+extern char *strncat (char *__restrict __dest, const char *__restrict __src,
+        size_t __n) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
+extern int strcmp (const char *__s1, const char *__s2)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+extern int strncmp (const char *__s1, const char *__s2, size_t __n)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+extern int strcoll (const char *__s1, const char *__s2)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+extern size_t strxfrm (char *__restrict __dest,
+         const char *__restrict __src, size_t __n)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (2)));
+
+typedef struct __locale_struct
+{
+  struct __locale_data *__locales[13];
+  const unsigned short int *__ctype_b;
+  const int *__ctype_tolower;
+  const int *__ctype_toupper;
+  const char *__names[13];
+} *__locale_t;
+typedef __locale_t locale_t;
+extern int strcoll_l (const char *__s1, const char *__s2, __locale_t __l)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2, 3)));
+extern size_t strxfrm_l (char *__dest, const char *__src, size_t __n,
+    __locale_t __l) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (2, 4)));
+extern char *strdup (const char *__s)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__malloc__)) __attribute__ ((__nonnull__ (1)));
+extern char *strndup (const char *__string, size_t __n)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__malloc__)) __attribute__ ((__nonnull__ (1)));
+
+extern char *strchr (const char *__s, int __c)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+extern char *strrchr (const char *__s, int __c)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+
+
+extern size_t strcspn (const char *__s, const char *__reject)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+extern size_t strspn (const char *__s, const char *__accept)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+extern char *strpbrk (const char *__s, const char *__accept)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+extern char *strstr (const char *__haystack, const char *__needle)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+extern char *strtok (char *__restrict __s, const char *__restrict __delim)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (2)));
+
+extern char *__strtok_r (char *__restrict __s,
+    const char *__restrict __delim,
+    char **__restrict __save_ptr)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (2, 3)));
+extern char *strtok_r (char *__restrict __s, const char *__restrict __delim,
+         char **__restrict __save_ptr)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (2, 3)));
+
+extern size_t strlen (const char *__s)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+
+extern size_t strnlen (const char *__string, size_t __maxlen)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+
+extern char *strerror (int __errnum) __attribute__ ((__nothrow__ , __leaf__));
+
+extern int strerror_r (int __errnum, char *__buf, size_t __buflen) __asm__ ("" "__xpg_strerror_r") __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (2)));
+extern char *strerror_l (int __errnum, __locale_t __l) __attribute__ ((__nothrow__ , __leaf__));
+extern void __bzero (void *__s, size_t __n) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
+extern void bcopy (const void *__src, void *__dest, size_t __n)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
+extern void bzero (void *__s, size_t __n) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
+extern void explicit_bzero (void *__s, size_t __n) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
+extern int bcmp (const void *__s1, const void *__s2, size_t __n)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+extern char *index (const char *__s, int __c)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+extern char *rindex (const char *__s, int __c)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+extern int ffs (int __i) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
+extern int strcasecmp (const char *__s1, const char *__s2)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+extern int strncasecmp (const char *__s1, const char *__s2, size_t __n)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+extern char *strsep (char **__restrict __stringp,
+       const char *__restrict __delim)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
+extern char *strsignal (int __sig) __attribute__ ((__nothrow__ , __leaf__));
+extern char *__stpcpy (char *__restrict __dest, const char *__restrict __src)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
+extern char *stpcpy (char *__restrict __dest, const char *__restrict __src)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
+extern char *__stpncpy (char *__restrict __dest,
+   const char *__restrict __src, size_t __n)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
+extern char *stpncpy (char *__restrict __dest,
+        const char *__restrict __src, size_t __n)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+typedef __clock_t clock_t;
+
+
+
+typedef __time_t time_t;
+
+
+
+struct tm
+{
+  int tm_sec;
+  int tm_min;
+  int tm_hour;
+  int tm_mday;
+  int tm_mon;
+  int tm_year;
+  int tm_wday;
+  int tm_yday;
+  int tm_isdst;
+  long int tm_gmtoff;
+  const char *tm_zone;
+};
+
+
+struct timespec
+{
+  __time_t tv_sec;
+  __syscall_slong_t tv_nsec;
+};
+typedef __clockid_t clockid_t;
+typedef __timer_t timer_t;
+struct itimerspec
+  {
+    struct timespec it_interval;
+    struct timespec it_value;
+  };
+struct sigevent;
+typedef __pid_t pid_t;
+
+
+extern clock_t clock (void) __attribute__ ((__nothrow__ , __leaf__));
+extern time_t time (time_t *__timer) __attribute__ ((__nothrow__ , __leaf__));
+extern double difftime (time_t __time1, time_t __time0)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
+extern time_t mktime (struct tm *__tp) __attribute__ ((__nothrow__ , __leaf__));
+extern size_t strftime (char *__restrict __s, size_t __maxsize,
+   const char *__restrict __format,
+   const struct tm *__restrict __tp) __attribute__ ((__nothrow__ , __leaf__));
+
+extern size_t strftime_l (char *__restrict __s, size_t __maxsize,
+     const char *__restrict __format,
+     const struct tm *__restrict __tp,
+     __locale_t __loc) __attribute__ ((__nothrow__ , __leaf__));
+
+extern struct tm *gmtime (const time_t *__timer) __attribute__ ((__nothrow__ , __leaf__));
+extern struct tm *localtime (const time_t *__timer) __attribute__ ((__nothrow__ , __leaf__));
+
+extern struct tm *gmtime_r (const time_t *__restrict __timer,
+       struct tm *__restrict __tp) __attribute__ ((__nothrow__ , __leaf__));
+extern struct tm *localtime_r (const time_t *__restrict __timer,
+          struct tm *__restrict __tp) __attribute__ ((__nothrow__ , __leaf__));
+
+extern char *asctime (const struct tm *__tp) __attribute__ ((__nothrow__ , __leaf__));
+extern char *ctime (const time_t *__timer) __attribute__ ((__nothrow__ , __leaf__));
+
+extern char *asctime_r (const struct tm *__restrict __tp,
+   char *__restrict __buf) __attribute__ ((__nothrow__ , __leaf__));
+extern char *ctime_r (const time_t *__restrict __timer,
+        char *__restrict __buf) __attribute__ ((__nothrow__ , __leaf__));
+extern char *__tzname[2];
+extern int __daylight;
+extern long int __timezone;
+extern char *tzname[2];
+extern void tzset (void) __attribute__ ((__nothrow__ , __leaf__));
+extern int daylight;
+extern long int timezone;
+extern int stime (const time_t *__when) __attribute__ ((__nothrow__ , __leaf__));
+extern time_t timegm (struct tm *__tp) __attribute__ ((__nothrow__ , __leaf__));
+extern time_t timelocal (struct tm *__tp) __attribute__ ((__nothrow__ , __leaf__));
+extern int dysize (int __year) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
+extern int nanosleep (const struct timespec *__requested_time,
+        struct timespec *__remaining);
+extern int clock_getres (clockid_t __clock_id, struct timespec *__res) __attribute__ ((__nothrow__ , __leaf__));
+extern int clock_gettime (clockid_t __clock_id, struct timespec *__tp) __attribute__ ((__nothrow__ , __leaf__));
+extern int clock_settime (clockid_t __clock_id, const struct timespec *__tp)
+     __attribute__ ((__nothrow__ , __leaf__));
+extern int clock_nanosleep (clockid_t __clock_id, int __flags,
+       const struct timespec *__req,
+       struct timespec *__rem);
+extern int clock_getcpuclockid (pid_t __pid, clockid_t *__clock_id) __attribute__ ((__nothrow__ , __leaf__));
+extern int timer_create (clockid_t __clock_id,
+    struct sigevent *__restrict __evp,
+    timer_t *__restrict __timerid) __attribute__ ((__nothrow__ , __leaf__));
+extern int timer_delete (timer_t __timerid) __attribute__ ((__nothrow__ , __leaf__));
+extern int timer_settime (timer_t __timerid, int __flags,
+     const struct itimerspec *__restrict __value,
+     struct itimerspec *__restrict __ovalue) __attribute__ ((__nothrow__ , __leaf__));
+extern int timer_gettime (timer_t __timerid, struct itimerspec *__value)
+     __attribute__ ((__nothrow__ , __leaf__));
+extern int timer_getoverrun (timer_t __timerid) __attribute__ ((__nothrow__ , __leaf__));
+extern int timespec_get (struct timespec *__ts, int __base)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
+
+enum{
+EMPTY
+,
+EXIT
+,
+RUN_PERFORMANCE_TEST
+,
+COPY
+,
+INSERT_ARRAY
+,
+IF
+,
+GO_TO_ARRAY
+,
+GO_TO_INDEX
+,
+SKIP
+,
+RESIZE_MEMORY
+,
+RESIZE_ARRAY
+,
+GET_MEMORY_CAPACITY
+,
+GET_ARRAY_CAPACITY
+,
+GET_GRANULARITY_COUNTER
+,
+GET_HEAD
+,
+SET_HEAD
+,
+SET_SOURCE
+,
+SET_DESTINATION
+,
+SET_FAILSAFE_TYPE
+,
+ADD
+,
+SUBTRACT
+,
+MULTIPLY
+,
+DIVIDE
+,
+REMAINDER
+,
+AND
+,
+OR
+,
+XOR
+,
+NOT
+,
+LOGICAL_SHIFT
+,
+NUMBER_OF_CORE_PROGRAMS
+};
+unsigned long core_programs_arguments[] = {
+0
+,
+0
+,
+0
+,
+2
+,
+2
+,
+1
+,
+2
+,
+1
+,
+1
+,
+1
+,
+2
+,
+1
+,
+2
+,
+1
+,
+1
+,
+1
+,
+1
+,
+1
+,
+1
+,
+2
+,
+2
+,
+2
+,
+2
+,
+2
+,
+2
+,
+2
+,
+2
+,
+1
+,
+3
+,
+};
+struct ARRAY{
+  unsigned long* data;
+  unsigned long capacity;
+};
+enum{
+  HEADS,
+  FLAGS,
+  MACHINE_INFO,
+  CORE_PROGRAMS_INFO,
+  KEYBOARD_STATE,
+  MOUSE_STATE,
+  JOYSTICK_STATE,
+  NUMBER_OF_DEFAULT_ARRAYS
+};
+enum{
+  ARRAY,
+  INDEX,
+  GRANULARITY,
+  SOURCE_ARRAY,
+  DESTINATION_ARRAY,
+  FAILSAFE_TYPE,
+  NUMBER_OF_HEAD_ELEMENTS
+};
+enum{
+  WRITE_TO,
+  READ_FROM
+};
+enum{
+  LEFT,
+  RIGHT
+};
+enum{
+  FLAG_SET,
+  OVERFLOW,
+  UNDERFLOW,
+  DIVISION_BY_ZERO,
+  ARRAY_RESIZE_FAILED,
+  MEMORY_RESIZE_FAILED,
+  ARRAY_ACCESS_FAILED,
+  INDEX_ACCESS_FAILED,
+  SET_HEAD_FAILED,
+  NUMBER_OF_FLAGS
+};
+enum{
+  PLATFORM = 1,
+  NUMBER_OF_MACHINE_INFO_ELEMENTS
+};
+enum{
+  HFSTS_PLATFORM,
+  WINDOWS_PLATFORM,
+  OSX_PLATFORM,
+  LINUX_PLATFORM,
+  IOS_PLATFORM,
+  ANDROID_PLATFORM,
+  WINDOWS_PHONE_PLATFORM,
+  XBOX_PLATFORM,
+  PLAYSTATION_PLATFORM,
+  NUMBER_OF_SUPPORTED_PLATFORMS
+};
+enum{
+  PERFORMANCE,
+  NUMBER_OF_ARGUMENTS,
+  NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS
+};
+struct ARRAY* memory;
+unsigned long capacity;
+unsigned long head_index;
+unsigned long granularity_counter;
+unsigned long* load_machine_info()
+{
+  unsigned long* machine_info = (unsigned long *) mmap(((void *)0), (unsigned long long)(memory[MACHINE_INFO].capacity + 1) * sizeof(unsigned long), 0x1 | 0x2, 0x02 | 0x20,-1,0);
+  if(machine_info == ((void *) -1))
+  {
+    return ((void *) -1);
+  }
+  machine_info[0] = 0xFFFFFFFF;
+  machine_info[PLATFORM] = 3;
+  return machine_info;
+}
+unsigned long* load_core_programs_info()
+{
+  unsigned long* core_programs_info = (unsigned long *) mmap(((void *)0), (unsigned long long)(memory[CORE_PROGRAMS_INFO].capacity + 1) * sizeof(unsigned long), 0x1 | 0x2, 0x02 | 0x20,-1,0);
+  if(core_programs_info == ((void *) -1))
+  {
+    return ((void *) -1);
+  }
+  unsigned long loop = 0;
+  while(loop < NUMBER_OF_CORE_PROGRAMS)
+  {
+    core_programs_info[loop*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS+NUMBER_OF_ARGUMENTS] = core_programs_arguments[loop];
+    loop++;
+  }
+  return core_programs_info;
+}
+unsigned long resize_array(unsigned long target, unsigned long new_capacity)
+{
+  if(new_capacity == memory[target].capacity) return 0;
+  if(target < NUMBER_OF_DEFAULT_ARRAYS && target != HEADS) return 1;
+  if(target == HEADS && new_capacity < NUMBER_OF_HEAD_ELEMENTS - 1) return 3;
+  unsigned long* new = (unsigned long *) mmap(((void *)0), (unsigned long long)(new_capacity + 1) * sizeof(unsigned long), 0x1 | 0x2, 0x02 | 0x20,-1,0);
+  if(new == ((void *) -1)) return 2;
+  unsigned long loop = 0;
+  unsigned long length = memory[target].capacity * (memory[target].capacity < new_capacity) + new_capacity * (memory[target].capacity > new_capacity);
+  for(;loop <= length; loop++)
+  {
+    new[loop] = memory[target].data[loop];
+  }
+  munmap(memory[target].data, (unsigned long long)memory[target].capacity + 1);;
+  memory[target].data = new;
+  memory[target].capacity = new_capacity;
+  return 0;
+}
+unsigned long resize_memory(unsigned long new_capacity)
+{
+  if(new_capacity == capacity) return 0;
+  if(new_capacity < NUMBER_OF_DEFAULT_ARRAYS) return 1;
+  struct ARRAY* new = (struct ARRAY *) mmap(((void *)0), (unsigned long long)(new_capacity + 1) * sizeof(struct ARRAY), 0x1 | 0x2, 0x02 | 0x20,-1,0);
+  if(new == ((void *) -1)) return 2;
+  unsigned long loop = 0;
+  unsigned long length = capacity * (capacity < new_capacity) + new_capacity * (capacity > new_capacity);
+  for(loop = 0; loop <= length; loop++)
+  {
+    new[loop].data = memory[loop].data;
+    new[loop].capacity = memory[loop].capacity;
+  }
+  munmap(memory, (unsigned long long)capacity + 1);;
+  if(new_capacity > capacity)
+  {
+    for(loop = capacity; loop <= new_capacity; loop++)
+    {
+       new[loop].capacity = 31;
+       new[loop].data = (unsigned long *) mmap(((void *)0), (unsigned long long)(new[loop].capacity + 1) * sizeof(unsigned long), 0x1 | 0x2, 0x02 | 0x20,-1,0);
+       if(new[loop].data == ((void *) -1))
+       return 2;
+    }
+  }
+  memory = new;
+  capacity = new_capacity;
+  return 0;
+}
+unsigned long insert_array(unsigned long insert_to_address, unsigned long insert_from_address)
+{
+  if(insert_to_address < NUMBER_OF_DEFAULT_ARRAYS ) return 1;
+  if(insert_to_address == insert_from_address) return 0;
+  struct ARRAY target_array = memory[insert_from_address];
+  unsigned long step = 1*(insert_to_address > insert_from_address) + -1*(insert_from_address > insert_to_address);
+  unsigned long loop;
+  for(loop = insert_from_address; loop != insert_to_address; loop += step )
+    memory[loop] = memory[loop + step];
+  memory[insert_to_address] = target_array;
+  return 0;
+}
+unsigned long allocate_memory()
+{
+  capacity = 31*(31 >= NUMBER_OF_DEFAULT_ARRAYS) + NUMBER_OF_DEFAULT_ARRAYS*(31 < NUMBER_OF_DEFAULT_ARRAYS);
+  memory = (struct ARRAY *) mmap(((void *)0), (unsigned long long)(capacity + 1) * sizeof(struct ARRAY), 0x1 | 0x2, 0x02 | 0x20,-1,0);
+  if(memory == ((void *) -1))
+  {
+    return 1;
+  }
+  memory[HEADS].capacity = NUMBER_OF_HEAD_ELEMENTS - 1;
+  memory[HEADS].data = (unsigned long *) mmap(((void *)0), (unsigned long long)(memory[HEADS].capacity + 1) * sizeof(unsigned long), 0x1 | 0x2, 0x02 | 0x20,-1,0);
+  if(memory[HEADS].data == ((void *) -1))
+  {
+    return 1;
+  }
+  memory[HEADS].data[0*NUMBER_OF_HEAD_ELEMENTS + ARRAY] = NUMBER_OF_DEFAULT_ARRAYS;
+  memory[HEADS].data[0*NUMBER_OF_HEAD_ELEMENTS + GRANULARITY] = 0xFFFFFFFF;
+  memory[HEADS].data[0*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] = 0xFFFFFFFF;
+  memory[FLAGS].capacity = NUMBER_OF_FLAGS - 1;
+  memory[FLAGS].data = (unsigned long *) mmap(((void *)0), (unsigned long long)(memory[FLAGS].capacity + 1) * sizeof(unsigned long), 0x1 | 0x2, 0x02 | 0x20,-1,0);
+  if(memory[FLAGS].data == ((void *) -1))
+  {
+    return 1;
+  }
+  memory[MACHINE_INFO].capacity = NUMBER_OF_MACHINE_INFO_ELEMENTS - 1;
+  memory[MACHINE_INFO].data = load_machine_info();
+  if(memory[MACHINE_INFO].data == ((void *) -1))
+  {
+    return 1;
+  }
+  memory[CORE_PROGRAMS_INFO].capacity = (NUMBER_OF_CORE_PROGRAMS - 1) * NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS;
+  memory[CORE_PROGRAMS_INFO].data = load_core_programs_info();
+  if(memory[CORE_PROGRAMS_INFO].data == ((void *) -1))
+  {
+    return 1;
+  }
+  memory[KEYBOARD_STATE].capacity = 256 - 1;
+  memory[KEYBOARD_STATE].data = (unsigned long *) mmap(((void *)0), (unsigned long long)(memory[KEYBOARD_STATE].capacity + 1) * sizeof(unsigned long), 0x1 | 0x2, 0x02 | 0x20,-1,0);;
+  if(memory[KEYBOARD_STATE].data == ((void *) -1))
+  {
+    return 1;
+  }
+  memory[MOUSE_STATE].capacity = 6 - 1;
+  memory[MOUSE_STATE].data = (unsigned long *) mmap(((void *)0), (unsigned long long)(memory[MOUSE_STATE].capacity + 1) * sizeof(unsigned long), 0x1 | 0x2, 0x02 | 0x20,-1,0);;
+  if(memory[MOUSE_STATE].data == ((void *) -1))
+  {
+    return 1;
+  }
+  memory[JOYSTICK_STATE].capacity = 18 - 1;
+  memory[JOYSTICK_STATE].data = (unsigned long *) mmap(((void *)0), (unsigned long long)(memory[JOYSTICK_STATE].capacity + 1) * sizeof(unsigned long), 0x1 | 0x2, 0x02 | 0x20,-1,0);;
+  if(memory[JOYSTICK_STATE].data == ((void *) -1))
+  {
+    return 1;
+  }
+  unsigned long loop = NUMBER_OF_DEFAULT_ARRAYS;
+  while(loop <= capacity)
+  {
+     memory[loop].capacity = 31;
+     memory[loop].data = (unsigned long *) mmap(((void *)0), (unsigned long long)(memory[loop].capacity + 1) * sizeof(unsigned long), 0x1 | 0x2, 0x02 | 0x20,-1,0);
+     if(memory[loop].data == ((void *) -1))
+     {
+        return 1;
+     }
+     loop++;
+  }
+  return 0;
+}
+void free_memory()
+{
+  unsigned long loop = 0;
+  if(memory != ((void *) -1))
+  {
+    while(loop <= capacity)
+    {
+      if(memory[loop].data != ((void *) -1)) munmap(memory[loop].data, (unsigned long long)memory[loop].capacity + 1);;
+      loop++;
+    }
+    munmap(memory, (unsigned long long)capacity + 1);;
+  }
+}
+unsigned long test_program[] = {
+  SET_SOURCE, NUMBER_OF_DEFAULT_ARRAYS,
+  SET_DESTINATION, NUMBER_OF_DEFAULT_ARRAYS,
+GO_TO_INDEX,9,
+0,
+1,
+0xFFFFFFFF,
+ADD,1,2,
+ADD,1,3,
+  EXIT
+};
+void read_test_program()
+{
+  if(memory == ((void *) -1)) return;
+  unsigned long result;
+  if(result = resize_memory(NUMBER_OF_DEFAULT_ARRAYS))
+  {
+    PRINT("Resizing memory failed: %u\n",result,0,0)
+  }
+  if(result = resize_array(NUMBER_OF_DEFAULT_ARRAYS, sizeof(test_program)/sizeof(unsigned long)))
+  {
+    PRINT("Resizing array failed: %u\n",result,0,0)
+  }
+  unsigned long loop = 0;
+  for(; loop < sizeof(test_program)/sizeof(unsigned long); loop++)
+  {
+    memory[NUMBER_OF_DEFAULT_ARRAYS].data[loop] = test_program[loop];
+  }
+}
+void write_program()
+{
+  FILE* file;
+  file = fopen("main_array", "wb");
+  fsetpos(file, (fpos_t *)0); fwrite(memory[NUMBER_OF_DEFAULT_ARRAYS].data + 0, sizeof(unsigned long), memory[NUMBER_OF_DEFAULT_ARRAYS].capacity, file);
+  fclose(file);
+}
+unsigned long read_program_at_address(int argc, char** argv)
+{
+  if(argc <= 1) return 1;
+  FILE* file = fopen(argv[1], "rb");
+  fseek(file, 0, SEEK_END);
+  unsigned long length = ftell(file);
+  rewind(file);
+  if(!length) return 1;
+  if( fread(memory[NUMBER_OF_DEFAULT_ARRAYS].data, sizeof(unsigned long), length, file) != length ) return 1;
+  fclose(file);
+}
+int main(int argc, char** argv)
+{
+if(allocate_memory()) { free_memory(); return 0; }
+read_program_at_address(argc, argv);
+void* instruction_table[] = {
+&&EMPTY
+,
+&&EXIT
+,
+&&RUN_PERFORMANCE_TEST
+,
+&&COPY
+,
+&&INSERT_ARRAY
+,
+&&IF
+,
+&&GO_TO_ARRAY
+,
+&&GO_TO_INDEX
+,
+&&SKIP
+,
+&&RESIZE_MEMORY
+,
+&&RESIZE_ARRAY
+,
+&&GET_MEMORY_CAPACITY
+,
+&&GET_ARRAY_CAPACITY
+,
+&&GET_GRANULARITY_COUNTER
+,
+&&GET_HEAD
+,
+&&SET_HEAD
+,
+&&SET_SOURCE
+,
+&&SET_DESTINATION
+,
+&&SET_FAILSAFE_TYPE
+,
+&&ADD
+,
+&&SUBTRACT
+,
+&&MULTIPLY
+,
+&&DIVIDE
+,
+&&REMAINDER
+,
+&&AND
+,
+&&OR
+,
+&&XOR
+,
+&&NOT
+,
+&&LOGICAL_SHIFT
+,
+};
+unsigned long* temp[4];
+unsigned long argument_index;
+FILE* file;
+next_instruction:
+head_index += (++granularity_counter >= memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + GRANULARITY]);
+head_index *= (((memory[HEADS].capacity+1) / NUMBER_OF_HEAD_ELEMENTS) > head_index);
+granularity_counter *= (memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + GRANULARITY] > granularity_counter);
+unsigned long number_of_consecutive_head_failures;
+if(number_of_consecutive_head_failures == (memory[HEADS].capacity+1) / NUMBER_OF_HEAD_ELEMENTS) goto out;
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY] > capacity
+   ||
+   memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] > memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].capacity)
+{
+  number_of_consecutive_head_failures++;
+  head_index *= ++head_index < ((memory[HEADS].capacity+1) / NUMBER_OF_HEAD_ELEMENTS);
+  goto next_instruction;
+}
+number_of_consecutive_head_failures = 0;
+argument_index = 0;
+if(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0] < NUMBER_OF_CORE_PROGRAMS)
+  goto *instruction_table[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]];
 EMPTY:
-ADVANCE_HEAD
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
 EXIT:
 goto out;
 RUN_PERFORMANCE_TEST:
-ADVANCE_HEAD
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
 COPY:
-while(argument_index < MEMORY_AT(CORE_PROGRAMS_INFO, AT_HEAD_OFFSET(0)*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS) ){
-if(MEMORY_FAILSAFE_AT(head_index))
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x1)
 {
-  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
-  {
-    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
-    ADVANCE_HEAD
-  }
-}
-temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
-argument_index++;
+  while(argument_index < memory[CORE_PROGRAMS_INFO].data[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS] ){
+    if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index] > capacity)
+    {
+      if((memory[FLAGS].data[ARRAY_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = ARRAY_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    if(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1+argument_index] > memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].capacity)
+    {
+      if((memory[FLAGS].data[INDEX_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = INDEX_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    temp[argument_index] = &(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].data[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1 + argument_index]]);
+    argument_index++;
+    }
 }
 *temp[1] = *temp[0];
-ADVANCE_HEAD
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
 INSERT_ARRAY:
-while(argument_index < MEMORY_AT(CORE_PROGRAMS_INFO, AT_HEAD_OFFSET(0)*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS) ){
-if(MEMORY_FAILSAFE_AT(head_index))
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x1)
 {
-  if(AT_HEAD_OFFSET(1+argument_index) > capacity)
-  {
-    SET_FLAG(ARRAY_ACCESS_FAILED, 1 + argument_index)
-    ADVANCE_HEAD
-  }
+  while(argument_index < memory[CORE_PROGRAMS_INFO].data[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS] ){
+    if(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1+argument_index] > capacity)
+    {
+      if((memory[FLAGS].data[ARRAY_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = ARRAY_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
 }
-temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
-argument_index++;
-}
-insert_array(*temp[0], *temp[1]);
-ADVANCE_HEAD
+insert_array(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1], memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 2]);
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
 IF:
-if(MEMORY_FAILSAFE_AT(head_index))
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x1)
 {
-  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
-  {
-    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
-    ADVANCE_HEAD
-  }
+    if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index] > capacity)
+    {
+      if((memory[FLAGS].data[ARRAY_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = ARRAY_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    if(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1+argument_index] > memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].capacity)
+    {
+      if((memory[FLAGS].data[INDEX_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = INDEX_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    temp[argument_index] = &(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].data[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1 + argument_index]]);
 }
-temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
 if(*temp[0])
 {
-  ADVANCE_HEAD
+  memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
 }
 else
 {
-  INDEX_AT(head_index) += 2;
-  ADVANCE_HEAD
+  memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]];
+  memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
 }
 GO_TO_ARRAY:
-if(MEMORY_FAILSAFE_AT(head_index))
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x1)
 {
-  if(AT_HEAD_OFFSET(1+argument_index) > capacity)
-  {
-    SET_FLAG(ARRAY_ACCESS_FAILED, 1 + argument_index)
-    ADVANCE_HEAD
-  }
+    if(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1+argument_index] > capacity)
+    {
+      if((memory[FLAGS].data[ARRAY_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = ARRAY_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
 }
-temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
-ARRAY_AT(head_index) = *temp[0];
-INDEX_AT(head_index) = *temp[1];
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x1)
+{
+    if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index] > capacity)
+    {
+      if((memory[FLAGS].data[ARRAY_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = ARRAY_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    if(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1+argument_index] > memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].capacity)
+    {
+      if((memory[FLAGS].data[INDEX_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = INDEX_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+}
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY] = memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1];
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] = memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 2];
+goto next_instruction;
 GO_TO_INDEX:
-if(MEMORY_FAILSAFE_AT(head_index))
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x1)
 {
-  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
-  {
-    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
-    ADVANCE_HEAD
-  }
+    if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index] > capacity)
+    {
+      if((memory[FLAGS].data[ARRAY_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = ARRAY_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    if(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1+argument_index] > memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].capacity)
+    {
+      if((memory[FLAGS].data[INDEX_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = INDEX_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
 }
-temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
-INDEX_AT(head_index) = *temp[0];
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] = memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1];
+goto next_instruction;
 SKIP:
-if(MEMORY_FAILSAFE_AT(head_index))
-{
-  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
-  {
-    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
-    ADVANCE_HEAD
-  }
-}
-temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
-INDEX_AT(head_index) += *temp[0];
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1];
 goto next_instruction;
 RESIZE_MEMORY:
-*temp[0] = resize_memory(AT_HEAD_OFFSET(1));
-if(MEMORY_FAILSAFE_AT(head_index))
-{
-  SET_FLAG(MEMORY_RESIZE_FAILED, *temp[0])
-  ADVANCE_HEAD
-}
-ADVANCE_HEAD
+*temp[0] = resize_memory(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1]);
+if((memory[FLAGS].data[MEMORY_RESIZE_FAILED] = *temp[0]) != 0) memory[FLAGS].data[FLAG_SET] = MEMORY_RESIZE_FAILED;
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
 RESIZE_ARRAY:
-if(MEMORY_FAILSAFE_AT(head_index))
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x1)
 {
-  if(AT_HEAD_OFFSET(1+argument_index) > capacity)
-  {
-    SET_FLAG(ARRAY_ACCESS_FAILED, 1 + argument_index)
-    ADVANCE_HEAD
-  }
+    if(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1+argument_index] > capacity)
+    {
+      if((memory[FLAGS].data[ARRAY_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = ARRAY_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
 }
-temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
-*temp[2] = resize_array(*temp[0], AT_HEAD_OFFSET(2));
-if(MEMORY_FAILSAFE_AT(head_index))
-{
-  SET_FLAG(ARRAY_RESIZE_FAILED, *temp[2])
-  ADVANCE_HEAD
-}
-ADVANCE_HEAD
+*temp[0] = resize_array(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1], memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 2]);
+if((memory[FLAGS].data[ARRAY_RESIZE_FAILED] = *temp[0]) != 0) memory[FLAGS].data[FLAG_SET] = ARRAY_RESIZE_FAILED;
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
 GET_MEMORY_CAPACITY:
-if(MEMORY_FAILSAFE_AT(head_index))
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x1)
 {
-  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
-  {
-    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
-    ADVANCE_HEAD
-  }
+    if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index] > capacity)
+    {
+      if((memory[FLAGS].data[ARRAY_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = ARRAY_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    if(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1+argument_index] > memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].capacity)
+    {
+      if((memory[FLAGS].data[INDEX_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = INDEX_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    temp[argument_index] = &(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].data[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1 + argument_index]]);
 }
-temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
 *temp[0] = capacity;
-ADVANCE_HEAD
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
 GET_ARRAY_CAPACITY:
-if(MEMORY_FAILSAFE_AT(head_index))
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x1)
 {
-  if(AT_HEAD_OFFSET(1+argument_index) > capacity)
-  {
-    SET_FLAG(ARRAY_ACCESS_FAILED, 1 + argument_index)
-    ADVANCE_HEAD
-  }
+    if(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1+argument_index] > capacity)
+    {
+      if((memory[FLAGS].data[ARRAY_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = ARRAY_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
 }
-temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
 argument_index++;
-if(MEMORY_FAILSAFE_AT(head_index))
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x1)
 {
-  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
-  {
-    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
-    ADVANCE_HEAD
-  }
+    if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index] > capacity)
+    {
+      if((memory[FLAGS].data[ARRAY_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = ARRAY_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    if(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1+argument_index] > memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].capacity)
+    {
+      if((memory[FLAGS].data[INDEX_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = INDEX_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    temp[argument_index] = &(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].data[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1 + argument_index]]);
 }
-temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
-*temp[1] = CAPACITY_AT(*temp[0]);
-ADVANCE_HEAD
-GET_HEAD:
-if(MEMORY_FAILSAFE_AT(head_index))
-{
-  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
-  {
-    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
-    ADVANCE_HEAD
-  }
-}
-temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
-*temp[0] = head_index;
-ADVANCE_HEAD
+*temp[1] = memory[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1]].capacity;
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
 GET_GRANULARITY_COUNTER:
-if(MEMORY_FAILSAFE_AT(head_index))
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x1)
 {
-  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
-  {
-    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
-    ADVANCE_HEAD
-  }
+    if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index] > capacity)
+    {
+      if((memory[FLAGS].data[ARRAY_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = ARRAY_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    if(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1+argument_index] > memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].capacity)
+    {
+      if((memory[FLAGS].data[INDEX_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = INDEX_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    temp[argument_index] = &(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].data[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1 + argument_index]]);
 }
-temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
 *temp[0] = granularity_counter;
-ADVANCE_HEAD
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+GET_HEAD:
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x1)
+{
+    if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index] > capacity)
+    {
+      if((memory[FLAGS].data[ARRAY_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = ARRAY_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    if(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1+argument_index] > memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].capacity)
+    {
+      if((memory[FLAGS].data[INDEX_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = INDEX_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    temp[argument_index] = &(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].data[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1 + argument_index]]);
+}
+*temp[0] = head_index;
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+SET_HEAD:
+if(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1] >= memory[HEADS].capacity / NUMBER_OF_HEAD_ELEMENTS)
+{
+  if((memory[FLAGS].data[SET_HEAD_FAILED] = 1) != 0) memory[FLAGS].data[FLAG_SET] = SET_HEAD_FAILED;
+  memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+}
+head_index = memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1];
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
 SET_SOURCE:
-if(MEMORY_FAILSAFE_AT(head_index))
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x1)
 {
-  if(AT_HEAD_OFFSET(1+argument_index) > capacity)
-  {
-    SET_FLAG(ARRAY_ACCESS_FAILED, 1 + argument_index)
-    ADVANCE_HEAD
-  }
+    if(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1+argument_index] > capacity)
+    {
+      if((memory[FLAGS].data[ARRAY_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = ARRAY_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
 }
-SOURCE_AT(head_index) = AT_HEAD_OFFSET(1);
-ADVANCE_HEAD
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY] = memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1];
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
 SET_DESTINATION:
-if(MEMORY_FAILSAFE_AT(head_index))
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x1)
 {
-  if(AT_HEAD_OFFSET(1+argument_index) > capacity)
-  {
-    SET_FLAG(ARRAY_ACCESS_FAILED, 1 + argument_index)
-    ADVANCE_HEAD
-  }
+    if(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1+argument_index] > capacity)
+    {
+      if((memory[FLAGS].data[ARRAY_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = ARRAY_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
 }
-DESTINATION_AT(head_index) = AT_HEAD_OFFSET(1);
-ADVANCE_HEAD
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + DESTINATION_ARRAY] = memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1];
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
 SET_FAILSAFE_TYPE:
-if(MEMORY_FAILSAFE_AT(head_index))
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x1)
 {
-  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
-  {
-    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
-    ADVANCE_HEAD
-  }
+    if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index] > capacity)
+    {
+      if((memory[FLAGS].data[ARRAY_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = ARRAY_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    if(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1+argument_index] > memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].capacity)
+    {
+      if((memory[FLAGS].data[INDEX_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = INDEX_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    temp[argument_index] = &(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].data[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1 + argument_index]]);
 }
-temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
-FAILSAFE_AT(head_index) = *temp[0];
-ADVANCE_HEAD
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] = *temp[0];
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
 ADD:
-while(argument_index < MEMORY_AT(CORE_PROGRAMS_INFO, AT_HEAD_OFFSET(0)*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS) ){
-if(MEMORY_FAILSAFE_AT(head_index))
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x1)
 {
-  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
-  {
-    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
-    ADVANCE_HEAD
-  }
+  while(argument_index < memory[CORE_PROGRAMS_INFO].data[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS] ){
+    if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index] > capacity)
+    {
+      if((memory[FLAGS].data[ARRAY_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = ARRAY_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    if(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1+argument_index] > memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].capacity)
+    {
+      if((memory[FLAGS].data[INDEX_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = INDEX_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    temp[argument_index] = &(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].data[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1 + argument_index]]);
+    argument_index++;
+    }
 }
-temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
-argument_index++;
-}
-if(MATH_FAILSAFE_AT(head_index))
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x2)
 {
-  SET_FLAG(OVERFLOW, *temp[1] > (*temp[1] + *temp[0]))
+  if((memory[FLAGS].data[OVERFLOW] = *temp[1] > (*temp[1] + *temp[0])) != 0) memory[FLAGS].data[FLAG_SET] = OVERFLOW;
 }
 *temp[1] += *temp[0];
-ADVANCE_HEAD
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
 SUBTRACT:
-while(argument_index < MEMORY_AT(CORE_PROGRAMS_INFO, AT_HEAD_OFFSET(0)*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS) ){
-if(MEMORY_FAILSAFE_AT(head_index))
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x1)
 {
-  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
-  {
-    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
-    ADVANCE_HEAD
-  }
+  while(argument_index < memory[CORE_PROGRAMS_INFO].data[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS] ){
+    if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index] > capacity)
+    {
+      if((memory[FLAGS].data[ARRAY_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = ARRAY_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    if(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1+argument_index] > memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].capacity)
+    {
+      if((memory[FLAGS].data[INDEX_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = INDEX_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    temp[argument_index] = &(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].data[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1 + argument_index]]);
+    argument_index++;
+    }
 }
-temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
-argument_index++;
-}
-if(MATH_FAILSAFE_AT(head_index))
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x2)
 {
-  SET_FLAG(UNDERFLOW, (*temp[1] < (*temp[1] - *temp[0])) )
+  if((memory[FLAGS].data[UNDERFLOW] = (*temp[1] < (*temp[1] - *temp[0]))) != 0) memory[FLAGS].data[FLAG_SET] = UNDERFLOW;
 }
 *temp[1] -= *temp[0];
-ADVANCE_HEAD
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
 MULTIPLY:
-while(argument_index < MEMORY_AT(CORE_PROGRAMS_INFO, AT_HEAD_OFFSET(0)*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS) ){
-if(MEMORY_FAILSAFE_AT(head_index))
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x1)
 {
-  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
-  {
-    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
-    ADVANCE_HEAD
-  }
-}
-temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
-argument_index++;
+  while(argument_index < memory[CORE_PROGRAMS_INFO].data[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS] ){
+    if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index] > capacity)
+    {
+      if((memory[FLAGS].data[ARRAY_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = ARRAY_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    if(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1+argument_index] > memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].capacity)
+    {
+      if((memory[FLAGS].data[INDEX_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = INDEX_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    temp[argument_index] = &(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].data[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1 + argument_index]]);
+    argument_index++;
+    }
 }
 *temp[2] = *temp[0] * *temp[1];
-if(MATH_FAILSAFE_AT(head_index))
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x2)
 {
-  SET_FLAG(OVERFLOW, ( *temp[1] != 0 && *temp[2] / *temp[1] != *temp[0] ))
+  if((memory[FLAGS].data[OVERFLOW] = ( *temp[1] != 0 && *temp[2] / *temp[1] != *temp[0] )) != 0) memory[FLAGS].data[FLAG_SET] = OVERFLOW;
 }
 *temp[1] = *temp[2];
-ADVANCE_HEAD
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
 DIVIDE:
-while(argument_index < MEMORY_AT(CORE_PROGRAMS_INFO, AT_HEAD_OFFSET(0)*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS) ){
-if(MEMORY_FAILSAFE_AT(head_index))
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x1)
 {
-  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
-  {
-    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
-    ADVANCE_HEAD
-  }
+  while(argument_index < memory[CORE_PROGRAMS_INFO].data[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS] ){
+    if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index] > capacity)
+    {
+      if((memory[FLAGS].data[ARRAY_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = ARRAY_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    if(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1+argument_index] > memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].capacity)
+    {
+      if((memory[FLAGS].data[INDEX_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = INDEX_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    temp[argument_index] = &(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].data[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1 + argument_index]]);
+    argument_index++;
+    }
 }
-temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
-argument_index++;
-}
-if(MATH_FAILSAFE_AT(head_index) && (*temp[0] == 0))
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x2 && (*temp[0] == 0))
 {
-  SET_FLAG(DIVISION_BY_ZERO,1)
-  ADVANCE_HEAD
+  if((memory[FLAGS].data[DIVISION_BY_ZERO] = 1) != 0) memory[FLAGS].data[FLAG_SET] = DIVISION_BY_ZERO;
+  memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
 }
 *temp[1] /= *temp[0];
-ADVANCE_HEAD
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
 REMAINDER:
-while(argument_index < MEMORY_AT(CORE_PROGRAMS_INFO, AT_HEAD_OFFSET(0)*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS) ){
-if(MEMORY_FAILSAFE_AT(head_index))
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x1)
 {
-  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
-  {
-    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
-    ADVANCE_HEAD
-  }
+  while(argument_index < memory[CORE_PROGRAMS_INFO].data[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS] ){
+    if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index] > capacity)
+    {
+      if((memory[FLAGS].data[ARRAY_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = ARRAY_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    if(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1+argument_index] > memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].capacity)
+    {
+      if((memory[FLAGS].data[INDEX_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = INDEX_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    temp[argument_index] = &(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].data[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1 + argument_index]]);
+    argument_index++;
+    }
 }
-temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
-argument_index++;
-}
-if(MATH_FAILSAFE_AT(head_index) && (*temp[0] == 0))
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x2 && (*temp[0] == 0))
 {
-  SET_FLAG(DIVISION_BY_ZERO,1)
-  ADVANCE_HEAD
+  if((memory[FLAGS].data[DIVISION_BY_ZERO] = 1) != 0) memory[FLAGS].data[FLAG_SET] = DIVISION_BY_ZERO;
+  memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
 }
 *temp[1] %= *temp[0];
-ADVANCE_HEAD
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
 AND:
-while(argument_index < MEMORY_AT(CORE_PROGRAMS_INFO, AT_HEAD_OFFSET(0)*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS) ){
-if(MEMORY_FAILSAFE_AT(head_index))
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x1)
 {
-  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
-  {
-    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
-    ADVANCE_HEAD
-  }
-}
-temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
-argument_index++;
+  while(argument_index < memory[CORE_PROGRAMS_INFO].data[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS] ){
+    if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index] > capacity)
+    {
+      if((memory[FLAGS].data[ARRAY_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = ARRAY_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    if(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1+argument_index] > memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].capacity)
+    {
+      if((memory[FLAGS].data[INDEX_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = INDEX_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    temp[argument_index] = &(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].data[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1 + argument_index]]);
+    argument_index++;
+    }
 }
 *temp[1] &= *temp[0];
-ADVANCE_HEAD
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
 OR:
-while(argument_index < MEMORY_AT(CORE_PROGRAMS_INFO, AT_HEAD_OFFSET(0)*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS) ){
-if(MEMORY_FAILSAFE_AT(head_index))
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x1)
 {
-  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
-  {
-    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
-    ADVANCE_HEAD
-  }
-}
-temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
-argument_index++;
+  while(argument_index < memory[CORE_PROGRAMS_INFO].data[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS] ){
+    if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index] > capacity)
+    {
+      if((memory[FLAGS].data[ARRAY_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = ARRAY_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    if(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1+argument_index] > memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].capacity)
+    {
+      if((memory[FLAGS].data[INDEX_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = INDEX_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    temp[argument_index] = &(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].data[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1 + argument_index]]);
+    argument_index++;
+    }
 }
 *temp[1] |= *temp[0];
-ADVANCE_HEAD
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
 XOR:
-while(argument_index < MEMORY_AT(CORE_PROGRAMS_INFO, AT_HEAD_OFFSET(0)*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS) ){
-if(MEMORY_FAILSAFE_AT(head_index))
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x1)
 {
-  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
-  {
-    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
-    ADVANCE_HEAD
-  }
-}
-temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
-argument_index++;
+  while(argument_index < memory[CORE_PROGRAMS_INFO].data[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS] ){
+    if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index] > capacity)
+    {
+      if((memory[FLAGS].data[ARRAY_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = ARRAY_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    if(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1+argument_index] > memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].capacity)
+    {
+      if((memory[FLAGS].data[INDEX_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = INDEX_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    temp[argument_index] = &(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].data[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1 + argument_index]]);
+    argument_index++;
+    }
 }
 *temp[1] ^= *temp[0];
-ADVANCE_HEAD
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
 NOT:
-if(MEMORY_FAILSAFE_AT(head_index))
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x1)
 {
-  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
-  {
-    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
-    ADVANCE_HEAD
-  }
+    if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index] > capacity)
+    {
+      if((memory[FLAGS].data[ARRAY_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = ARRAY_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    if(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1+argument_index] > memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].capacity)
+    {
+      if((memory[FLAGS].data[INDEX_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = INDEX_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    temp[argument_index] = &(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].data[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1 + argument_index]]);
 }
-temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
 ~*temp[0];
-ADVANCE_HEAD
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
 LOGICAL_SHIFT:
-if(MEMORY_FAILSAFE_AT(head_index))
+if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE] & 0x1)
 {
-  if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
-  {
-    SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
-    ADVANCE_HEAD
-  }
+    if(memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index] > capacity)
+    {
+      if((memory[FLAGS].data[ARRAY_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = ARRAY_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    if(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1+argument_index] > memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].capacity)
+    {
+      if((memory[FLAGS].data[INDEX_ACCESS_FAILED] = 1 + argument_index) != 0) memory[FLAGS].data[FLAG_SET] = INDEX_ACCESS_FAILED;
+      memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+    }
+    temp[argument_index] = &(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + SOURCE_ARRAY + argument_index]].data[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 1 + argument_index]]);
 }
-temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
-if(AT_HEAD_OFFSET(3))
-  *temp[0] <<= AT_HEAD_OFFSET(2);
+if(memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 3])
+  *temp[0] <<= memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 2];
 else
-  *temp[0] >>= AT_HEAD_OFFSET(2);
-ADVANCE_HEAD
+  *temp[0] >>= memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 2];
+memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] += 1 + core_programs_arguments[memory[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + ARRAY]].data[memory[HEADS].data[head_index*NUMBER_OF_HEAD_ELEMENTS + INDEX] + 0]]; goto next_instruction;
+out:
+free_memory();
+return 0;
+}
