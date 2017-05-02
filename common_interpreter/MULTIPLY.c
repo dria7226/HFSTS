@@ -1,6 +1,9 @@
 // MULTIPLY, read_from_address, write_to_address
 #ifdef INTERPRETER_MODE
 MULTIPLY:
+#ifdef CLIT
+PRINT("MULTIPLY, %u, %u ", AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2),0)
+#endif
 #define CHECK_ALL_ARGUMENTS
 #define CHECK_INDEX
 #define SET_VARIABLES
@@ -16,7 +19,7 @@ if(MATH_FAILSAFE_AT(head_index))
 *temp[1] = *temp[2];
 
 #ifdef CLIT
-PRINT("MULTIPLY, %u, %u = %u\n", AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2), *temp[1])
+PRINT("= %u\n",*temp[1],0,0)
 #endif
 
 ADVANCE_HEAD

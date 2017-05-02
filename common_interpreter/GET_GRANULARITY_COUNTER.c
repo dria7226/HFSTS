@@ -1,6 +1,9 @@
 // GET_GRANULARITY_COUNTER, write_to_address
 #ifdef INTERPRETER_MODE
 GET_GRANULARITY_COUNTER:
+#ifdef CLIT
+PRINT("GET_GRANULARITY_COUNTER, %u ",AT_HEAD_OFFSET(1),0,0)
+#endif
 #define CHECK_INDEX
 #define SET_VARIABLES
 #include "check_arguments.c"
@@ -8,7 +11,7 @@ GET_GRANULARITY_COUNTER:
 *temp[0] = granularity_counter;
 
 #ifdef CLIT
-PRINT("GET_GRANULARITY_COUNTER, %u\n",AT_HEAD_OFFSET(1),0,0)
+PRINT("\n",0,0,0)
 #endif
 
 ADVANCE_HEAD

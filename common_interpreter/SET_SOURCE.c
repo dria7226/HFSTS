@@ -1,13 +1,16 @@
 // SET_SOURCE , array
 #ifdef INTERPRETER_MODE
 SET_SOURCE:
+#ifdef CLIT
+PRINT("SET_SOURCE, %u ",AT_HEAD_OFFSET(1),0,0)
+#endif
 #define CHECK_ARRAY
 #include "check_arguments.c"
 
 SOURCE_AT(head_index) = AT_HEAD_OFFSET(1);
 
 #ifdef CLIT
-PRINT("SET_SOURCE, %u\n",AT_HEAD_OFFSET(1),0,0)
+PRINT("\n",0,0,0)
 #endif
 
 ADVANCE_HEAD

@@ -1,6 +1,9 @@
 // GET_HEAD, write_to_address
 #ifdef INTERPRETER_MODE
 GET_HEAD:
+#ifdef CLIT
+PRINT("GET_HEAD, %u ",AT_HEAD_OFFSET(1),0,0)
+#endif
 #define CHECK_INDEX
 #define SET_VARIABLES
 #include "check_arguments.c"
@@ -8,7 +11,7 @@ GET_HEAD:
 *temp[0] = head_index;
 
 #ifdef CLIT
-PRINT("GET_HEAD, %u\n",AT_HEAD_OFFSET(1),0,0)
+PRINT("\n",0,0,0)
 #endif
 
 ADVANCE_HEAD

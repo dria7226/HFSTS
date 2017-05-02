@@ -1,6 +1,9 @@
 // OR, read_from_address, write_to_address
 #ifdef INTERPRETER_MODE
 XOR:
+#ifdef CLIT
+PRINT("XOR, %u, %u ",AT_HEAD_OFFSET(0), AT_HEAD_OFFSET(1),0)
+#endif
 #define CHECK_ALL_ARGUMENTS
 #define CHECK_INDEX
 #define SET_VARIABLES
@@ -9,7 +12,7 @@ XOR:
 *temp[1] ^= *temp[0];
 
 #ifdef CLIT
-PRINT("XOR, %u, %u = %u\n",AT_HEAD_OFFSET(0), AT_HEAD_OFFSET(1),*temp[1])
+PRINT("= %u\n",*temp[1],0,0)
 #endif
 
 ADVANCE_HEAD
