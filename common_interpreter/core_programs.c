@@ -2,19 +2,21 @@
 #include "EXIT.c"
 #include "RUN_PERFORMANCE_TEST.c"
 
+
 #include "COPY.c"
 #include "INSERT_ARRAY.c"
-
-#include "IF.c"
-#include "GO_TO_ARRAY.c"
-#include "GO_TO_INDEX.c"
-#include "SKIP.c"
 
 #include "RESIZE_MEMORY.c"
 #include "RESIZE_ARRAY.c"
 
 #include "GET_MEMORY_CAPACITY.c"
 #include "GET_ARRAY_CAPACITY.c"
+
+
+#include "IF.c"
+#include "GO_TO_ARRAY.c"
+#include "GO_TO_INDEX.c"
+#include "SKIP.c"
 
 #include "GET_GRANULARITY_COUNTER.c"
 #include "GET_HEAD.c"

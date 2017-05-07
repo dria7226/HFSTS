@@ -1,38 +1,24 @@
 DATA_TYPE test_program[] = {
 
-  #include "RUN_PERFORMANCE_TEST_test.c"
+  GO_TO_INDEX,5,
+  0,
+  1,
+  MAX_VALUE,
 
-  #include "COPY_test.c"
-  #include "INSERT_ARRAY_test.c"
+  // RUN_PERFORMANCE_TEST
+  RUN_PERFORMANCE_TEST,
 
-  #include "IF_test.c"
-  #include "GO_TO_ARRAY_test.c"
-  #include "GO_TO_INDEX_test.c"
-  #include "SKIP_test.c"
+  // MEMORY tests
+  #include "MEMORY_tests.c"
 
-  #include "RESIZE_MEMORY_test.c"
-  #include "RESIZE_ARRAY_test.c"
-
-  #include "GET_MEMORY_CAPACITY_test.c"
-  #include "GET_ARRAY_CAPACITY_test.c"
-
-  #include "GET_GRANULARITY_COUNTER_test.c"
-  #include "GET_HEAD_test.c"
-  #include "SET_HEAD_test.c"
-  #include "SET_SOURCE_test.c"
-  #include "SET_DESTINATION_test.c"
-  #include "SET_FAILSAFE_TYPE_test.c"
+  // DECISION tests
+  #include "DECISION_tests.c"
   
-  #include "ADD_test.c"
-  #include "SUBTRACT_test.c"
-  #include "MULTIPLY_test.c"
-  #include "DIVIDE_test.c"
-  #include "REMAINDER_test.c"
-  #include "AND_test.c"
-  #include "OR_test.c"
-  #include "XOR_test.c"
-  #include "NOT_test.c"
-  #include "LOGICAL_SHIFT_test.c"
-    
+  // HEAD tests
+  #include "HEAD_tests.c"
+  
+  // MATH tests
+  #include "MATH_tests.c"
+  
   EXIT
 };
