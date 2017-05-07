@@ -1,9 +1,16 @@
 // IF, source_index
 #ifdef INTERPRETER_MODE
 IF:
+#ifdef CLIT
+PRINT("IF, %u ",AT_HEAD_OFFSET(1),0,0)
+#endif
 #define CHECK_INDEX
 #define SET_VARIABLES
 #include "check_arguments.c"
+
+#ifdef CLIT
+PRINT("\n",0,0,0)
+#endif
 
 if(*temp[0])
 {

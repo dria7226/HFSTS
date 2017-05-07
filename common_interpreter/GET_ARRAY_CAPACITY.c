@@ -1,6 +1,9 @@
 // GET_ARRAY_CAPACITY, array, write_to_address
 #ifdef INTERPRETER_MODE
 GET_ARRAY_CAPACITY:
+#ifdef CLIT
+PRINT("GET_ARRAY_CAPACITY, %u, %u ",AT_HEAD_OFFSET(1),AT_HEAD_OFFSET(2),0)
+#endif
 #define CHECK_ARRAY
 #include "check_arguments.c"
 
@@ -12,7 +15,7 @@ argument_index++;
 *temp[1] = CAPACITY_AT(AT_HEAD_OFFSET(1));
 
 #ifdef CLIT
-PRINT("GET_ARRAY_CAPACITY, %u, %u\n",AT_HEAD_OFFSET(1),AT_HEAD_OFFSET(2),0)
+PRINT("\n",0,0,0)
 #endif
 
 ADVANCE_HEAD

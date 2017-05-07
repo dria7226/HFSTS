@@ -1,6 +1,9 @@
 // GET_MEMORY_CAPACITY, write_to_address
 #ifdef INTERPRETER_MODE
 GET_MEMORY_CAPACITY:
+#ifdef CLIT
+PRINT("GET_MEMORY_CAPACITY, %u ",AT_HEAD_OFFSET(1),0,0)
+#endif
 #define CHECK_INDEX
 #define SET_VARIABLES
 #include "check_arguments.c"
@@ -8,7 +11,7 @@ GET_MEMORY_CAPACITY:
 *temp[0] = capacity;
 
 #ifdef CLIT
-PRINT("GET_MEMORY_CAPACITY, %u\n",AT_HEAD_OFFSET(1),0,0)
+PRINT("\n",0,0,0)
 #endif
 
 ADVANCE_HEAD
