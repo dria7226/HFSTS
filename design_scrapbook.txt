@@ -1,8 +1,7 @@
  - community focused (Reddit / Facebook inspired system)
  - self programmable
- - projects created using self contained modules
+ - projects created using self contained modules (IDE)
  - interprets code files
- - human readable code files?
  - The product and the IDE make up a single program (HFSTS) during development. On shipping, the IDE severes itself from the bundle, leaving only the CORE and tagged files
  - interpreter transparency - have interpreter be a representation of it's implementation (same for IDE)
 -----------------------------------------------
@@ -14,3 +13,24 @@
    CORE is not a code file but the binary implementation for the interpreter, and cannot be modified by the user.
 
    A different CORE implementation for every platform.
+-----------------------------------------------
+VIRTUAL MACHINE DEFINITION:
+
+ 1.MEMORY MODEL
+----------------
+The interpreter simulates a machine that stores an array of arrays of numbers.
+
+Fig.1
+
+ +--------------------- an array of 4 arrays
+ |
+ v
++--+--+--+--+--+
+|  |  |  |  |  |    <-- an array of 5 numbers
++--+--+--+--+--+
+|  |  |  |  |       <-- an array of 4 numbers
++--+--+--+--+--+--+
+|  |  |  |  |  |  | <-- an array of 6 numbers
++--+--+--+--+--+--+
+|  |  |  |  |  |    <-- an array of 5 numbers
++--+--+--+--+--+
