@@ -1,4 +1,4 @@
-// IF, source_index
+// IF, PRIMARY_index
 #ifdef INTERPRETER_MODE
 IF:
 #ifdef CLIT

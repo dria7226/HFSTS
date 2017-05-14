@@ -1,11 +1,11 @@
-//GET_FILE_SIZE, buffer_index, destination_index
+//GET_FILE_SIZE, buffer_index, secondary_index
 #ifdef INTERPRETER_MODE
 GET_FILE_SIZE:
 #define CHECK_ALL_ARGUMENTS
 #define SET_VARIABLES
 #include "check_arguments.c"
 
-file = fopen((char*)(memory[SOURCE_AT(head_index)].data + *temp[0]), "rb");
+file = fopen((char*)(memory[PRIMARY_AT(head_index)].data + *temp[0]), "rb");
 GET_FILE_SIZE(*temp[1])
 fclose(file);
 

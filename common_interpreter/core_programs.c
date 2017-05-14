@@ -21,8 +21,8 @@
 #include "GET_GRANULARITY_COUNTER.c"
 #include "GET_HEAD.c"
 #include "SET_HEAD.c"
-#include "SET_SOURCE.c"
-#include "SET_DESTINATION.c"
+#include "SET_PRIMARY.c"
+#include "SET_SECONDARY.c"
 #include "SET_FAILSAFE_TYPE.c"
 
 #include "ADD.c"

@@ -10,10 +10,10 @@
 #define OPEN(index, type) fopen(index, type);
 #define READ_ARRAY(index, array, amount) fsetpos(file, (fpos_t *)index); fread(memory[array].data + index, sizeof(DATA_TYPE), amount , file);
 #define WRITE_ARRAY(index, array, amount) fsetpos(file, (fpos_t *)index); fwrite(memory[array].data + index, sizeof(DATA_TYPE), amount, file);
-#define GET_FILE_SIZE(destination_index) fseek(file, 0, SEEK_END); MEMORY_AT(DESTINATION_AT(head_index), destination_index) = ftell(file);
+#define GET_FILE_SIZE(secondary_index) fseek(file, 0, SEEK_END); MEMORY_AT(SECONDARY_AT(head_index), secondary_index) = ftell(file);
 #define CLOSE(f) fclose(f);
 
 //TIME
 #include <time.h>
-#define READ_TIME(destination_index) MEMORY_AT(DESTINATION_AT(head_index), destination_index) = clock();
-#define READ_DATE(destination_index) MEMORY_AT(DESTINATION_AT(head_index), destination_index) = time(NULL);
+#define READ_TIME(secondary_index) MEMORY_AT(SECONDARY_AT(head_index), secondary_index) = clock();
+#define READ_DATE(secondary_index) MEMORY_AT(SECONDARY_AT(head_index), secondary_index) = time(NULL);

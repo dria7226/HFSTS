@@ -8,5 +8,5 @@ DATA_TYPE no_of_messages = 0;
 char* error_titles[] = {"DIVISION_BY_ZERO","ARRAY_RESIZE_FAILED","DATA_RESIZE_FAILED","PROGRAM_RESIZE_FAILED","DATA_ACCESS_FAILED","PROGRAM_ACCESS_FAILED"};
 
 char* error_messages[] = {"Invalid capacity","Can't allocate memory",
-                          "Invalid destination address","Invalid source address","Invalid array index",
+                          "Invalid secondary address","Invalid PRIMARY address","Invalid array index",
                           "Invalid address"};

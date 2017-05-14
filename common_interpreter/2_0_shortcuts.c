@@ -5,8 +5,8 @@
 #define ARRAY_AT(index)            HEAD_ELEMENT_AT(index, ARRAY)
 #define INDEX_AT(index)            HEAD_ELEMENT_AT(index, INDEX)
 #define HEAD_GRANULARITY_AT(index) HEAD_ELEMENT_AT(index, GRANULARITY)
-#define SOURCE_AT(index)           HEAD_ELEMENT_AT(index, SOURCE_ARRAY)
-#define DESTINATION_AT(index)      HEAD_ELEMENT_AT(index, DESTINATION_ARRAY)
+#define PRIMARY_AT(index)           HEAD_ELEMENT_AT(index, PRIMARY_ARRAY)
+#define SECONDARY_AT(index)      HEAD_ELEMENT_AT(index, SECONDARY_ARRAY)
 
 #define FAILSAFE_AT(index)         MEMORY_AT(HEADS, index*NUMBER_OF_HEAD_ELEMENTS + FAILSAFE_TYPE)
 #define MEMORY_FAILSAFE_AT(index)  FAILSAFE_AT(index) & 0x1

@@ -24,7 +24,7 @@ if(MEMORY_FAILSAFE_AT(head_index))
     //ARRAY checking and setting
     if(AT_HEAD_OFFSET(2*argument_index + 1) < NEGATIVE_RELATIVE)
     {
-      target_array = HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index);
+      target_array = HEAD_ELEMENT_AT(head_index, PRIMARY_ARRAY + argument_index);
       
       if(target_array > capacity)
       {
@@ -43,7 +43,7 @@ if(MEMORY_FAILSAFE_AT(head_index))
     }
 
     //INDEX checking and setting
-    if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index)))
+    if(AT_HEAD_OFFSET(1+argument_index) > CAPACITY_AT(HEAD_ELEMENT_AT(head_index, PRIMARY_ARRAY + argument_index)))
     {
       SET_FLAG(INDEX_ACCESS_FAILED, 1 + argument_index)
       
@@ -56,7 +56,7 @@ if(MEMORY_FAILSAFE_AT(head_index))
 
     #ifdef SET_VARIABLES
     //set temporary variable
-    temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, SOURCE_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
+    temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, PRIMARY_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
     temp[argument_index] = &(MEMORY_AT( array, index));
     #endif
     
