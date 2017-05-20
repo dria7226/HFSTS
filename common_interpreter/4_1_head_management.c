@@ -16,7 +16,7 @@ if(ARRAY_AT(head_index) > capacity
    ||
    INDEX_AT(head_index) > CAPACITY_AT(ARRAY_AT(head_index))
    ||
-   INDEX_AT(head_index) + CORE_PROGRAMS_INFO [ AT_HEAD_OFFSET(0) * NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS ] > CAPACITY_AT(head_index))
+   INDEX_AT(head_index) + CORE_PROGRAMS_INFO_AT( AT_HEAD_OFFSET(0) * NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS) > CAPACITY_AT(head_index))
 {
   number_of_consecutive_head_failures++;
   head_index *= ++head_index < ((CAPACITY_AT(HEADS)+1) / NUMBER_OF_HEAD_ELEMENTS);

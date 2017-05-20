@@ -56,8 +56,7 @@ if(MEMORY_FAILSAFE_AT(head_index))
 
     #ifdef SET_VARIABLES
     //set temporary variable
-    temp[argument_index] = &(MEMORY_AT( HEAD_ELEMENT_AT(head_index, PRIMARY_ARRAY + argument_index), AT_HEAD_OFFSET(1 + argument_index)));
-    temp[argument_index] = &(MEMORY_AT( array, index));
+    temp[argument_index] = &(MEMORY_AT( target_array, target_index));
     #endif
     
     #endif
