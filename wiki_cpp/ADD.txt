@@ -1,0 +1,19 @@
+<h1>
+  #define NAME_MODE
+  #include "../common_interpreter/ADD.c"
+</h2>
+
+<table>
+
+  <tr>
+    <th>Number of arguments</th>
+  </tr>
+
+  <tr>
+    <td>
+      #define ARGUMENTS_MODE
+      #include "../common_interpreter/ADD.c"
+    </td>
+  </tr>
+
+</table>

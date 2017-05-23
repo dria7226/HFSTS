@@ -1,13 +1,15 @@
-cpp ./wiki_cpp/*.txt -P > ./HFSTS.wiki/*.md
+cd ./wiki_cpp
+for filename in *.txt
+do
+    cpp $filename -P ../HFSTS.wiki/$(basename "$filename" .txt).md
+done
 
-if ! git diff-index --quiet HEAD --; then
+cd ../HFSTS.wiki
 
 git add .
 
-id='date +%Y-%m-%d'
+git status
 
-git commit -m "Auto - generated commit: $id"
+git commit -m "Auto-generated commit: `date +%Y-%m-%d:%H:%M`"
 
 git push
-
-fi
