@@ -1,0 +1,14 @@
+<table>
+
+  <tr>
+    <th>Number of arguments</th>
+  </tr>
+
+  <tr>
+    <td>
+      #define ARGUMENTS_MODE
+      #include "../common_interpreter/FILENAME.c"
+    </td>
+  </tr>
+
+</table>
