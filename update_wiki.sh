@@ -1,6 +1,4 @@
-cd HFSTS.wiki
-
-cpp ./cpp/*.txt > ./*.md
+cpp ./wiki_cpp/*.txt -P > ./HFSTS.wiki/*.md
 
 if ! git diff-index --quiet HEAD --; then
 
@@ -13,5 +11,3 @@ git commit -m "Auto - generated commit: $id"
 git push
 
 fi
-
-cd ..
