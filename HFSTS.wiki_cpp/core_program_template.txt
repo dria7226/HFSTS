@@ -1,3 +1,7 @@
+<p>
+#include "../HFSTS.wiki_cpp/FILENAME.description"
+</p>
+
 <table>
 
   <tr>
