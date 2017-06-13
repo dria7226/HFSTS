@@ -1,6 +1,6 @@
 COMMON INTERPRETER
 
-- fix crash in test_program.c
+- fix bug in check_and_set_arguments.c (INDEX_ACCESS_FAILED:1)
 
 - add windows default array
 

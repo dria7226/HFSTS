@@ -28,10 +28,10 @@ DATA_TYPE* load_core_programs_info()
   DATA_TYPE loop = 0;
 
   while(loop < NUMBER_OF_CORE_PROGRAMS)
-  {
-    core_programs_arguments[loop] *= 2;
-    
+  {    
     core_programs_info[loop*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS+NUMBER_OF_ARGUMENTS] = core_programs_arguments[loop];
+
+    core_programs_arguments[loop] *= NUMBER_OF_DATA_PER_ARGUMENT;
     
     loop++;
   }

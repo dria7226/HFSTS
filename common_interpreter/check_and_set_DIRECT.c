@@ -3,7 +3,7 @@ if(argument_index > 1)
  else
   target_array = HEAD_ELEMENT_AT(head_index, PRIMARY_ARRAY + argument_index);
 
-target_index = AT_HEAD_OFFSET(argument_index*2 + 2);
+target_index = AT_HEAD_OFFSET(argument_index*NUMBER_OF_DATA_PER_ARGUMENT + 2);
 
 if(MEMORY_FAILSAFE_AT(head_index))
 {

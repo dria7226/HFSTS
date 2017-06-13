@@ -24,9 +24,11 @@ if( INDEX_AT(head_index) + CORE_PROGRAMS_INFO_AT( AT_HEAD_OFFSET(0) * NUMBER_OF_
     >
     CAPACITY_AT(head_index) )                                goto array_or_index_failed;
 //--------------------------------------------------------------------------------------
-array_or_index_failed:
-number_of_consecutive_head_failures++;
-head_index *= ++head_index < ((CAPACITY_AT(HEADS)+1) / NUMBER_OF_HEAD_ELEMENTS);
-goto next_instruction;
-
+if(0)
+{
+  array_or_index_failed:
+  number_of_consecutive_head_failures++;
+  head_index *= ++head_index < ((CAPACITY_AT(HEADS)+1) / NUMBER_OF_HEAD_ELEMENTS);
+  goto next_instruction;
+}
 number_of_consecutive_head_failures = 0;

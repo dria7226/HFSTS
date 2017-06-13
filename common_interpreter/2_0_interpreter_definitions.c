@@ -22,6 +22,7 @@ struct ARRAY{
   DATA_TYPE  capacity;
 };
 
+#define NUMBER_OF_DATA_PER_ARGUMENT 2
 enum{
   IMMEDIATE,
   DIRECT,

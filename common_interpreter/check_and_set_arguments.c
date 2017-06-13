@@ -2,7 +2,10 @@
 
 while(argument_index < MEMORY_AT(CORE_PROGRAMS_INFO, AT_HEAD_OFFSET(0)*NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS + NUMBER_OF_ARGUMENTS) )
 {
-  switch(AT_HEAD_OFFSET(argument_index*2 + 1))
+
+  if(AT_HEAD_OFFSET(argument_index*NUMBER_OF_DATA_PER_ARGUMENT + 1) >= NUMBER_OF_INDEX_TYPES) { break; ADVANCE_HEAD }
+  
+  switch(AT_HEAD_OFFSET(argument_index*NUMBER_OF_DATA_PER_ARGUMENT + 1))
   {
     case IMMEDIATE:
     {
