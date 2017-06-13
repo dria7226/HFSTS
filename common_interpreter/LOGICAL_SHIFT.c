@@ -2,16 +2,13 @@
 #ifdef INTERPRETER_MODE
 LOGICAL_SHIFT:
 #ifdef CLIT
-PRINT("LOGICAL_SHIFT, %u, %u, %u ",AT_HEAD_OFFSET(1),AT_HEAD_OFFSET(2),AT_HEAD_OFFSET(3))
+PRINT("LOGICAL_SHIFT, %u, %u, %u ",AT_HEAD_OFFSET(2),AT_HEAD_OFFSET(4),AT_HEAD_OFFSET(6))
 #endif
-#define CHECK_INDEX
-#define SET_VARIABLES
-#include "check_arguments.c"
 
-if(AT_HEAD_OFFSET(3))
-  *temp[0] <<= AT_HEAD_OFFSET(2);
+if(*temp[2])
+  *temp[0] <<= *temp[1];
 else
-  *temp[0] >>= AT_HEAD_OFFSET(2);
+  *temp[0] >>= *temp[1];
 
 #ifdef CLIT
 PRINT("= %u\n",*temp[0],0,0)

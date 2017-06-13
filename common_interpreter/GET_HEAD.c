@@ -2,11 +2,8 @@
 #ifdef INTERPRETER_MODE
 GET_HEAD:
 #ifdef CLIT
-PRINT("GET_HEAD, %u ",AT_HEAD_OFFSET(1),0,0)
+PRINT("GET_HEAD, %u ",AT_HEAD_OFFSET(2),0,0)
 #endif
-#define CHECK_INDEX
-#define SET_VARIABLES
-#include "check_arguments.c"
 
 *temp[0] = head_index;
 

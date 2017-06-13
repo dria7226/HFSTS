@@ -2,17 +2,10 @@
 #ifdef INTERPRETER_MODE
 GET_ARRAY_CAPACITY:
 #ifdef CLIT
-PRINT("GET_ARRAY_CAPACITY, %u, %u ",AT_HEAD_OFFSET(1),AT_HEAD_OFFSET(2),0)
+PRINT("GET_ARRAY_CAPACITY, %u, %u ",AT_HEAD_OFFSET(2),AT_HEAD_OFFSET(4),0)
 #endif
-#define CHECK_ARRAY
-#include "check_arguments.c"
 
-argument_index++;
-#define CHECK_INDEX
-#define SET_VARIABLES
-#include "check_arguments.c"
-
-*temp[1] = CAPACITY_AT(AT_HEAD_OFFSET(1));
+*temp[1] = CAPACITY_AT(*temp[0]);
 
 #ifdef CLIT
 PRINT("\n",0,0,0)

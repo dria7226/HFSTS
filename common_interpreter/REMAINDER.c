@@ -2,12 +2,8 @@
 #ifdef INTERPRETER_MODE
 REMAINDER:
 #ifdef CLIT
-PRINT("REMAINDER, %u, %u ", AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2),0)
+PRINT("REMAINDER, %u, %u ", AT_HEAD_OFFSET(2), AT_HEAD_OFFSET(4),0)
 #endif
-#define CHECK_ALL_ARGUMENTS
-#define CHECK_INDEX
-#define SET_VARIABLES
-#include "check_arguments.c"
 
 if(MATH_FAILSAFE_AT(head_index) && (*temp[0] == 0))
 {

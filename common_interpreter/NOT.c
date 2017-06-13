@@ -2,11 +2,8 @@
 #ifdef INTERPRETER_MODE
 NOT:
 #ifdef CLIT
-PRINT("NOT, %u ",AT_HEAD_OFFSET(1),0,0)
+PRINT("NOT, %u ",AT_HEAD_OFFSET(2),0,0)
 #endif
-#define CHECK_INDEX
-#define SET_VARIABLES
-#include "check_arguments.c"
 
 *temp[0] = ~*temp[0];
 

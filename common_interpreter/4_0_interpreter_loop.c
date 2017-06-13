@@ -9,7 +9,7 @@ DATA_TYPE* temp[4];
 DATA_TYPE  argument_index;
 DATA_TYPE  target_array, target_index;
 
-IO_TYPE* file;
+//IO_TYPE* file;
 
 #ifdef CLIT
 no_of_messages = 0;
@@ -25,6 +25,8 @@ PRINT("%u:%u: ", ARRAY_AT(head_index), INDEX_AT(head_index),0);
 #endif
 
 argument_index = 0;
+
+#include "check_and_set_arguments.c"
 
 if(AT_HEAD_OFFSET(0) < NUMBER_OF_CORE_PROGRAMS)
   goto *instruction_table[AT_HEAD_OFFSET(0)];

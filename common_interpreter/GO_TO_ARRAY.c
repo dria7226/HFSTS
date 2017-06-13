@@ -2,17 +2,11 @@
 #ifdef INTERPRETER_MODE
 GO_TO_ARRAY:
 #ifdef CLIT
-PRINT("GO_TO_ARRAY, %u, %u ",ARRAY_AT(head_index),INDEX_AT(head_index),0)
+PRINT("GO_TO_ARRAY, %u, %u ",AT_HEAD_OFFSET(2), AT_HEAD_OFFSET(4),0)
 #endif
-#define CHECK_ARRAY
-#include "check_arguments.c"
 
-argument_index++;
-#define CHECK_INDEX
-#include "check_arguments.c"
-
-ARRAY_AT(head_index) = AT_HEAD_OFFSET(1);
-INDEX_AT(head_index) = AT_HEAD_OFFSET(2);
+ARRAY_AT(head_index) = *temp[0];
+INDEX_AT(head_index) = *temp[1];
 
 #ifdef CLIT
 PRINT("\n",0,0,0)

@@ -2,12 +2,10 @@
 #ifdef INTERPRETER_MODE
 SET_PRIMARY:
 #ifdef CLIT
-PRINT("SET_PRIMARY, %u ",AT_HEAD_OFFSET(1),0,0)
+PRINT("SET_PRIMARY, %u ",AT_HEAD_OFFSET(2),0,0)
 #endif
-#define CHECK_ARRAY
-#include "check_arguments.c"
 
-PRIMARY_AT(head_index) = AT_HEAD_OFFSET(1);
+PRIMARY_AT(head_index) = *temp[0];
 
 #ifdef CLIT
 PRINT("\n",0,0,0)

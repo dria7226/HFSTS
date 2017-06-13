@@ -2,12 +2,10 @@
 #ifdef INTERPRETER_MODE
 RESIZE_ARRAY:
 #ifdef CLIT
-PRINT("RESIZE_ARRAY, %u, %u  ",AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2),0)
+PRINT("RESIZE_ARRAY, %u, %u  ",AT_HEAD_OFFSET(2), AT_HEAD_OFFSET(4),0)
 #endif
-#define CHECK_ARRAY
-#include "check_arguments.c"
 
-*temp[0] = resize_array(AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2));
+*temp[0] = resize_array(*temp[0], *temp[1]);
 
 SET_FLAG(ARRAY_RESIZE_FAILED, *temp[0])
 

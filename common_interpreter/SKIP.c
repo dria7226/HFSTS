@@ -2,10 +2,10 @@
 #ifdef INTERPRETER_MODE
 SKIP:
 #ifdef CLIT
-PRINT("SKIP, %u\n", AT_HEAD_OFFSET(1),0,0)
+PRINT("SKIP, %u\n", AT_HEAD_OFFSET(2),0,0)
 #endif
 
-INDEX_AT(head_index) += AT_HEAD_OFFSET(1);
+INDEX_AT(head_index) += *temp[0];
 
 goto next_instruction;
 #endif

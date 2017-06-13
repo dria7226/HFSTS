@@ -2,12 +2,8 @@
 #ifdef INTERPRETER_MODE
 MULTIPLY:
 #ifdef CLIT
-PRINT("MULTIPLY, %u, %u ", AT_HEAD_OFFSET(1), AT_HEAD_OFFSET(2),0)
+PRINT("MULTIPLY, %u, %u ", AT_HEAD_OFFSET(2), AT_HEAD_OFFSET(4),0)
 #endif
-#define CHECK_ALL_ARGUMENTS
-#define CHECK_INDEX
-#define SET_VARIABLES
-#include "check_arguments.c"
 
 *temp[2] = *temp[0] * *temp[1];
 

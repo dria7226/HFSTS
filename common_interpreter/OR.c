@@ -2,12 +2,8 @@
 #ifdef INTERPRETER_MODE
 OR:
 #ifdef CLIT
-PRINT("OR, %u, %u ",AT_HEAD_OFFSET(0), AT_HEAD_OFFSET(1),0)
+PRINT("OR, %u, %u ",AT_HEAD_OFFSET(2), AT_HEAD_OFFSET(4),0)
 #endif
-#define CHECK_ALL_ARGUMENTS
-#define CHECK_INDEX
-#define SET_VARIABLES
-#include "check_arguments.c"
 
 *temp[1] |= *temp[0];
 

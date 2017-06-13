@@ -2,11 +2,8 @@
 #ifdef INTERPRETER_MODE
 SET_FAILSAFE_TYPE:
 #ifdef CLIT
-PRINT("SET_FAILSAFE_TYPE, %u ",AT_HEAD_OFFSET(1),0,0)
+PRINT("SET_FAILSAFE_TYPE, %u ",AT_HEAD_OFFSET(2),0,0)
 #endif
-#define CHECK_INDEX
-#define SET_VARIABLES
-#include "check_arguments.c"
 
 FAILSAFE_AT(head_index) = *temp[0];
 
