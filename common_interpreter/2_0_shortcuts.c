@@ -20,4 +20,4 @@
 #define CORE_PROGRAMS_INFO_AT(name)MEMORY_AT(CORE_PROGRAMS_INFO, name)
 
 #define AT_HEAD_OFFSET(x)          MEMORY_AT(ARRAY_AT(head_index), INDEX_AT(head_index) + x)
-#define ADVANCE_HEAD               INDEX_AT(head_index) += 1 + core_programs_arguments[AT_HEAD_OFFSET(0)]; goto next_instruction;
+#define ADVANCE_HEAD               INDEX_AT(head_index) += 1 + core_programs_arguments[AT_HEAD_OFFSET(0)]*2; goto next_instruction;

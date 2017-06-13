@@ -1,6 +1,6 @@
 DATA_TYPE test_program[] = {
 
-  GO_TO_INDEX,IMMEDIATE,5,
+  GO_TO_INDEX,IMMEDIATE,6,
   0,
   1,
   MAX_VALUE,
