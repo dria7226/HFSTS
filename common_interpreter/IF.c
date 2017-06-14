@@ -1,9 +1,10 @@
 // IF, PRIMARY_index
+#ifdef STRINGIFY
+"
+#endif
+
 #ifdef INTERPRETER_MODE
 IF:
-#ifdef CLIT
-PRINT("IF, %u ",AT_HEAD_OFFSET(2),0,0)
-#endif
 
 #ifdef CLIT
 PRINT("\n",0,0,0)
@@ -30,6 +31,10 @@ IF
 
 #ifdef ARGUMENTS_MODE
 1
+#endif
+
+#ifdef STRINGIFY
+"
 #endif
 
 #ifdef ENUMERATE

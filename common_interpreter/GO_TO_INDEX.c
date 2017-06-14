@@ -1,9 +1,10 @@
 //GO_TO_INDEX, read_from_address
+#ifdef STRINGIFY
+"
+#endif
+
 #ifdef INTERPRETER_MODE
 GO_TO_INDEX:
-#ifdef CLIT
-PRINT("GO_TO_INDEX, %u ",AT_HEAD_OFFSET(2),0,0)
-#endif
 
 INDEX_AT(head_index) = *temp[0];
 
@@ -24,6 +25,10 @@ GO_TO_INDEX
 
 #ifdef ARGUMENTS_MODE
 1
+#endif
+
+#ifdef STRINGIFY
+"
 #endif
 
 #ifdef ENUMERATE

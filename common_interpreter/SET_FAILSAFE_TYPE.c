@@ -1,9 +1,10 @@
 // SET_FAILSAFE_TYPE, read_from_address
+#ifdef STRINGIFY
+"
+#endif
+
 #ifdef INTERPRETER_MODE
 SET_FAILSAFE_TYPE:
-#ifdef CLIT
-PRINT("SET_FAILSAFE_TYPE, %u ",AT_HEAD_OFFSET(2),0,0)
-#endif
 
 FAILSAFE_AT(head_index) = *temp[0];
 
@@ -24,6 +25,10 @@ SET_FAILSAFE_TYPE
 
 #ifdef ARGUMENTS_MODE
 1
+#endif
+
+#ifdef STRINGIFY
+"
 #endif
 
 #ifdef ENUMERATE

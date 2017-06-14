@@ -1,4 +1,8 @@
 // RESIZE_MEMORY, capacity
+#ifdef STRINGIFY
+"
+#endif
+
 #ifdef INTERPRETER_MODE
 RESIZE_MEMORY:
 *temp[1] = resize_memory(*temp[0]);
@@ -6,7 +10,7 @@ RESIZE_MEMORY:
 SET_FLAG(MEMORY_RESIZE_FAILED, *temp[1])
 
 #ifdef CLIT
-PRINT("RESIZE_MEMORY, %u ",AT_HEAD_OFFSET(2),0,0)
+PRINT("RESIZE_MEMORY, %s, %u ", index_type-text[AT_HEAD_OFFSET(1)], AT_HEAD_OFFSET(1*NUMBER_OF_DATA_PER_ARGUMENT),0)
 if(FLAG_AT(MEMORY_RESIZE_FAILED))
 {
   PRINT("%s: %s",error_titles[MEMORY_RESIZE_FAILED-3],error_messages[FLAG_AT(MEMORY_RESIZE_FAILED)-1],0)
@@ -27,6 +31,10 @@ RESIZE_MEMORY
 
 #ifdef ARGUMENTS_MODE
 1
+#endif
+
+#ifdef STRINGIFY
+"
 #endif
 
 #ifdef ENUMERATE

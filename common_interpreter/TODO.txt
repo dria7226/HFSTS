@@ -1,6 +1,6 @@
 COMMON INTERPRETER
 
-- fix bug in check_and_set_arguments.c (INDEX_ACCESS_FAILED:1)
+- fix cpp problem with 'terminating " character'
 
 - add windows default array
 

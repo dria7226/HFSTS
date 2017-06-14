@@ -1,9 +1,10 @@
 // GET_MEMORY_CAPACITY, write_to_address
+#ifdef STRINGIFY
+"
+#endif
+
 #ifdef INTERPRETER_MODE
 GET_MEMORY_CAPACITY:
-#ifdef CLIT
-PRINT("GET_MEMORY_CAPACITY, %u ",AT_HEAD_OFFSET(2),0,0)
-#endif
 
 *temp[0] = capacity;
 
@@ -24,6 +25,10 @@ GET_MEMORY_CAPACITY
 
 #ifdef ARGUMENTS_MODE
 1
+#endif
+
+#ifdef STRINGIFY
+"
 #endif
 
 #ifdef ENUMERATE

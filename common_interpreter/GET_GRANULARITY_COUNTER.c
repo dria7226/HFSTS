@@ -1,9 +1,10 @@
 // GET_GRANULARITY_COUNTER, write_to_address
+#ifdef STRINGIFY
+"
+#endif
+
 #ifdef INTERPRETER_MODE
 GET_GRANULARITY_COUNTER:
-#ifdef CLIT
-PRINT("GET_GRANULARITY_COUNTER, %u ",AT_HEAD_OFFSET(2),0,0)
-#endif
 
 *temp[0] = granularity_counter;
 
@@ -24,6 +25,10 @@ GET_GRANULARITY_COUNTER
 
 #ifdef ARGUMENTS_MODE
 1
+#endif
+
+#ifdef
+"
 #endif
 
 #ifdef ENUMERATE

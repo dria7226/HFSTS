@@ -10,8 +10,23 @@
 
 #include "2_0_interpreter_definitions.c"
 
+//CLIT messages
 #ifdef CLIT
 #include "testing_messages.c"
+
+char ** index_type_text[] = {
+  "IMMEDIATE",
+  "DIRECT",
+  "NEGATIVE_RELATIVE",
+  "POSITIVE_RELATIVE"
+};
+
+char** core_programs_text[] = {
+  #define NAME_MODE
+  #define STRINGIFY
+  #define ENUMERATE
+  #include "core_programs.c"
+};
 #endif
 
 struct ARRAY* memory;

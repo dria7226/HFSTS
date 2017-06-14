@@ -10,21 +10,25 @@ while(argument_index < MEMORY_AT(CORE_PROGRAMS_INFO, AT_HEAD_OFFSET(0)*NUMBER_OF
     case IMMEDIATE:
     {
       #include "check_and_set_IMMEDIATE.c"
+      break;
     }
     
     case DIRECT:
     {
       #include "check_and_set_DIRECT.c"
+      break;
     }
 
     case POSITIVE_RELATIVE:
     {
       #include "check_and_set_POSITIVE_RELATIVE.c"
+      break;
     }
 
     case NEGATIVE_RELATIVE:
     {
       #include "check_and_set_NEGATIVE_RELATIVE.c"
+      break;
     }
   }
    

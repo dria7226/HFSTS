@@ -1,9 +1,10 @@
 //GO_TO_ARRAY, array, index
+#ifdef STRINGIFY
+"
+#endif
+
 #ifdef INTERPRETER_MODE
 GO_TO_ARRAY:
-#ifdef CLIT
-PRINT("GO_TO_ARRAY, %u, %u ",AT_HEAD_OFFSET(2), AT_HEAD_OFFSET(4),0)
-#endif
 
 ARRAY_AT(head_index) = *temp[0];
 INDEX_AT(head_index) = *temp[1];
@@ -25,6 +26,10 @@ GO_TO_ARRAY
 
 #ifdef ARGUMENTS_MODE
 2
+#endif
+
+#ifdef STRINGIFY
+"
 #endif
 
 #ifdef ENUMERATE

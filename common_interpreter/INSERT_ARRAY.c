@@ -1,9 +1,10 @@
 // INSERT_ARRAY, read_from_array, write_to_array
+#ifdef STRINGIFY
+"
+#endif
+
 #ifdef INTERPRETER_MODE
 INSERT_ARRAY:
-#ifdef CLIT
-PRINT("INSERT_ARRAY, %u, %u",AT_HEAD_OFFSET(2),AT_HEAD_OFFSET(4),0)
-#endif
 
 insert_array(*temp[0], *temp[1]);
 
@@ -24,6 +25,10 @@ INSERT_ARRAY
 
 #ifdef ARGUMENTS_MODE
 2
+#endif
+
+#ifdef STRINGIFY
+"
 #endif
 
 #ifdef ENUMERATE

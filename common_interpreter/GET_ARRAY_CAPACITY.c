@@ -1,9 +1,10 @@
 // GET_ARRAY_CAPACITY, array, write_to_address
+#ifdef STRINGIFY
+"
+#endif
+
 #ifdef INTERPRETER_MODE
 GET_ARRAY_CAPACITY:
-#ifdef CLIT
-PRINT("GET_ARRAY_CAPACITY, %u, %u ",AT_HEAD_OFFSET(2),AT_HEAD_OFFSET(4),0)
-#endif
 
 *temp[1] = CAPACITY_AT(*temp[0]);
 
@@ -24,6 +25,10 @@ GET_ARRAY_CAPACITY
 
 #ifdef ARGUMENTS_MODE
 2
+#endif
+
+#ifdef STRINGIFY
+"
 #endif
 
 #ifdef ENUMERATE

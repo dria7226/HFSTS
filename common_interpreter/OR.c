@@ -1,9 +1,10 @@
 // OR, read_from_address, write_to_address
+#ifdef STRINGIFY
+"
+#endif
+
 #ifdef INTERPRETER_MODE
 OR:
-#ifdef CLIT
-PRINT("OR, %u, %u ",AT_HEAD_OFFSET(2), AT_HEAD_OFFSET(4),0)
-#endif
 
 *temp[1] |= *temp[0];
 
@@ -25,6 +26,10 @@ OR
 
 #ifdef ARGUMENTS_MODE
 2
+#endif
+
+#ifdef STRINGIFY
+"
 #endif
 
 #ifdef ENUMERATE

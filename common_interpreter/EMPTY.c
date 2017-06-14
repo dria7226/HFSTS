@@ -1,10 +1,10 @@
 //EMPTY
+#ifdef STRINGIFY
+"
+#endif
+
 #ifdef INTERPRETER_MODE
 EMPTY:
-
-#ifdef CLIT
-PRINT("EMPTY\n",0,0,0)
-#endif
 
 ADVANCE_HEAD
 #endif
@@ -19,6 +19,10 @@ EMPTY
 
 #ifdef ARGUMENTS_MODE
 0
+#endif
+
+#ifdef STRINGIFY
+"
 #endif
 
 #ifdef ENUMERATE

@@ -1,9 +1,10 @@
 // MULTIPLY, read_from_address, write_to_address
+#ifdef STRINGIFY
+"
+#endif
+
 #ifdef INTERPRETER_MODE
 MULTIPLY:
-#ifdef CLIT
-PRINT("MULTIPLY, %u, %u ", AT_HEAD_OFFSET(2), AT_HEAD_OFFSET(4),0)
-#endif
 
 *temp[2] = *temp[0] * *temp[1];
 
@@ -31,6 +32,10 @@ MULTIPLY
 
 #ifdef ARGUMENTS_MODE
 2
+#endif
+
+#ifdef STRINGIFY
+"
 #endif
 
 #ifdef ENUMERATE

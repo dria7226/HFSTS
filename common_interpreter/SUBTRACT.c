@@ -1,9 +1,10 @@
 // SUBTRACT, read_from_address , write_to_address
+#ifdef STRINGIFY
+"
+#endif
+
 #ifdef INTERPRETER_MODE
 SUBTRACT:
-#ifdef CLIT
-PRINT("SUBTRACT, %u, %u ", AT_HEAD_OFFSET(2), AT_HEAD_OFFSET(4),0)
-#endif
 
 if(MATH_FAILSAFE_AT(head_index))
 {
@@ -30,6 +31,10 @@ SUBTRACT
 
 #ifdef ARGUMENTS_MODE
 2
+#endif
+
+#ifdef STRINGIFY
+"
 #endif
 
 #ifdef ENUMERATE

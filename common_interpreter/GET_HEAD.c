@@ -1,9 +1,10 @@
 // GET_HEAD, write_to_address
+#ifdef STRINGIFY
+"
+#endif
+
 #ifdef INTERPRETER_MODE
 GET_HEAD:
-#ifdef CLIT
-PRINT("GET_HEAD, %u ",AT_HEAD_OFFSET(2),0,0)
-#endif
 
 *temp[0] = head_index;
 
@@ -24,6 +25,10 @@ GET_HEAD
 
 #ifdef ARGUMENTS_MODE
 1
+#endif
+
+#ifdef STRINGIFY
+"
 #endif
 
 #ifdef ENUMERATE

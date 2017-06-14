@@ -1,9 +1,10 @@
 // RESIZE_ARRAY, array, capacity
+#ifdef STRINGIFY
+"
+#endif
+
 #ifdef INTERPRETER_MODE
 RESIZE_ARRAY:
-#ifdef CLIT
-PRINT("RESIZE_ARRAY, %u, %u  ",AT_HEAD_OFFSET(2), AT_HEAD_OFFSET(4),0)
-#endif
 
 *temp[0] = resize_array(*temp[0], *temp[1]);
 
@@ -30,6 +31,10 @@ RESIZE_ARRAY
 
 #ifdef ARGUMENTS_MODE
 2
+#endif
+
+#ifdef STRINGIFY
+"
 #endif
 
 #ifdef ENUMERATE

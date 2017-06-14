@@ -1,9 +1,10 @@
 //NOT, read_from_address
+#ifdef STRINGIFY
+"
+#endif
+
 #ifdef INTERPRETER_MODE
 NOT:
-#ifdef CLIT
-PRINT("NOT, %u ",AT_HEAD_OFFSET(2),0,0)
-#endif
 
 *temp[0] = ~*temp[0];
 
@@ -24,6 +25,10 @@ NOT
 
 #ifdef ARGUMENTS_MODE
 1
+#endif
+
+#ifdef STRINGIFY
+"
 #endif
 
 #ifdef ENUMERATE

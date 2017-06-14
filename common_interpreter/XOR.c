@@ -1,9 +1,10 @@
 // OR, read_from_address, write_to_address
+#ifdef STRINGIFY
+"
+#endif
+
 #ifdef INTERPRETER_MODE
 XOR:
-#ifdef CLIT
-PRINT("XOR, %u, %u ",AT_HEAD_OFFSET(0), AT_HEAD_OFFSET(1),0)
-#endif
 
 *temp[1] ^= *temp[0];
 
@@ -24,6 +25,10 @@ XOR
 
 #ifdef ARGUMENTS_MODE
 2
+#endif
+
+#ifdef STRINGIFY
+"
 #endif
 
 #ifdef ENUMERATE

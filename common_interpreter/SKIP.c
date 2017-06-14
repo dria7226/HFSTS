@@ -1,9 +1,10 @@
 // SKIP, amount
+#ifdef STRINGIFY
+"
+#endif
+
 #ifdef INTERPRETER_MODE
 SKIP:
-#ifdef CLIT
-PRINT("SKIP, %u\n", AT_HEAD_OFFSET(2),0,0)
-#endif
 
 INDEX_AT(head_index) += *temp[0];
 
@@ -20,6 +21,10 @@ SKIP
 
 #ifdef ARGUMENTS_MODE
 1
+#endif
+
+#ifdef STRINGIFY
+"
 #endif
 
 #ifdef ENUMERATE
