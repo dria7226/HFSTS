@@ -4,8 +4,7 @@ DATA_TYPE test_program[] = {
   0,
   1,
   MAX_VALUE,
-
-  // RUN_PERFORMANCE_TEST
+  
   RUN_PERFORMANCE_TEST,
 
   // MEMORY tests
@@ -13,12 +12,12 @@ DATA_TYPE test_program[] = {
 
   // DECISION tests
   #include "DECISION_tests.c"
-  
+
   // HEAD tests
   #include "HEAD_tests.c"
-  
+
   // MATH tests
   #include "MATH_tests.c"
-  
+
   EXIT
 };

@@ -1,9 +1,0 @@
-#define NAME NOT
-#define ARGUMENTS 1
-
-#define IMPLEMENTATION				\
-
-#define CLIT_1						\
-PRINT("= %u\n",*temp[0],0,0)
-
-#include "core_program_template.c"
