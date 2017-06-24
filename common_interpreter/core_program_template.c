@@ -1,22 +1,34 @@
 #ifdef IMPLEMENTATION_MODE
 NAME :
 
+#ifdef IMPLEMENTATION
 IMPLEMENTATION
+#endif
 
 #ifdef CLIT
+#ifdef CLIT_1
 CLIT_1
 #endif
-
-IMPLEMENTATION_2
-
-#ifdef CLIT
-CLIT_2
 #endif
 
-IMPLEMENTATION_3
+#ifdef IMPLEMENTATION_2
+IMPLEMENTATION_2
+#endif
 
 #ifdef CLIT
+#ifdef CLIT_2
+CLIT_2
+#endif
+#endif
+
+#ifdef IMPLEMENTATION_3
+IMPLEMENTATION_3
+#endif
+
+#ifdef CLIT
+#ifdef CLIT_3
 CLIT_3
+#endif
 #endif
 
 ADVANCE_HEAD

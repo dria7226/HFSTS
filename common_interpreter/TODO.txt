@@ -1,6 +1,6 @@
 COMMON INTERPRETER
 
-- fix duplicate preprocessor directives in the same line (core programs)
+- fix "Illegal instruction (core dumped)"
 
 - add windows default array
 
