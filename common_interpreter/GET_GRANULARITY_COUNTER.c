@@ -1,36 +1,10 @@
-// GET_GRANULARITY_COUNTER, write_to_address
-#ifdef STRINGIFY
-"
-#endif
+#define NAME GET_GRANULARITY_COUNTER
+#define ARGUMENTS 1
 
-#ifdef INTERPRETER_MODE
-GET_GRANULARITY_COUNTER:
-
+#define IMPLEMENTATION				\
 *temp[0] = granularity_counter;
 
-#ifdef CLIT
+#define CLIT_1					\
 PRINT("\n",0,0,0)
-#endif
 
-ADVANCE_HEAD
-#endif
-
-#ifdef NAME_MODE
-GET_GRANULARITY_COUNTER
-#endif
-
-#ifdef LABEL_MODE
-&&GET_GRANULARITY_COUNTER
-#endif
-
-#ifdef ARGUMENTS_MODE
-1
-#endif
-
-#ifdef
-"
-#endif
-
-#ifdef ENUMERATE
-,
-#endif
+#include "core_program_template.c"

@@ -1,26 +1,10 @@
-//EXIT
-#ifdef INTERPRETER_MODE
-EXIT:
+#define NAME EXIT
+#define ARGUMENTS 0
 
-#ifdef CLIT
-PRINT("EXIT\n",0,0,0)
-#endif
+#define CLIT_1					\
+PRINT("\n",0,0,0)	                        
 
+#define IMPLEMENTATION_2			\
 goto out;
-#endif
 
-#ifdef NAME_MODE
-EXIT
-#endif
-
-#ifdef LABEL_MODE
-&&EXIT
-#endif
-
-#ifdef ARGUMENTS_MODE
-0
-#endif
-
-#ifdef ENUMERATE
-,
-#endif
+#include "core_program_template.c"

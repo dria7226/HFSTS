@@ -1,36 +1,10 @@
-// SET_FAILSAFE_TYPE, read_from_address
-#ifdef STRINGIFY
-"
-#endif
+#define NAME SET_FAILSAFE_TYPE
+#define ARGUMENTS 1
 
-#ifdef INTERPRETER_MODE
-SET_FAILSAFE_TYPE:
-
+#define IMPLEMENTATION				\
 FAILSAFE_AT(head_index) = *temp[0];
 
-#ifdef CLIT
+#define CLIT_1					\
 PRINT("\n",0,0,0)
-#endif
 
-ADVANCE_HEAD
-#endif
-
-#ifdef NAME_MODE
-SET_FAILSAFE_TYPE
-#endif
-
-#ifdef LABEL_MODE
-&&SET_FAILSAFE_TYPE
-#endif
-
-#ifdef ARGUMENTS_MODE
-1
-#endif
-
-#ifdef STRINGIFY
-"
-#endif
-
-#ifdef ENUMERATE
-,
-#endif
+#include "core_program_template.c"

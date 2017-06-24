@@ -1,39 +1,13 @@
-//LOGICAL_SHIFT, write_to_address, amount, direction
-#ifdef STRINGIFY
-"
-#endif
+#define NAME LOGICAL_SHIFT
+#define ARGUMENTS 3
 
-#ifdef INTERPRETER_MODE
-LOGICAL_SHIFT:
-
-if(*temp[2])
-  *temp[0] <<= *temp[1];
-else
+#define IMPLEMENTATION				\
+if(*temp[2])					\
+  *temp[0] <<= *temp[1];			\
+else						\
   *temp[0] >>= *temp[1];
 
-#ifdef CLIT
+#define CLIT_1					\
 PRINT("= %u\n",*temp[0],0,0)
-#endif
 
-ADVANCE_HEAD
-#endif
-
-#ifdef NAME_MODE
-LOGICAL_SHIFT
-#endif
-
-#ifdef LABEL_MODE
-&&LOGICAL_SHIFT
-#endif
-
-#ifdef ARGUMENTS_MODE
-3
-#endif
-
-#ifdef STRINGIFY
-"
-#endif
-
-#ifdef ENUMERATE
-,
-#endif
+#include "core_program_template.c"

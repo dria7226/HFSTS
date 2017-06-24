@@ -1,5 +1,6 @@
 void* instruction_table[] = {
-#define LABEL_MODE
+#define TURN_TO_LABEL
+#define NAME_MODE
 #define ENUMERATE
 #include "core_programs.c" 
 };
@@ -35,7 +36,7 @@ PRINT("Invalid program code.\n",0,0,0);
 #endif
 
 //When there's no valid code, the interpreter will execute the next label under this comment, which should be EMPTY
-#define INTERPRETER_MODE
+#define IMPLEMENTATION_MODE
 #include "core_programs.c"
 
 out:

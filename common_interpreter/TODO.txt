@@ -1,6 +1,6 @@
 COMMON INTERPRETER
 
-- fix cpp problem with 'terminating " character'
+- fix duplicate preprocessor directives in the same line (core programs)
 
 - add windows default array
 

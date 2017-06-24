@@ -21,12 +21,3 @@ done < $output_path
 rm $output_path
 
 cd ../HFSTS.wiki
-
-#push wiki to git
-git add .
-
-git status
-
-git commit -m "Auto-generated commit: `date +%Y-%m-%d:%H:%M`"
-
-git push

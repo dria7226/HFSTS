@@ -1,0 +1,62 @@
+In file included from ../common_interpreter/EMPTY.c:7:0,
+                 from ../common_interpreter/core_programs.c:1,
+                 from ../common_interpreter/4_0_interpreter_loop.c:40,
+                 from 0_main.c:13:
+../common_interpreter/core_program_template.c: In function 'main':
+../common_interpreter/core_program_template.c:7:1: error: unknown type name 'CLIT_1'
+ CLIT_1
+ ^~~~~~
+../common_interpreter/core_program_template.c:13:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'CLIT_2'
+ CLIT_2
+ ^~~~~~
+In file included from ../common_interpreter/EXIT.c:10:0,
+                 from ../common_interpreter/core_programs.c:2,
+                 from ../common_interpreter/4_0_interpreter_loop.c:40,
+                 from 0_main.c:13:
+../common_interpreter/core_program_template.c:4:1: error: 'IMPLEMENTATION' undeclared (first use in this function)
+ IMPLEMENTATION
+ ^~~~~~~~~~~~~~
+../common_interpreter/core_program_template.c:4:1: note: each undeclared identifier is reported only once for each function it appears in
+In file included from ../common_interpreter/2_0_interpreter_implementation.c:11:0,
+                 from 0_main.c:5:
+../common_interpreter/CLIT_strings.c:4:24: error: expected ';' before '{' token
+ #define PRINT(x,y,z,w) {printf(x,y,z,w); no_of_messages++;}
+                        ^
+../common_interpreter/EXIT.c:5:1: note: in expansion of macro 'PRINT'
+ PRINT("\n",0,0,0)
+ ^~~~~
+../common_interpreter/core_program_template.c:7:1: note: in expansion of macro 'CLIT_1'
+ CLIT_1
+ ^~~~~~
+In file included from ../common_interpreter/EXIT.c:10:0,
+                 from ../common_interpreter/core_programs.c:2,
+                 from ../common_interpreter/4_0_interpreter_loop.c:40,
+                 from 0_main.c:13:
+../common_interpreter/core_program_template.c:13:1: error: unknown type name 'CLIT_2'
+ CLIT_2
+ ^~~~~~
+../common_interpreter/core_program_template.c:19:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'CLIT_3'
+ CLIT_3
+ ^~~~~~
+In file included from ../common_interpreter/2_0_interpreter_implementation.c:11:0,
+                 from 0_main.c:5:
+../common_interpreter/CLIT_strings.c:4:24: error: expected ';' before '{' token
+ #define PRINT(x,y,z,w) {printf(x,y,z,w); no_of_messages++;}
+                        ^
+../common_interpreter/RUN_PERFORMANCE_TEST.c:5:1: note: in expansion of macro 'PRINT'
+ PRINT("\n",0,0,0)
+ ^~~~~
+../common_interpreter/core_program_template.c:7:1: note: in expansion of macro 'CLIT_1'
+ CLIT_1
+ ^~~~~~
+In file included from ../common_interpreter/COPY.c:10:0,
+                 from ../common_interpreter/core_programs.c:6,
+                 from ../common_interpreter/4_0_interpreter_loop.c:40,
+                 from 0_main.c:13:
+../common_interpreter/core_program_template.c:10:1: error: unknown type name 'IMPLEMENTATION_2'
+ IMPLEMENTATION_2
+ ^~~~~~~~~~~~~~~~
+../common_interpreter/core_program_template.c:16:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'IMPLEMENTATION_3'
+ IMPLEMENTATION_3
+ ^~~~~~~~~~~~~~~~
+compilation terminated due to -fmax-errors=9.

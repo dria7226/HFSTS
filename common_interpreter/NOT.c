@@ -1,36 +1,10 @@
-//NOT, read_from_address
-#ifdef STRINGIFY
-"
-#endif
+#define NAME NOT
+#define ARGUMENTS 1
 
-#ifdef INTERPRETER_MODE
-NOT:
+#define IMPLEMENTATION				\
+  *temp[0] = ~*temp[0];				
 
-*temp[0] = ~*temp[0];
-
-#ifdef CLIT
+#define CLIT_1				       	\
 PRINT("= %u\n",*temp[0],0,0)
-#endif
 
-ADVANCE_HEAD
-#endif
-
-#ifdef NAME_MODE
-NOT
-#endif
-
-#ifdef LABEL_MODE
-&&NOT
-#endif
-
-#ifdef ARGUMENTS_MODE
-1
-#endif
-
-#ifdef STRINGIFY
-"
-#endif
-
-#ifdef ENUMERATE
-,
-#endif
+#include "core_program_template.c"

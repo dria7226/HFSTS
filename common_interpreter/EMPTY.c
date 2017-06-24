@@ -1,30 +1,7 @@
-//EMPTY
-#ifdef STRINGIFY
-"
-#endif
+#define NAME EMPTY
+#define ARGUMENTS 0
 
-#ifdef INTERPRETER_MODE
-EMPTY:
+#define IMPLEMENTATION				\
+PRINT("\n",0,0,0)
 
-ADVANCE_HEAD
-#endif
-
-#ifdef NAME_MODE
-EMPTY
-#endif
-
-#ifdef LABEL_MODE
-&&EMPTY
-#endif
-
-#ifdef ARGUMENTS_MODE
-0
-#endif
-
-#ifdef STRINGIFY
-"
-#endif
-
-#ifdef ENUMERATE
-,
-#endif
+#include "core_program_template.c"

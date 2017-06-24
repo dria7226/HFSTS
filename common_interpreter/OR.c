@@ -1,37 +1,10 @@
-// OR, read_from_address, write_to_address
-#ifdef STRINGIFY
-"
-#endif
+#define NAME OR
+#define ARGUMENTS 2
 
-#ifdef INTERPRETER_MODE
-OR:
-
+#define IMPLEMENTATION				\
 *temp[1] |= *temp[0];
 
-#ifdef CLIT
+#define CLIT_1				       	\
 PRINT("= %u\n",*temp[1],0,0)
-#endif
 
-
-ADVANCE_HEAD
-#endif
-
-#ifdef NAME_MODE
-OR
-#endif
-
-#ifdef LABEL_MODE
-&&OR
-#endif
-
-#ifdef ARGUMENTS_MODE
-2
-#endif
-
-#ifdef STRINGIFY
-"
-#endif
-
-#ifdef ENUMERATE
-,
-#endif
+#include "core_program_template.c"

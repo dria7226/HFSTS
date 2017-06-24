@@ -1,0 +1,90 @@
+ In file included from ../common_interpreter/core_programs.c:16:0,
+                 from ../common_interpreter/2_0_interpreter_definitions.c:4,
+                 from ../common_interpreter/2_0_interpreter_implementation.c:7,
+                 from 0_main.c:5:
+../common_interpreter/IF.c:16:6: error: expected ',' or '}' before '(' token
+ PRINT("\n",0,0,0)
+      ^
+In file included from ../common_interpreter/core_programs.c:16:0,
+                 from ../common_interpreter/2_0_interpreter_definitions.c:14,
+                 from ../common_interpreter/2_0_interpreter_implementation.c:7,
+                 from 0_main.c:5:
+../common_interpreter/IF.c:16:1: error: called object is not a function or function pointer
+ PRINT("\n",0,0,0)
+ ^~~~~
+In file included from ../common_interpreter/IF.c:18:0,
+                 from ../common_interpreter/core_programs.c:16,
+                 from ../common_interpreter/2_0_interpreter_definitions.c:14,
+                 from ../common_interpreter/2_0_interpreter_implementation.c:7,
+                 from 0_main.c:5:
+../common_interpreter/IF.c:2:19: error: expected '}' before numeric constant
+ #define ARGUMENTS 1
+                   ^
+../common_interpreter/core_program_template.c:25:27: note: in definition of macro 'retrieve'
+ #define retrieve(content) content
+                           ^~~~~~~
+../common_interpreter/core_program_template.c:43:10: note: in expansion of macro 'ARGUMENTS'
+ retrieve(ARGUMENTS)
+          ^~~~~~~~~
+In file included from ../common_interpreter/core_programs.c:16:0,
+                 from ../common_interpreter/CLIT_strings.c:25,
+                 from ../common_interpreter/2_0_interpreter_implementation.c:11,
+                 from 0_main.c:5:
+../common_interpreter/IF.c:16:1: warning: braces around scalar initializer
+ PRINT("\n",0,0,0)
+ ^~~~~
+../common_interpreter/IF.c:16:1: note: (near initialization for 'core_programs_text[9]')
+In file included from ../common_interpreter/2_0_interpreter_implementation.c:11:0,
+                 from 0_main.c:5:
+../common_interpreter/CLIT_strings.c:4:25: error: initializer element is not constant
+ #define PRINT(x,y,z,w) {printf(x,y,z,w); no_of_messages++;}
+                         ^
+../common_interpreter/IF.c:16:1: note: in expansion of macro 'PRINT'
+ PRINT("\n",0,0,0)
+ ^~~~~
+../common_interpreter/CLIT_strings.c:4:25: note: (near initialization for 'core_programs_text[9]')
+ #define PRINT(x,y,z,w) {printf(x,y,z,w); no_of_messages++;}
+                         ^
+../common_interpreter/IF.c:16:1: note: in expansion of macro 'PRINT'
+ PRINT("\n",0,0,0)
+ ^~~~~
+../common_interpreter/CLIT_strings.c:4:40: error: expected '}' before ';' token
+ #define PRINT(x,y,z,w) {printf(x,y,z,w); no_of_messages++;}
+                                        ^
+../common_interpreter/IF.c:16:1: note: in expansion of macro 'PRINT'
+ PRINT("\n",0,0,0)
+ ^~~~~
+In file included from ../common_interpreter/IF.c:18:0,
+                 from ../common_interpreter/core_programs.c:16,
+                 from ../common_interpreter/CLIT_strings.c:25,
+                 from ../common_interpreter/2_0_interpreter_implementation.c:11,
+                 from 0_main.c:5:
+../common_interpreter/core_program_template.c:39:14: error: expected '}' before string constant
+ retrieve(NAME)
+              ^
+../common_interpreter/core_program_template.c:34:37: note: in definition of macro 'internal_retrieve'
+ #define internal_retrieve(content) #content
+                                     ^~~~~~~
+../common_interpreter/core_program_template.c:39:1: note: in expansion of macro 'retrieve'
+ retrieve(NAME)
+ ^~~~~~~~
+In file included from ../common_interpreter/2_0_interpreter_implementation.c:21:0,
+                 from 0_main.c:5:
+../common_interpreter/2_1_interpreter_default_arrays.c: In function 'load_core_programs_info':
+../common_interpreter/2_1_interpreter_default_arrays.c:30:16: error: 'NUMBER_OF_CORE_PROGRAMS' undeclared (first use in this function)
+   while(loop < NUMBER_OF_CORE_PROGRAMS)
+                ^~~~~~~~~~~~~~~~~~~~~~~
+../common_interpreter/2_1_interpreter_default_arrays.c:30:16: note: each undeclared identifier is reported only once for each function it appears in
+../common_interpreter/2_1_interpreter_default_arrays.c:30:14: warning: comparison between pointer and integer
+   while(loop < NUMBER_OF_CORE_PROGRAMS)
+              ^
+In file included from ../common_interpreter/2_0_interpreter_implementation.c:23:0,
+                 from 0_main.c:5:
+../common_interpreter/2_2_memory.c: In function 'allocate_memory':
+../common_interpreter/2_2_memory.c:80:42: error: 'NUMBER_OF_CORE_PROGRAMS' undeclared (first use in this function)
+   memory[CORE_PROGRAMS_INFO].capacity = (NUMBER_OF_CORE_PROGRAMS - 1) * NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS;
+                                          ^~~~~~~~~~~~~~~~~~~~~~~
+../common_interpreter/2_2_memory.c:80:71: error: invalid operands to binary * (have 'char **' and 'int')
+   memory[CORE_PROGRAMS_INFO].capacity = (NUMBER_OF_CORE_PROGRAMS - 1) * NUMBER_OF_CORE_PROGRAMS_INFO_ELEMENTS;
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^
+compilation terminated due to -fmax-errors=9.

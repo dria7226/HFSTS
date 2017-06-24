@@ -10,3 +10,17 @@ char* error_titles[] = {"DIVISION_BY_ZERO","ARRAY_RESIZE_FAILED","DATA_RESIZE_FA
 char* error_messages[] = {"Invalid capacity","Can't allocate memory",
                           "Invalid secondary address","Invalid PRIMARY address","Invalid array index",
                           "Invalid address"};
+
+char* index_type_text[] = {
+  "IMMEDIATE",
+  "DIRECT",
+  "NEGATIVE_RELATIVE",
+  "POSITIVE_RELATIVE"
+};
+
+char* core_programs_text[] = {
+  #define TURN_TO_STRING
+  #define NAME_MODE
+  #define ENUMERATE
+  #include "core_programs.c"
+};

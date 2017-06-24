@@ -44,7 +44,6 @@
 //#include "GET_FILE_SIZE.c"
 
 #undef ENUMERATE
-#undef INTERPRETER_MODE
+#undef IMPLEMENTATION_MODE
 #undef NAME_MODE
-#undef LABEL_MODE
 #undef ARGUMENTS_MODE

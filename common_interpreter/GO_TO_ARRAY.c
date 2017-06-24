@@ -1,37 +1,14 @@
-//GO_TO_ARRAY, array, index
-#ifdef STRINGIFY
-"
-#endif
+#define NAME GO_TO_ARRAY
+#define ARGUMENTS 2
 
-#ifdef INTERPRETER_MODE
-GO_TO_ARRAY:
-
-ARRAY_AT(head_index) = *temp[0];
+#define IMPLEMENTATION				\
+ARRAY_AT(head_index) = *temp[0];		\
 INDEX_AT(head_index) = *temp[1];
 
-#ifdef CLIT
+#define CLIT_1					\
 PRINT("\n",0,0,0)
-#endif
 
+#define IMPLEMENTATION_2			\
 goto next_instruction;
-#endif
 
-#ifdef NAME_MODE
-GO_TO_ARRAY
-#endif
-
-#ifdef LABEL_MODE
-&&GO_TO_ARRAY
-#endif
-
-#ifdef ARGUMENTS_MODE
-2
-#endif
-
-#ifdef STRINGIFY
-"
-#endif
-
-#ifdef ENUMERATE
-,
-#endif
+#include "core_program_template.c"

@@ -1,36 +1,10 @@
-// OR, read_from_address, write_to_address
-#ifdef STRINGIFY
-"
-#endif
+#define NAME XOR
+#define ARGUMENTS 2
 
-#ifdef INTERPRETER_MODE
-XOR:
-
+#define IMPLEMENTATION				\
 *temp[1] ^= *temp[0];
 
-#ifdef CLIT
+#define CLIT_1			       		\
 PRINT("= %u\n",*temp[1],0,0)
-#endif
 
-ADVANCE_HEAD
-#endif
-
-#ifdef NAME_MODE
-XOR
-#endif
-
-#ifdef LABEL_MODE
-&&XOR
-#endif
-
-#ifdef ARGUMENTS_MODE
-2
-#endif
-
-#ifdef STRINGIFY
-"
-#endif
-
-#ifdef ENUMERATE
-,
-#endif
+#include "core_program_template.c"

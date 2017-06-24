@@ -1,26 +1,7 @@
-// RUN_PERFORMANCE_TEST
-#ifdef INTERPRETER_MODE
-RUN_PERFORMANCE_TEST:
+#define NAME RUN_PERFORMANCE_TEST
+#define ARGUMENTS 0
 
-#ifdef CLIT
-PRINT("RUN_PERFORMANCE_TEST\n",0,0,0)
-#endif
+#define CLIT_1					\
+PRINT("\n",0,0,0)
 
-ADVANCE_HEAD
-#endif
-
-#ifdef NAME_MODE
-RUN_PERFORMANCE_TEST
-#endif
-
-#ifdef LABEL_MODE
-&&RUN_PERFORMANCE_TEST
-#endif
-
-#ifdef ARGUMENTS_MODE
-0
-#endif
-
-#ifdef ENUMERATE
-,
-#endif
+#include "core_program_template.c"

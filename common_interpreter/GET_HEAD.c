@@ -1,36 +1,10 @@
-// GET_HEAD, write_to_address
-#ifdef STRINGIFY
-"
-#endif
+#define NAME GET_HEAD
+#define ARGUMENTS 1
 
-#ifdef INTERPRETER_MODE
-GET_HEAD:
-
+#define IMPLEMENTATION				\
 *temp[0] = head_index;
 
-#ifdef CLIT
+#define CLIT_1					\
 PRINT("\n",0,0,0)
-#endif
 
-ADVANCE_HEAD
-#endif
-
-#ifdef NAME_MODE
-GET_HEAD
-#endif
-
-#ifdef LABEL_MODE
-&&GET_HEAD
-#endif
-
-#ifdef ARGUMENTS_MODE
-1
-#endif
-
-#ifdef STRINGIFY
-"
-#endif
-
-#ifdef ENUMERATE
-,
-#endif
+#include "core_program_template.c"
