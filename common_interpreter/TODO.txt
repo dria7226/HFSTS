@@ -1,6 +1,10 @@
 COMMON INTERPRETER
 
+- fix crash in check_and_set_arguments.c (EMPTY test case)
+
 - fix "Illegal instruction (core dumped)"
+
+  Perhaps some problem with the new core_program_template system. 
 
 - add windows default array
 

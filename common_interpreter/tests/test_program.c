@@ -1,5 +1,9 @@
 DATA_TYPE test_program[] = {
 
+  EMPTY,
+
+  SKIP,IMMEDIATE,1,
+  
   GO_TO_INDEX,IMMEDIATE,6,
   0,
   1,
