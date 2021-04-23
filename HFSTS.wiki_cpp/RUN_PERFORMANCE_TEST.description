@@ -1,1 +1,1 @@
-This program runs performance tests on all other core programs and saves the timed results in the CORE_PROGRAMS_INFO default array.
+This program runs performance tests on all other core programs and saves the timed results in the CORE_INSTRUCTIONS_INFO default array.

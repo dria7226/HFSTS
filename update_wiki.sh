@@ -1,10 +1,10 @@
 cd ./HFSTS.wiki_cpp
 
-#generate cpp files for every core program according to core_programs.c
+#generate cpp files for every core program according to core/instructions.c
 
-output_path="core_programs.txt"
+output_path="core_instructions.txt"
 
-cpp -P -D NAME_MODE ../common_interpreter/core_programs.c > $output_path
+cpp -P -D NAME_MODE ../common_interpreter/core/instructions.c > $output_path
 
 program_code=0
 

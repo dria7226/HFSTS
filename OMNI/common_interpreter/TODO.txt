@@ -1,0 +1,32 @@
+COMMON INTERPRETER
+
+- fix head index overflow when advancing head (solution? terminate head?)
+
+- fix "Illegal instruction (core dumped)"
+
+  Perhaps some problem with the new core_template_template system.
+
+- add windows default array
+
+- create and finish core programs
+ - read time (time.c)
+ - reading/writing files (stdio.h) (input_output.c)
+
+ - read keyboard
+ - read mouse
+
+ - create window
+ - create texture
+ - compile shader
+
+ - read joystick
+
+ - read taps
+
+ - read gyroscope
+
+- work on helpers.c
+
+- test all code
+  - test head functions
+  - test memory functions
